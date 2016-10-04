@@ -10,6 +10,14 @@
   </head>
 
   <body class="h-100">
-    <%= yield %>
+    <% if !current_page?('/') %>
+      <%= render "partials/nav" %>
+      <div class="h-100 mw-100 pt4 avenir orange-grad">
+        <%= yield %>
+      </div>
+      <%= render "partials/footer" %>
+    <%else%>
+      <%= yield %>
+    <%end%>
   </body>
 </html>
