@@ -1,22 +1,12 @@
-<div class="mw-100 white cf f3 black-underlay-bg fixed vw-100">
-  <ul class="list fl">
-    <li>
-      <%= image_tag('short-logo-white.png', class: 'w3') %>
-    </li>
-  </ul>
+<nav class="dt w-100 border-box pa3 ph5-ns avenir white black-underlay-bg fixed">
+  <a class="dtc v-mid mid-gray link dim w-25 a-no-border grow" href="/">
+    <%= image_tag('short-logo-white.png', class: 'dib w2 h2 br-100') %>
+  </a>
 
-  <ul class="list pl0 pt2 fr avenir">
-    <li class="fl pl3 dim">
-      <%= link_to "Home", root_path, class: "nav-a" %>
-    </li>
-    <li class="fl pl3 dim">
-      <%= link_to "Who We Are", who_we_are_path, class: "nav-a" %>
-    </li>
-    <li class="fl pl3 dim">
-      <%= link_to "What We Do", what_we_do_path, class: "nav-a" %>
-    </li>
-    <li class="fl pl3 pr3 dim">
-      <%= link_to "Get Involved", involvements_path, class: "nav-a" %>
-    </li>
-  </ul>
-</div>
+  <div class="dtc v-mid w-75 tr">
+  <%= link_to "Who We Are", who_we_are_path, class: "nav-a link dim f5 f4-ns dib " %>
+  <%= link_to "What We Do", what_we_do_path, class: "nav-a link dim f5 f4-ns dib " %>
+  <%= link_to "Get Involved", involvements_path, class: "nav-a link dim f5 f4-ns dib " %>
+  </div>
+    
+</nav>

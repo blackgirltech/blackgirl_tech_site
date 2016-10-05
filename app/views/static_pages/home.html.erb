@@ -1,28 +1,58 @@
 <div class="mw-100 main-hero f3 cover h-100" id="home">
   <div class="mw-100 white cf">
-  <ul class="list fl">
-    <li>
-      <%= image_tag('short-logo-white.png', class: 'w3') %>
-    </li>
-  </ul>
+    <ul class="list fl">
+      <li>
+        <%= image_tag('short-logo-white.png', class: 'w3') %>
+      </li>
+    </ul>
 
-  <ul class="list pl0 pt2 fr avenir">
-    <li class="fl pl3 dim">
-      <%= link_to "Home", root_path, class: "nav-a" %>
-    </li>
-    <li class="fl pl3 dim">
-      <%= link_to "Who We Are", who_we_are_path, class: "nav-a" %>
-    </li>
-    <li class="fl pl3 dim">
-      <%= link_to "What We Do", what_we_do_path, class: "nav-a" %>
-    </li>
-    <li class="fl pl3 pr3 dim">
-      <%= link_to "Get Involved", involvements_path, class: "nav-a" %>
-    </li>
-  </ul>
-</div>
-  <div class="fl w-100 pa7">
-    <h1 class="courier lh-title white f1 ma0 bgt-heading"> blackgirl.tech</h1>
-    <h2 class="avenir fw3 f2 white ma0"> Explore. Learn. Build </h2>
+    <ul class="list pl0 pt2 fr avenir">
+      <li class="fl pl3 dim">
+        <%= link_to "Home", root_path, class: "nav-a" %>
+      </li>
+      <li class="fl pl3 dim">
+        <%= link_to "Who We Are", who_we_are_path, class: "nav-a" %>
+      </li>
+      <li class="fl pl3 dim">
+        <%= link_to "What We Do", what_we_do_path, class: "nav-a" %>
+      </li>
+      <li class="fl pl3 pr3 dim">
+        <%= link_to "Get Involved", involvements_path, class: "nav-a" %>
+      </li>
+    </ul>
   </div>
+
+  <div class="w-100-ns tc pa7-ns pt5">
+    <h1 class="courier lh-title white f1-ns ma0"> blackgirl.tech</h1>
+    <h2 class="avenir fw3-ns f2-ns white ma0 fw4"> Explore. Learn. Build </h2>
+  </div>
+
+
+  <footer class="tc pt2 b0 fixed vw-100 mw-100 white">
+  <a class="link dim white dib h2 w2 br-100 mr3 " href="https://facebook.com/blackgirltech" title="">
+    <svg data-icon="facebook" viewBox="0 0 32 32" style="fill:currentcolor">
+      <title>facebook icon</title>
+      <path d="M8 12 L13 12 L13 8 C13 2 17 1 24 2 L24 7 C20 7 19 7 19 10 L19 12 L24 12 L23 18 L19 18 L19 30 L13 30 L13 18 L8 18 z"></path>
+    </svg>
+  </a>
+  <a class="link dim white dib h2 w2 br-100 mr3 " href="https://twitter.com/blackgirltech" title="">
+    <svg data-icon="twitter" viewBox="0 0 32 32" style="fill:currentcolor">
+      <title>twitter icon</title>
+      <path d="M2 4 C6 8 10 12 15 11 A6 6 0 0 1 22 4 A6 6 0 0 1 26 6 A8 8 0 0 0 31 4 A8 8 0 0 1 28 8 A8 8 0 0 0 32 7 A8 8 0 0 1 28 11 A18 18 0 0 1 10 30 A18 18 0 0 1 0 27 A12 12 0 0 0 8 24 A8 8 0 0 1 3 20 A8 8 0 0 0 6 19.5 A8 8 0 0 1 0 12 A8 8 0 0 0 3 13 A8 8 0 0 1 2 4"></path>
+    </svg>
+  </a>
+  <div class="">
+    <ul class="list m0 tc dib avenir">
+      <li class="fl pl2">
+        &copy;
+      </li>
+      <li class="fl pl2">
+        2016
+      </li>
+      <li class="fl pl2">
+        info@blackgirl.tech
+      </li>
+    </ul>
+  </div>
+</footer>
 </div>
