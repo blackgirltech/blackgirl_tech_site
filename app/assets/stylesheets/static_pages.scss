@@ -63,7 +63,7 @@ a:hover {
   background-image: url("https://s3-eu-west-1.amazonaws.com/blackgirl.tech/images/main-hero-mobile.png");
 }
 
-@media screen and (min-width: 850px) {
+@media screen and (min-device-width: 320px) and (max-device-width: 736px) and (orientation: portrait) {
   .main-hero {
     background-image: url("https://s3-eu-west-1.amazonaws.com/blackgirl.tech/images/main-hero.png");
   }
