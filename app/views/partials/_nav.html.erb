@@ -1,11 +1,9 @@
-<nav class="dt w-100 border-box pa3 ph5-ns avenir black fixed">
-  <a class="dtc f5 f4-ns v-mid link dim w-25 a-no-border" href="/">
-    <%= image_tag('short-logo-black.png', class: 'w3') %>
+<nav class="db dt-l w-100 border-box pa3 ph5-l">
+  <a class="db dtc-l v-mid mid-gray link dim w-100 w-25-l tc tl-l mb2 mb0-l" href="/" title="Home">
+    <%= image_tag('short-logo-black.png', class: "dib w3 br-100", alt: "site logo") %>
   </a>
-
-  <div class="dtc v-mid w-75 tr">
-  <%= link_to "Who We Are", who_we_are_path, class: "mid-gray link dim f5 f4-ns dib mr3" %>
-  <%= link_to "What We Do", what_we_do_path, class: "mid-gray link dim f5 f4-ns dib mr3" %>
-  <%= link_to "Get Involved", involvements_path, class: "mid-gray link dim f5 f4-ns dib mr3" %>
+  <div class="db dtc-l v-mid w-100 w-75-l tc tr-l">
+    <%= link_to "About", about_path, class: "link dim dark-gray f6 f5-l dib mr3 mr4-l" %>
+    <%= link_to "Get Involved", get_involved_path, class: "link dim dark-gray f6 f5-l dib mr3 mr4-l" %>
   </div>
 </nav>
