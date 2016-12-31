@@ -31,6 +31,28 @@ html, body {
 .b0{
   bottom: 0;
 }
+
+.triangle-bottom {
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 0 200px 800px;
+  border-color: transparent transparent #FBF1A9 transparent;
+  position:fixed;
+  right: 0;
+  bottom: 0;
+}
+
+.triangle-top {
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 300px 100px 0 600px;
+  border-color: #FBF1A9 transparent transparent transparent;
+  position:fixed;
+  top:0;
+  right: 40rem;
+}
 /*=====================*/
       /* HOME */
 /*=====================*/
