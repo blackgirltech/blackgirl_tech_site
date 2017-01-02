@@ -12,7 +12,7 @@
     <h4> Workshops </h4>
     <% @workshops.each do |event| %>
       <% if event.date.present? %>
-        <div class="fl w-25-ns w-50 pa2 pb3">
+        <div class="fl w-25-ns w-100 pa2 pb3">
           <% if event.finished || event.inactive %>
             <img src="<%= event.image %>" class="" style="opacity: 0.2">
           <% else %>
