@@ -1,8 +1,31 @@
-<div class="mw-100 pl7 pr7 h-100">
+<div class="mw-100 ph7 h-100">
   <%= render "partials/nav" %>
   <h2 class="orange f1">Events</h2>
-  <p class="fw1 f1">
+  <p class="fw1 f5">
     We host free events on various topics from coding-basics to being a black woman in tech. Stay up-to-date on our latest events by following our <a class="dim" href="http://meetup.com/blackgirl-tech-Meetup">MeetUp page</a>. We have partenred with Twitter and Moo to host free monthly workshops starting in January 2017. We will also be hosting a series of masterclasses for companies who want to improve their hiring processes and procedures. These will be listed on the site as they become available.
   </p>
 
+  <div class="cf">
+    <% @events.each do |event| %>
+      <div class="fl w-25 pa2">
+        <% if event.finished %>
+          <a href="<%= event.url %>">
+            <img src="<%= event.image %>" class="grow" style="opacity: 0.2">
+          </a>
+        <% else %>
+          <a href="<%= event.url %>">
+            <img src="<%= event.image %>" class="grow">
+          </a>
+        <% end %>
+        <dl class="lh-copy">
+          <dt class="clip">Event Name</dt>
+          <dd> <%= event.name %> </dd>
+          <dt class="clip">Event Date</dt>
+           <%= event.date %> </dd>
+          <dt class="clip">Event Time</dt>
+          <dd class="truncate"> <%= event.time %> </dd>
+        </dl>
+      </div>
+    <% end %>
+  </div>
 </div>
