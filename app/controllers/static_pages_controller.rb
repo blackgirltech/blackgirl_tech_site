@@ -6,6 +6,7 @@ class StaticPagesController < ApplicationController
   def about
   end
 
-  def get_involved
+  def code_of_conduct
   end
+
 end

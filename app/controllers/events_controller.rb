@@ -1,7 +1,8 @@
 class EventsController < ApplicationController
 
   def index
-    @events = Event.all
+    @workshops = Event.where(workshop: true)
+    @masterclasses = Event.where(masterclass: true)
   end
   
 end
