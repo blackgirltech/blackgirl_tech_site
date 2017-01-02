@@ -10,17 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
 
-  <body class="h-100 bg-yellow">
-    <div class="triangle-top">
-    </div>
-    <div class="triangle-bottom">
-    </div>
-    <% if !current_page?('/') %>
-      <%= render "partials/nav" %>
+  <body class="h-100">
         <%= yield %>
-      <%= render "partials/footer" %>
-    <%else%>
-      <%= yield %>
-    <%end%>
   </body>
 </html>
