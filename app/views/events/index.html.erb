@@ -1,5 +1,5 @@
 <div class="h-100 mh5-ns mh2 relative">
-  <h3 class="f2 fw7 ttu tracked lh-title mt0 mb3 avenir">Events</h3>
+  <h3 class="f2 fw7 ttu tracked lh-title black mt0 mb3 avenir">Events</h3>
   <p class="fw1 f3-ns f5">
     We've partenred with Twitter and Moo to host free monthly workshops during the whole of 2017 for black women who want to get into tech. We will also be hosting a series of masterclasses for companies who want to improve their hiring processes, and want to make their work environment not only diverse but inclusive. These will be listed on the site as they become available.
   </p>
@@ -9,7 +9,7 @@
   </p>
 
   <div class="cf">
-    <h4> Workshops </h4>
+    <h4 class="black"> Workshops </h4>
     <% @workshops.each do |event| %>
       <% if event.date.present? %>
         <div class="fl w-25-ns w-100 pa2 pb3">
@@ -20,7 +20,7 @@
               <img src="<%= event.image %>" class="grow">
             </a>
           <% end %>
-            <p class="b tc"> <%= event.name %> </p>
+            <p class="b tc black"> <%= event.name %> </p>
             <p class="i tc"> <%= event.date.strftime("%d %b %Y") %> </p>
             <p class="i tc"> 6:30pm </p>
           </dl>
