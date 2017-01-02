@@ -5,14 +5,14 @@
   </p>
 
   <p class="fw1 f3-ns f5">
-    In order to keep our spaces safe, we'd like all our attendees and facilitators to abide by our <%= link_to "code of conduct", code_path, class: "link" %>.
+    In order to keep our spaces safe, we'd like all our attendees and facilitators to abide by our <%= link_to "code of conduct", code_path, class: "link dim" %>.
   </p>
 
   <div class="cf">
     <h4> Workshops </h4>
     <% @workshops.each do |event| %>
       <% if event.date.present? %>
-        <div class="fl w-25-ns w-50 pa2">
+        <div class="fl w-25-ns w-50 pa2 pb3">
           <% if event.finished || event.inactive %>
             <img src="<%= event.image %>" class="" style="opacity: 0.2">
           <% else %>
