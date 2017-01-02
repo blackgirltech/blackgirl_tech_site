@@ -4,6 +4,12 @@ html, body {
   padding: 0;
 }
 
+footer {
+  position:fixed;
+  right: 2rem;
+  bottom: 0;
+}
+
 .orange-local {
   color: #ffae00;
 }
@@ -74,6 +80,10 @@ html, body {
   position:fixed;
   top:0;
   right: 40rem;
+}
+
+.bg-img {
+  background: url(https://s3-eu-west-1.amazonaws.com/blackgirl.tech/images/keoki.png) no-repeat 80% center fixed; background-size: contain;
 }
 /*=====================*/
       /* HOME */

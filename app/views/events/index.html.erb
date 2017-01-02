@@ -1,10 +1,10 @@
-<div class="h-100 mh5 relative">
+<div class="h-100 mh5-ns mh2 relative">
   <h3 class="f2 fw7 ttu tracked lh-title mt0 mb3 avenir">Events</h3>
-  <p class="fw1 f3">
+  <p class="fw1 f3-ns f5">
     We've partenred with Twitter and Moo to host free monthly workshops during the whole of 2017 for black women who want to get into tech. We will also be hosting a series of masterclasses for companies who want to improve their hiring processes, and want to make their work environment not only diverse but inclusive. These will be listed on the site as they become available.
   </p>
 
-  <p class="fw1 f3">
+  <p class="fw1 f3-ns f5">
     In order to keep our spaces safe, we'd like all our attendees and facilitators to abide by our <%= link_to "code of conduct", code_of_conduct_path, class: "link" %>.
   </p>
 
@@ -12,11 +12,9 @@
     <h4> Workshops </h4>
     <% @workshops.each do |event| %>
       <% if event.date.present? %>
-        <div class="fl w-25 pa2">
-          <% if event.finished %>
-            <a href="<%= event.url %>">
-              <img src="<%= event.image %>" class="" style="opacity: 0.2">
-            </a>
+        <div class="fl w-25-ns w-50 pa2">
+          <% if event.finished || event.inactive %>
+            <img src="<%= event.image %>" class="" style="opacity: 0.2">
           <% else %>
             <a href="<%= event.url %>">
               <img src="<%= event.image %>" class="grow">
@@ -24,35 +22,10 @@
           <% end %>
             <p class="b tc"> <%= event.name %> </p>
             <p class="i tc"> <%= event.date.strftime("%d %b %Y") %> </p>
-            <p class="i tc"> <%= event.time.strftime("%l:%m %P") %> </p>
+            <p class="i tc"> 6:30pm </p>
           </dl>
         </div>
       <% end %>
-    <% end %>
-  </div>
-
-  <div class="cf">
-    <h4> Masterclasses </h4>
-    <% @masterclasses.each do |event| %>
-      <div class="fl w-25 pa2">
-        <% if event.finished %>
-          <a href="<%= event.url %>">
-            <img src="<%= event.image %>" class="" style="opacity: 0.2">
-          </a>
-        <% else %>
-          <a href="<%= event.url %>">
-            <img src="<%= event.image %>" class="grow">
-          </a>
-        <% end %>
-        <dl class="lh-copy">
-          <dt class="clip">Event Name</dt>
-          <dd> <%= event.name %> </dd>
-          <dt class="clip">Event Date</dt>
-           <%= event.date %> </dd>
-          <dt class="clip">Event Time</dt>
-          <dd class="truncate"> <%= event.time %> </dd>
-        </dl>
-      </div>
     <% end %>
   </div>
 </div>

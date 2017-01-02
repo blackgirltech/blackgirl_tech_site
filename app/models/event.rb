@@ -4,4 +4,8 @@ class Event < ApplicationRecord
     self.date.present? && (self.date < Date.today)
   end
 
+  def inactive
+    self.date.month != Date.today.month
+  end
+
 end
