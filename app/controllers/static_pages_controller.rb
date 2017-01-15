@@ -11,4 +11,7 @@ class StaticPagesController < ApplicationController
 
   def donate
   end
+
+  def subscribe
+  end
 end
