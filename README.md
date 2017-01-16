@@ -1,24 +1,24 @@
-# README
+# blackgirl.tech
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Roadmap
 
-Things you may want to cover:
+- [ ] Write subscription library class to wrap up GoCardless
+- [ ] Set up devise user authentication
+- [ ] Save subscription information in `Subscription` model which `belongs_to :user` during registration
+- [ ] Integrate subscription library with registration
+- [ ] Write mailing list library to wrap up MailChimp
+- [ ] Integrate mailing list library with registration
 
-* Ruby version
+## Models
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+```
+User
+  #id
+  has_one :subscription
+  
+Subscription
+  #id
+  #user_id
+  #type ("free", "paid", "ally")
+  belongs_to :user
+```
