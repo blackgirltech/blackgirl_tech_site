@@ -5,3 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+free_member = Subscription.create(type: "free")
+paid_member = Subscription.create(type: "paid")
+ally = Subscription.create(type: "ally")
