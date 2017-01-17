@@ -23,6 +23,7 @@
 
 ### Events
 - [ ] Allow users to volunteer for event
+- [ ] Allow users to share event
 - [ ] Allow users to attend event (future)
 - [ ] Allow users to pay deposit for event (future)
 
