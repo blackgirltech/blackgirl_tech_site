@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170117112542) do
+ActiveRecord::Schema.define(version: 20170117153345) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -689,6 +689,12 @@ ActiveRecord::Schema.define(version: 20170117112542) do
     t.index ["source", "medium", "campaign"], name: "index_sources_on_source_and_medium_and_campaign", unique: true, using: :btree
   end
 
+  create_table "subscriptions", force: :cascade do |t|
+    t.string   "type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "survey_takers", force: :cascade do |t|
     t.string   "email"
     t.string   "name"
@@ -820,6 +826,7 @@ ActiveRecord::Schema.define(version: 20170117112542) do
     t.inet     "current_sign_in_ip"
     t.inet     "last_sign_in_ip"
     t.boolean  "admin",                  default: false, null: false
+    t.boolean  "volunteer",              default: false, null: false
     t.datetime "created_at",                             null: false
     t.datetime "updated_at",                             null: false
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
