@@ -36,6 +36,9 @@ gem 'twitter'
 gem 'omniauth-twitter'
 gem "omniauth-google-oauth2"
 
+# PAYMENT GATEWAYS
+gem 'gocardless_pro'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
@@ -48,6 +51,7 @@ gem 'mailchimp-api', '~> 2.0', '>= 2.0.6'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
+  gem 'bdd-rails'
 end
 
 group :development do
@@ -64,3 +68,14 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # load static assets for heroku
 gem 'rails_12factor', group: :production
+
+group :test do
+  gem 'capybara'
+  gem 'database_cleaner'
+  gem 'factory_girl'
+  gem 'ffaker'
+  gem 'rspec-its'
+  gem 'rspec-rails'
+  gem 'vcr'
+  gem 'webmock'
+end
