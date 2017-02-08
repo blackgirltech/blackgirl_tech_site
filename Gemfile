@@ -29,6 +29,7 @@ gem 'jbuilder', '~> 2.5'
 # LOGIN INFO
 
 gem 'devise'
+gem 'omniauth'
 gem 'omniauth-facebook'
 
 # Use Capistrano for deployment
