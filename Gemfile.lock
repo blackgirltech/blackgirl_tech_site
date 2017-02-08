@@ -207,6 +207,7 @@ DEPENDENCIES
   jquery-rails
   listen (~> 3.0.5)
   mailchimp-api (~> 2.0, >= 2.0.6)
+  omniauth
   omniauth-facebook
   pg
   puma (~> 3.0)
