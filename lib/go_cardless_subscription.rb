@@ -16,17 +16,17 @@ class GoCardlessSubscription
   def redirect_flow(desc, session_token, success_redirect_url)
     client.redirect_flows.create(
       params: {
-        description: desc,
-        session_token: session_token,
-        success_redirect_url: success_redirect_url
+        description: "#{desc}",
+        session_token: "#{session_token}",
+        success_redirect_url: "#{success_redirect_url}"
       }
     )
   end
 
   def complete_redirect_flow(redirect_id, session_token)
     client.redirect_flows.complete(
-      redirect_id, # The redirect flow ID from above.
-      params: { session_token: session_token }
+      "#{redirect_id}", # The redirect flow ID from above.
+      params: { session_token: "#{session_token}" }
     )
   end
 
@@ -38,10 +38,10 @@ class GoCardlessSubscription
         interval_unit: 'monthly',
         day_of_month: '5',
         links: {
-          mandate: mandate_id # Mandate ID from the last section
+          mandate: "#{mandate_id}" # Mandate ID from the last section
         },
         metadata: {
-          subscription_id: subscription_id
+          subscription_id: "#{subscription_id}"
         }
       },
       headers: {
