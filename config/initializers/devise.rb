@@ -249,6 +249,8 @@ Devise.setup do |config|
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
   config.omniauth :facebook, ENV['FACEBOOK_ID'], ENV['FACEBOOK_SEC'], callback_url: ENV['FACEBOOK_CALLBACK']
+  config.omniauth :twitter, ENV['TWITTER_ID'], ENV['TWITTER_SEC'], callback_url: ENV['TWITTER_CALLBACK']
+  config.omniauth :google_oauth2, ENV['GOOGLE_ID'], ENV['GOOGLE_SEC'], prompt: 'select_account'
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
