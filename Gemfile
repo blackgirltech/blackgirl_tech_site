@@ -32,12 +32,18 @@ gem 'jbuilder', '~> 2.5'
 gem 'devise'
 gem 'omniauth'
 gem 'omniauth-facebook'
+gem 'twitter'
+gem 'omniauth-twitter'
+gem "omniauth-google-oauth2"
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
 gem 'font-awesome-sass'
 gem 'mailchimp-api', '~> 2.0', '>= 2.0.6'
+
+# Sessions Cookies
+# gem 'activerecord-session_store'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
