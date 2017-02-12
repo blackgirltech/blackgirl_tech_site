@@ -30,7 +30,7 @@ gem 'jbuilder', '~> 2.5'
 # LOGIN INFO
 
 gem 'devise'
-gem 'omniauth'
+gem 'omniauth-oauth2', '1.3.1'
 gem 'omniauth-facebook'
 gem 'twitter'
 gem 'omniauth-twitter'
