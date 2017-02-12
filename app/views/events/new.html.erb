@@ -1,0 +1,56 @@
+
+
+  <h2>Sign up</h2>
+
+  <%= form_for @event do |f| %>
+
+    <div class="field">
+      <%= f.label :name %><br />
+      <%= f.text_field :name, autofocus: true %>
+    </div>
+
+    <div class="field">
+      <%= f.label :address %><br />
+      <%= f.text_field :address %>
+    </div>
+
+    <div class="field">
+      <%= f.label :details %><br />
+      <%= f.text_field :details %>
+    </div>
+
+    <div class="field">
+      <%= f.label :time %><br />
+      <%= f.time_field :time %>
+    </div>
+
+    <div class="field">
+      <%= f.label :date %><br />
+      <%= f.date_field :date %>
+    </div>
+
+    <div class="field">
+      <%= f.label :image %><br />
+      <%= f.url_field :image %>
+    </div>
+
+    <div class="field">
+      <%= f.label :url %><br />
+      <%= f.url_field :url %>
+    </div>
+
+    <div class="field">
+      <%= f.label :workshop %><br />
+      <%= f.check_box :workshop %>
+    </div>
+
+    <div class="field">
+      <%= f.label :masterclass %><br />
+      <%= f.check_box :masterclass %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "Create Event" %>
+    </div>
+  <% end %>
+
