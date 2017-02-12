@@ -5,7 +5,6 @@ Rails.application.routes.draw do
   root 'static_pages#about'
   get '/about' => "static_pages#about"
   get '/code' => "static_pages#code_of_conduct"
-  get '/subscribe' => "static_pages#subscribe"
 
   resources :events
   resources :users, only: [:show]
