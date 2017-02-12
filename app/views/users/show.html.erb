@@ -1,0 +1,9 @@
+<div>
+  
+  <h2> Hi <%= @user.name %> </h2>
+
+  <p> @user.email </p>
+
+  <%= link_to 'Edit your profile',  edit_user_registration_path %>
+  <%= link_to 'Sign Out',  destroy_user_session_path %>
+</div>
