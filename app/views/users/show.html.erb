@@ -2,6 +2,10 @@
 
   <h2>Hi <%= @user.name %> </h2>
   <p> <%= @user.email %> </p>
+
+  <% if admin? %>
+    <%= link_to 'Create an Event',  new_event_path %>
+  <% end %>
   
   <%= link_to 'Edit your profile',  edit_user_registration_path %>
   <%= link_to 'Sign Out',  destroy_user_session_path, method: :delete %>
