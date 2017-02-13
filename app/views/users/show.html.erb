@@ -1,12 +1,17 @@
-<div>
+<div class="ph4">
 
-  <h2>Hi <%= @user.name %> </h2>
-  <p> <%= @user.email %> </p>
+  <div class="row">
+    <h2>Hi <%= @user.name %> </h2>
+  </div>
+  
+  <div>
+    <p> <span class="b">Email:</span> <%= @user.email %> </p>
+  </div>
 
   <% if admin? %>
-    <%= link_to 'Create an Event',  new_event_path %>
+    <%= link_to 'Create an Event',  new_event_path, class: "btn white bg-gold" %>
   <% end %>
   
-  <%= link_to 'Edit your profile',  edit_user_registration_path %>
-  <%= link_to 'Sign Out',  destroy_user_session_path, method: :delete %>
+  <%= link_to 'Edit your profile',  edit_user_registration_path, class: "btn white bg-navy" %>
+  <%= link_to 'Sign Out',  destroy_user_session_path, method: :delete, class: "btn white bg-red" %>
 </div>
