@@ -1,12 +1,20 @@
-<div class="h-100 mh5-ns mh2 relative">
-  <h3 class="f2 fw7 ttu tracked lh-title black mt0 mb3 avenir">Events</h3>
-  <p class="fw1 f3-ns f5">
-    We've partenred with Twitter and Moo to host free monthly workshops during the whole of 2017 for black women who want to get into tech. We will also be hosting a series of masterclasses for companies who want to improve their hiring processes, and want to make their work environment not only diverse but inclusive. These will be listed on the site as they become available.
-  </p>
+<div class="row bg-light-blue pa5" style="">
+  <header class="col-md-4 offset-md-4">
+    <h1 class="display-1 text-center white-80 b">Events</h1>
+  </header>
+</div>
 
-  <p class="fw1 f3-ns f5">
-    In order to keep our spaces safe, we'd like all our attendees and facilitators to abide by our <%= link_to "code of conduct", code_path, class: "link dim" %>.
-  </p>
+<div class="ph4 mt3">
+  <div class="row">
+    <p class="fw1 f3-ns f5">
+    We've partenred with Twitter and Moo to host free monthly workshops during the whole of 2017 for black women who want to get into tech. We will also be hosting a series of masterclasses for companies who want to improve their hiring processes, and want to make their work environment not only diverse but inclusive. These will be listed on the site as they become available.
+    </p>
+
+    <p class="fw1 f3-ns f5">
+      In order to keep our spaces safe, we'd like all our attendees and facilitators to abide by our <%= link_to "code of conduct", code_path, class: "link dim" %>.
+    </p>
+  </div>
+  
 
   <div class="cf">
     <h4 class="black"> Workshops </h4>
@@ -22,7 +30,7 @@
           <% end %>
             <p class="b tc black"> <%= event.name %> </p>
             <p class="i tc"> <%= event.date.strftime("%d %b %Y") %> </p>
-            <p class="i tc"> 6:30pm </p>
+            <p class="i tc"> <%= event.time.strftime("%I:%M") %>pm </p>
           </dl>
         </div>
       <% end %>
