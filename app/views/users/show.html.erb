@@ -7,10 +7,6 @@
   <div>
     <p> <span class="b">Email:</span> <%= @user.email %> </p>
   </div>
-
-  <% if admin? %>
-    <%= link_to 'Create an Event',  new_event_path, class: "btn white bg-gold" %>
-  <% end %>
   
   <%= link_to 'Edit your profile',  edit_user_registration_path, class: "btn white bg-navy" %>
   <%= link_to 'Sign Out',  destroy_user_session_path, method: :delete, class: "btn white bg-red" %>
