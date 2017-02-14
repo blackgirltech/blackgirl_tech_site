@@ -36,6 +36,10 @@ gem 'twitter'
 gem 'omniauth-twitter'
 gem "omniauth-google-oauth2"
 
+
+# Active Admin
+gem 'activeadmin', git: 'https://github.com/activeadmin/activeadmin'
+# gem 'inherited_resources', github: 'activeadmin/inherited_resources'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
