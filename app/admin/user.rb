@@ -1,5 +1,6 @@
 ActiveAdmin.register User do
-  permit_params :email, :password, :password_confirmation, :volunteer, :admin, :name, :provider, :uid,:subscription_id
+
+  permit_params :email, :password, :password_confirmation, :volunteer, :admin, :name, :provider, :uid, :subscription_id
 
   index do
     selectable_column
@@ -11,7 +12,6 @@ ActiveAdmin.register User do
         user.subscription.subscription_type
       end
     end
-
     column :created_at
     actions
   end
