@@ -1,0 +1,3 @@
+describe SubscriptionCreator do
+  
+end
