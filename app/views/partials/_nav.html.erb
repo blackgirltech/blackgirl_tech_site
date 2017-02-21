@@ -15,6 +15,9 @@
       <a href="https://soundcloud.com/lostinthesource" class="nav-link nav-item gray"> Lost in the <span class="courier">Source</span></a>
       <% if current_user %>
         <%= link_to "Your Profile", user_path(:id), class: "nav-link nav-item gray" %>
+          <% if admin? %>
+            <%= link_to 'Admin', admin_root_path, class: "nav-link nav-item gray" %>
+          <% end %>
         <%= link_to "Log Out", destroy_user_session_path, method: :delete, class: "nav-link nav-item gray" %>
       <% else %>
         <%= link_to "Log In", new_user_session_path, class: "nav-link nav-item gray" %>
