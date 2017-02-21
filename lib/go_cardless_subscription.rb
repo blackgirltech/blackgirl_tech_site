@@ -1,5 +1,6 @@
 require 'gocardless_pro'
 
+<<<<<<< HEAD
 # - SubscriptionController#new
 # - SubscriptionController#create #=> 
 # - GoCardless - user completes GoCardless form
@@ -15,6 +16,8 @@ require 'gocardless_pro'
 #   redirect_to profile_url(current_user)
 # end
 
+=======
+>>>>>>> subscription_library
 class GoCardlessSubscription
 
   def client
@@ -22,8 +25,12 @@ class GoCardlessSubscription
       # We recommend storing your access token in an
       # environment variable for security, but you could 
       # include it as a string directly in your code
+<<<<<<< HEAD
       access_token: "sandbox_HzkdgfI8haEGsRQlNfOBAgZ4MEWZZWRzUDR138k_",
       # ENV["GO_CARDLESS_SANDBOX"],
+=======
+      access_token: 'sandbox_HzkdgfI8haEGsRQlNfOBAgZ4MEWZZWRzUDR138k_',
+>>>>>>> subscription_library
       # Remove the following line when you're ready to go live
       environment: :sandbox
     )
