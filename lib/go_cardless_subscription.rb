@@ -6,13 +6,13 @@ require 'gocardless_pro'
 # - SubscriptionController#finish
 
 # def create
-#   SubscriptionCreator.new.create(current_user, params)
-#   redirect_to current_user.subscription.redirect_url
+#   @subscription = SubscriptionCreator.new.create(current_user, params)
+#   redirect_to @subscription.redirect_url
 # end
 
 # def finish
 #   SubscriptionFinisher.new.finish(current_user, params)
-#   redirect_to profile_url(current_user)
+#   redirect_to profile_url(current_user) 
 # end
 
 class GoCardlessSubscription
