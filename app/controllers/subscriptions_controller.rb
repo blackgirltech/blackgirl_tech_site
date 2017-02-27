@@ -5,14 +5,16 @@ class SubscriptionsController < ApplicationController
   end
 
   def create
-    @subscription = Subscription.create!(sub_params)
-    redirect_to user_path(current_user)
+    # expiration date should be Date.today + 1.year
+    # how will we create with a mutliple options? Might have to manually post to create in href on new page
+    @subscription = Subscription.create!(subscription_params)
+    redirect_to root_path
   end
 
   private
 
-  def sub_params
-    params.require(:link).permit(:user_id, :subscription_type, :expiration_date, :response_id, :redirect_url)
+  def subscription_params
+    params.permit(:user_id, :subscription_type, :expiration_date, :response_id, :redirect_url)
   end
 
 end
