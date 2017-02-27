@@ -56,7 +56,6 @@ ActiveRecord::Schema.define(version: 20170221194318) do
     t.string   "subscription_type"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
-    t.integer  "user_id"
     t.string   "redirect_url"
     t.string   "response_id"
     t.datetime "expiration_date"
