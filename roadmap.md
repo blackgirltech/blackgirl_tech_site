@@ -3,8 +3,8 @@
 ## Roadmap
 
 - [ ] Write subscription library class to wrap up GoCardless
-- [ ] Set up devise user authentication
-- [ ] Save subscription information in `Subscription` model which `belongs_to :user` during registration
+- [x] Set up devise user authentication
+- [x] Save subscription information in `Subscription` model which `belongs_to :user` during registration
 - [ ] Integrate subscription library with registration
 - [ ] Write mailing list library to wrap up MailChimp
 - [ ] Integrate mailing list library with registration
@@ -13,8 +13,8 @@
 
 ### Users
 - [x] Set up devise for users
-- [ ] Style sign up/in forms
-- [ ] Create user account page
+- [x] Style sign up/in forms
+- [x] Create user account page
 - [ ] Create admin_user account page (can create events, can see list of volunteers per event, can see all volunteers)
 - [ ] Create volunteer account page (can see past events volunteered at & upcoming events volunteered for)
 
