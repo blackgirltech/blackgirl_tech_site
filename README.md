@@ -2,7 +2,14 @@
 
 ## Installation
 
-- Make sure all the env vars are right
-- Make sure twitter, fb, & google all have the correct domains
-- `bundle`
-- `rake db:migrate`
+- Install docker
+- `docker-compose build`
+
+## Run Tests
+- `docker-compose run --rm rails bundle exec rspec`
+
+## Run Web App
+- `docker-compose run --rm rails bundle exec rails s`
+
+## Run Console
+- `docker-compose run --rm rails bundle exec rails c`
