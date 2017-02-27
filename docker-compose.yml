@@ -1,0 +1,17 @@
+version: '2'
+services:
+  rails:
+    build: .
+    ports:
+      - 3000
+    links:
+      - db
+    volumes:
+      - ./:/app
+    environment:
+      - DATABASE_URL=postgres://postgres:root@db/bgt
+  db:
+    image: postgres
+    environment:
+      - POSTGRES_PASSWORD=root
+      - POSTGRES_DB=bgt
