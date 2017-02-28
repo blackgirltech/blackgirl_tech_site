@@ -7,9 +7,19 @@ class User < ApplicationRecord
 
   has_many :subscriptions
 
-  def current_subscription
-    self.subscriptions.first.subscription_type
+  def most_recent_subscription
+    self.subscriptions.last
   end
+
+  def current_subscription
+    self.most_recent_subscription.subscription_type
+  end
+
+  # def active_subscription?
+  #   if self.most_recent_subscription.present?
+  #     self.most_recent_subscription.expiration_date >= Date.today
+  #   end
+  # end
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create! do |user|
@@ -21,4 +31,5 @@ class User < ApplicationRecord
       # user.skip_confirmation!
     end
   end
+
 end

@@ -10,16 +10,23 @@ class SubscriptionsController < ApplicationController
 
   def create
     if user_signed_in?
-      a_year_from_today = Date.today + 1.year
-
       @subscription = Subscription.create!(subscription_params)
-      @subscription.update_attributes(expiration_date: a_year_from_today)
 
       redirect_to current_user
     else
       redirect_to new_user_session_path
     end
   end
+
+  # def edit
+  #   @user = current_user
+  #   @subscription = Subscription.find_by_id(:id)
+  # end
+
+  # def update
+  #   # allow user to upgrade subscription
+  #   # if user changes subscription, make old subscription inactive
+  # end
 
   private
 
