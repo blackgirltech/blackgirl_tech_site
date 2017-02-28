@@ -1,5 +1,9 @@
 class SubscriptionsController < ApplicationController
 
+  def index
+    redirect_to new_subscription_path
+  end
+
   def new
     @subscription = Subscription.new
   end
