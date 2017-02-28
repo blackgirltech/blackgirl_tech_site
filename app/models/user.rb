@@ -7,6 +7,10 @@ class User < ApplicationRecord
 
   has_many :subscriptions
 
+  def current_subscription
+    self.subscriptions.first.subscription_type
+  end
+
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create! do |user|
       user.email = auth.info.email

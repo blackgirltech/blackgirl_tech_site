@@ -5,12 +5,16 @@ class SubscriptionsController < ApplicationController
   end
 
   def create
-    # expiration date should be Date.today + 1.year
-    # how will we create with a mutliple options? Might have to manually post to create in href on new page
-    @subscription = Subscription.create!(subscription_params)
-    a_year_from_today = Date.today + 1.year
-    @subscription.update_attribute(:expiration_date, a_year_from_today)
-    redirect_to root_path
+    if user_signed_in?
+      a_year_from_today = Date.today + 1.year
+
+      @subscription = Subscription.create!(subscription_params)
+      @subscription.update_attributes(expiration_date: a_year_from_today)
+
+      redirect_to current_user
+    else
+      redirect_to new_user_session_path
+    end
   end
 
   private

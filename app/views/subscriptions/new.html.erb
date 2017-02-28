@@ -11,6 +11,9 @@
 
     <%= form_for @subscription do |f| %>
       <%= hidden_field_tag(:subscription_type, "free") %>
+      <% if current_user.present? %>
+        <%= hidden_field_tag(:user_id, "#{current_user.id}") %>
+      <% end %>
       <%= f.submit "SUBSCRIBE", class: "btn bg-gold white hover-gold hover-bg-white b--gold mt1 f3 col-md-6 offset-md-3" %>
     <% end %>
   </div>
@@ -27,6 +30,9 @@
 
     <%= form_for @subscription do |f| %>
       <%= hidden_field_tag(:subscription_type, "membership") %>
+      <% if current_user.present? %>
+        <%= hidden_field_tag(:user_id, "#{current_user.id}") %>
+      <% end %>
       <%= f.submit "SUBSCRIBE", class: "btn bg-gold white hover-gold hover-bg-white b--gold mt1 f3 col-md-6 offset-md-3"%>
     <% end %>
   </div>
@@ -43,6 +49,9 @@
 
     <%= form_for @subscription do |f| %>
       <%= hidden_field_tag(:subscription_type, "FREE") %>
+      <% if current_user.present? %>
+        <%= hidden_field_tag(:user_id, "#{current_user.id}") %>
+      <% end %>
       <%= f.submit "SUBSCRIBE", class: "btn bg-gold white hover-gold hover-bg-white b--gold mt1 f3 col-md-6 offset-md-3" %>
     <% end %>
   </div>
