@@ -26,6 +26,10 @@ class ApplicationController < ActionController::Base
     store_location_for(:user, request.url)
   end
 
+  def after_sign_in_path_for(resource)
+    request.env['omniauth.origin'] || store_current_location || root_url
+  end
+
   protected
 
   def configure_permitted_parameters
