@@ -1,21 +1,14 @@
 class SubscriptionsController < ApplicationController
 
-  def index
-    redirect_to new_subscription_path
-  end
-
   def new
     @subscription = Subscription.new
   end
 
   def create
-    if user_signed_in?
-      @subscription = Subscription.create!(subscription_params)
+    @subscription = Subscription.create!(subscription_params)
+    @subscription.update_attribute(:expiration_date, Date.today + 1.year)
 
-      redirect_to current_user
-    else
-      redirect_to new_user_session_path
-    end
+    redirect_to current_user
   end
 
   # def edit
