@@ -10,7 +10,7 @@
     </ul>
 
     <%= form_for @subscription do |f| %>
-      <%= hidden_field_tag(:subscription_type, "free") %>
+      <%= hidden_field_tag(:subscription_type, "FREE") %>
       <% if current_user.present? %>
         <%= hidden_field_tag(:user_id, "#{current_user.id}") %>
       <% end %>
@@ -29,7 +29,7 @@
     </ul>
 
     <%= form_for @subscription do |f| %>
-      <%= hidden_field_tag(:subscription_type, "membership") %>
+      <%= hidden_field_tag(:subscription_type, "MEMBER") %>
       <% if current_user.present? %>
         <%= hidden_field_tag(:user_id, "#{current_user.id}") %>
       <% end %>
@@ -48,7 +48,7 @@
     </ul>
 
     <%= form_for @subscription do |f| %>
-      <%= hidden_field_tag(:subscription_type, "FREE") %>
+      <%= hidden_field_tag(:subscription_type, "ALLY") %>
       <% if current_user.present? %>
         <%= hidden_field_tag(:user_id, "#{current_user.id}") %>
       <% end %>
