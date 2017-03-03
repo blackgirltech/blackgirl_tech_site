@@ -1,14 +1,21 @@
 class SubscriptionsController < ApplicationController
 
   def new
-    @subscription = Subscription.new
+    if subscribed_user?
+      redirect_to current_user
+    else
+      @subscription = Subscription.new
+    end
   end
 
   def create
-    @subscription = Subscription.create!(subscription_params)
-    @subscription.update_attribute(:expiration_date, Date.today + 1.year)
-
-    redirect_to current_user
+    if subscribed_user?
+      redirect_to current_user
+    else
+      @subscription = Subscription.create!(subscription_params)
+      @subscription.update_attribute(:expiration_date, Date.today + 1.year)
+      redirect_to current_user
+    end
   end
 
   # def edit
