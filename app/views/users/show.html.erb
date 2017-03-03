@@ -6,7 +6,11 @@
 
   <p>Account number: <b><%= @user.id %></b ></p>
   <!--  Add upgrade feature if current subscription is free -->
-  <p>Subscription Type: <b><%= @user.current_subscription_type %></b ></p>
+  <% if @user.active_subscription? == nil %>
+    <p>You need to subscribe to access our resources <%= link_to "Subscribe", new_subscription_path, class: "btn white bg-navy" %> </p>
+  <% else %>
+    <p>Subscription Type: <b><%= @user.current_subscription_type %></b ></p>
+  <% end %>
   
   <div>
     <p> <span class="b">Email:</span> <%= @user.email %> </p>
