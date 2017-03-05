@@ -10,6 +10,7 @@
     <p>You need to subscribe to access our resources <%= link_to "Subscribe", new_subscription_path, class: "btn white bg-navy" %> </p>
   <% else %>
     <p>Subscription Type: <b><%= @user.current_subscription_type %></b ></p>
+    <p> Upgrade your subscription <%= link_to 'Upgrade', edit_user_subscription_path(@user.id, @user.most_recent_subscription.id) %></p>
   <% end %>
   
   <div>

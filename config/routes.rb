@@ -12,5 +12,8 @@ Rails.application.routes.draw do
   authenticate :user do 
     resources :subscriptions, only: [:create, :edit, :update]
   end
+  resources :users do
+    resources :subscriptions, only: [:edit, :update]
+  end
   resources :subscriptions, only: [:new]
 end
