@@ -1,17 +1,9 @@
 module ApplicationHelper
   def admin?
-    if current_user && current_user.admin?
-      true
-    else
-      false
-    end
+    current_user && current_user.admin?
   end
 
   def volunteer?
-    if current_user && current_user.volunteer?
-      true
-    else
-      false
-    end
+    current_user && current_user.volunteer?
   end
 end
