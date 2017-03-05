@@ -18,15 +18,18 @@ class SubscriptionsController < ApplicationController
     end
   end
 
-  # def edit
-  #   @user = current_user
-  #   @subscription = Subscription.find_by_id(:id)
-  # end
+  def edit
+    @subscription = Subscription.find_by_id(params[:id])
+  end
 
-  # def update
-  #   # allow user to upgrade subscription
-  #   # if user changes subscription, make old subscription inactive
-  # end
+  def update
+    # allow user to upgrade subscription
+    # if user changes subscription, make old subscription inactive
+    @subscription = Subscription.find_by_id(params[:id])
+    @subscription.update_attribute(:cancellation_date, DateTime.now)
+    @new_subscription = Subscription.new
+    # @new_subscription = Subscription.create!(subscription_params)
+  end
 
   private
 
