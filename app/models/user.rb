@@ -17,7 +17,7 @@ class User < ApplicationRecord
 
   def active_subscription?
     if self.most_recent_subscription.present?
-      self.most_recent_subscription.expiration_date >= Date.today
+      self.most_recent_subscription.expiration_date >= Date.today && self.most_recent_subscription.cancellation_date.nil?
     end
   end
 

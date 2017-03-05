@@ -1,0 +1,22 @@
+
+<%# if @subscription.free? %>
+  <p> Upgrade your subscription to a paid subscription </p>
+  <%#= form_for @subscription do |f| %>
+    <%#= hidden_field_tag(:subscription_type, "FREE") %>
+    <%#= f.submit "Ally", class: "btn bg-gold white hover-gold hover-bg-white b--gold mt1 f3" %>
+    <%#= f.submit "Membership", class: "btn bg-gold white hover-gold hover-bg-white b--gold mt1 f3" %>
+  <%# end %>
+
+<%# end %>
+
+<% if @subscription.paid? %>
+  <p> Upgrade your subscription to a free subscription </p>
+  <%= form_for [@subscription, @new_subscription] do |f| %>
+    <%= hidden_field_tag(:subscription_type, "ALLY") %>
+    <%= f.submit "Ally", class: "btn bg-gold white hover-gold hover-bg-white b--gold mt1 f3" %>
+  <% end %>
+  <%= form_for [@subscription, @new_subscription] do |f| %>
+    <%= hidden_field_tag(:subscription_type, "MEMBER") %>
+    <%= f.submit "Membership", class: "btn bg-gold white hover-gold hover-bg-white b--gold mt1 f3" %>
+  <% end %>
+<% end %>
