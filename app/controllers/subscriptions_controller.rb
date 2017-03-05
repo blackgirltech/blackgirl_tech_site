@@ -20,6 +20,7 @@ class SubscriptionsController < ApplicationController
 
   def edit
     @subscription = Subscription.find_by_id(params[:id])
+    @new_subscription = Subscription.new
   end
 
   def update
@@ -27,8 +28,8 @@ class SubscriptionsController < ApplicationController
     # if user changes subscription, make old subscription inactive
     @subscription = Subscription.find_by_id(params[:id])
     @subscription.update_attribute(:cancellation_date, DateTime.now)
-    @new_subscription = Subscription.new
-    # @new_subscription = Subscription.create!(subscription_params)
+    # @new_subscription = Subscription.new
+    @new_subscription = Subscription.create!(subscription_params)
   end
 
   private
