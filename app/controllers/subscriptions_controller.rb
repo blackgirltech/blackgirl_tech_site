@@ -12,30 +12,27 @@ class SubscriptionsController < ApplicationController
     if subscribed_user?
       redirect_to current_user
     else
-      @subscription = Subscription.create!(subscription_params)
-      @subscription.update_attribute(:expiration_date, Date.today + 1.year)
+      Subscription.create!(subscription_params)
       redirect_to current_user
     end
   end
 
   def edit
-    @subscription = Subscription.find_by_id(params[:id])
-    @new_subscription = Subscription.new
+    @subscription = Subscription.find(params[:id])
   end
 
   def update
     # allow user to upgrade subscription
     # if user changes subscription, make old subscription inactive
-    @subscription = Subscription.find_by_id(params[:id])
-    @subscription.update_attribute(:cancellation_date, DateTime.now)
-    # @new_subscription = Subscription.new
-    @new_subscription = Subscription.create!(subscription_params)
+    Subscription.find(params[:id]).update!(cancellation_date: DateTime.now)
+    Subscription.create!(subscription_params)
+    redirect_to current_user
   end
 
   private
 
   def subscription_params
-    params.permit(:user_id, :subscription_type, :expiration_date, :response_id, :redirect_url)
+    params.permit(:user_id, :subscription_type, :response_id, :redirect_url).merge(expiration_date: Date.today + 1.year)
   end
 
 end

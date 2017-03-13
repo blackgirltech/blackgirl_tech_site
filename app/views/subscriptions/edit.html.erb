@@ -1,12 +1,12 @@
 
 <%# if @subscription.free? %>
-  <p> Upgrade your subscription to a paid subscription <%= link_to 'Upgrade', edit_user_subscription_path(current_user.id, current_user.most_recent_subscription.id) %></p>
-  <%= form_for @new_subscription do |f| %>
+  <p> Upgrade your subscription to a paid subscription <%= link_to 'Upgrade', edit_user_subscription_path(current_user.id, @subscription.id) %></p>
+  <%= form_for @subscription do |f| %>
     <%= hidden_field_tag(:subscription_type, "ALLY") %>
     <%= hidden_field_tag(:user_id, "#{current_user.id}") %>
     <%= f.submit "Ally", class: "btn bg-gold white hover-gold hover-bg-white b--gold mt1 f3" %>
   <% end %>
-  <%= form_for @new_subscription do |f| %>
+  <%= form_for @subscription do |f| %>
     <%= hidden_field_tag(:subscription_type, "MEMBER") %>
     <%= hidden_field_tag(:user_id, "#{current_user.id}") %>
     <%= f.submit "Membership", class: "btn bg-gold white hover-gold hover-bg-white b--gold mt1 f3" %>
@@ -17,13 +17,8 @@
 <% if @subscription.paid? %>
   <p> Upgrade your subscription to a free subscription <%= link_to 'Upgrade', edit_user_subscription_path(current_user.id, @subscription.id) %> </p>
   <%= form_for @new_subscription do |f| %>
-    <%= hidden_field_tag(:subscription_type, "ALLY") %>
+    <%= hidden_field_tag(:subscription_type, "FREE") %>
     <%= hidden_field_tag(:user_id, "#{current_user.id}") %>
     <%= f.submit "Ally", class: "btn bg-gold white hover-gold hover-bg-white b--gold mt1 f3" %>
-  <% end %>
-  <%= form_for @new_subscription do |f| %>
-    <%= hidden_field_tag(:subscription_type, "MEMBER") %>
-    <%= hidden_field_tag(:user_id, "#{current_user.id}") %>
-    <%= f.submit "Membership", class: "btn bg-gold white hover-gold hover-bg-white b--gold mt1 f3" %>
   <% end %>
 <% end %>
