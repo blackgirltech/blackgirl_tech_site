@@ -2,7 +2,7 @@ class Subscription < ApplicationRecord
   belongs_to :user
 
   validates :user, presence: true
-  validate :prevent_duplicates
+  # validate :prevent_duplicates
 
   def free?
     self.subscription_type == "free"
