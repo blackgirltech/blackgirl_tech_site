@@ -12,7 +12,11 @@ class SubscriptionsController < ApplicationController
     if subscribed_user?
       redirect_to current_user
     else
-      Subscription.create!(subscription_params)
+      subscription = Subscription.create!(subscription_params)
+      # if subscription.subscription_type != "free"
+      s = CreateSubscription.create(current_user, params)
+      binding.pry
+      # end
       redirect_to current_user
     end
   end
