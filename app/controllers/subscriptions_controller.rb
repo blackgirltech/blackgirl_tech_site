@@ -5,6 +5,7 @@ class SubscriptionsController < ApplicationController
       redirect_to current_user
     else
       @subscription = Subscription.new
+
     end
   end
 
@@ -12,15 +13,12 @@ class SubscriptionsController < ApplicationController
     if subscribed_user?
       redirect_to current_user
     else
-      subscription = Subscription.create!(subscription_params)
-      # if subscription.subscription_type != "free"
       initialize_subscription = CreateSubscription.new
       initialize_subscription.create(current_user, params)
-      complete_subscription = CompleteSubscription.new
-      complete_subscription.complete(current_user, params)
-
-      # end
-      redirect_to current_user
+      subscription = current_user.most_recent_subscription
+      redirect_to subscription.redirect_url
+      # complete = CompleteSubscription.new
+      # complete.complete(current_user, params)
     end
   end
 
