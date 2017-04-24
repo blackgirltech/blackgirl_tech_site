@@ -41,7 +41,7 @@ class GoCardlessSubscription
 
   def complete_redirect_flow(redirect_id, session_token)
     client.redirect_flows.complete(
-      redirect_id, # The redirect flow ID from above.
+      redirect_id,
       params: { session_token: session_token }
     )
   end
@@ -49,12 +49,12 @@ class GoCardlessSubscription
   def subscription(mandate_id, subscription_id)
     client.subscriptions.create(
       params: {
-        amount: 1500, # 15 GBP in pence
+        amount: 1500,
         currency: 'GBP',
         interval_unit: 'monthly',
         day_of_month: '5',
         links: {
-          mandate: "#{mandate_id}" # Mandate ID from the last section
+          mandate: "#{mandate_id}"
         },
         metadata: {
           subscription_id: "#{subscription_id}"

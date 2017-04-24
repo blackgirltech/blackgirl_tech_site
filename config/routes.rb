@@ -10,7 +10,9 @@ Rails.application.routes.draw do
   resources :events
   resources :users, only: [:show]
   authenticate :user do 
-    resources :subscriptions, only: [:create, :edit, :update]
+    resources :subscriptions, only: [:create, :edit, :update] do
+      get 'complete', on: :member
+    end
   end
   resources :users do
     resources :subscriptions, only: [:edit, :update]
