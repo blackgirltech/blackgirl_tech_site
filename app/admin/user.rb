@@ -1,6 +1,6 @@
 ActiveAdmin.register User do
 
-  permit_params :email, :password, :password_confirmation, :volunteer, :admin, :name, :provider, :uid, :subscription_id
+  permit_params :email, :password, :password_confirmation, :volunteer, :admin, :first_name, :last_name, :provider, :uid, :subscription_id, :city, :postcode, :address_line_one, :address_line_two
 
   index do
     selectable_column

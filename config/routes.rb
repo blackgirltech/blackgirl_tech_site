@@ -7,8 +7,6 @@ Rails.application.routes.draw do
   get '/about' => "static_pages#about"
   get '/code' => "static_pages#code_of_conduct"
 
-  # POST '/subscriptions/SB123/actions/cancel'
-
   resources :events
   resources :users, only: [:show]
   authenticate :user do 
@@ -21,6 +19,5 @@ Rails.application.routes.draw do
     resources :subscriptions, only: [:edit, :update]
   end
   resources :subscriptions, only: [:new]
-  # post "/subscriptions/:subscription.payment_id/actions/cancel" => 'subscription#cancel'
 
 end

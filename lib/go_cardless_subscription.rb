@@ -36,6 +36,14 @@ class GoCardlessSubscription
         session_token: session_token,
         success_redirect_url: success_redirect_url
       }
+      # prefilled_customer: { # Optionally, prefill customer details on the payment page
+      #   given_name: user.first_name,
+      #   family_name: user.last_name,
+      #   email: user.email,
+      #   address_line1: user.address_line_one,
+      #   city: user.city,
+      #   postal_code: user.postcode
+      # }
     )
   end
 
@@ -46,13 +54,12 @@ class GoCardlessSubscription
     )
   end
 
-  def subscription(mandate_id, subscription_id)
+  def subscription(mandate_id, subscription_id, current_user)
     client.subscriptions.create(
       params: {
-        amount: 1500,
+        amount: 500,
         currency: 'GBP',
         interval_unit: 'monthly',
-        day_of_month: '5',
         links: {
           mandate: "#{mandate_id}"
         },

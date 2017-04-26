@@ -52,9 +52,9 @@ class SubscriptionsController < ApplicationController
   end
 
   def update
-    Subscription.find(params[:id]).update!(cancellation_date: DateTime.now)
-    Subscription.create!(subscription_params)
-    redirect_to current_user
+    old_sub = Subscription.find(params[:id])
+    old_sub.update!(cancellation_date: Time.now)
+    create
   end
 
   private
