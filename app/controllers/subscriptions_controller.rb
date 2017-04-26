@@ -14,12 +14,11 @@ class SubscriptionsController < ApplicationController
       redirect_to current_user
     else
       initialize_subscription = CreateSubscription.new
-      binding.pry
-      initialize_subscription.create(
+        initialize_subscription.create(
         current_user, 
         subscription_type: params[:subscription_type],
         authenticity_token: session[:_csrf_token],
-        success_redirect_url: complete_subscription_url(1)
+        success_redirect_url: complete_subscription_url(current_user)
       )
       subscription = current_user.most_recent_subscription
       if subscription.subscription_type == "FREE"
@@ -32,7 +31,6 @@ class SubscriptionsController < ApplicationController
 
   def complete
     complete = CompleteSubscription.new
-    binding.pry
     complete.complete(
       current_user,
       redirect_flow_id: params[:redirect_flow_id],
@@ -40,6 +38,12 @@ class SubscriptionsController < ApplicationController
       # this is a get http://stackoverflow.com/questions/941594/understanding-the-rails-authenticity-token
       authenticity_token: session[:_csrf_token]
     )
+    redirect_to current_user
+  end
+
+  def cancel
+    cancel = CancelSubscription.new
+    cancel.cancel(current_user)
     redirect_to current_user
   end
 

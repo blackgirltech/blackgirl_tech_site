@@ -10,7 +10,6 @@ class CompleteSubscription
     redirect_flow = client.complete_redirect_flow(params[:redirect_flow_id], params[:authenticity_token])
     subscription.update!(gc_mandate_id: redirect_flow.links.mandate, gc_customer_id: redirect_flow.links.customer)
     payment = client.subscription(subscription.gc_mandate_id, subscription.id)
-    binding.pry
     subscription.update!(gc_payment_id: payment.id)
     subscription
   end

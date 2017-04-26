@@ -65,4 +65,8 @@ class GoCardlessSubscription
       }
     )
   end
+
+  def cancel(gc_mandate)
+    client.subscriptions.cancel(gc_mandate)
+  end
 end
