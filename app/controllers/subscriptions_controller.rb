@@ -44,6 +44,7 @@ class SubscriptionsController < ApplicationController
   def cancel
     cancel = CancelSubscription.new
     cancel.cancel(current_user)
+    subscription = current_user.subscriptions.create!(subscription_type: "FREE", expiration_date: Date.today + 1.year)
     redirect_to current_user
   end
 

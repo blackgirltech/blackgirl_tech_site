@@ -1,5 +1,15 @@
 class RegistrationsController < Devise::RegistrationsController
 
+  def destroy
+    exp_sub = resource.most_recent_subscription
+    if exp_sub.subscription_type == "MEMBER" || "ALLY"
+      cancel = CancelSubscription.new
+        cancel.cancel(resource)
+    end
+    resource.subscriptions.delete_all
+    super
+  end
+  
   # protected
 
   # # The path used after sign up.
