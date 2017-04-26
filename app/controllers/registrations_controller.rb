@@ -2,9 +2,9 @@ class RegistrationsController < Devise::RegistrationsController
 
   def destroy
     exp_sub = resource.most_recent_subscription
-    if exp_sub.subscription_type == "MEMBER" || "ALLY"
+    if exp_sub.paid?
       cancel = CancelSubscription.new
-        cancel.cancel(resource)
+      cancel.cancel(resource)
     end
     resource.subscriptions.delete_all
     super

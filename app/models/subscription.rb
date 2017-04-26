@@ -5,15 +5,17 @@ class Subscription < ApplicationRecord
   # validate :prevent_duplicates
 
   def free?
-    self.subscription_type == "free"
+    self.subscription_type == "FREE"
   end
 
   def ally?
-    self.subscription_type == "ally"
+    self.subscription_type == "ALLY"
+    self.gc_payment_id.present?
   end
 
   def membership?
-    self.subscription_type == "membership"
+    self.subscription_type == "MEMBERSHIP"
+    self.gc_payment_id.present?
   end
 
   def paid?

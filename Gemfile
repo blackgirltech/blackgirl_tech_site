@@ -42,11 +42,15 @@ gem 'activeadmin', git: 'https://github.com/activeadmin/activeadmin'
 
 # PAYMENT GATEWAYS
 gem 'gocardless_pro'
+
+# MAILCHIMP
+gem 'mailchimp-api', require: 'mailchimp'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
 gem 'font-awesome-sass'
-gem 'mailchimp-api', '~> 2.0', '>= 2.0.6'
+# gem 'mailchimp-api', '~> 2.0', '>= 2.0.6'
 
 # Sessions Cookies
 gem 'activerecord-session_store'

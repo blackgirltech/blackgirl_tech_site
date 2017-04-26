@@ -1,7 +1,7 @@
 class SubscriptionsController < ApplicationController
 
   def new
-    if subscribed_user?
+    if (subscribed_user?) && (current_user.most_recent_subscription.paid? || current_user.most_recent_subscription.free?)
       redirect_to current_user
     else
       @subscription = Subscription.new
@@ -10,22 +10,24 @@ class SubscriptionsController < ApplicationController
   end
 
   def create
-    if subscribed_user?
+    # Cancel incomplete subscriptions
+    if current_user.most_recent_subscription.cancellation_date.nil?
+      current_user.most_recent_subscription.update!(cancellation_date: Time.now)
+    end
+    
+    initialize_subscription = CreateSubscription.new
+      initialize_subscription.create(
+      current_user, 
+      subscription_type: params[:subscription_type],
+      authenticity_token: session[:_csrf_token],
+      success_redirect_url: complete_subscription_url(current_user)
+    )
+    subscription = current_user.most_recent_subscription
+    if subscription.free?
+      MailchimpSubscription.new.subscribe_to_newsletter(current_user)
       redirect_to current_user
     else
-      initialize_subscription = CreateSubscription.new
-        initialize_subscription.create(
-        current_user, 
-        subscription_type: params[:subscription_type],
-        authenticity_token: session[:_csrf_token],
-        success_redirect_url: complete_subscription_url(current_user)
-      )
-      subscription = current_user.most_recent_subscription
-      if subscription.subscription_type == "FREE"
-        redirect_to current_user
-      else
-        redirect_to subscription.redirect_url
-      end
+      redirect_to subscription.redirect_url
     end
   end
 
@@ -38,6 +40,7 @@ class SubscriptionsController < ApplicationController
       # this is a get http://stackoverflow.com/questions/941594/understanding-the-rails-authenticity-token
       authenticity_token: session[:_csrf_token]
     )
+    MailchimpSubscription.new.subscribe_to_newsletter(current_user)
     redirect_to current_user
   end
 
