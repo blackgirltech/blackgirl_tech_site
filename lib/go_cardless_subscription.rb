@@ -61,7 +61,7 @@ class GoCardlessSubscription
         }
       },
       headers: {
-        'Idempotency-Key': 'random_subscription_specific_string'
+        'Idempotency-Key': "#{mandate_id}"
       }
     )
   end

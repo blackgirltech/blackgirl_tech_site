@@ -14,14 +14,19 @@ class SubscriptionsController < ApplicationController
       redirect_to current_user
     else
       initialize_subscription = CreateSubscription.new
+      binding.pry
       initialize_subscription.create(
         current_user, 
         subscription_type: params[:subscription_type],
-        authenticity_token: params[:authenticity_token],
+        authenticity_token: session[:_csrf_token],
         success_redirect_url: complete_subscription_url(1)
       )
       subscription = current_user.most_recent_subscription
-      redirect_to subscription.redirect_url
+      if subscription.subscription_type == "FREE"
+        redirect_to current_user
+      else
+        redirect_to subscription.redirect_url
+      end
     end
   end
 
@@ -33,7 +38,7 @@ class SubscriptionsController < ApplicationController
       redirect_flow_id: params[:redirect_flow_id],
       # authenticity token is nil here bc rails only gives authenticity tokens to post/put/patch/delete requests
       # this is a get http://stackoverflow.com/questions/941594/understanding-the-rails-authenticity-token
-      authenticity_token: params[:authenticity_token]
+      authenticity_token: session[:_csrf_token]
     )
     redirect_to current_user
   end
