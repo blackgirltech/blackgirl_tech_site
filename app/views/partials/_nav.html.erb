@@ -9,22 +9,23 @@
   <div class="collapse navbar-collapse " id="navbarNavAltMarkup">
     <div class="navbar-nav">
       <%= link_to "About", about_path, class: "nav-link nav-item gray" %>
-      <%= link_to "Events", events_path, class: "nav-link nav-item gray"  %>
+      <a class="nav-link nav-item gray" href="https://www.eventbrite.com/o/blackgirltech-7827799702">Events</a>
+      <a class="nav-link nav-item gray" href="http://eepurl.com/cKUOtP">Volunteer</a>
+      <a class="nav-link nav-item gray" href="#mc-sub">Subscribe</a>
       <a class="nav-link nav-item gold b" href="https://paypal.me/blackgirltech">Donate</a>
       <a href="https://medium.com/blackgirl-tech-a-blog" class="nav-link nav-item gray"> Blog</a>
       <a href="https://soundcloud.com/lostinthesource" class="nav-link nav-item gray"> Lost in the <span class="courier">Source</span></a>
-      <% if current_user %>
-        <%= link_to "Your Profile", user_path(:id), class: "nav-link nav-item gray" %>
-        <% if admin? %>
-          <%= link_to 'Admin', admin_root_path, class: "nav-link nav-item gray" %>
-        <% end %>
-        <%= link_to "Log Out", destroy_user_session_path, method: :delete, class: "nav-link nav-item gray" %>
-      <% else %>
-        <%= link_to "Sign Up", new_user_registration_path, class: "nav-link nav-item gray" %>
-        <%= link_to "Subscribe", new_subscription_path, class: "nav-link nav-item gray" %>
-      <% end %>
-      <a href="https://medium.com/blackgirl-tech-a-blog" class="link dim dark-gray f6 f5-l dib mr3 mr4-l"> Blog</a>
-      <a href="https://soundcloud.com/lostinthesource" class="link dim dark-gray f6 f5-l dib pr3"> Lost in the <span class="courier">Source</span></a>
+      
+      <%# if current_user %>
+        <%#= link_to "Your Profile", user_path(:id), class: "nav-link nav-item gray" %>
+        <%# if admin? %>
+          <%#= link_to 'Admin', admin_root_path, class: "nav-link nav-item gray" %>
+        <%# end %>
+        <%#= link_to "Log Out", destroy_user_session_path, method: :delete, class: "nav-link nav-item gray" %>
+      <%# else %>
+        <%#= link_to "Sign Up", new_user_registration_path, class: "nav-link nav-item gray" %>
+        <%#= link_to "Subscribe", new_subscription_path, class: "nav-link nav-item gray" %>
+      <%# end %>
     </div>
   </div>
 </nav>
