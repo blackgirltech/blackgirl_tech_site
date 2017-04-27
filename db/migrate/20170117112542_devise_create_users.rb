@@ -21,6 +21,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.0]
 
       ## Admin
       t.boolean :admin, default: false, null: false
+      t.boolean :volunteer, default: false, null: false
 
       ## Confirmable
       # t.string   :confirmation_token

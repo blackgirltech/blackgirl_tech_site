@@ -1,0 +1,57 @@
+  <div class="row">
+    <h2 class="ml4">New Event</h2>
+  </div>
+
+  <%= form_for @event do |f| %>
+
+    <div class="form-group col-md-6">
+      <div class="field" >
+      <%= f.label :name %><br />
+      <%= f.text_field :name, autofocus: true, class: "form-control" %>
+      </div>
+
+      <div class="field">
+        <%= f.label :address %><br />
+        <%= f.text_field :address, class: "form-control" %>
+      </div>
+
+      <div class="field">
+        <%= f.label :details %><br />
+        <%= f.text_field :details, class: "form-control" %>
+      </div>
+
+      <div class="field">
+        <%= f.label :time %><br />
+        <%= f.time_field :time, class: "form-control" %>
+      </div>
+
+      <div class="field">
+        <%= f.label :date %><br />
+        <%= f.date_field :date, class: "form-control" %>
+      </div>
+
+      <div class="field">
+        <%= f.label :image %><br />
+        <%= f.url_field :image, class: "form-control" %>
+      </div>
+
+      <div class="field">
+        <%= f.label :url %><br />
+        <%= f.url_field :url, class: "form-control" %>
+      </div>
+
+      <div class="field">
+        <%= f.label :workshop %><br />
+        <%= f.check_box :workshop, class: "form-check" %>
+      </div>
+
+      <div class="field">
+        <%= f.label :masterclass %><br />
+        <%= f.check_box :masterclass, class: "form-check" %>
+      </div>
+    </div>
+    <div class="actions">
+      <%= f.submit "Create Event", class: "btn white bg-gold" %>
+    </div>
+  <% end %>
+
