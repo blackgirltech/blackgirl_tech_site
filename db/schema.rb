@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170426185123) do
+ActiveRecord::Schema.define(version: 20170503151719) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,16 @@ ActiveRecord::Schema.define(version: 20170426185123) do
     t.index ["author_type", "author_id"], name: "index_active_admin_comments_on_author_type_and_author_id", using: :btree
     t.index ["namespace"], name: "index_active_admin_comments_on_namespace", using: :btree
     t.index ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id", using: :btree
+  end
+
+  create_table "custom_auto_increments", force: :cascade do |t|
+    t.string   "counter_model_name"
+    t.integer  "counter",             default: 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "counter_model_scope"
+    t.index ["counter_model_name", "counter_model_scope"], name: "counter_model_name_scope", unique: true, using: :btree
+    t.index ["counter_model_name"], name: "index_custom_auto_increments_on_counter_model_name", using: :btree
   end
 
   create_table "events", force: :cascade do |t|
@@ -54,8 +64,8 @@ ActiveRecord::Schema.define(version: 20170426185123) do
 
   create_table "subscriptions", force: :cascade do |t|
     t.string   "subscription_type"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
     t.string   "redirect_url"
     t.string   "response_id"
     t.datetime "expiration_date"
@@ -64,6 +74,7 @@ ActiveRecord::Schema.define(version: 20170426185123) do
     t.string   "gc_mandate_id"
     t.string   "gc_customer_id"
     t.string   "gc_payment_id"
+    t.string   "subscription_number"
   end
 
   create_table "users", force: :cascade do |t|

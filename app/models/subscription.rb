@@ -1,7 +1,7 @@
 class Subscription < ApplicationRecord
   belongs_to :user
 
-  validates :user, presence: true
+  # validates :user, presence: true
   # validate :prevent_duplicates
 
   def free?
@@ -30,4 +30,16 @@ class Subscription < ApplicationRecord
       errors.add(:user, "already has an active subscription")
     end
   end
+end
+
+class FreeSubscription < Subscription
+  protokoll :subscription_number, :pattern => "C######"
+end
+
+class MemberSubscription < Subscription
+  protokoll :subscription_number, :pattern => "A######"
+end
+
+class AllySubscription < Subscription
+  protokoll :subscription_number, :pattern => "B######"
 end
