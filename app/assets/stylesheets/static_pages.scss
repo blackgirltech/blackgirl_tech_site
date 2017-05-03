@@ -5,6 +5,10 @@ html, body {
 
 }
 
+footer {
+  bottom: 0;
+}
+
 .orange-local {
   color: #ffae00;
 }
@@ -29,25 +33,34 @@ html, body {
   font-size: 15rem;
 }
 
-a {
-  text-decoration: none;
-  color: #ffffff;
-}
-
-.a-no-border:hover {
-  border-bottom: none;
-}
-
-a:hover {
-  border-bottom: 3px solid #637bbf;
-}
-
-.vw-100 {
-  width: 100vw;
-}
-
 .b0{
   bottom: 0;
+}
+
+.triangle-bottom-yellow {
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 0 200px 800px;
+  border-color: transparent transparent #FBF1A9 transparent;
+  position:fixed;
+  right: 0;
+  bottom: 0;
+}
+
+.triangle-top-yellow {
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 300px 100px 0 600px;
+  border-color: #FBF1A9 transparent transparent transparent;
+  position:fixed;
+  top:0;
+  right: 40rem;
+}
+
+.bg-img {
+  background: url(https://s3-eu-west-1.amazonaws.com/blackgirl.tech/images/keoki.png) no-repeat 80% center fixed; background-size: contain;
 }
 /*=====================*/
       /* HOME */

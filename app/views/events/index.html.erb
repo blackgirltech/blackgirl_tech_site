@@ -1,8 +1,31 @@
-<div class="mw-100 pl7 pr7 h-100">
-  <%= render "partials/nav" %>
-  <h2 class="orange f1">Events</h2>
-  <p class="fw1 f1">
-    We host free events on various topics from coding-basics to being a black woman in tech. Stay up-to-date on our latest events by following our <a class="dim" href="http://meetup.com/blackgirl-tech-Meetup">MeetUp page</a>. We have partenred with Twitter and Moo to host free monthly workshops starting in January 2017. We will also be hosting a series of masterclasses for companies who want to improve their hiring processes and procedures. These will be listed on the site as they become available.
+<div class="h-100 mh5-ns mh2 relative">
+  <h3 class="f2 fw7 ttu tracked lh-title black mt0 mb3 avenir">Events</h3>
+  <p class="fw1 f3-ns f5">
+    We've partenred with Twitter and Moo to host free monthly workshops during the whole of 2017 for black women who want to get into tech. We will also be hosting a series of masterclasses for companies who want to improve their hiring processes, and want to make their work environment not only diverse but inclusive. These will be listed on the site as they become available.
   </p>
 
+  <p class="fw1 f3-ns f5">
+    In order to keep our spaces safe, we'd like all our attendees and facilitators to abide by our <%= link_to "code of conduct", code_path, class: "link dim" %>.
+  </p>
+
+  <div class="cf">
+    <h4 class="black"> Workshops </h4>
+    <% @workshops.each do |event| %>
+      <% if event.date.present? %>
+        <div class="fl w-25-ns w-100 pa2 pb3">
+          <% if event.finished || event.inactive %>
+            <img src="<%= event.image %>" class="" style="opacity: 0.2">
+          <% else %>
+            <a href="<%= event.url %>">
+              <img src="<%= event.image %>" class="grow">
+            </a>
+          <% end %>
+            <p class="b tc black"> <%= event.name %> </p>
+            <p class="i tc"> <%= event.date.strftime("%d %b %Y") %> </p>
+            <p class="i tc"> 6:30pm </p>
+          </dl>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
 </div>

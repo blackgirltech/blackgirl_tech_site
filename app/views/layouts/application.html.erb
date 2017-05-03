@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://unpkg.com/tachyons@4.5.3/css/tachyons.min.css"/>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+<<<<<<< HEAD
 
   </head>
 
@@ -17,9 +18,19 @@
       <div class="h-100 mw-100 pt4 avenir">
         <%= yield %>
       </div>
+=======
+  </head>
+
+  <body class="h-100 bg-gold black-70">
+    <div class="triangle-top-yellow">
+    </div>
+    <div class="triangle-bottom-yellow">
+    </div>
+    <%= render "partials/nav" %>
+    <%= yield %>
+    <% if !current_page?('/events') %>
+>>>>>>> db954782c61c117bf5d87f89922e148ec7c2a3f4
       <%= render "partials/footer" %>
-    <%else%>
-      <%= yield %>
-    <%end%>
+    <% end %>
   </body>
 </html>

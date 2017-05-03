@@ -3,12 +3,15 @@ class StaticPagesController < ApplicationController
   def home
   end
   
-  def who_we_are
+  def about
   end
 
-  def what_we_do
+  def code_of_conduct
   end
 
-  def get_involved
+  def donate
+  end
+
+  def subscribe
   end
 end
