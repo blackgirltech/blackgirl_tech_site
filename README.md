@@ -1,24 +1,15 @@
-# README
+# blackgirl.tech
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Installation
 
-Things you may want to cover:
+- Install docker
+- `docker-compose build`
 
-* Ruby version
+## Run Tests
+- `docker-compose run --rm rails bundle exec rspec`
 
-* System dependencies
+## Run Web App
+- `docker-compose run --rm rails bundle exec rails s`
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Run Console
+- `docker-compose run --rm rails bundle exec rails c`

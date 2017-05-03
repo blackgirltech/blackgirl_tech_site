@@ -8,10 +8,4 @@ class StaticPagesController < ApplicationController
 
   def code_of_conduct
   end
-
-  def donate
-  end
-
-  def subscribe
-  end
 end

@@ -1,0 +1,48 @@
+<div class="col-md-4 offset-md-4">
+  <div class="row">
+      <h2 class="ml3">Edit <%= resource_name.to_s.humanize %></h2>
+  </div>
+
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+    <%= devise_error_messages! %>
+
+    <div class="form-group">
+      <div class="field">
+        <%= f.label :email %><br />
+        <%= f.email_field :email, autofocus: true, class: "form-control" %>
+      </div>
+
+      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+        <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+      <% end %>
+
+      <div class="field">
+        <%= f.label :password, class: 'sr-only' %> <i class="sr-only">(leave blank if you don't want to change it)</i><br />
+        <%= f.password_field :password, autocomplete: "off", class: "form-control", placeholder: "Password 6 chars min (Leave blank if unchanged)" %>
+        <% if @minimum_password_length %>
+          <em class="sr-only"><%= @minimum_password_length %> characters minimum</em>
+        <% end %>
+      </div>
+
+      <div class="field">
+        <%= f.label :password_confirmation, class: 'sr-only' %><br />
+        <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control", placeholder: "New password confirmation" %>
+      </div>
+
+      <div class="field">
+        <%= f.label :current_password, class: 'sr-only' %> <i class="sr-only">(we need your current password to confirm your changes)</i><br />
+        <%= f.password_field :current_password, autocomplete: "off", class: "form-control", placeholder: "Confirm current password" %>
+      </div>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "Update", class: "btn white bg-gold" %>
+    </div>
+  <% end %>
+
+  <h3 class="mt3">Cancel my account</h3>
+
+  <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "btn white bg-red" %></p>
+
+  <%= link_to "Back", user_path(:id) %>
+</div>

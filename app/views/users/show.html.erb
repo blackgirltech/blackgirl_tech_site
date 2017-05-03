@@ -1,0 +1,25 @@
+<div class="ph4">
+
+  <div class="row">
+    <h2>Hi <%= @user.first_name %> </h2>
+  </div>
+
+  <p>Account number: <b><%= @user.id %></b ></p>
+  <!--  Add upgrade feature if current subscription is free -->
+  <% if (@user.active_subscription? == nil) || (@sub.redirect_url && @sub.gc_mandate_id.nil?)%>
+    <p>You need to subscribe to access our resources <%= link_to "Subscribe", new_subscription_path, class: "btn white bg-navy" %> </p>
+  <% else %>
+    <p>Subscription Type: <b><%= @sub.subscription_type %></b ></p>
+    <p> Upgrade your subscription <%= link_to 'Upgrade', edit_user_subscription_path(@user.id, @sub.id) %></p>
+  <% end %>
+  
+  <div>
+    <p> <span class="b">Email:</span> <%= @user.email %> </p>
+  </div>
+  
+  <%= link_to 'Edit your profile',  edit_user_registration_path, class: "btn white bg-navy" %>
+  <%= link_to 'Cancel Subscription',  subscription_cancel_path(:id), class: "btn white bg-red" %>
+  <%= link_to 'Sign Out',  destroy_user_session_path, method: :delete, class: "btn white bg-red" %>
+
+  <%= link_to 'Delete your profile',  user_registration_path, method: :delete, class: "btn white bg-navy" %>
+</div>
