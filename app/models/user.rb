@@ -7,7 +7,7 @@ class User < ApplicationRecord
 
   has_many :subscriptions
 
-  # validates_presence_of :address_line_one, :city, :postcode, :first_name, :last_name
+  validates_presence_of :address_line_one, :city, :postcode, :first_name, :last_name
 
   def most_recent_subscription
     self.subscriptions.last
