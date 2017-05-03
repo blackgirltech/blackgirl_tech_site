@@ -11,7 +11,8 @@ class SubscriptionsController < ApplicationController
 
   def create
     # Cancel incomplete subscriptions
-    if current_user.most_recent_subscription.cancellation_date.nil?
+    users_last_subscription = current_user.most_recent_subscription
+    if users_last_subscription.present? && users_last_subscription.cancellation_date.nil?
       current_user.most_recent_subscription.update!(cancellation_date: Time.now)
     end
     

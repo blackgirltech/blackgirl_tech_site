@@ -1,8 +1,7 @@
 class Subscription < ApplicationRecord
   belongs_to :user
 
-  # validates :user, presence: true
-  # validate :prevent_duplicates
+  validates :user, presence: true
 
   def free?
     self.subscription_type == "FREE"
@@ -22,14 +21,6 @@ class Subscription < ApplicationRecord
     ally? || membership?
   end
 
-  
-  private
-
-  def prevent_duplicates
-    if user.active_subscription?
-      errors.add(:user, "already has an active subscription")
-    end
-  end
 end
 
 class FreeSubscription < Subscription
