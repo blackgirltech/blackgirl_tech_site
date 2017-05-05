@@ -1,18 +1,30 @@
-<footer class="ph4 bg-light-gray avenir pv4 mt3">
-  <a href="mailto:" class="link b f6 dib pr2 black b dim">blackgirl.tech@gmail.com</a>
-  <p class="f6 dib pr2 black b">© 2017 BLACKGIRL.TECH LTD</p>
-  <%= link_to "code of conduct", code_path, class: "link f6 dib pr2 dim black b" %>
-  <a class="link dim black b dib w1" href="https://facebook.com/blackgirltech" title="">
-    <svg data-icon="facebook" viewBox="0 0 32 32" style="fill:currentcolor">
-      <title>facebook icon</title>
-      <path d="M8 12 L13 12 L13 8 C13 2 17 1 24 2 L24 7 C20 7 19 7 19 10 L19 12 L24 12 L23 18 L19 18 L19 30 L13 30 L13 18 L8 18 z"></path>
-    </svg>
-  </a>
-  <a class="link dim black b dib w1" href="https://twitter.com/blackgirltech" title="">
-    <svg data-icon="twitter" viewBox="0 0 32 32" style="fill:currentcolor">
-      <title>twitter icon</title>
-      <path d="M2 4 C6 8 10 12 15 11 A6 6 0 0 1 22 4 A6 6 0 0 1 26 6 A8 8 0 0 0 31 4 A8 8 0 0 1 28 8 A8 8 0 0 0 32 7 A8 8 0 0 1 28 11 A18 18 0 0 1 10 30 A18 18 0 0 1 0 27 A12 12 0 0 0 8 24 A8 8 0 0 1 3 20 A8 8 0 0 0 6 19.5 A8 8 0 0 1 0 12 A8 8 0 0 0 3 13 A8 8 0 0 1 2 4"></path>
-    </svg>
-  </a>
+<footer class="p-3 bg-near-white avenir  text-center <%= current_page?('/subscriptions/new')||current_page?('/subscriptions/edit') ? 'mt7' : 'mt5' %>">
+  
+  <div class="">
+    <%= link_to "Code of Conduct", code_path, class: "link dib pr2 dim dark-green hover-green " %><br>
+    <a href="#" class="link dib pr2 dim dark-green hover-green">Privacy Policy</a> <br><a href="#" class="link  dib pr2 dim dark-green hover-green">Terms and Conditions</a>
+  </div>
+  
 
+  <div class="p-2">
+    <a href="https://facebook.com/blackgirltech" class="link dib pr2 dim dark-green hover-green f4" title="facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+    <a href="https://twitter.com/blackgirltech" class="link dib pr2 dim dark-green hover-green f4" title="twitter"> <i class="fa fa-twitter" aria-hidden="true"> </i></a>
+    <a href="mailto:info@blackgirl.tech" class="link dib pr2 dim dark-green hover-green f4"><i class="fa fa-envelope" aria-hidden="true"></i></a>
+  </div>
+  
+
+  
+  <div class="">
+    <p class="f6 mt-1">
+      blackgirl.tech is a non-profit company limited by guarantee<br>
+      Company number 10455508 <br>
+      The blackgirl.tech name and logo are registered trademarks
+    </p>
+    <address class="f6">
+      5 High St, Westbury on Trym, Bristol, BS9 3BY
+    </address>
+    <p class="f6">© 2017 BLACKGIRL.TECH LTD</p>
+
+  </div>
+  
 </footer>
