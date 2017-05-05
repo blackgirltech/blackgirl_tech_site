@@ -16,3 +16,16 @@
 
 @import "font-awesome-sprockets";
 @import "font-awesome";
+
+.inner-body {
+  min-height: 50rem;
+  position: inherit;
+}
+
+.top8 {
+  top: 8rem;
+}
+
+.top5 {
+  top: 5rem;
+}

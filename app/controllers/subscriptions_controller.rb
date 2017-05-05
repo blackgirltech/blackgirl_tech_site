@@ -25,7 +25,7 @@ class SubscriptionsController < ApplicationController
     )
     subscription = current_user.most_recent_subscription
     if subscription.free?
-      MailchimpSubscription.new.subscribe_to_newsletter(current_user)
+      # MailchimpSubscription.new.subscribe_to_newsletter(current_user)
       redirect_to current_user
     else
       redirect_to subscription.redirect_url
@@ -41,7 +41,7 @@ class SubscriptionsController < ApplicationController
       # this is a get http://stackoverflow.com/questions/941594/understanding-the-rails-authenticity-token
       authenticity_token: session[:_csrf_token]
     )
-    MailchimpSubscription.new.subscribe_to_newsletter(current_user)
+    # MailchimpSubscription.new.subscribe_to_newsletter(current_user)
     redirect_to current_user
   end
 
