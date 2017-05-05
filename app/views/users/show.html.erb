@@ -1,25 +1,44 @@
 <div class="ph4">
 
-  <div class="row">
-    <h2>Hi <%= @user.first_name %> </h2>
+  <div class="">
+    <h2 class="fw1 f1">Hi <%= @user.first_name %> </h2>
+    <p> <span class="b">Email:</span> <%= @user.email %>  <%= link_to 'Edit your profile',  edit_user_registration_path %></p>
+    
   </div>
 
-  <p>Account number: <b><%= @user.id %></b ></p>
-  <!--  Add upgrade feature if current subscription is free -->
+  <% if @user.subscriptions.present? %>
+    
+  <% end %>
+
   <% if (@user.active_subscription? == nil) || (@sub.redirect_url && @sub.gc_mandate_id.nil?)%>
-    <p>You need to subscribe to access our resources <%= link_to "Subscribe", new_subscription_path, class: "btn white bg-navy" %> </p>
+    <div class="text-center">
+      <p class="f2 fw2">You need to become a member to access our resources</p>
+      <%= link_to "Subscribe", new_subscription_path, class: "f1" %>
+    </div>
+  <% elsif @sub.free? %>
+    <p> <b>Subscription Type:</b> <%= @sub.subscription_type %></p>
+    <p><b>Membership number: </b> <%= @sub.subscription_number %></p>
+    <p class="b f4 text-center"> In order to gain full access to all of our services, content and events <%= link_to 'upgrade', edit_user_subscription_path(@user.id, @sub.id) %> your subscription.</p>
+    <hr>
+    <div class="col-md-6 offset-md-3">
+      <p class="text-center f4">With our base package you gain access to our resource hub, a collection of tutorials, articles, videos and general learning materials. Learn something new or continue something you've already started learning. Visit the <a href="#">resource hub</a>.</p>
+    </div>
+    <hr>
+    <div class=" col-md-6 pa3 center bg-light-gray mt5">
+      <h3 class="red b"> DANGER ZONE </h3>
+
+      <p class="b"> If you cancel your subscription, you will be downgraded to our free A-group subscription and lose all discounts, lose benefits to all future promotions and your membership card will be disabled. </p>
+
+      <%= link_to 'Cancel Subscription',  subscription_cancel_path(:id), class: "btn white bg-red hover-red b--red hover-bg-white" %>
+      <hr>
+
+      <p class="b"> ONCE YOUR ACCOUNT IS DELETED, WE CAN NOT RESSURECT IT.</p>
+
+      <%= link_to 'Delete your profile',  user_registration_path, method: :delete, class: "btn white bg-red hover-red b--red hover-bg-white" %>
+      
+    </div>
   <% else %>
-    <p>Subscription Type: <b><%= @sub.subscription_type %></b ></p>
-    <p> Upgrade your subscription <%= link_to 'Upgrade', edit_user_subscription_path(@user.id, @sub.id) %></p>
+    <p> PAID </p>
   <% end %>
   
-  <div>
-    <p> <span class="b">Email:</span> <%= @user.email %> </p>
-  </div>
-  
-  <%= link_to 'Edit your profile',  edit_user_registration_path, class: "btn white bg-navy" %>
-  <%= link_to 'Cancel Subscription',  subscription_cancel_path(:id), class: "btn white bg-red" %>
-  <%= link_to 'Sign Out',  destroy_user_session_path, method: :delete, class: "btn white bg-red" %>
-
-  <%= link_to 'Delete your profile',  user_registration_path, method: :delete, class: "btn white bg-navy" %>
 </div>
