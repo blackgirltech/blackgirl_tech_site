@@ -2,61 +2,28 @@
 
   <div class="">
     <h2 class="fw1 f1">Hi <%= @user.first_name %> </h2>
-    <p> <span class="b">Email:</span> <%= @user.email %>  <%= link_to 'Edit your profile',  edit_user_registration_path %></p>
-    
+    <p> <span class="b">Email:</span> <%= @user.email %> <br> <%= link_to 'Edit your profile',  edit_user_registration_path, class: "dark-green hover-green fw5" %></p> 
   </div>
 
-  <% if @user.subscriptions.present? %>
-    
-  <% end %>
-
-  <% if (@user.active_subscription? == nil) || (@sub.redirect_url && @sub.gc_mandate_id.nil?)%>
+  <% if (@user.active_subscription? == nil) || (@sub.redirect_url.present? && @sub.gc_mandate_id.nil?)%>
     <div class="text-center">
       <p class="f2 fw2">You need to become a member to access our resources</p>
-      <%= link_to "Subscribe", new_subscription_path, class: "f1" %>
+      <%= link_to "Subscribe", new_subscription_path, class: "f1 dark-green hover-green" %>
     </div>
   <% else %>
     <p> <b>Subscription Type:</b> <%= @sub.subscription_type %></p>
     <p><b>Membership number: </b> <%= @sub.subscription_number %></p>
+    <p class="text-center f4"> We will be adding more features to this page as we go along, you can find out where we are on our <a href="" class="dark-green hover-green">trello board</a>, if there's something you think we're missing, don't hesitate to <a href="" class="dark-green hover-green">contact us</a>!</p>
+    <hr>
+    <div class="col-md-6 offset-md-3">
+      <%= render "partials/resource_hub" %>
+    </div>
     <% if @sub.free? %>
       <p class="b f4 text-center"> In order to gain full access to all of our services, content and events <%= link_to 'upgrade', edit_user_subscription_path(@user.id, @sub.id) %> your subscription.</p>
       <hr>
-      <div class="col-md-6 offset-md-3">
-        <p class="text-center f4">With our base package you gain access to our resource hub, a collection of tutorials, articles, videos and general learning materials. Learn something new or continue something you've already started learning. Visit the <a href="#">resource hub</a>.</p>
-      </div>
-      <hr>
     <% else %>
       <hr>
-      <div class="">
-        <p class="f4">With our <%= @sub.subscription_type %> package you gain access to our <a href="#">resource hub</a>, a collection of tutorials, articles, videos and general learning materials. Learn something new or continue something you've already started learning.</p>
-      </div>
-
-      <h3>Vouchers</h3>
-      <div class="row">
-        <div class="col-md-4 bg-black h5 pv4" style="-webkit-mask-image: radial-gradient(circle 10px at 0 50%, transparent 0, transparent 20px, black 21px);">
-          <p class="fw7 f4 white mt-4 pt-2 px-3">20% OFF TWERKZWREKZ</p>
-          <div class="bg-white mx-3 ml-2">
-            <p class="f4 p-3 text-center mt-2"> BGTTWERKZ20 </p>
-          </div>
-          <p class="f4 p-3 white mt-2"> This voucher is valid on any one TwerkzWerkz class, to book now. </p>
-        </div>
-        <div class="col-md-4 bg-black h5 pv4" style="-webkit-mask-image: radial-gradient(circle 10px at 0 50%, transparent 0, transparent 20px, black 21px);">
-          <p class="fw7 f4 white mt-4 pt-2 px-3">20% OFF TWERKZWREKZ</p>
-          <div class="bg-white mx-3 ml-2">
-            <p class="f4 p-3 text-center mt-2"> BGTTWERKZ20 </p>
-          </div>
-          <p class="f4 p-3 white mt-2"> This voucher is valid on any one TwerkzWerkz class, to book now. </p>
-        </div>
-
-        <div class="col-md-4 bg-black h5 pv4" style="-webkit-mask-image: radial-gradient(circle 10px at 0 50%, transparent 0, transparent 20px, black 21px);">
-          <p class="fw7 f4 white mt-4 pt-2 px-3">20% OFF TWERKZWREKZ</p>
-          <div class="bg-white mx-3 ml-2">
-            <p class="f4 p-3 text-center mt-2"> BGTTWERKZ20 </p>
-          </div>
-          <p class="f4 p-3 white mt-2"> This voucher is valid on any one TwerkzWerkz class, to book now. </p>
-        </div>
-
-      </div>
+      <%= render "partials/vouchers" %>
       <hr>
     <% end %>
     <div class=" col-md-6 pa3 center bg-light-gray mt5">
@@ -64,12 +31,12 @@
 
       <p class="b"> If you cancel your subscription, you will be downgraded to our free A-group subscription and lose all discounts, lose benefits to all future promotions and your membership card will be disabled. </p>
 
-      <%= link_to 'Cancel Subscription',  subscription_cancel_path(:id), class: "btn white bg-red hover-red b--red hover-bg-white" %>
+      <%= link_to 'Cancel Subscription',  subscription_cancel_path(:id), class: "btn white bg-red hover-red b--red hover-bg-light-gray" %>
       <hr>
 
       <p class="b"> ONCE YOUR ACCOUNT IS DELETED, WE CAN NOT RESSURECT IT.</p>
 
-      <%= link_to 'Delete your profile',  user_registration_path, method: :delete, class: "btn white bg-red hover-red b--red hover-bg-white" %>
+      <%= link_to 'Delete your profile',  user_registration_path, method: :delete, class: "btn white bg-red hover-red b--red hover-bg-light-gray" %>
       
     </div>
   <% end %>
