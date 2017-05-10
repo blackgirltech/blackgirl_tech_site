@@ -1,68 +1,25 @@
 
-<% if @subscription.free? %>
+<% if @subscription.free? || (@subscription.redirect_url.present? && @subscription.gc_mandate_id.nil?) %>
   <div id="particles-js" class="relative">
-  <div class="container">
-    <div class="absolute">
-      <div class="row">
-        <h1 class="fw1 f1 center">Upgrade Membership</h1>
-      </div>
-      <div class="row">
-
-        <div class=" col-md-6 mh5 mb3 mh0-ns">
-          <ul class="list p-0 shadow-4" style="height: 45rem;">
-            <li class="f2 bg-green pa2 fw2 white  b--green text-center"> Club <br> £65</li>
-            <li class="pt-3 px-3 fw5 text-center"> The club package is for <span class="b ph1"> black girls, women and non-binary people </span> who want a little extra. </li>
-            <li class="pt-3 px-3 text-center">All of Free +</li>
-            <li class="pt-3 px-3 text-center">:bgt Membership Card</li>
-            <li class="pt-3 px-3 text-center">Free :bgt <span class="b ph1"> limited edition </span> tote bag</li>
-            <li class="pt-3 px-3 text-center">Free :bgt poster </li>
-            <li class="pt-3 px-3 text-center">Exclusive :bgt events</li>
-            <li class="pt-3 px-3 text-center">Monzo Golden Ticket </li>
-            <li class="pt-3 px-3 text-center">10% off any Lost My Name product </li>
-            <li class="pt-3 px-3 text-center">10% discount with MOO</li>
-            <li class="pt-3 px-3 text-center">20% off any TwerkzWerkz fitness class</li>
-            <li class="pt-3 px-3 text-center">20% off any DorcasCreates piece of art </li>
-          </ul>
-
-          <%= form_for @subscription do |f| %>
-            <%= hidden_field_tag(:subscription_type, "MEMBER") %>
-            <% if current_user.present? %>
-              <%= hidden_field_tag(:user_id, "#{current_user.id}") %>
-            <% end %>
-            <%= f.submit "JOIN", class: "btn bg-green white hover-green hover-bg-white b--green mt-1 f3 fw2 col-md-6 offset-md-3"%>
-          <% end %>
+    <div class="container">
+      <div class="absolute">
+        <div class="row">
+        <% if @subscription.free? %>
+          <h1 class="fw1 f1 center">Upgrade Membership</h1>
+        <% else %>
+          <h1 class="fw1 f1 center">Choose Membership</h1>
+        <% end %>
         </div>
+        <div class="row">
+          <div class=" col-md-6 mh5 mb3 mh0-ns">
+            <%= render "partials/member_subscription" %>
+          </div>
 
-        <div class="  col-md-6 mh5 mb3 mh0-ns ">
-          <ul class="list p-0 shadow-4" style="height: 45rem;">
-            <li class="f2 bg-dark-green pa2 fw2 b white b--dark-green text-center"> Ally <br> £65</li>
-            <li class="pt-3 px-3 fw5 text-center"> The ally package is for anyone who is <span class="b ph1"> not a black girl, woman or non-binary person</span> but would still like to support blackgirl.tech. </li>
-            <li class="pt-3 px-3 text-center">All of Free +</li>
-            <li class="pt-3 px-3 text-center">:bgt Membership Card</li>
-            <li class="pt-3 px-3 text-center">Free :bgt<span class="b ph1">limited edition</span>tote bag</li>
-            <li class="pt-3 px-3 text-center">Free :bgt poster </li>
-            <li class="pt-3 px-3 text-center">Exclusive :bgt events</li>
-            <li class="pt-3 px-3 text-center">Monzo Golden Ticket </li>
-            <li class="pt-3 px-3 text-center">10% off any Lost My Name product </li>
-            <li class="pt-3 px-3 text-center">10% discount with MOO</li>
-            <li class="pt-3 px-3 text-center">20% off any TwerkzWerkz fitness class</li>
-            <li class="pt-3 px-3 text-center">20% off any DorcasCreates piece of art </li>
-          </ul>
-
-          <%= form_for @subscription do |f| %>
-            <%= hidden_field_tag(:subscription_type, "ALLY") %>
-            <% if current_user.present? %>
-              <%= hidden_field_tag(:user_id, "#{current_user.id}") %>
-            <% end %>
-            <%= f.submit "JOIN", class: "btn bg-dark-green white hover-dark-green hover-bg-white b--dark-green f3 fw2 col-md-6 offset-md-3 mt-1" %>
-          <% end %>
+          <div class="  col-md-6 mh5 mb3 mh0-ns ">
+            <%= render "partials/ally_subscription" %>
+          </div>
         </div>
-        
       </div>
     </div>
   </div>
-</div>
-
-
-
 <% end %>
