@@ -6,6 +6,9 @@ Rails.application.routes.draw do
   root 'static_pages#about'
   get '/about' => "static_pages#about"
   get '/code' => "static_pages#code_of_conduct"
+  get '/press' => "static_pages#press"
+  get '/terms' => "static_pages#terms"
+  get '/privacy_policy' => "static_pages#privacy_policy"
 
   resources :events
   resources :users, only: [:show]

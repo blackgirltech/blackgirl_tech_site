@@ -8,4 +8,13 @@ class StaticPagesController < ApplicationController
 
   def code_of_conduct
   end
+
+  def press
+  end
+
+  def terms
+  end
+
+  def privacy_policy
+  end
 end
