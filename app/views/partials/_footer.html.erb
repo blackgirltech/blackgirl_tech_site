@@ -1,4 +1,4 @@
-<footer class="p-3 bg-near-white avenir  text-center mt7">
+<footer class="p-3 bg-near-white avenir text-center mt7 <%= current_page?('/about') ? 'about-footer' : '' %>">
   
   <div class="">
     <%= link_to "Code of Conduct", code_path, class: "link dib pr2 dim dark-green hover-green " %><br>
