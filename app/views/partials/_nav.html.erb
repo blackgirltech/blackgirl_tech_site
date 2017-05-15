@@ -17,16 +17,16 @@
       <a href="https://medium.com/blackgirl-tech-a-blog" class="nav-link nav-item gray hover-light-green"> Blog</a>
       <a href="https://soundcloud.com/lostinthesource" class="nav-link ßnav-item gray hover-light-green"> Lost in the <span class="courier">Source</span></a>
       
-      <%# if current_user %>
-        <%#= link_to "Your Profile", user_path(:id), class: "nav-link nav-item gray hover-light-green" %>
-        <%# if admin? %>
-          <%#= link_to 'Admin', admin_root_path, class: "nav-link nav-item gray hover-light-green" %>
-        <%# end %>
-        <%#= link_to "Log Out", destroy_user_session_path, method: :delete, class: "nav-link nav-item gray hover-light-green" %>
-      <%# else %>
-        <%#= link_to "Join Us", new_subscription_path, class: "nav-link nav-item gray hover-light-green" %>
-        <%#= link_to "Log In", new_user_session_path, class: "nav-link nav-item green hover-light-green float-md-right" %>
-      <%# end %>
+      <% if current_member %>
+        <%= link_to "Your Profile", member_path(:id), class: "nav-link nav-item gray hover-light-green" %>
+        <% if admin? %>
+          <%= link_to 'Admin', admin_root_path, class: "nav-link nav-item gray hover-light-green" %>
+        <% end %>
+        <%= link_to "Log Out", destroy_member_session_path, method: :delete, class: "nav-link nav-item gray hover-light-green" %>
+      <% else %>
+        <%= link_to "Join Us", new_subscription_path, class: "nav-link nav-item gray hover-light-green" %>
+        <%= link_to "Log In", new_member_session_path, class: "nav-link nav-item green hover-light-green float-md-right" %>
+      <% end %>
     </div>
   </div>
 </nav>

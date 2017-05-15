@@ -1,4 +1,4 @@
-ActiveAdmin.register User do
+ActiveAdmin.register Member do
 
   permit_params :email, :password, :password_confirmation, :volunteer, :admin, :first_name, :last_name, :provider, :uid, :subscription_id, :city, :postcode, :address_line_one, :address_line_two
 
@@ -7,9 +7,9 @@ ActiveAdmin.register User do
     id_column
     column :email
     column :volunteer
-    column :subscription do |user|
-      if user.subscription.present?
-        user.subscription.subscription_type
+    column :subscription do |member|
+      if member.subscription.present?
+        member.subscription.subscription_type
       end
     end
     column :created_at

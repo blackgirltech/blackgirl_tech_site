@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170503151719) do
+ActiveRecord::Schema.define(version: 20170515145856) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,31 +53,7 @@ ActiveRecord::Schema.define(version: 20170503151719) do
     t.boolean  "masterclass"
   end
 
-  create_table "sessions", force: :cascade do |t|
-    t.string   "session_id", null: false
-    t.text     "data"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.index ["session_id"], name: "index_sessions_on_session_id", unique: true, using: :btree
-    t.index ["updated_at"], name: "index_sessions_on_updated_at", using: :btree
-  end
-
-  create_table "subscriptions", force: :cascade do |t|
-    t.string   "subscription_type"
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
-    t.string   "redirect_url"
-    t.string   "response_id"
-    t.datetime "expiration_date"
-    t.integer  "user_id"
-    t.datetime "cancellation_date"
-    t.string   "gc_mandate_id"
-    t.string   "gc_customer_id"
-    t.string   "gc_payment_id"
-    t.string   "subscription_number"
-  end
-
-  create_table "users", force: :cascade do |t|
+  create_table "members", force: :cascade do |t|
     t.string   "email",                  default: "",    null: false
     t.string   "encrypted_password",     default: "",    null: false
     t.string   "reset_password_token"
@@ -100,8 +76,32 @@ ActiveRecord::Schema.define(version: 20170503151719) do
     t.string   "address_line_two"
     t.string   "city"
     t.string   "postcode"
-    t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+    t.index ["email"], name: "index_members_on_email", unique: true, using: :btree
+    t.index ["reset_password_token"], name: "index_members_on_reset_password_token", unique: true, using: :btree
+  end
+
+  create_table "sessions", force: :cascade do |t|
+    t.string   "session_id", null: false
+    t.text     "data"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["session_id"], name: "index_sessions_on_session_id", unique: true, using: :btree
+    t.index ["updated_at"], name: "index_sessions_on_updated_at", using: :btree
+  end
+
+  create_table "subscriptions", force: :cascade do |t|
+    t.string   "subscription_type"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.string   "redirect_url"
+    t.string   "response_id"
+    t.datetime "expiration_date"
+    t.integer  "member_id"
+    t.datetime "cancellation_date"
+    t.string   "gc_mandate_id"
+    t.string   "gc_customer_id"
+    t.string   "gc_payment_id"
+    t.string   "membership_number"
   end
 
 end

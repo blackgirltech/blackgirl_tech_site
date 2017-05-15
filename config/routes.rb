@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   ActiveAdmin.routes(self)
-  devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks", :registrations => "registrations"}
+  devise_for :members, :controllers => { :omniauth_callbacks => "omniauth_callbacks", :registrations => "registrations"}
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'static_pages#about'
@@ -11,14 +11,14 @@ Rails.application.routes.draw do
   get '/privacy_policy' => "static_pages#privacy_policy"
 
   resources :events
-  resources :users, only: [:show]
-  authenticate :user do 
+  resources :members, only: [:show]
+  authenticate :member do 
     resources :subscriptions, only: [:create, :edit, :update] do
       get 'complete', on: :member
       get 'cancel'
     end
   end
-  resources :users do
+  resources :members do
     resources :subscriptions, only: [:edit, :update]
   end
   resources :subscriptions, only: [:new]

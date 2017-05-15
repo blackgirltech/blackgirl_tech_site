@@ -5,21 +5,21 @@ class ApplicationController < ActionController::Base
 
 
   def admin?
-    current_user && current_user.admin?
+    current_member && current_member.admin?
   end
 
   def volunteer?
-    current_user && current_user.volunteer?
+    current_member && current_member.volunteer?
   end
 
-  def subscribed_user?
-    current_user && current_user.active_subscription?
+  def subscribed_member?
+    current_member && current_member.active_subscription?
   end
 
   private
 
   def store_current_location
-    store_location_for(:user, request.url)
+    store_location_for(:member, request.url)
   end
 
   protected

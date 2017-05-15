@@ -5,15 +5,15 @@ class CreateSubscription
     @client = client || GoCardlessSubscription.new
   end
 
-  def create(user, params)
+  def create(member, params)
     if params[:subscription_type] == "FREE"
-      FreeSubscription.create!(subscription_type: params[:subscription_type], user_id: user.id, expiration_date: Date.today + 1.year)
+      FreeSubscription.create!(subscription_type: params[:subscription_type], member_id: member.id, expiration_date: Date.today + 1.year)
       return
     elsif params[:subscription_type] == "MEMBER"
-      subscription = MemberSubscription.create!(subscription_type: params[:subscription_type], user_id: user.id, expiration_date: Date.today + 1.year)
+      subscription = MemberSubscription.create!(subscription_type: params[:subscription_type], member_id: member.id, expiration_date: Date.today + 1.year)
       get_response_from_payment_gateway(subscription, params)
     elsif params[:subscription_type] == "ALLY"
-      subscription = AllySubscription.create!(subscription_type: params[:subscription_type], user_id: user.id, expiration_date: Date.today + 1.year)
+      subscription = AllySubscription.create!(subscription_type: params[:subscription_type], member_id: member.id, expiration_date: Date.today + 1.year)
       get_response_from_payment_gateway(subscription, params)
     end
   end

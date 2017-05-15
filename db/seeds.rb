@@ -9,5 +9,5 @@
 free_member = Subscription.create(subscription_type: "Free")
 paid_member = Subscription.create(subscription_type: "Paid")
 ally = Subscription.create(subscription_type: "Ally")
-User.create!(email: 'fadmin@example.com', password: 'password', password_confirmation: 'password')
-User.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password', admin: true)
+Member.create!(email: 'fadmin@example.com', password: 'password', password_confirmation: 'password')
+Member.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password', admin: true)
