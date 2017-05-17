@@ -1,4 +1,4 @@
-class MailchimpSubscription
+class MailchimpMembership
   require 'mailchimp'
   def mailchimp
     Mailchimp::API.new("0b77fc4821141002ea9e3d0f89a9a4fa-us10")

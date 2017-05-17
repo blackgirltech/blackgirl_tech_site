@@ -13,14 +13,14 @@ Rails.application.routes.draw do
   resources :events
   resources :members, only: [:show]
   authenticate :member do 
-    resources :subscriptions, only: [:create, :edit, :update] do
+    resources :memberships, only: [:create, :edit, :update] do
       get 'complete', on: :member
       get 'cancel'
     end
   end
   resources :members do
-    resources :subscriptions, only: [:edit, :update]
+    resources :memberships, only: [:edit, :update]
   end
-  resources :subscriptions, only: [:new]
+  resources :memberships, only: [:new]
 
 end

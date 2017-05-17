@@ -1,14 +1,14 @@
-ActiveAdmin.register Subscription do
+ActiveAdmin.register Membership do
 
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
-#
-  permit_params :subscription_type
+# #
+  permit_params :membership_type
 
   index do
     selectable_column
     id_column
-    column :subscription_type
+    column :membership_type
     actions
   end
 

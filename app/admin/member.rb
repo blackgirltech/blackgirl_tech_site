@@ -1,15 +1,15 @@
 ActiveAdmin.register Member do
 
-  permit_params :email, :password, :password_confirmation, :volunteer, :admin, :first_name, :last_name, :provider, :uid, :subscription_id, :city, :postcode, :address_line_one, :address_line_two
+  permit_params :email, :password, :password_confirmation, :volunteer, :admin, :first_name, :last_name, :provider, :uid, :membership_id, :city, :postcode, :address_line_one, :address_line_two
 
   index do
     selectable_column
     id_column
     column :email
     column :volunteer
-    column :subscription do |member|
-      if member.subscription.present?
-        member.subscription.subscription_type
+    column :membership do |member|
+      if member.membership.present?
+        member.membership.membership_type
       end
     end
     column :created_at
@@ -18,13 +18,13 @@ ActiveAdmin.register Member do
 
   filter :email
   filter :volunteer
-  filter :subscription
+  filter :membership
   filter :created_at
 
   form do |f|
     f.inputs do
       f.input :email
-      f.input :subscription, as: :select, collection: Subscription.all.map {|su| [su.subscription_type, su.id]}
+      f.input :membership, as: :select, collection: Membership.all.map {|su| [su.membership_type, su.id]}
       f.input :volunteer
       f.input :admin
     end

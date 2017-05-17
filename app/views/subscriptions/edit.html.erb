@@ -1,9 +1,9 @@
-<% if @subscription.free? || (@subscription.redirect_url.present? && @subscription.gc_mandate_id.nil?) %>
+<% if @membership.base? || (@membership.redirect_url.present? && @membership.gc_mandate_id.nil?) %>
   <div id="particles-js" class="relative">
     <div class="container">
       <div class="absolute">
         <div class="row">
-          <% if @subscription.free? %>
+          <% if @membership.base? %>
             <h1 class="fw1 f1 center">Upgrade Membership</h1>
           <% else %>
             <h1 class="fw1 f1 center">Choose Membership</h1>
@@ -11,11 +11,11 @@
         </div>
         <div class="row">
           <div class=" col-md-6 mh5 mb3 mh0-ns">
-            <%= render "partials/member_subscription" %>
+            <%= render "partials/club_membership" %>
           </div>
 
           <div class="col-md-6 mh5 mb3 mh0-ns ">
-            <%= render "partials/ally_subscription" %>
+            <%= render "partials/ally_membership" %>
           </div>
         </div>
       </div>

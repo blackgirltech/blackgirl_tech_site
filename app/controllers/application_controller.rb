@@ -12,8 +12,8 @@ class ApplicationController < ActionController::Base
     current_member && current_member.volunteer?
   end
 
-  def subscribed_member?
-    current_member && current_member.active_subscription?
+  def active_member?
+    current_member && current_member.active_membership?
   end
 
   private
@@ -25,7 +25,7 @@ class ApplicationController < ActionController::Base
   protected
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name, :address_line_one, :address_line_two, :city, :postcode, :subscription => []])
-    devise_parameter_sanitizer.permit(:account_update, keys: [:first_name, :last_name, :address_line_one, :address_line_two, :city, :postcode, subscription: []])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name, :address_line_one, :address_line_two, :city, :postcode, :membership => []])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:first_name, :last_name, :address_line_one, :address_line_two, :city, :postcode, membership: []])
   end
 end

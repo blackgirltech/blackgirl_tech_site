@@ -24,7 +24,7 @@
         <% end %>
         <%= link_to "Log Out", destroy_member_session_path, method: :delete, class: "nav-link nav-item gray hover-light-green" %>
       <% else %>
-        <%= link_to "Join Us", new_subscription_path, class: "nav-link nav-item gray hover-light-green" %>
+        <%= link_to "Join Us", new_membership_path, class: "nav-link nav-item gray hover-light-green" %>
         <%= link_to "Log In", new_member_session_path, class: "nav-link nav-item green hover-light-green float-md-right" %>
       <% end %>
     </div>

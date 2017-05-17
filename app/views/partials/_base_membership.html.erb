@@ -6,8 +6,8 @@
   <li class="pt-3 px-3 text-center">Monthly newsletter</li>
 </ul>
 
-<%= form_for @subscription do |f| %>
-  <%= hidden_field_tag(:subscription_type, "FREE") %>
+<%= form_for @membership do |f| %>
+  <%= hidden_field_tag(:membership_type, "BASE") %>
   <% if current_member.present? %>
     <%= hidden_field_tag(:member_id, "#{current_member.id}") %>
   <% end %>

@@ -5,21 +5,21 @@ class Member < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable,
          omniauth_providers: [:facebook, :twitter, :google_oauth2]
 
-  has_many :subscriptions
+  has_many :memberships
 
   validates_presence_of :address_line_one, :city, :postcode, :first_name, :last_name
 
-  def most_recent_subscription
-    self.subscriptions.last
+  def most_recent_membership
+    self.memberships.last
   end
 
-  def current_subscription_type
-    self.most_recent_subscription.subscription_type
+  def current_membership_type
+    self.most_recent_membership.membership_type
   end
 
-  def active_subscription?
-    if self.most_recent_subscription.present?
-      self.most_recent_subscription.expiration_date >= Date.today && self.most_recent_subscription.cancellation_date.nil?
+  def active_membership?
+    if self.most_recent_membership.present?
+      self.most_recent_membership.expiration_date >= Date.today && self.most_recent_membership.cancellation_date.nil?
     end
   end
 
