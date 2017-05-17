@@ -5,7 +5,6 @@ class MembershipsController < ApplicationController
       redirect_to current_member
     else
       @membership = Membership.new
-
     end
   end
 
