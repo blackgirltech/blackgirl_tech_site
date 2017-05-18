@@ -6,6 +6,7 @@ class Member < ApplicationRecord
          omniauth_providers: [:facebook, :twitter, :google_oauth2]
 
   has_many :memberships
+  has_many :events, through: :rsvp
 
   validates_presence_of :address_line_one, :city, :postcode, :first_name, :last_name
 

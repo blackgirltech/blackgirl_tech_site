@@ -1,5 +1,7 @@
 class Event < ApplicationRecord
 
+  has_many :members, through: :rsvp
+
   def finished
     self.date.present? && (self.date < Date.today)
   end
