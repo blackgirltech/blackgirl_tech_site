@@ -8,8 +8,8 @@ ActiveAdmin.register Member do
     column :email
     column :volunteer
     column :membership do |member|
-      if member.membership.present?
-        member.membership.membership_type
+      if member.most_recent_membership.present?
+        member.most_recent_membership.membership_type
       end
     end
     column :created_at

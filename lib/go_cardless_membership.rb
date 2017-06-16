@@ -1,7 +1,7 @@
 require 'gocardless_pro'
 
 # - membershipController#new
-# - SubscriptionController#create #=> 
+# - SubscriptionController#create #=>
 # - GoCardless - user completes GoCardless form
 # - SubscriptionController#finish
 
@@ -10,7 +10,7 @@ class GoCardlessMembership
   def client
     GoCardlessPro::Client.new(
       # We recommend storing your access token in an
-      # environment variable for security, but you could 
+      # environment variable for security, but you could
       # include it as a string directly in your code
       access_token: "sandbox_HzkdgfI8haEGsRQlNfOBAgZ4MEWZZWRzUDR138k_",
       # ENV["GO_CARDLESS_SANDBOX"],
@@ -44,7 +44,7 @@ class GoCardlessMembership
     )
   end
 
-  def membership(mandate_id, membership_id, current_user)
+  def membership(mandate_id, membership_id, current_member)
     client.memberships.create(
       params: {
         amount: 500,
