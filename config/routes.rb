@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  ActiveAdmin.routes(self)
+  mount ForestLiana::Engine => '/forest'
   devise_for :members, :controllers => { :omniauth_callbacks => "omniauth_callbacks", :registrations => "registrations"}
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
@@ -12,7 +12,7 @@ Rails.application.routes.draw do
 
   resources :events
   resources :members, only: [:show]
-  authenticate :member do 
+  authenticate :member do
     resources :memberships, only: [:create, :edit, :update] do
       get 'complete', on: :member
       get 'cancel'
