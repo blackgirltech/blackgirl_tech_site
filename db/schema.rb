@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170518091021) do
+ActiveRecord::Schema.define(version: 20170518092151) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,6 +37,13 @@ ActiveRecord::Schema.define(version: 20170518091021) do
     t.string   "counter_model_scope"
     t.index ["counter_model_name", "counter_model_scope"], name: "counter_model_name_scope", unique: true, using: :btree
     t.index ["counter_model_name"], name: "index_custom_auto_increments_on_counter_model_name", using: :btree
+  end
+
+  create_table "event_venues", force: :cascade do |t|
+    t.integer  "event_id"
+    t.integer  "venue_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "events", force: :cascade do |t|
@@ -111,6 +118,15 @@ ActiveRecord::Schema.define(version: 20170518091021) do
     t.datetime "updated_at"
     t.index ["session_id"], name: "index_sessions_on_session_id", unique: true, using: :btree
     t.index ["updated_at"], name: "index_sessions_on_updated_at", using: :btree
+  end
+
+  create_table "venues", force: :cascade do |t|
+    t.string   "name"
+    t.string   "address"
+    t.string   "contact_name"
+    t.string   "contact_email"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
 end
