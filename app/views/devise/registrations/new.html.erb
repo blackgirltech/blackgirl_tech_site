@@ -36,6 +36,9 @@
         <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control", placeholder: "Password Confirmation" %>
       </div>
 
+      <br>
+      <p> Your address is needed so that we can send you all the cool things we promised in our membership package. </p>
+
       <div class="field">
         <%= f.label :address_line_one, class: "sr-only"%><br />
         <%= f.text_field :address_line_one, class: "form-control", placeholder: "House number/flat name" %>
@@ -54,6 +57,20 @@
       <div class="field">
         <%= f.label :postcode, class: "sr-only"%><br />
         <%= f.text_field :postcode, class: "form-control", placeholder: "Postcode" %>
+      </div>
+      <br>
+      <p> Why not join our Associates program and sign up to become a volunteer and/or tutor? All levels are welcome. </p>
+
+      <div class="form-check form-check-inline">
+        <label class="form-check-label">
+          <%= f.check_box :volunteer, class: "form-check-input" %> Volunteer
+        </label>
+      </div>
+
+      <div class="form-check form-check-inline">
+        <label class="form-check-label">
+          <%= f.check_box :tutor, class: "form-check-input" %> Tutor
+        </label>
       </div>
     </div>
     <div class="actions">
