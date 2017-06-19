@@ -9,12 +9,6 @@ class EventsController < ApplicationController
     @event = Event.find_by_id(params[:id])
   end
 
-  def rsvps
-    @event = Event.find_by_id(params[:id])
-    @rsvps = @event.rsvps.where(attending: true)
-    @volunteers = @event.rsvps.where(volunteering: true)
-  end
-
   def rsvp
     authenticate_member!
     @event = Event.find_by_id(params[:id])
