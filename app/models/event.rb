@@ -1,6 +1,7 @@
 class Event < ApplicationRecord
 
-  has_many :members, through: :rsvp
+  has_many :rsvps
+  has_many :members, through: :rsvps
   has_many :event_venues
   has_many :venue, through: :event_venues
 
