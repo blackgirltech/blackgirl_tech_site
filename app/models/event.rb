@@ -13,4 +13,12 @@ class Event < ApplicationRecord
     self.date.month != Date.today.month
   end
 
+  def max_attendees?
+    self.max_attendees.present? && self.rsvps.where(attending: true).count >= self.max_attendees
+  end
+
+  def max_volunteers?
+    self.max_volunteers.present? && self.rsvps.where(volunteering: true).count >= self.max_volunteers
+  end
+
 end
