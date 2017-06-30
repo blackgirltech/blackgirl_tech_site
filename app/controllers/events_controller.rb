@@ -22,7 +22,7 @@ class EventsController < ApplicationController
 
     payment = StripePayment.new
     customer = payment.create_customer(current_member, rsvp.stripe_token)
-    payment.create_charge(customer)
+    payment.create_charge(customer, @event)
     redirect_to events_path
   end
 
