@@ -12,7 +12,19 @@ class EventsController < ApplicationController
   def rsvp
     authenticate_member!
     @event = Event.find_by_id(params[:id])
-    rsvp = Rsvp.find_or_create_by!(event_id: @event.id, member: current_member, attending: true)
+    rsvp = Rsvp.find_or_create_by!(event_id: @event.id, member: current_member, attending: true, stripe_token: params[:stripe_token])
+
+    customer = Stripe::Customer.create(
+      :email => current_member.email,
+      :source => rsvp.stripe_token
+    )
+
+    charge = Stripe::Charge.create(
+      :customer => customer.id,
+      :amount => 1000,
+      :currency => "gbp",
+      :description => "Example charge"
+    )
     redirect_to "/events/#{@event.id}"
   end
 

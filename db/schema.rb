@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< 3a63b59267f1dd1fa428f1ecb9f8c516bd30cad5
 ActiveRecord::Schema.define(version: 20170705151309) do
+=======
+ActiveRecord::Schema.define(version: 20170630150131) do
+>>>>>>> pay & rsvp w/ stripe
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -114,6 +118,7 @@ ActiveRecord::Schema.define(version: 20170705151309) do
     t.datetime "updated_at",   null: false
     t.boolean  "checked_in"
     t.boolean  "volunteering"
+    t.string   "stripe_token"
   end
 
   create_table "sessions", force: :cascade do |t|
