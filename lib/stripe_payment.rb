@@ -7,12 +7,12 @@ class StripePayment
     )
   end
 
-  def create_charge(customer)
+  def create_charge(customer, event)
     charge = Stripe::Charge.create(
       :customer => customer.id,
-      :amount => 1000,
+      :amount => event.price_in_pence,
       :currency => "gbp",
-      :description => "Example charge"
+      :description => event.name
     )
   end
 end
