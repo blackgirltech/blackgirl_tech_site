@@ -1,30 +1,47 @@
-<div class="row bg-light-blue pa5" style="">
-  <header class="col-md-4 offset-md-4">
-    <h1 class="display-1 text-center white-80 b"><%= @event.name %> </h1>
-  </header>
-</div>
-
-<a href="/events/<%= @event.id %>/unrsvp"> UNRSVP </a>
-<a href="/events/<%= @event.id %>/volunteer"> volunteer </a>
-<a href="/events/<%= @event.id %>/unvolunteer"> UNvolunteer </a>
-
-
-</div>
-<%= form_for @event, url: {action: "rsvp"}, id: "payment-form" do |f| %>
-  <div class="form-row">
-    <label for="card-element">
-      Credit or debit card
-    </label>
-    <div id="card-element">
-      <!-- a Stripe Element will be inserted here. -->
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h2> <%= @event.name %> </p>
+      <img src="<%#= @event.image %>" >
+      <p> <%#= @event.details %></p>
+      <p> <%#= @event.time %> </p>
+      <p> <%#= @event.date %> </p>
     </div>
 
-    <!-- Used to display form errors -->
-    <div id="card-errors" role="alert"></div>
-  </div>
-  <%= f.submit "rsvp" %>
-<% end %>
+    <div class="col">
+      <% if @rsvp.empty? || @volunteer.empty? %>
+      <p> We collect a £5 deposit per event which is refunded back to you once your attendance has been confirmed.
+        Submit your card details below to reserve your space. </p>
+        <div class="col-md-8">
+          <%= form_for @event, url: {action: "rsvp"} do |f| %>
+            <div class="form-row">
+              <label for="card-element">
+                Card number
+              </label>
+              <div id="card-element">
+                <!-- a Stripe Element will be inserted here. -->
+              </div>
 
+              <!-- Used to display form errors -->
+              <div id="card-errors" role="alert"></div>
+            </div>
+            <%= f.submit "Reserve", class: "btn bg-dark-green white hover-dark-green hover-bg-white b--dark-green f3 fw2 mt-1" %>
+          <% end %>
+
+          <p> Is this event not quite for you? Why don't you <a href="/events/<%= @event.id %>/volunteer"> volunteer </a> and help others? </p>
+        </div>
+        <% elsif !@rsvp.empty? %>
+          <p> You are already attending this event </p>
+          <a href="/events/<%= @event.id %>/unrsvp"> UNRSVP </a>
+        <% elsif !@volunteer.empty? %>
+          <p> You are already volunteering for this event </p>
+          <a href="/events/<%= @event.id %>/unvolunteer"> UNvolunteer </a>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<!--  Move to JS -->
 <script>
 var stripe = Stripe('<%=ENV['STRIPE_PUBLISHABLE_KEY']%>');
 var elements = stripe.elements();
