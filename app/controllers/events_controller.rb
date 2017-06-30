@@ -20,17 +20,9 @@ class EventsController < ApplicationController
       rsvp.update(attending: true)
     end
 
-    customer = Stripe::Customer.create(
-      :email => current_member.email,
-      :source => rsvp.stripe_token
-    )
-
-    charge = Stripe::Charge.create(
-      :customer => customer.id,
-      :amount => 1000,
-      :currency => "gbp",
-      :description => "Example charge"
-    )
+    payment = StripePayment.new
+    customer = payment.create_customer(current_member, rsvp.stripe_token)
+    payment.create_charge(customer)
     redirect_to events_path
   end
 
