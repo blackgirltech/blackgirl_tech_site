@@ -61,6 +61,11 @@ ActiveRecord::Schema.define(version: 20170705151309) do
     t.boolean  "masterclass"
     t.integer  "max_attendees"
     t.integer  "max_volunteers"
+<<<<<<< 9a60fd396c23d090dc817726672f4854d24a44c5
+=======
+    t.integer  "price_in_pence"
+    t.boolean  "refundable"
+>>>>>>> refund -wip
   end
 
   create_table "members", force: :cascade do |t|
@@ -115,6 +120,7 @@ ActiveRecord::Schema.define(version: 20170705151309) do
     t.boolean  "checked_in"
     t.boolean  "volunteering"
     t.string   "stripe_token"
+    t.boolean  "refund"
   end
 
   create_table "sessions", force: :cascade do |t|
