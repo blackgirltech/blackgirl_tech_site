@@ -26,6 +26,7 @@ Rails.application.routes.draw do
     resources :memberships, only: [:edit, :update]
   end
   resources :memberships, only: [:new]
+  resources :charges
 
   namespace :forest do
     post '/actions/check-in' => 'rsvps#check_in'
