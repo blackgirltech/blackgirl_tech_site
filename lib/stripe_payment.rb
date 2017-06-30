@@ -1,20 +1,18 @@
 class StripePayment
 
-  def create_customer(member, params)
-    # binding.pry
-    Stripe::Customer.create(
+  def create_customer(member, token)
+    customer = Stripe::Customer.create(
       :email => member.email,
-      :source  => params[:stripeToken]
+      :source => token
     )
   end
 
-  def create_charge(member, event, params)
+  def create_charge(customer)
     charge = Stripe::Charge.create(
-      :customer    => member.id,
-      :amount      => 500,
-      :description => 'Rails Stripe customer',
-      :currency    => 'gbp',
-      :token       => params[:stripeToken]
+      :customer => customer.id,
+      :amount => 1000,
+      :currency => "gbp",
+      :description => "Example charge"
     )
   end
 end
