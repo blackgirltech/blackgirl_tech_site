@@ -46,6 +46,7 @@ gem 'forest_liana'
 
 # PAYMENT GATEWAYS
 gem 'gocardless_pro'
+gem 'stripe'
 
 # MAILCHIMP
 gem 'mailchimp-api', require: 'mailchimp'
