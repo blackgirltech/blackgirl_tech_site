@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170630183624) do
+ActiveRecord::Schema.define(version: 20170630185441) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -61,6 +61,7 @@ ActiveRecord::Schema.define(version: 20170630183624) do
     t.integer  "max_attendees"
     t.integer  "max_volunteers"
     t.integer  "price_in_pence"
+    t.boolean  "refundable"
   end
 
   create_table "members", force: :cascade do |t|
@@ -115,6 +116,7 @@ ActiveRecord::Schema.define(version: 20170630183624) do
     t.boolean  "checked_in"
     t.boolean  "volunteering"
     t.string   "stripe_token"
+    t.boolean  "refund"
   end
 
   create_table "sessions", force: :cascade do |t|
