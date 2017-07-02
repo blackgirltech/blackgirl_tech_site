@@ -15,4 +15,11 @@ class StripePayment
       :description => event.name
     )
   end
+
+  def subscribe (customer, membership)
+    Stripe::Subscription.create(
+      :customer => customer.id,
+      :plan => membership.membership_type,
+    )
+  end
 end
