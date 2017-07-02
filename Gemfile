@@ -45,17 +45,13 @@ gem "omniauth-google-oauth2"
 gem 'forest_liana'
 
 # PAYMENT GATEWAYS
-gem 'gocardless_pro'
 gem 'stripe'
 
-# MAILCHIMP
-gem 'mailchimp-api', require: 'mailchimp'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
 gem 'font-awesome-sass'
-# gem 'mailchimp-api', '~> 2.0', '>= 2.0.6'
 
 # Sessions Cookies
 gem 'activerecord-session_store'
