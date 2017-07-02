@@ -1,13 +1,105 @@
-<div class="row bg-light-blue pa5" style="">
-  <header class="col-md-4 offset-md-4">
-    <h1 class="display-1 text-center white-80 b"><%= @event.name %> </h1>
-  </header>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h2> <%= @event.name %> </p>
+      <img src="<%#= @event.image %>" >
+      <p> <%#= @event.details %></p>
+      <p> <%#= @event.time %> </p>
+      <p> <%#= @event.date %> </p>
+    </div>
+
+    <div class="col">
+      <% if @rsvp.empty? %>
+      <p> We collect a £5 deposit per event which is refunded back to you once your attendance has been confirmed.
+        Submit your card details below to reserve your space. </p>
+        <div class="col-md-8">
+          <%= form_for @event, url: {action: "rsvp"} do |f| %>
+            <div class="form-row">
+              <label for="card-element">
+                Card number
+              </label>
+              <div id="card-element">
+                <!-- a Stripe Element will be inserted here. -->
+              </div>
+
+              <!-- Used to display form errors -->
+              <div id="card-errors" role="alert"></div>
+            </div>
+            <% if @event.refundable %>
+              <%= f.fields_for :rsvps do |rsvp| %>
+                <%= rsvp.check_box :refund %>
+              <% end %>
+            <% end %>
+            <%= f.submit "Reserve", class: "btn bg-dark-green white hover-dark-green hover-bg-white b--dark-green f3 fw2 mt-1" %>
+          <% end %>
+
+          <p> Is this event not quite for you? Why don't you <a href="/events/<%= @event.id %>/volunteer"> volunteer </a> and help others? </p>
+        </div>
+        <% else %>
+          <p> You are already attending this event </p>
+          <a href="/events/<%= @event.id %>/unrsvp"> UNRSVP </a>
+      <% end %>
+    </div>
+  </div>
 </div>
 
-<a href="/events/<%= @event.id %>/rsvp"> RSVP </a>
-<a href="/events/<%= @event.id %>/unrsvp"> UNRSVP </a>
-<a href="/events/<%= @event.id %>/volunteer"> volunteer </a>
-<a href="/events/<%= @event.id %>/unvolunteer"> UNvolunteer </a>
+<!--  Move to JS -->
+<script>
+var stripe = Stripe('<%=ENV['STRIPE_PUBLISHABLE_KEY']%>');
+var elements = stripe.elements();
 
+// Custom styling can be passed to options when creating an Element.
+var style = {
+  base: {
+    // Add your base input styles here. For example:
+    fontSize: '16px',
+    lineHeight: '24px'
+  }
+};
 
-</div>
+// Create an instance of the card Element
+var card = elements.create('card', {hidePostalCode: true}, {style: style});
+
+// Add an instance of the card Element into the `card-element` <div>
+card.mount('#card-element');
+
+card.addEventListener('change', function(event) {
+  var displayError = document.getElementById('card-errors');
+  if (event.error) {
+    displayError.textContent = event.error.message;
+  } else {
+    displayError.textContent = '';
+  }
+});
+
+// Create a token or display an error when the form is submitted.
+var form = document.getElementById('edit_event_<%= @event.id %>');
+form.addEventListener('submit', function(event) {
+  event.preventDefault();
+
+  stripe.createToken(card).then(function(result) {
+    if (result.error) {
+      // Inform the user if there was an error
+      var errorElement = document.getElementById('card-errors');
+      errorElement.textContent = result.error.message;
+    } else {
+      // Send the token to your server
+      stripeTokenHandler(result.token);
+    }
+  });
+});
+
+function stripeTokenHandler(token) {
+  // Insert the token ID into the form so it gets submitted to the server
+  var form = document.getElementById('edit_event_<%= @event.id %>');
+  var hiddenInput = document.createElement('input');
+  hiddenInput.setAttribute('type', 'hidden');
+  hiddenInput.setAttribute('name', 'stripe_token');
+  hiddenInput.setAttribute('value', token.id);
+
+  form.appendChild(hiddenInput);
+
+  // Submit the form
+  form.submit();
+}
+</script>

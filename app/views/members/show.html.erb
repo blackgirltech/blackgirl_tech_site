@@ -2,7 +2,7 @@
 
   <div class="">
     <h2 class="fw1 f1">Hi <%= @member.first_name %> </h2>
-    <p> <span class="b">Email:</span> <%= @member.email %> <br> <%= link_to 'Edit your profile',  edit_member_registration_path, class: "dark-green hover-green fw5" %></p> 
+    <p> <span class="b">Email:</span> <%= @member.email %> <br> <%= link_to 'Edit your profile',  edit_member_registration_path, class: "dark-green hover-green fw5" %></p>
   </div>
 
   <% if (@member.active_membership? == nil)%>
@@ -35,14 +35,14 @@
 
       <p class="b"> If you cancel your membership, you will be downgraded to our free A-group membership and lose all discounts, lose benefits to all future promotions and your membership card will be disabled. </p>
 
-      <%= link_to 'Cancel Membership',  membership_cancel_path(:id), class: "btn white bg-red hover-red b--red hover-bg-light-gray" %>
+      <%= link_to 'Cancel Membership',  membership_cancel_path(@membership.id), class: "btn white bg-red hover-red b--red hover-bg-light-gray" %>
       <hr>
 
       <p class="b"> ONCE YOUR ACCOUNT IS DELETED, WE CAN NOT RESSURECT IT.</p>
 
       <%= link_to 'Delete your profile',  member_registration_path, method: :delete, class: "btn white bg-red hover-red b--red hover-bg-light-gray" %>
-      
+
     </div>
   <% end %>
-  
+
 </div>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170619115859) do
+ActiveRecord::Schema.define(version: 20170702192725) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -60,6 +60,8 @@ ActiveRecord::Schema.define(version: 20170619115859) do
     t.boolean  "masterclass"
     t.integer  "max_attendees"
     t.integer  "max_volunteers"
+    t.integer  "price_in_pence"
+    t.boolean  "refundable"
   end
 
   create_table "members", force: :cascade do |t|
@@ -92,8 +94,8 @@ ActiveRecord::Schema.define(version: 20170619115859) do
 
   create_table "memberships", force: :cascade do |t|
     t.string   "membership_type"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
     t.string   "redirect_url"
     t.string   "response_id"
     t.datetime "expiration_date"
@@ -103,6 +105,8 @@ ActiveRecord::Schema.define(version: 20170619115859) do
     t.string   "gc_customer_id"
     t.string   "gc_payment_id"
     t.string   "membership_number"
+    t.string   "stripe_membership_token"
+    t.string   "stripe_subscription_id"
   end
 
   create_table "rsvps", force: :cascade do |t|
@@ -113,6 +117,8 @@ ActiveRecord::Schema.define(version: 20170619115859) do
     t.datetime "updated_at",   null: false
     t.boolean  "checked_in"
     t.boolean  "volunteering"
+    t.string   "stripe_token"
+    t.boolean  "refund"
   end
 
   create_table "sessions", force: :cascade do |t|

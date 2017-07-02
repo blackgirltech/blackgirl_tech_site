@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   get '/privacy_policy' => "static_pages#privacy_policy"
 
   resources :events
-  get 'events/:id/rsvp' => 'events#rsvp'
+  patch 'events/:id/rsvp' => 'events#rsvp'
   get 'events/:id/unrsvp' => 'events#unrsvp'
   get 'events/:id/volunteer' => 'events#volunteering'
   get 'events/:id/unvolunteer' => 'events#unvolunteering'
@@ -26,6 +26,13 @@ Rails.application.routes.draw do
     resources :memberships, only: [:edit, :update]
   end
   resources :memberships, only: [:new]
+  get '/memberships/club_membership' => 'memberships#club_membership'
+  post '/memberships/club_membership' => 'memberships#create_club_membership'
+  get '/memberships/base_membership' => 'memberships#base_membership'
+  post '/memberships/base_membership' => 'memberships#create_base_membership'
+  get '/memberships/ally_membership' => 'memberships#ally_membership'
+  post '/memberships/ally_membership' => 'memberships#create_ally_membership'
+  resources :charges
 
   namespace :forest do
     post '/actions/check-in' => 'rsvps#check_in'
