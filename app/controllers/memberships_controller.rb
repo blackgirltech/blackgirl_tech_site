@@ -9,8 +9,6 @@ class MembershipsController < ApplicationController
   end
 
   # Membership checkout/show pages
-  def base_membership
-  end
 
   def club_membership
     @membership = ClubMembership.new
@@ -18,7 +16,7 @@ class MembershipsController < ApplicationController
 
   def create_club_membership
     @membership = ClubMembership.create!(membership_params)
-    CreateMembership.create(current_member, @membership)
+    create_base_membership(current_member, @membership)
     redirect_to current_member
   end
 
@@ -28,7 +26,7 @@ class MembershipsController < ApplicationController
 
   def create_ally_membership
     @membership = AllyMembership.create!(membership_params)
-    CreateMembership.create(current_member, @membership)
+    create_base_membership(current_member, @membership)
     redirect_to current_member
   end
 
@@ -41,11 +39,19 @@ class MembershipsController < ApplicationController
     redirect_to current_member
   end
 
+  def create_base_membership(member, membership)
+    client = StripePayment.new
+    customer = client.create_customer(member, membership.stripe_membership_token)
+    subscription = client.subscribe(customer, membership)
+    membership.update(stripe_subscription_id: subscription.id)
+  end
+
   def cancel
-    # cancel = CancelMembership.new
-    # cancel.cancel(current_member)
-    # membership = current_member.memberships.create!(membership_type: "BASE", expiration_date: Date.today + 1.year)
-    # redirect_to current_member
+    @membership = Membership.find_by_id(params[:membership_id])
+    subscription = Stripe::Subscription.retrieve(@membership.stripe_subscription_id)
+    subscription.delete(:at_period_end => true)
+    @membership.update(cancellation_date: Date.today)
+    redirect_to current_member
   end
 
   def edit
