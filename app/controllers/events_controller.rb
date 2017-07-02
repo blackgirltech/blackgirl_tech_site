@@ -15,7 +15,12 @@ class EventsController < ApplicationController
   def rsvp
     authenticate_member!
     @event = Event.find_by_id(params[:id])
-    rsvp = Rsvp.find_or_create_by!(event_id: @event.id, member: current_member, stripe_token: params[:stripe_token])
+    rsvp = Rsvp.find_or_create_by!(
+      event_id: @event.id,
+      member: current_member,
+      stripe_token: params[:stripe_token],
+      refund: params[:event][:rsvps][:refund]
+    )
     if rsvp.attending.nil? || !rsvp.attending
       rsvp.update(attending: true)
     end
@@ -31,7 +36,6 @@ class EventsController < ApplicationController
     @event = Event.find_by_id(params[:id])
     rsvp = @event.rsvps.where(member: current_member).where(attending: true)
     rsvp.update(attending: false)
-    binding.pry
     redirect_to event_path(@event.id)
   end
 

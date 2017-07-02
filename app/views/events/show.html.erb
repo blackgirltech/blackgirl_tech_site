@@ -9,7 +9,7 @@
     </div>
 
     <div class="col">
-      <% if @rsvp.empty? || @volunteer.empty? %>
+      <% if @rsvp.empty? %>
       <p> We collect a £5 deposit per event which is refunded back to you once your attendance has been confirmed.
         Submit your card details below to reserve your space. </p>
         <div class="col-md-8">
@@ -25,17 +25,19 @@
               <!-- Used to display form errors -->
               <div id="card-errors" role="alert"></div>
             </div>
+            <% if @event.refundable %>
+              <%= f.fields_for :rsvps do |rsvp| %>
+                <%= rsvp.check_box :refund %>
+              <% end %>
+            <% end %>
             <%= f.submit "Reserve", class: "btn bg-dark-green white hover-dark-green hover-bg-white b--dark-green f3 fw2 mt-1" %>
           <% end %>
 
           <p> Is this event not quite for you? Why don't you <a href="/events/<%= @event.id %>/volunteer"> volunteer </a> and help others? </p>
         </div>
-        <% elsif !@rsvp.empty? %>
+        <% else %>
           <p> You are already attending this event </p>
           <a href="/events/<%= @event.id %>/unrsvp"> UNRSVP </a>
-        <% elsif !@volunteer.empty? %>
-          <p> You are already volunteering for this event </p>
-          <a href="/events/<%= @event.id %>/unvolunteer"> UNvolunteer </a>
       <% end %>
     </div>
   </div>
