@@ -25,6 +25,8 @@ class EventsController < ApplicationController
       rsvp.update(attending: true)
     end
 
+    # ^^ this method creates new rsvps for the same user if they unrsvp then rsvp again, at some point we should change this.
+
     payment = StripePayment.new
     customer = payment.create_customer(current_member, rsvp.stripe_token)
     payment.create_charge(customer, @event)
