@@ -39,15 +39,3 @@ class Membership < ApplicationRecord
   end
 
 end
-
-class BaseMembership < Membership
-  protokoll :membership_number, :pattern => "A###"
-end
-
-class ClubMembership < Membership
-  protokoll :membership_number, :pattern => "B###"
-end
-
-class AllyMembership < Membership
-  protokoll :membership_number, :pattern => "C###"
-end

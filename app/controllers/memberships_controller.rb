@@ -8,47 +8,44 @@ class MembershipsController < ApplicationController
     end
   end
 
-  def create
-    # Cancel incomplete memberships
-    members_last_membership = current_member.most_recent_membership
-    if members_last_membership.present? && members_last_membership.cancellation_date.nil?
-      current_member.most_recent_membership.update!(cancellation_date: Time.now)
-    end
-
-    initialize_membership = CreateMembership.new
-      initialize_membership.create(
-      current_member,
-      membership_type: params[:membership_type],
-      authenticity_token: session[:_csrf_token],
-      success_redirect_url: complete_membership_url(current_member)
-    )
-    membership = current_member.most_recent_membership
-    if membership.free?
-      # Mailchimpmembership.new.subscribe_to_newsletter(current_member)
-      redirect_to current_member
-    else
-      redirect_to membership.redirect_url
-    end
+  # Membership checkout/show pages
+  def base_membership
   end
 
-  def complete
-    complete = CompleteMembership.new
-    complete.complete(
-      current_member,
-      redirect_flow_id: params[:redirect_flow_id],
-      # authenticity token is nil here bc rails only gives authenticity tokens to post/put/patch/delete requests
-      # this is a get http://stackoverflow.com/questions/941594/understanding-the-rails-authenticity-token
-      authenticity_token: session[:_csrf_token]
-    )
-    # MailchimpMembership.new.subscribe_to_newsletter(current_member)
+  def club_membership
+    @membership = ClubMembership.new
+  end
+
+  def create_club_membership
+    @membership = ClubMembership.create!(membership_params)
+    CreateMembership.create(current_member, @membership)
+    redirect_to current_member
+  end
+
+  def ally_membership
+    @membership = AllyMembership.new
+  end
+
+  def create_ally_membership
+    @membership = AllyMembership.create!(membership_params)
+    CreateMembership.create(current_member, @membership)
+    redirect_to current_member
+  end
+
+  def base_membership
+    @membership = BaseMembership.new
+  end
+
+  def create_base_membership
+    @membership = BaseMembership.create!(membership_params)
     redirect_to current_member
   end
 
   def cancel
-    cancel = CancelMembership.new
-    cancel.cancel(current_member)
-    membership = current_member.memberships.create!(membership_type: "BASE", expiration_date: Time.now + 1.year)
-    redirect_to current_member
+    # cancel = CancelMembership.new
+    # cancel.cancel(current_member)
+    # membership = current_member.memberships.create!(membership_type: "BASE", expiration_date: Date.today + 1.year)
+    # redirect_to current_member
   end
 
   def edit
