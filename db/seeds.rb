@@ -6,8 +6,8 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-free_member = Subscription.create(subscription_type: "Free")
-paid_member = Subscription.create(subscription_type: "Paid")
-ally = Subscription.create(subscription_type: "Ally")
-User.create!(email: 'fadmin@example.com', password: 'password', password_confirmation: 'password')
-User.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password', admin: true)
+base = Membership.create(membership_type: "BASE")
+club = Membership.create(membership_type: "CLUB")
+ally = Membership.create(membership_type: "ALLY")
+Member.create!(email: 'fadmin@example.com', password: 'password', password_confirmation: 'password')
+Member.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password', admin: true)

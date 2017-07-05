@@ -38,8 +38,11 @@ gem 'omniauth-twitter'
 gem "omniauth-google-oauth2"
 
 # Active Admin
-gem 'activeadmin', git: 'https://github.com/activeadmin/activeadmin'
+# gem 'activeadmin', git: 'https://github.com/activeadmin/activeadmin'
 # gem 'inherited_resources', github: 'activeadmin/inherited_resources'
+
+# FOREST ADMIN
+gem 'forest_liana'
 
 # PAYMENT GATEWAYS
 gem 'gocardless_pro'

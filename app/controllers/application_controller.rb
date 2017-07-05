@@ -5,27 +5,31 @@ class ApplicationController < ActionController::Base
 
 
   def admin?
-    current_user && current_user.admin?
+    current_member && current_member.admin?
   end
 
   def volunteer?
-    current_user && current_user.volunteer?
+    current_member && current_member.volunteer?
   end
 
-  def subscribed_user?
-    current_user && current_user.active_subscription?
+  def tutor?
+    current_member && current_member.tutor?
+  end
+
+  def active_member?
+    current_member && current_member.active_membership?
   end
 
   private
 
   def store_current_location
-    store_location_for(:user, request.url)
+    store_location_for(:member, request.url)
   end
 
   protected
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name, :address_line_one, :address_line_two, :city, :postcode, :subscription => []])
-    devise_parameter_sanitizer.permit(:account_update, keys: [:first_name, :last_name, :address_line_one, :address_line_two, :city, :postcode, subscription: []])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name, :address_line_one, :address_line_two, :city, :postcode, :volunteer, :tutor, :membership => []])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:first_name, :last_name, :address_line_one, :address_line_two, :city, :postcode, :volunteer, :tutor, membership: []])
   end
 end
