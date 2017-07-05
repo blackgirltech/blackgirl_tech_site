@@ -21,6 +21,16 @@ class Membership < ApplicationRecord
     ally? || club?
   end
 
+  def is_expired?
+    self.expiration_date == Date.today && self.cancellation_date.present?
+  end
+
+  def set_new_expiration_date
+    if !self.is_expired?
+      self.update(expiration_date: Date.tody + 1.year)
+    end
+  handle_asynchronously :set_new_expiration_date
+
 end
 
 class BaseMembership < Membership
