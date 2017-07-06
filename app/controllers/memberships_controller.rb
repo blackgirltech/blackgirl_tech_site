@@ -14,10 +14,10 @@ class MembershipsController < ApplicationController
     if members_last_membership.present? && members_last_membership.cancellation_date.nil?
       current_member.most_recent_membership.update!(cancellation_date: Time.now)
     end
-    
+
     initialize_membership = CreateMembership.new
       initialize_membership.create(
-      current_member, 
+      current_member,
       membership_type: params[:membership_type],
       authenticity_token: session[:_csrf_token],
       success_redirect_url: complete_membership_url(current_member)
@@ -47,7 +47,7 @@ class MembershipsController < ApplicationController
   def cancel
     cancel = CancelMembership.new
     cancel.cancel(current_member)
-    membership = current_member.memberships.create!(membership_type: "BASE", expiration_date: Date.today + 1.year)
+    membership = current_member.memberships.create!(membership_type: "BASE", expiration_date: Time.now + 1.year)
     redirect_to current_member
   end
 
@@ -64,7 +64,7 @@ class MembershipsController < ApplicationController
   private
 
   def membership_params
-    params.permit(:member_id, :membership_type, :response_id, :redirect_url).merge(expiration_date: Date.today + 1.year)
+    params.permit(:member_id, :membership_type, :response_id, :redirect_url).merge(expiration_date: Time.now + 1.year)
   end
 
 end
