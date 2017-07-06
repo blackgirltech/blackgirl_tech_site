@@ -25,11 +25,18 @@ class Membership < ApplicationRecord
     self.expiration_date == Date.today && self.cancellation_date.present?
   end
 
-  def set_new_expiration_date
-    if !self.is_expired?
-      self.update(expiration_date: Date.tody + 1.year)
+  def self.rollover_expiration_date
+    expired_memberships = where(expiration_date: Date.today)
+    expired_memberships.each { |m| m.update(expiration_date: Date.today + 1.year) }
+  end
+
+  def self.cancel_membership
+    cancelled_memberships = where(expiration_date: Date.today).where.not(cancellation_date: nil)
+    cancelled_memberships.each do |m|
+      # make sure stripe isn't collecting money after the expiration_date
+      # this needs to be a job to check when to stop collecting money
     end
-  handle_asynchronously :set_new_expiration_date
+  end
 
 end
 
