@@ -30,11 +30,13 @@
                 <%= rsvp.check_box :refund %>
               <% end %>
             <% end %>
+            <!-- Display explanitory text & rsvp button with no form if customer_id exists -->
             <%= f.submit "Reserve", class: "btn bg-dark-green white hover-dark-green hover-bg-white b--dark-green f3 fw2 mt-1" %>
           <% end %>
 
           <p> Is this event not quite for you? Why don't you <a href="/events/<%= @event.id %>/volunteer"> volunteer </a> and help others? </p>
         </div>
+
         <% else %>
           <p> You are already attending this event </p>
           <a href="/events/<%= @event.id %>/unrsvp"> UNRSVP </a>

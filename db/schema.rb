@@ -89,14 +89,15 @@ ActiveRecord::Schema.define(version: 20170705151309) do
     t.string   "city"
     t.string   "postcode"
     t.boolean  "tutor"
+    t.string   "stripe_token"
     t.index ["email"], name: "index_members_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_members_on_reset_password_token", unique: true, using: :btree
   end
 
   create_table "memberships", force: :cascade do |t|
     t.string   "membership_type"
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
     t.string   "redirect_url"
     t.string   "response_id"
     t.datetime "expiration_date"
@@ -106,7 +107,6 @@ ActiveRecord::Schema.define(version: 20170705151309) do
     t.string   "gc_customer_id"
     t.string   "gc_payment_id"
     t.string   "membership_number"
-    t.string   "stripe_membership_token"
     t.string   "stripe_subscription_id"
   end
 
@@ -118,7 +118,6 @@ ActiveRecord::Schema.define(version: 20170705151309) do
     t.datetime "updated_at",   null: false
     t.boolean  "checked_in"
     t.boolean  "volunteering"
-    t.string   "stripe_token"
     t.boolean  "refund"
   end
 

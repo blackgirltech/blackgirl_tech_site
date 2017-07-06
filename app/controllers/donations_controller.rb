@@ -1,11 +1,11 @@
-class ChargesController < ApplicationController
+class DonationsController < ApplicationController
 
   def new
   end
 
   def create
     # Amount in cents
-    @amount = 500
+    @amount = convert_to_pence(params[:amount])
 
     customer = Stripe::Customer.create(
       :email => params[:stripeEmail],
@@ -18,10 +18,12 @@ class ChargesController < ApplicationController
       :description => 'Rails Stripe customer',
       :currency    => 'gbp'
     )
-
+    # insert flash notice on completion
+    redirect_to root_path
   rescue Stripe::CardError => e
     flash[:error] = e.message
     redirect_to new_charge_path
   end
+
 
 end
