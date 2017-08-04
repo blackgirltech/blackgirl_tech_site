@@ -21,8 +21,8 @@ class EventsController < ApplicationController
       refund: params[:event][:rsvps][:refund]
     )
 
-    if current_member.stripe_token.nil?
-      current_member.update(stripe_token: params[:stripe_token])
+    if current_member.stripe_source.nil?
+      current_member.update(stripe_source: params[:stripe_source])
     end
 
     if rsvp.attending.nil? || !rsvp.attending
