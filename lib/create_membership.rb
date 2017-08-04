@@ -13,6 +13,7 @@ class CreateMembership
       old_membership = member.memberships.find_by_membership_type("BASE")
       old_membership.update!(cancellation_date: Time.now)
     end
+    
     if member.stripe_customer_id.nil? || member.stripe_source.nil?
       member.update(stripe_source: stripe_source)
       customer = @client.create_customer(member)
