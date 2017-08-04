@@ -9,12 +9,12 @@ class Membership < ApplicationRecord
 
   def ally?
     self.membership_type == "ALLY"
-    self.gc_payment_id.present?
+    self.stripe_subscription_id.present?
   end
 
   def club?
     self.membership_type == "CLUB"
-    self.gc_payment_id.present?
+    self.stripe_subscription_id.present?
   end
 
   def paid?
