@@ -19,27 +19,6 @@ class MembershipsController < ApplicationController
     create_club_membership(current_member, @membership)
     redirect_to current_member
   end
-# ########
-
-  def ally_membership
-    @membership = AllyMembership.new
-  end
-
-  def create_ally_membership
-    @membership = AllyMembership.create!(membership_params)
-    create_ally_membership(current_member, @membership)
-    redirect_to current_member
-  end
-
-#########
-  def base_membership
-    @membership = BaseMembership.new
-  end
-
-  def create_base_membership
-    @membership = BaseMembership.create!(membership_params)
-    redirect_to current_member
-  end
 
   def create_club_membership(member, membership)
     client = StripePayment.new
@@ -51,6 +30,17 @@ class MembershipsController < ApplicationController
     end
     subscription = client.subscribe(customer.customer_id, membership)
     membership.update(stripe_subscription_id: subscription.id)
+  end
+# ########
+
+  def ally_membership
+    @membership = AllyMembership.new
+  end
+
+  def create_ally_membership
+    @membership = AllyMembership.create!(membership_params)
+    create_ally_membership(current_member, @membership)
+    redirect_to current_member
   end
 
   def create_ally_membership(member, membership)
@@ -65,16 +55,7 @@ class MembershipsController < ApplicationController
     membership.update(stripe_subscription_id: subscription.id)
   end
 
-  def ally_membership
-    @membership = AllyMembership.new
-  end
-
-  def create_ally_membership
-    @membership = AllyMembership.create!(membership_params)
-    create_base_membership(current_member, @membership)
-    redirect_to current_member
-  end
-
+#########
   def base_membership
     @membership = BaseMembership.new
   end
@@ -84,17 +65,11 @@ class MembershipsController < ApplicationController
     redirect_to current_member
   end
 
-  def create_base_membership(member, membership)
-    client = StripePayment.new
-    customer = client.create_customer(member, membership.stripe_membership_token)
-    subscription = client.subscribe(customer, membership)
-    membership.update(stripe_subscription_id: subscription.id)
-  end
-
   def cancel
     @membership = Membership.find_by_id(params[:membership_id])
-    subscription = Stripe::Subscription.retrieve(@membership.stripe_subscription_id)
-    subscription.delete(:at_period_end => true)
+    if subscription = Stripe::Subscription.retrieve(@membership.stripe_subscription_id)
+      subscription.delete(:at_period_end => true)
+    end
     @membership.update(cancellation_date: Date.today)
     redirect_to current_member
   end
