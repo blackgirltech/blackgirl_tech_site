@@ -16,8 +16,53 @@ class MembershipsController < ApplicationController
 
   def create_club_membership
     @membership = ClubMembership.create!(membership_params)
-    create_base_membership(current_member, @membership)
+    create_club_membership(current_member, @membership)
     redirect_to current_member
+  end
+# ########
+
+  def ally_membership
+    @membership = AllyMembership.new
+  end
+
+  def create_ally_membership
+    @membership = AllyMembership.create!(membership_params)
+    create_ally_membership(current_member, @membership)
+    redirect_to current_member
+  end
+
+#########
+  def base_membership
+    @membership = BaseMembership.new
+  end
+
+  def create_base_membership
+    @membership = BaseMembership.create!(membership_params)
+    redirect_to current_member
+  end
+
+  def create_club_membership(member, membership)
+    client = StripePayment.new
+    if current_member.customer_id.nil?
+      customer = client.create_customer(current_member)
+      current_member.update(customer_id: customer.id)
+    else
+      customer = current_member
+    end
+    subscription = client.subscribe(customer.customer_id, membership)
+    membership.update(stripe_subscription_id: subscription.id)
+  end
+
+  def create_ally_membership(member, membership)
+    client = StripePayment.new
+    if current_member.customer_id.nil?
+      customer = client.create_customer(current_member)
+      current_member.update(customer_id: customer.id)
+    else
+      customer = current_member
+    end
+    subscription = client.subscribe(customer.customer_id, membership)
+    membership.update(stripe_subscription_id: subscription.id)
   end
 
   def ally_membership
@@ -67,7 +112,7 @@ class MembershipsController < ApplicationController
   private
 
   def membership_params
-    params.permit(:member_id, :membership_type, :response_id, :redirect_url).merge(expiration_date: Date.today + 1.year, stripe_membership_token: params[:stripe_token])
+    params.permit(:member_id, :membership_type, :response_id, :redirect_url).merge(expiration_date: Time.now + 1.year)
   end
 
 end

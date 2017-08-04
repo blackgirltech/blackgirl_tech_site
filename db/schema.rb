@@ -10,24 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170702192725) do
+ActiveRecord::Schema.define(version: 20170705151309) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "active_admin_comments", force: :cascade do |t|
-    t.string   "namespace"
-    t.text     "body"
-    t.string   "resource_id",   null: false
-    t.string   "resource_type", null: false
-    t.string   "author_type"
-    t.integer  "author_id"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
-    t.index ["author_type", "author_id"], name: "index_active_admin_comments_on_author_type_and_author_id", using: :btree
-    t.index ["namespace"], name: "index_active_admin_comments_on_namespace", using: :btree
-    t.index ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id", using: :btree
-  end
 
   create_table "custom_auto_increments", force: :cascade do |t|
     t.string   "counter_model_name"
@@ -37,6 +23,21 @@ ActiveRecord::Schema.define(version: 20170702192725) do
     t.string   "counter_model_scope"
     t.index ["counter_model_name", "counter_model_scope"], name: "counter_model_name_scope", unique: true, using: :btree
     t.index ["counter_model_name"], name: "index_custom_auto_increments_on_counter_model_name", using: :btree
+  end
+
+  create_table "delayed_jobs", force: :cascade do |t|
+    t.integer  "priority",   default: 0, null: false
+    t.integer  "attempts",   default: 0, null: false
+    t.text     "handler",                null: false
+    t.text     "last_error"
+    t.datetime "run_at"
+    t.datetime "locked_at"
+    t.datetime "failed_at"
+    t.string   "locked_by"
+    t.string   "queue"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["priority", "run_at"], name: "delayed_jobs_priority", using: :btree
   end
 
   create_table "event_venues", force: :cascade do |t|
@@ -88,14 +89,15 @@ ActiveRecord::Schema.define(version: 20170702192725) do
     t.string   "city"
     t.string   "postcode"
     t.boolean  "tutor"
+    t.string   "stripe_token"
     t.index ["email"], name: "index_members_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_members_on_reset_password_token", unique: true, using: :btree
   end
 
   create_table "memberships", force: :cascade do |t|
     t.string   "membership_type"
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
     t.string   "redirect_url"
     t.string   "response_id"
     t.datetime "expiration_date"
@@ -105,7 +107,6 @@ ActiveRecord::Schema.define(version: 20170702192725) do
     t.string   "gc_customer_id"
     t.string   "gc_payment_id"
     t.string   "membership_number"
-    t.string   "stripe_membership_token"
     t.string   "stripe_subscription_id"
   end
 
@@ -117,7 +118,6 @@ ActiveRecord::Schema.define(version: 20170702192725) do
     t.datetime "updated_at",   null: false
     t.boolean  "checked_in"
     t.boolean  "volunteering"
-    t.string   "stripe_token"
     t.boolean  "refund"
   end
 
