@@ -8,72 +8,6 @@ class MembershipsController < ApplicationController
     end
   end
 
-  # Membership checkout/show pages
-
-  def club_membership
-    @membership = ClubMembership.new
-  end
-
-  def create_club_membership
-    @membership = ClubMembership.create!(membership_params)
-    create_club_membership(current_member, @membership)
-    redirect_to current_member
-  end
-
-  def create_club_membership(member, membership)
-    client = StripePayment.new
-    if current_member.customer_id.nil?
-      customer = client.create_customer(current_member)
-      current_member.update(customer_id: customer.id)
-    else
-      customer = current_member
-    end
-    subscription = client.subscribe(customer.customer_id, membership)
-    membership.update(stripe_subscription_id: subscription.id)
-  end
-# ########
-
-  def ally_membership
-    @membership = AllyMembership.new
-  end
-
-  def create_ally_membership
-    @membership = AllyMembership.create!(membership_params)
-    create_ally_membership(current_member, @membership)
-    redirect_to current_member
-  end
-
-  def create_ally_membership(member, membership)
-    client = StripePayment.new
-    if current_member.customer_id.nil?
-      customer = client.create_customer(current_member)
-      current_member.update(customer_id: customer.id)
-    else
-      customer = current_member
-    end
-    subscription = client.subscribe(customer.customer_id, membership)
-    membership.update(stripe_subscription_id: subscription.id)
-  end
-
-#########
-  def base_membership
-    @membership = BaseMembership.new
-  end
-
-  def create_base_membership
-    @membership = BaseMembership.create!(membership_params)
-    redirect_to current_member
-  end
-
-  def cancel
-    @membership = Membership.find_by_id(params[:membership_id])
-    if subscription = Stripe::Subscription.retrieve(@membership.stripe_subscription_id)
-      subscription.delete(:at_period_end => true)
-    end
-    @membership.update(cancellation_date: Date.today)
-    redirect_to current_member
-  end
-
   def edit
     @membership = Membership.find(params[:id])
   end
@@ -84,10 +18,56 @@ class MembershipsController < ApplicationController
     create
   end
 
+  def cancel
+    canellation = CancelMembership.new
+    canellation.cancel
+    redirect_to current_member
+  end
+
+  # Membership checkout/show pages
+
+  # CLUB MEMBERSHIP
+
+  def club_membership
+    @membership = ClubMembership.new
+  end
+
+  def create_club_membership
+    @membership = ClubMembership.create!(membership_params)
+    create_and_redirect(current_member, @membership)
+  end
+
+# ALLY MEMBERSHIP
+
+  def ally_membership
+    @membership = AllyMembership.new
+  end
+
+  def create_ally_membership
+    @membership = AllyMembership.create!(membership_params)
+    create_and_redirect(current_member, @membership)
+  end
+
+# BASE MEMBERSHIP
+  def base_membership
+    @membership = BaseMembership.new
+  end
+
+  def create_base_membership
+    @membership = BaseMembership.create!(membership_params)
+    redirect_to current_member
+  end
+
   private
 
   def membership_params
     params.permit(:member_id, :membership_type, :response_id, :redirect_url).merge(expiration_date: Time.now + 1.year)
+  end
+
+  def create_and_redirect(member, membership)
+    stripe_subscription = CreateMembership.new
+    stripe_subscription.create(member, membership, params[:stripe_source])
+    redirect_to current_member
   end
 
 end
