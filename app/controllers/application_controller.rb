@@ -20,6 +20,10 @@ class ApplicationController < ActionController::Base
     current_member && current_member.active_membership?
   end
 
+  def convert_to_pence(number)
+    number * 100
+  end
+
   private
 
   def store_current_location

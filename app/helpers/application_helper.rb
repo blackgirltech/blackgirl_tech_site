@@ -6,8 +6,4 @@ module ApplicationHelper
   def volunteer?
     current_member && current_member.volunteer?
   end
-
-  def convert_to_pence(number)
-    number * 100
-  end
 end
