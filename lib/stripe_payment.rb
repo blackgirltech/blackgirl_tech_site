@@ -7,7 +7,7 @@ class StripePayment
     )
   end
 
-  def create_charge(customer_id, event, rsvp_refund)
+  def create_charge(customer_id, event, *rsvp_refund)
     charge = Stripe::Charge.create(
       :customer => customer_id,
       :amount => event.price_in_pence,
