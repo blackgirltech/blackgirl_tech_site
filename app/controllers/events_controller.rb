@@ -21,25 +21,14 @@ class EventsController < ApplicationController
       refund: params[:event][:rsvps][:refund]
     )
 
-    if current_member.stripe_source.nil?
-      current_member.update(stripe_source: params[:stripe_source])
-    end
-
     if rsvp.attending.nil? || !rsvp.attending
       rsvp.update(attending: true)
     end
 
     # ^^ this method creates new rsvps for the same user if they unrsvp then rsvp again, at some point we should change this.
 
-    payment = StripePayment.new
-    if current_member.customer_id.nil?
-      customer = payment.create_customer(current_member)
-      current_member.update(customer_id: customer.id)
-    else
-      customer = current_member
-    end
-
-    payment.create_charge(customer.customer_id, @event)
+    payment = EventPayment.new
+    payment.pay(current_member, @event, rsvp)
     redirect_to events_path
   end
 

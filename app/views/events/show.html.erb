@@ -93,7 +93,7 @@ form.addEventListener('submit', function(event) {
 
 function stripeSourceHandler(source) {
   // Insert the token ID into the form so it gets submitted to the server
-  var form = document.getElementById('new_club_membership');
+  var form = document.getElementById('edit_event_<%= @event.id %>');
   var hiddenInput = document.createElement('input');
   hiddenInput.setAttribute('type', 'hidden');
   hiddenInput.setAttribute('name', 'stripe_source');
