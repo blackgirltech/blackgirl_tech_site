@@ -32,7 +32,7 @@ Rails.application.routes.draw do
   post '/memberships/base_membership' => 'memberships#create_base_membership'
   get '/memberships/ally_membership' => 'memberships#ally_membership'
   post '/memberships/ally_membership' => 'memberships#create_ally_membership'
-  resources :donations
+  resources :donations, only: [:new, :create]
 
   namespace :forest do
     post '/actions/check-in' => 'rsvps#check_in'

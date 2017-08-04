@@ -1,26 +1,24 @@
-<form action="/donations/create" id="donation-form">
-  <div class="form-row">
-    <label for="card-element">
-      Card number
-    </label>
-    <div id="card-element">
-      <!-- a Stripe Element will be inserted here. -->
-    </div>
+<div class="col">
+  <%= form_for @donation, url: {action: "create"} do |f| %>
+    <div class="form-row">
+      <label for="card-element">
+        Card number
+      </label>
+      <div id="card-element">
+        <!-- a Stripe Element will be inserted here. -->
+      </div>
 
-    <!-- Used to display form errors -->
-    <div id="card-errors" role="alert"></div>
-  </div>
-  <% if flash[:error].present? %>
-    <div id="error_explanation">
-      <p><%= flash[:error] %></p>
+      <input type="number" name="amount">
+      <input type="email" name="email">
+
+      <!-- Used to display form errors -->
+      <div id="card-errors" role="alert"></div>
     </div>
+    <%= f.submit "Donate", class: "btn bg-green white hover-green hover-bg-white b--green mt-1 f3 fw2 col-md-6 offset-md-3"%>
   <% end %>
-  <label class="amount">
-    <input type="number">
-  </label>
-  <input type="submit" value="Submit">
+</div>
 
-</form>
+
   <!--  Move to JS -->
   <script>
   var stripe = Stripe('<%=ENV['STRIPE_PUBLISHABLE_KEY']%>');
@@ -51,7 +49,7 @@
   });
 
   // Create a token or display an error when the form is submitted.
-  var form = document.getElementById('donation-form');
+  var form = document.getElementById('new_donation');
   form.addEventListener('submit', function(event) {
     event.preventDefault();
 
@@ -69,12 +67,11 @@
 
   function stripeTokenHandler(token) {
     // Insert the token ID into the form so it gets submitted to the server
-    var form = document.getElementById('donation-form');
+    var form = document.getElementById('new_donation');
     var hiddenInput = document.createElement('input');
     hiddenInput.setAttribute('type', 'hidden');
     hiddenInput.setAttribute('name', 'stripe_token');
     hiddenInput.setAttribute('value', token.id);
-
     form.appendChild(hiddenInput);
 
     // Submit the form
