@@ -13,9 +13,11 @@ class MembershipsController < ApplicationController
   end
 
   def update
-    old_sub = Membership.find(params[:id])
-    old_sub.update!(cancellation_date: Time.now)
-    create
+    membership = Membership.find(params[:id])
+    membership.update!(cancellation_date: Time.now)
+    upgrade = UpdateMembership.new
+    updgrade.upgrade(membership, params[:membership_type])
+    redirect_to current_member
   end
 
   def cancel
