@@ -3,7 +3,7 @@ class StripePayment
   def create_customer(member)
     Stripe::Customer.create(
       email: member.email,
-      source: member.stripe_token
+      source: member.stripe_source
     )
   end
 
