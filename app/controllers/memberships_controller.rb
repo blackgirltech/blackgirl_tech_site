@@ -10,7 +10,7 @@ class MembershipsController < ApplicationController
 
   def cancel
     canellation = CancelMembership.new
-    canellation.cancel
+    canellation.cancel(params[:membership_id], current_member)
     redirect_to current_member
   end
 
