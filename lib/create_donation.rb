@@ -1,8 +1,6 @@
 class CreateDonation
 
-  def create_donation(params)
-    token = params[:stripe_token]
-    amount = convert_to_pence(params[:amount].to_i)
+  def create_donation(token, amount)
 
     # Charge the user's card:
     donation = Stripe::Charge.create(
