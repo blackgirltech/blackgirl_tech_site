@@ -23,7 +23,7 @@
       <%= render "partials/resource_hub" %>
     </div>
     <% if @membership.base? %>
-      <p class="b f4 text-center"> In order to gain full access to all of our services, content and events <%= link_to 'upgrade', edit_member_membership_path(@member.id, @membership.id) %> your membership.</p>
+      <p class="b f4 text-center"> In order to gain full access to all of our services, content and events <%= link_to 'upgrade', new_membership_path %> your membership.</p>
       <hr>
     <% else %>
       <hr>

@@ -1,23 +1,11 @@
 class MembershipsController < ApplicationController
 
   def new
-    if (active_member?) && (current_member.most_recent_membership.paid? || current_member.most_recent_membership.free?)
+    if (active_member?) && (current_member.most_recent_membership.paid?)
       redirect_to current_member
     else
       @membership = Membership.new
     end
-  end
-
-  def edit
-    @membership = Membership.find(params[:id])
-  end
-
-  def update
-    membership = Membership.find(params[:id])
-    membership.update!(cancellation_date: Time.now)
-    upgrade = UpdateMembership.new
-    updgrade.upgrade(membership, params[:membership_type])
-    redirect_to current_member
   end
 
   def cancel
