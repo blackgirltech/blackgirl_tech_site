@@ -6,8 +6,7 @@ class DonationsController < ApplicationController
 
   def create
     @donation = Donation.create(donation_params)
-    donation = CreateDonation.new
-    donation.create_donation_payment(params[:stripe_source], convert_to_pence(params[:amount].to_i))
+    CreateDonation.new.create_donation(params[:stripe_source], convert_to_pence(params[:amount].to_i))
     redirect_to root_path
   end
 
