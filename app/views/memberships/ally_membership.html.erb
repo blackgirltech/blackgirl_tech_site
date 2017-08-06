@@ -39,7 +39,8 @@
   </div>
 </div>
 
-<script>
-  var form_id = 'new_ally_membership';
-  var stripe_env = '<%=ENV['STRIPE_PUBLISHABLE_KEY']%>'
-</script>
+<% content_for :script do %>
+  <script>
+    initialiseStripe('<%=ENV['STRIPE_PUBLISHABLE_KEY']%>', 'new_ally_membership');
+  </script>
+<% end %>

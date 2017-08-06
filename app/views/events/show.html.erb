@@ -45,10 +45,8 @@
   </div>
 </div>
 
-<!--  Move to JS -->
-
-
-<script>
-var stripe_env = '<%=ENV['STRIPE_PUBLISHABLE_KEY']%>';
-var form_id = 'edit_event_<%= @event.id %>';
-</script>
+<% content_for :script do %>
+  <script>
+    initialiseStripe('<%=ENV['STRIPE_PUBLISHABLE_KEY']%>', 'edit_event_<%= @event.id %>');
+  </script>
+<% end %>
