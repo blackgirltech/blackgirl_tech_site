@@ -23,6 +23,7 @@ class MembershipsController < ApplicationController
   end
 
   def create_club_membership
+    authenticate_member!
     @membership = ClubMembership.create!(membership_params)
     create_and_redirect(current_member, @membership)
   end
@@ -34,6 +35,7 @@ class MembershipsController < ApplicationController
   end
 
   def create_ally_membership
+    authenticate_member!
     @membership = AllyMembership.create!(membership_params)
     create_and_redirect(current_member, @membership)
   end
@@ -44,6 +46,7 @@ class MembershipsController < ApplicationController
   end
 
   def create_base_membership
+    authenticate_member!
     @membership = BaseMembership.create!(membership_params)
     redirect_to current_member
   end
