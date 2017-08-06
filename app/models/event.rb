@@ -25,8 +25,7 @@ class Event < ApplicationRecord
 
   private
   def auto_refund
-    # Change the date to seconds
-    AutoRefundJob.set(wait: self.date.to_datetime.to_i + 1.day).perform_later(self.id)
+    AutoRefundJob.set(wait_until: self.date.to_datetime + 1.day).perform_later(self.id)
   end
 
 end
