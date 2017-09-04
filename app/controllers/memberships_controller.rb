@@ -54,7 +54,7 @@ class MembershipsController < ApplicationController
   private
 
   def membership_params
-    params.permit(:member_id, :membership_type, :response_id, :redirect_url).merge(expiration_date: Time.now + 1.year)
+    params.permit(:member_id, :membership_type, :response_id, :redirect_url)
   end
 
   def create_and_redirect(member, membership)
