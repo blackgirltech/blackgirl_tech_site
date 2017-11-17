@@ -72,7 +72,7 @@ function initialiseStripeDonation(stripe_env, form_id) {
   };
 
   // Create an instance of the card Element
-  var card = elements.create('card', {hidePostalCode: true}, {style: style});
+  var card = elements.create('card', {hidePostalCode: false}, {style: style});
 
   // Add an instance of the card Element into the `card-element` <div>
   card.mount('#card-element');

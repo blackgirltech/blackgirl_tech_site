@@ -16,10 +16,6 @@ class ApplicationController < ActionController::Base
     current_member && current_member.tutor?
   end
 
-  def active_member?
-    current_member && current_member.active_membership?
-  end
-
   def convert_to_pence(number)
     number * 100
   end
@@ -33,7 +29,7 @@ class ApplicationController < ActionController::Base
   protected
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name, :address_line_one, :address_line_two, :city, :postcode, :volunteer, :tutor, :membership => []])
-    devise_parameter_sanitizer.permit(:account_update, keys: [:first_name, :last_name, :address_line_one, :address_line_two, :city, :postcode, :volunteer, :tutor, membership: []])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name, :address_line_one, :address_line_two, :city, :postcode, :volunteer, :tutor])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:first_name, :last_name, :address_line_one, :address_line_two, :city, :postcode, :volunteer, :tutor])
   end
 end

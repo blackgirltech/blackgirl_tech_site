@@ -2,6 +2,6 @@ class MembersController < ApplicationController
 
   def show
     @member = current_member
-    @membership = @member.most_recent_membership
+    @regular_donation = @member.donations.last
   end
 end
