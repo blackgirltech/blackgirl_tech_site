@@ -1,12 +1,5 @@
 class MembershipsController < ApplicationController
 
-  def new
-    if (active_member?) && (current_member.most_recent_membership.paid?)
-      redirect_to current_member
-    else
-      @membership = Membership.new
-    end
-  end
 
   def cancel
     canellation = CancelMembership.new
@@ -16,40 +9,6 @@ class MembershipsController < ApplicationController
 
   # Membership checkout/show pages
 
-  # CLUB MEMBERSHIP
-
-  def club_membership
-    @membership = ClubMembership.new
-  end
-
-  def create_club_membership
-    authenticate_member!
-    @membership = ClubMembership.create!(membership_params)
-    create_and_redirect(current_member, @membership)
-  end
-
-# ALLY MEMBERSHIP
-
-  def ally_membership
-    @membership = AllyMembership.new
-  end
-
-  def create_ally_membership
-    authenticate_member!
-    @membership = AllyMembership.create!(membership_params)
-    create_and_redirect(current_member, @membership)
-  end
-
-# BASE MEMBERSHIP
-  def base_membership
-    @membership = BaseMembership.new
-  end
-
-  def create_base_membership
-    authenticate_member!
-    @membership = BaseMembership.create!(membership_params)
-    redirect_to current_member
-  end
 
   private
 

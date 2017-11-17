@@ -16,10 +16,10 @@ class StripePayment
     )
   end
 
-  def subscribe (customer_id, membership)
+  def subscribe(customer_id, *plan)
     Stripe::Subscription.create(
       :customer => customer_id,
-      :plan => membership.membership_type,
+      :plan => '5_a_month',
     )
   end
 end

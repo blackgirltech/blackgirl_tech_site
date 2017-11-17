@@ -9,10 +9,6 @@ class CreateMembership
     @client = StripePayment.new
 
     # Cancel base membership before creating paid membership
-    base_membership = member.memberships.find_by_membership_type("BASE")
-    if !base_membership.nil? && base_membership.cancellation_date.nil?
-      base_membership.update!(cancellation_date: Time.now)
-    end
 
     if member.stripe_customer_id.nil? || member.stripe_source.nil?
       member.update(stripe_source: stripe_source)

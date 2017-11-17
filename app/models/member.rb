@@ -7,6 +7,7 @@ class Member < ApplicationRecord
 
   has_many :rsvps
   has_many :events, through: :rsvps
+  has_many :donations
 
   validates_presence_of :first_name, :last_name
 
