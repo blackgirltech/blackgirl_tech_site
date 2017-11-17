@@ -22,12 +22,5 @@ Rails.application.routes.draw do
     end
   end
   resources :members
-  resources :memberships, only: [:new]
-  get '/memberships/club_membership' => 'memberships#club_membership'
-  post '/memberships/club_membership' => 'memberships#create_club_membership'
-  get '/memberships/base_membership' => 'memberships#base_membership'
-  post '/memberships/base_membership' => 'memberships#create_base_membership'
-  get '/memberships/ally_membership' => 'memberships#ally_membership'
-  post '/memberships/ally_membership' => 'memberships#create_ally_membership'
   # resources :donations, only: [:new, :create]
 end

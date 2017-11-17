@@ -1,15 +1,15 @@
 class RegistrationsController < Devise::RegistrationsController
 
   def destroy
-    exp_sub = resource.most_recent_membership
-    if exp_sub.paid?
-      cancel = CancelMembership.new
-      cancel.cancel(resource)
+    donation = resource.donations.where(active_regular_donation: true).first
+    if donation
+      cancel = CancelRegularDonation.new
+      cancel.cancel(donation.id, resource)
     end
-    resource.memberships.delete_all
+    resource.donations.delete_all
     super
   end
-  
+
   # protected
 
   # # The path used after sign up.
