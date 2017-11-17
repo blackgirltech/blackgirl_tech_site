@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 48) do
+ActiveRecord::Schema.define(version: 49) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -88,23 +88,6 @@ ActiveRecord::Schema.define(version: 48) do
     t.string   "stripe_customer_id"
     t.index ["email"], name: "index_members_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_members_on_reset_password_token", unique: true, using: :btree
-  end
-
-  create_table "memberships", force: :cascade do |t|
-    t.string   "membership_type"
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
-    t.string   "redirect_url"
-    t.string   "response_id"
-    t.datetime "expiration_date"
-    t.integer  "member_id"
-    t.datetime "cancellation_date"
-    t.string   "gc_mandate_id"
-    t.string   "gc_customer_id"
-    t.string   "gc_payment_id"
-    t.string   "membership_number"
-    t.string   "stripe_membership_token"
-    t.string   "stripe_subscription_id"
   end
 
   create_table "rsvps", force: :cascade do |t|
