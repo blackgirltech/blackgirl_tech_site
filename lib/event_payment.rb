@@ -10,9 +10,9 @@ class EventPayment
       member.update(stripe_source: params[:stripe_source])
       customer = @client.create_customer(member)
       member.update(stripe_customer_id: customer.id)
-      charge = @client.create_charge(customer.id, event, rsvp.refund)
+      charge = @client.create_charge(customer.id, event, rsvp.donate)
     else
-      charge = @client.create_charge(member.stripe_customer_id, event, rsvp.refund)
+      charge = @client.create_charge(member.stripe_customer_id, event, rsvp.donate)
     end
     rsvp.update(stripe_charge_token: charge.id)
   end

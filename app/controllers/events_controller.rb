@@ -18,7 +18,7 @@ class EventsController < ApplicationController
     rsvp = Rsvp.find_or_create_by!(
       event_id: @event.id,
       member: current_member,
-      refund: params[:event][:rsvps][:refund]
+      donate: params[:event][:rsvps][:donate]
     )
 
     if rsvp.attending.nil? || !rsvp.attending

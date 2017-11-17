@@ -10,8 +10,7 @@
 
     <div class="col">
       <% if @rsvp.empty? %>
-      <p> We collect a £5 deposit per event which is refunded back to you once your attendance has been confirmed.
-        Submit your card details below to reserve your space. </p>
+      <p> We collect a £5 deposit per event which is refunded back to you once your attendance has been confirmed. However, if you would like to donate this deposit to us, to ensure the running of future events, then check the donate box. </p>
         <div class="col-md-8">
           <%= form_for @event, url: {action: "rsvp"} do |f| %>
             <div class="form-row">
@@ -27,7 +26,8 @@
             </div>
             <% if @event.refundable %>
               <%= f.fields_for :rsvps do |rsvp| %>
-                <%= rsvp.check_box :refund %>
+                <%= rsvp.label :donate, "Check here if you'd like to donate your deposit" %>
+                <%= rsvp.check_box :donate %>
               <% end %>
             <% end %>
             <!-- Display explanitory text & rsvp button with no form if customer_id exists -->

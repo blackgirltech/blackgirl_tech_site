@@ -16,8 +16,12 @@ class ApplicationController < ActionController::Base
     current_member && current_member.tutor?
   end
 
-  def convert_to_pence(number)
-    number * 100
+  def convert_to_pence(n)
+    n.to_f * 100
+  end
+
+  def convert_to_pounds(n)
+    n.to_f / 100
   end
 
   private

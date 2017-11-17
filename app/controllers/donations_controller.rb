@@ -7,7 +7,7 @@ class DonationsController < ApplicationController
   def create
     @donation = Donation.create(donation_params)
     if params[:one_off]
-      CreateDonation.new.create_one_off_donation(params[:stripe_source], convert_to_pence(params[:amount].to_f).to_i)
+      CreateDonation.new.create_one_off_donation(params[:stripe_source], convert_to_pence(params[:amount]).to_i)
     elsif params[:regular]
       # pass plan to below
       unless @donation.active_regular_donation
