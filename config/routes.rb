@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  mount ForestLiana::Engine => '/forest'
   devise_for :members, :controllers => { :omniauth_callbacks => "omniauth_callbacks", :registrations => "registrations"}
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
@@ -33,8 +32,4 @@ Rails.application.routes.draw do
   get '/memberships/ally_membership' => 'memberships#ally_membership'
   post '/memberships/ally_membership' => 'memberships#create_ally_membership'
   resources :donations, only: [:new, :create]
-
-  namespace :forest do
-    post '/actions/check-in' => 'rsvps#check_in'
-  end
 end

@@ -1,0 +1,69 @@
+<div class="form-group">
+  <div class="field">
+    <%= f.label :first_name, class: "sr-only"%><br />
+    <%= f.text_field :first_name, autofocus: true, class: "form-control", placeholder: "First name" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :last_name, class: "sr-only"%><br />
+    <%= f.text_field :last_name, class: "form-control", placeholder: "Last name" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :email, class: "sr-only" %><br />
+    <%= f.email_field :email, class: "form-control", placeholder: "Email" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password, class: "sr-only" %>
+    <% if @minimum_password_length %>
+    <em class="sr-only">(<%= @minimum_password_length %> characters minimum)</em>
+    <% end %><br />
+    <%= f.password_field :password, autocomplete: "off", class: "form-control", placeholder: "Password (6 characters min)" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password_confirmation, class: "sr-only" %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control", placeholder: "Password Confirmation" %>
+  </div>
+
+  <br>
+  <p> Your address is needed so that we can send you all the cool things we promised in our membership package. </p>
+
+  <div class="field">
+    <%= f.label :address_line_one, class: "sr-only"%><br />
+    <%= f.text_field :address_line_one, class: "form-control", placeholder: "House number/flat name" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :address_line_two, class: "sr-only"%><br />
+    <%= f.text_field :address_line_two, class: "form-control", placeholder: "Street" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :city, class: "sr-only"%><br />
+    <%= f.text_field :city, class: "form-control", placeholder: "City" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :postcode, class: "sr-only"%><br />
+    <%= f.text_field :postcode, class: "form-control", placeholder: "Postcode" %>
+  </div>
+  <br>
+  <p> Why not join our Associates program and sign up to become a volunteer and/or tutor? All levels are welcome. </p>
+
+  <div class="form-check form-check-inline">
+    <label class="form-check-label">
+      <%= f.check_box :volunteer, class: "form-check-input" %> Volunteer
+    </label>
+  </div>
+
+  <div class="form-check form-check-inline">
+    <label class="form-check-label">
+      <%= f.check_box :tutor, class: "form-check-input" %> Tutor
+    </label>
+  </div>
+</div>
+<div class="actions">
+    <%= f.submit "Sign up", class: "btn white bg-green hover-bg-white b--green hover-green" %>
+</div>

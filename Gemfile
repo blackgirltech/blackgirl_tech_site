@@ -37,24 +37,10 @@ gem 'twitter'
 gem 'omniauth-twitter'
 gem "omniauth-google-oauth2"
 
-# Active Admin
-# gem 'activeadmin', git: 'https://github.com/activeadmin/activeadmin'
-# gem 'inherited_resources', github: 'activeadmin/inherited_resources'
-
-# FOREST ADMIN
-gem 'forest_liana'
-
 # PAYMENT GATEWAYS
 gem 'stripe'
 
-
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
-
 gem 'font-awesome-sass'
-
-# Sessions Cookies
-# gem 'activerecord-session_store'
 
 # Jobs
 gem 'delayed_job_active_record'
@@ -76,6 +62,7 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
 
+gem 'rack-cors'
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
