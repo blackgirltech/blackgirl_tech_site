@@ -5,37 +5,19 @@
     <p> <span class="b">Email:</span> <%= @member.email %> <br> <%= link_to 'Edit your profile',  edit_member_registration_path, class: "dark-green hover-green fw5" %></p>
   </div>
 
-  <% if (@member.active_membership? == nil)%>
-    <div class="text-center">
-      <p class="f2 fw2">You need to become a member to access our resources</p>
-      <%= link_to "Join Us", new_membership_path, class: "f1 fw4 dark-green hover-green" %>
     </div>
-  <% elsif (@membership.redirect_url.present? && @membership.gc_mandate_id.nil?)%>
-    <div class="text-center">
-      <p class="f2 fw2">It seems you started the membership process but didn't complete it, you'll need to <%= link_to "join us", edit_member_membership_path(@member.id, @membership.id), class: "fw4 dark-green hover-green" %> again. Make sure you <span class="fw4">do not to click the back button on the payment page.</span></p>
-    </div>
-  <% elsif (@member.active_membership?) %>
-    <p> <b>membership Type:</b> <%= @membership.membership_type %></p>
-    <p><b>Membership number: </b> <%= @membership.membership_number %></p>
+
     <p class="text-center f4"> We will be adding more features to this page as we go along, you can find out where we are on our <a href="" class="dark-green hover-green">trello board</a>, if there's something you think we're missing, don't hesitate to <a href="" class="dark-green hover-green">contact us</a>!</p>
     <hr>
     <div class="col-md-6 offset-md-3">
-      <%= render "partials/resource_hub" %>
+      <%#= render "partials/resource_hub" %>
     </div>
-    <% if @membership.base? %>
-      <p class="b f4 text-center"> In order to gain full access to all of our services, content and events <%= link_to 'upgrade', new_membership_path %> your membership.</p>
-      <hr>
-    <% else %>
-      <hr>
-      <%= render "partials/vouchers" %>
-      <hr>
-    <% end %>
     <div class=" col-md-6 pa3 center bg-light-gray mt5">
       <h3 class="red b"> DANGER ZONE </h3>
 
-      <p class="b"> If you cancel your membership, you will be downgraded to our free A-group membership and lose all discounts, lose benefits to all future promotions and your membership card will be disabled. </p>
+      <p class="b"> If you cancel your regular donation, you will be downgraded to our free A-group membership and lose all discounts, lose benefits to all future promotions and your membership card will be disabled. </p>
 
-      <%= link_to 'Cancel Membership',  membership_cancel_path(@membership.id), class: "btn white bg-red hover-red b--red hover-bg-light-gray" %>
+      <%= link_to 'Cancel Regular Donation',  donation_cancel_path(@regular_donation.id), class: "btn white bg-red hover-red b--red hover-bg-light-gray" %>
       <hr>
 
       <p class="b"> ONCE YOUR ACCOUNT IS DELETED, WE CAN NOT RESSURECT IT.</p>
@@ -43,6 +25,5 @@
       <%= link_to 'Delete your profile',  member_registration_path, method: :delete, class: "btn white bg-red hover-red b--red hover-bg-light-gray" %>
 
     </div>
-  <% end %>
 
 </div>

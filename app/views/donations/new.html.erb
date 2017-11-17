@@ -15,11 +15,14 @@
       <% else %>
         <input type="email" name="email">
       <% end %>
-      <label> One Off </label>
-      <input type="checkbox" name="one_off">
-      <label> Regular </label>
-      <input type="checkbox" name="regular">
-
+      <% if current_member %>
+        <label> One Off </label>
+        <input type="checkbox" name="one_off">
+        <label> Regular </label>
+        <input type="checkbox" name="regular">
+      <% else %>
+        <%= hidden_field_tag(:one_off, true) %>
+      <% end %>
       <!-- Used to display form errors -->
       <div id="card-errors" role="alert"></div>
       <% if current_member %>

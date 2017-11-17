@@ -16,14 +16,12 @@ Rails.application.routes.draw do
   get 'events/:id/unvolunteer' => 'events#unvolunteering'
   resources :members, only: [:show]
   authenticate :member do
-    resources :memberships, only: [:create, :edit, :update] do
+    resources :donations do
       get 'complete', on: :member
       get 'cancel'
     end
   end
-  resources :members do
-    resources :memberships, only: [:edit, :update]
-  end
+  resources :members
   resources :memberships, only: [:new]
   get '/memberships/club_membership' => 'memberships#club_membership'
   post '/memberships/club_membership' => 'memberships#create_club_membership'
@@ -31,5 +29,5 @@ Rails.application.routes.draw do
   post '/memberships/base_membership' => 'memberships#create_base_membership'
   get '/memberships/ally_membership' => 'memberships#ally_membership'
   post '/memberships/ally_membership' => 'memberships#create_ally_membership'
-  resources :donations, only: [:new, :create]
+  # resources :donations, only: [:new, :create]
 end

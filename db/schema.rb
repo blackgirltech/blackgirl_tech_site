@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 51) do
+ActiveRecord::Schema.define(version: 52) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(version: 51) do
     t.integer "member_id"
     t.boolean "regular"
     t.boolean "one_off"
+    t.string  "stripe_subscription_id"
   end
 
   create_table "event_venues", force: :cascade do |t|

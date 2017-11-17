@@ -5,7 +5,7 @@ To Do:
 - [x] Member can create one_off & recurring donations
 - [ ] Figure out how to allow stripe to accept regular donations w/ self assigned amount
 - [ ] Member has_one recurring_donation
-- [ ] Member can cancel recurring donation
-- [ ] Member pause recurring donation
-- [ ] User can create one_off donation
-- [ ] User can not create recurring donation
+- [x] Member can cancel recurring donation
+- [x] User can create one_off donation
+- [x] User can not create recurring donation
+- [ ] make sure correct amount is being converted
