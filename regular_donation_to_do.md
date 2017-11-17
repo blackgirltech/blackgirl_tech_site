@@ -8,4 +8,4 @@ To Do:
 - [x] Member can cancel recurring donation
 - [x] User can create one_off donation
 - [x] User can not create recurring donation
-- [ ] make sure correct amount is being converted
+- [x] make sure correct amount is being converted
