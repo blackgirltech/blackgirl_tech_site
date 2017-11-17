@@ -26,7 +26,7 @@ class CreateDonation
     else
       regular_donation = @client.subscribe(member.stripe_customer_id, *plan)
     end
-    donation.update(stripe_subscription_id: regular_donation.id)
+    donation.update(stripe_subscription_id: regular_donation.id, active_regular_donation: true)
   end
 
 end

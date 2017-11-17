@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 52) do
+ActiveRecord::Schema.define(version: 53) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(version: 52) do
     t.boolean "regular"
     t.boolean "one_off"
     t.string  "stripe_subscription_id"
+    t.boolean "active_regular_donation", default: false
   end
 
   create_table "event_venues", force: :cascade do |t|

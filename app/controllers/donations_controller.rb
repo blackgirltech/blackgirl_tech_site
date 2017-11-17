@@ -10,7 +10,9 @@ class DonationsController < ApplicationController
       CreateDonation.new.create_one_off_donation(params[:stripe_source], convert_to_pence(params[:amount].to_i))
     elsif params[:regular]
       # pass plan to below
-      CreateDonation.new.create_regular_donation(current_member, params[:stripe_source], @donation)
+      unless @donation.active_regular_donation
+        CreateDonation.new.create_regular_donation(current_member, params[:stripe_source], @donation)
+      end
     end
     # redirect_to thank_you_page
     redirect_to root_path
@@ -24,7 +26,7 @@ class DonationsController < ApplicationController
 
   private
   def donation_params
-    params.permit(:amount, :email, :one_off, :regular, :member_id, :stripe_subscription_id)
+    params.permit(:amount, :email, :one_off, :regular, :member_id, :stripe_subscription_id, :active_regular_donation)
   end
 
 end

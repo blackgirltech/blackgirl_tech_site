@@ -15,12 +15,12 @@
       <% else %>
         <input type="email" name="email">
       <% end %>
-      <% if current_member %>
+      <% if current_member && !active_donor %>
         <label> One Off </label>
         <input type="checkbox" name="one_off">
         <label> Regular </label>
         <input type="checkbox" name="regular">
-      <% else %>
+      <% elsif current_member.nil? || active_donor %>
         <%= hidden_field_tag(:one_off, true) %>
       <% end %>
       <!-- Used to display form errors -->
