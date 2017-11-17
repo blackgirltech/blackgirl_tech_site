@@ -54,7 +54,7 @@ gem 'stripe'
 gem 'font-awesome-sass'
 
 # Sessions Cookies
-gem 'activerecord-session_store'
+# gem 'activerecord-session_store'
 
 # Jobs
 gem 'delayed_job_active_record'
