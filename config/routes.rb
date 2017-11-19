@@ -8,9 +8,12 @@ Rails.application.routes.draw do
   get '/press' => "static_pages#press"
   get '/terms' => "static_pages#terms"
   get '/privacy_policy' => "static_pages#privacy_policy"
+  get '/event_index' => "events#admin_index"
+  get '/events/:id/admin_show' => "events#admin_show"
 
   resources :events
   patch 'events/:id/rsvp' => 'events#rsvp'
+  put 'events/:id/update_rsvp' => 'events#update_rsvp'
   get 'events/:id/unrsvp' => 'events#unrsvp'
   get 'events/:id/volunteer' => 'events#volunteering'
   get 'events/:id/unvolunteer' => 'events#unvolunteering'

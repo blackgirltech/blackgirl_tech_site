@@ -1,0 +1,21 @@
+<div class="row bg-light-blue pa5" style="">
+  <header class="col-md-4 offset-md-4">
+    <h1 class="display-1 text-center white-80 b">Events</h1>
+  </header>
+</div>
+  <div class="cf">
+
+    <%= @event.name %>
+    <%= @event.date %>
+    Attendees
+    <table>
+      <tr>
+        <th>First name</th>
+        <th>Last name</th>
+        <th>Type</th>
+        <th>Status</th>
+      </tr>
+      <%= render 'partials/admin_show', event: @event %>
+    </table>
+  </div>
+</div>

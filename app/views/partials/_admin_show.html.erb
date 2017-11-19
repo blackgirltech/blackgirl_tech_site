@@ -1,0 +1,16 @@
+<% @event.rsvps.each do |attendee| %>
+    <tr>
+      <td><%= attendee.member.first_name %></td>
+      <td><%= attendee.member.last_name %></td>
+      <% if attendee.volunteering %>
+        <td>Volunteer</td>
+      <% else %>
+        <td> Member </td>
+      <% end %>
+      <% unless attendee.checked_in %>
+        <td> <%= button_to "Check In", "/events/#{@event.id}/update_rsvp?rsvp_id=#{attendee.id}&checked_in=true", remote: true, method: 'put', data: {disable_with: "Checked In"} %> </td>
+      <% else %>
+        <td> <%= button_to "Check Out", "/events/#{@event.id}/update_rsvp?rsvp_id=#{attendee.id}&checked_in=false", remote: true, method: 'put', data: {disable_with: "Checked Out"} %> </td>
+      <% end %>
+    </tr>
+<% end %>
