@@ -80,8 +80,8 @@ class EventsController < ApplicationController
 
   def update_rsvp
     @event = Event.find_by_id(params[:id])
-    rsvp = @event.rsvps.find_by_id(params[:rsvp_id])
-    rsvp.update(rsvp_params)
+    @rsvp = @event.rsvps.find_by_id(params[:rsvp_id])
+    @rsvp.update(rsvp_params)
     respond_to do |format|
       # format.html { redirect_to @event}
       format.js

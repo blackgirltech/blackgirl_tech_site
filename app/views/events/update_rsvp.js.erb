@@ -1,1 +1,1 @@
-$("<%= escape_javascript(render :partial => 'partials/admin_show') %>").append('table')
+$("#checked_in_status_<%=@rsvp.id%>").replaceWith('<%= escape_javascript(render :partial => 'partials/admin_show') %>')
