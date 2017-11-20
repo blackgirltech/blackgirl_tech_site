@@ -5,9 +5,14 @@ class ApplicationController < ActionController::Base
 
 
   def authenticate_admin!
-    # unless current_member.admin
-    #   redirect_to
-    # end
+    authenticate_member!
+    unless current_member.admin?
+      redirect_to root_path
+    end
+  end
+
+  def is_admin?
+    current_member.admin?
   end
 
   def volunteer?

@@ -1,12 +1,12 @@
 class EventsController < ApplicationController
 
   def admin_index
-    # authenticate_admin!
+    authenticate_admin!
     @events = Event.all
   end
 
   def admin_show
-    # authenticate_admin!
+    authenticate_admin!
     @event = Event.find_by_id(params[:id])
   end
 
