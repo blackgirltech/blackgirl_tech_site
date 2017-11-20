@@ -79,6 +79,7 @@ class EventsController < ApplicationController
   end
 
   def update_rsvp
+    authenticate_admin!
     @event = Event.find_by_id(params[:id])
     @rsvp = @event.rsvps.find_by_id(params[:rsvp_id])
     @rsvp.update(rsvp_params)
