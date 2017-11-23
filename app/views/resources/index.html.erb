@@ -1,0 +1,5 @@
+<% @resources.each do |resource| %>
+  <p><%= resource.title %></p>
+  <%= link_to "Edit", edit_resource_path(resource) %>
+  <%= link_to "Delete", resource_path(resource), remote: true, method: 'delete' %>
+<% end %>
