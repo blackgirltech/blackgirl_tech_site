@@ -3,7 +3,9 @@
     <h1 class="display-1 text-center white-80 b">Events</h1>
   </header>
 </div>
-
+<% if admin? %>
+  <%= link_to("Create A New Event", new_event_path) %>
+<% end %>
 <div class="ph4 mt3">
   <div class="row">
     <p class="fw1 f3-ns f5">

@@ -1,47 +1,41 @@
 class EventsController < ApplicationController
 
-  def admin_index
-    authenticate_admin!
-    @events = Event.all
-  end
-
   def admin_show
     authenticate_admin!
     @event = Event.find_by_id(params[:id])
   end
 
   def new
-    # aunthenticate_admin!
+    authenticate_admin!
     @event = Event.new
   end
 
   def create
-    # aunthenticate_admin!
+    authenticate_admin!
     @event= Event.create!(event_params)
-    redirect_to admin_index_events_path
+    binding.pry
+    redirect_to events_path
   end
 
   def edit
-    # aunthenticate_admin!
+    authenticate_admin!
     @event = Event.find_by_id(params[:id])
   end
 
   def update
-    # aunthenticate_admin!
+    authenticate_admin!
     @event = Event.find_by_id(params[:id])
     @event.update(event_params)
-    redirect_to admin_index_events_path
+    redirect_to events_path
   end
 
   def delete
-    # aunthenticate_admin!
+    authenticate_admin!
     @event = Event.find_by_id(params[:id])
     @event.delete
   end
 
   def index
-    @workshops = Event.where(workshop: true).order(date: :asc)
-    @masterclasses = Event.where(masterclass: true).order(date: :asc)
     @events = Event.all
   end
 
@@ -109,7 +103,7 @@ class EventsController < ApplicationController
 
   private
   def event_params
-    params.permit(:name, :date, :time, :address, :details, :max_attendees, :max_volunteers, :price_in_pence, :refundable, :workshop, :masterclass)
+    params.require(:event).permit(:name, :date, :time, :address, :details, :max_attendees, :max_volunteers, :price_in_pence, :refundable, :workshop, :masterclass)
   end
 
   def rsvp_params
