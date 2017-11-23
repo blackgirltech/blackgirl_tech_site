@@ -27,7 +27,9 @@
             <a href="events/<%= event.id %>">
               <p class="b tc black"> <%= event.name %> </p>
             </a>
-          </dl>
+          <% if admin? %>
+            <%= link_to "Edit", edit_event_path(event) %>
+          <% end %>
         </div>
       <% end %>
     <% end %>
