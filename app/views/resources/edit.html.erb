@@ -1,0 +1,16 @@
+<%= form_for @resource do |f| %>
+
+  <%= f.label "Title" %>
+  <%= f.text_field(:title, type: "text", placeholder: "Your Title")%>
+
+  <%= f.label "Preview Description" %>
+  <%= f.text_field(:preview_description, type: "text", placeholder: "A preview of your resource")%>
+
+  <%= f.label "Description" %>
+  <%= f.text_field(:description, type: "text", placeholder: "A description of your resource")%>
+
+  <%= f.label "External URL" %>
+  <%= f.text_field(:external_url, type: "text", placeholder: "your.external_url.com")%>
+
+  <%= f.submit %>
+<% end %>

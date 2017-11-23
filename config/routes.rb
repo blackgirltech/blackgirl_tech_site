@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get '/privacy_policy' => "static_pages#privacy_policy"
 
   resources :events
+  resources :resources
   patch 'events/:id/rsvp' => 'events#rsvp'
   get 'events/:id/unrsvp' => 'events#unrsvp'
   get 'events/:id/volunteer' => 'events#volunteering'
