@@ -29,10 +29,11 @@ class EventsController < ApplicationController
     redirect_to events_path
   end
 
-  def delete
+  def destroy
     authenticate_admin!
     @event = Event.find_by_id(params[:id])
     @event.delete
+    redirect_to events_path
   end
 
   def index
