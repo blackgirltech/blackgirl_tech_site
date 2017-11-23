@@ -5,7 +5,7 @@ class Event < ApplicationRecord
   has_many :event_venues
   has_many :venue, through: :event_venues
 
-  after_create :auto_refund
+  # after_create :auto_refund
 
   def finished
     self.date.present? && (self.date < Date.today)

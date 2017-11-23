@@ -1,0 +1,31 @@
+<div class="col">
+  <%= form_for @event do |f| %>
+    <%= f.label "Name" %>
+    <%= f.text_field(:name, type: "text", placeholder: "Name of event") %>
+
+    <%= f.label "Date" %>
+    <%= f.date_field(:date, type: "date") %>
+
+    <%= f.label "Time" %>
+    <%= f.time_field(:time, type: "time") %>
+
+    <%= f.label "Image" %>
+    <%= f.text_field(:image, type: "text") %>
+
+    <%= f.label "Details" %>
+    <%= f.text_field(:details, type: "text") %>
+
+    <%= f.label "Max Attendees" %>
+    <%= f.number_field(:max_attendees, type: "number") %>
+
+    <%= f.label "Max Volunteers" %>
+    <%= f.number_field(:max_volunteers, type: "number") %>
+
+    <%= f.label "Price In Pence" %>
+    <%= f.number_field(:price_in_pence, type: "number") %>
+
+    <%= f.label "Refundable" %>
+    <%= f.check_box(:refundable) %>
+    <%= f.submit "Create", class: "btn bg-green white hover-green hover-bg-white b--green mt-1 f3 fw2 col-md-6 offset-md-3"%>
+  <% end %>
+</div>

@@ -4,8 +4,15 @@ class ApplicationController < ActionController::Base
   before_filter :store_current_location, unless: :devise_controller?
 
 
-  def admin?
-    current_member && current_member.admin?
+  def authenticate_admin!
+    authenticate_member!
+    unless current_member.admin?
+      redirect_to root_path
+    end
+  end
+
+  def is_admin?
+    current_member.admin?
   end
 
   def volunteer?

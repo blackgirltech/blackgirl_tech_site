@@ -10,4 +10,5 @@ module ApplicationHelper
   def active_regular_donor
     current_member.donations.last.active_regular_donation
   end
+
 end
