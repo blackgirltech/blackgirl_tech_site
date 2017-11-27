@@ -24,6 +24,7 @@ module BlackgirlTechSite
     # -- all .rb files in that directory are automatically loaded.
     config.autoload_paths << Rails.root.join("lib")
     config.active_job.queue_adapter = :delayed_job
+    config.serve_static_assets = true
 
     config.middleware.insert_before 0, 'Rack::Cors' do
       allow do
