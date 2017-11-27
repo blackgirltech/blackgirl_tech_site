@@ -16,16 +16,3 @@
 
 @import "font-awesome-sprockets";
 @import "font-awesome";
-
-body {
-  font-family: -apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
-}
-
-footer {
-  top: 50rem;
-  position: relative;
-}
-
-@media (max-width: 768px) {
-  footer {top: 100rem}
-}

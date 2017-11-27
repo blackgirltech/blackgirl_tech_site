@@ -1,32 +1,31 @@
-<nav class="navbar navbar-toggleable-md">
-
-  <button class="navbar-toggler navbar-toggler-right navbar-light pt-4" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon black"></span>
-  </button>
-
-  <a class="navbar-brand" href="/" title="Home">
-    <img src="https://s3-eu-west-1.amazonaws.com/blackgirl.tech/images/black_logo.png", class="img-fluid d-inline-block align-top", width="100" height="100", alt="site logo">
-  </a>
-
-  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-    <div class="navbar-nav">
-      <%= link_to "About", about_path, class: "nav-link nav-item gray hover-light-green" %>
-      <a class="nav-link nav-item gray hover-light-green" href="https://www.eventbrite.com/o/blackgirltech-7827799702">Events</a>
-      <a class="nav-link nav-item gray hover-light-green" href="http://eepurl.com/cKUOtP">Volunteer</a>
-      <a class="nav-link nav-item green hover-light-green b" href="https://paypal.me/blackgirltech">Donate</a>
-      <a href="https://medium.com/blackgirl-tech-a-blog" class="nav-link nav-item gray hover-light-green"> Blog</a>
-      <a href="https://soundcloud.com/lostinthesource" class="nav-link ßnav-item gray hover-light-green"> Lost in the <span class="courier">Source</span></a>
-
-      <% if current_member %>
-        <%#= link_to "Your Profile", member_path(:id), class: "nav-link nav-item gray hover-light-green" %>
-        <%# if admin? %>
-          <%#= link_to 'Admin', admin_root_path, class: "nav-link nav-item gray hover-light-green" %>
-        <%# end %>
-        <%= link_to "Log Out", destroy_member_session_path, method: :delete, class: "nav-link nav-item gray hover-light-green" %>
-      <% else %>
-        <%#= link_to "Join Us", new_member_registration_path, class: "nav-link nav-item gray hover-light-green" %>
-        <%= link_to "Log In", new_member_session_path, class: "nav-link nav-item green hover-light-green float-md-right" %>
-      <% end %>
+<header>
+    <i class="fa fa-bars menu-btn" aria-hidden="true"></i>
+    <div id="headerInner">
+        <nav>
+            <div id="navWrap">
+                <span id="left">
+                    <%= link_to "About", about_path%>
+                    <a  href="https://www.eventbrite.com/o/blackgirltech-7827799702">Events</a>
+                    <a  href="https://paypal.me/blackgirltech">Donate</a>
+                </span>
+                <img src="images/logo.svg" alt="">
+                <span id="right">
+                    <a href="https://medium.com/blackgirl-tech-a-blog" > Blog</a>
+                    <%= link_to "Join Us", new_member_registration_path %>
+                    <a href="#">link</a>
+                    <% if current_member %>
+                      <%#= link_to "Your Profile", member_path(:id) %>
+                      <%# if admin? %>
+                        <%#= link_to 'Admin', admin_root_path %>
+                      <%# end %>
+                      <%= link_to "Log Out", destroy_member_session_path, method: :delete %>
+                    <% else %>
+                      <%#= link_to "Join Us", new_member_registration_path %>
+                      <%= link_to "Log In", new_member_session_path %>
+                    <% end %>
+                </span>
+            </div>
+        </nav>
+        <img class="hdr" src="images/hdrImg.jpg" alt="">
     </div>
-  </div>
-</nav>
+</header>
