@@ -2384,14 +2384,14 @@ header #headerInner {
   -moz-background-clip: padding;
   -webkit-background-clip: padding-box;
   background-clip: padding-box;
-  background: #1A1A6A;
+  background: rgba(26, 26, 106, 1);
   overflow: hidden;
-  background-color: #5C1D75;
-  background: -webkit-gradient(linear, left bottom, left top, from(#5C1D75), to(#1A1A6A));
-  background: -webkit-linear-gradient(left bottom, #5C1D75, #1A1A6A);
-  background: -moz-linear-gradient(left bottom, #5C1D75, #1A1A6A);
-  background: -ms-linear-gradient(left bottom, #5C1D75, #1A1A6A);
-  background: -o-linear-gradient(left bottom, #5C1D75, #1A1A6A);
+  background-color: rgba(92, 29, 117, 1);
+  background: -webkit-gradient(linear, left bottom, left top, rgba(92, 29, 117, 0.8), rgba(26, 26, 106, 0.8)), url("hdrImg.jpg");
+  background: -webkit-linear-gradient(left bottom, rgba(92, 29, 117, 0.8), rgba(26, 26, 106, 0.8)), url("hdrImg.jpg");
+  background: -moz-linear-gradient(left bottom, rgba(92, 29, 117, 0.8), rgba(26, 26, 106, 0.8)), url("hdrImg.jpg");
+  background: -ms-linear-gradient(left bottom, rgba(92, 29, 117, 0.8), rgba(26, 26, 106, 0.8)), url("hdrImg.jpg");
+  background: -o-linear-gradient(left bottom, rgba(92, 29, 117, 0.8), rgba(26, 26, 106, 0.8)), url("hdrImg.jpg");
 }
 header #headerInner nav #navWrap {
   position: relative;
