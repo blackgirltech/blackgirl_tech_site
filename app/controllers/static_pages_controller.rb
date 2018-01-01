@@ -20,4 +20,7 @@ class StaticPagesController < ApplicationController
 
   def fundraising
   end
+
+  def past_donors
+  end
 end

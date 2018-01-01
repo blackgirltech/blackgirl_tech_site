@@ -4970,7 +4970,7 @@ header #headerInner .hdr {
 #eventPageStyle .partners {
   margin: 0px 0 30px;
 }
-#sponsorHeader {
+#donorHeader {
   background-color: #367D96;
   background-image: -webkit-gradient(linear, top top, bottom bottom, from(#367D96), to(#1C2169));
   background-image: -webkit-linear-gradient(top, #367D96, #1C2169);
@@ -4981,49 +4981,49 @@ header #headerInner .hdr {
   font-size: 12pt;
 }
 @media screen and (min-width: 480px) {
-  #sponsorHeader {
+  #donorHeader {
     padding: 100px 0 50px;
   }
 }
 @media screen and (min-width: 620px) {
-  #sponsorHeader {
+  #donorHeader {
     padding: 120px 0 90px;
   }
 }
 @media screen and (min-width: 768px) {
-  #sponsorHeader {
+  #donorHeader {
     padding: 130px 0 110px;
   }
-  #sponsorHeader h1 {
+  #donorHeader h1 {
     font-size: 26pt;
   }
 }
-#sponsorHeader .cta {
+#donorHeader .cta {
   width: 278px;
   margin: 24px auto 0;
 }
-.sponsorsArea {
+.donorsArea {
   padding: 40px 0;
   float: left;
   width: 100%;
   background: #fff;
 }
-.sponsorsArea h2 {
+.donorsArea h2 {
   text-align: center;
   color: #1A1A6A;
   margin: 30px 0 50px;
 }
 @media screen and (min-width: 768px) {
-  .sponsorsArea .maxWidth {
+  .donorsArea .maxWidth {
     width: 691px;
   }
 }
 @media screen and (min-width: 970px) {
-  .sponsorsArea .maxWidth {
+  .donorsArea .maxWidth {
     width: 763px;
   }
 }
-.sponsorsArea .maxWidth .sponsorItem {
+.donorsArea .maxWidth .donorItem {
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   border-radius: 3px;
@@ -5040,7 +5040,7 @@ header #headerInner .hdr {
   margin: 0 auto 30px;
   position: relative;
 }
-.sponsorsArea .maxWidth .sponsorItem p {
+.donorsArea .maxWidth .donorItem p {
   font-weight: 600;
   text-align: center;
   width: 100%;
@@ -5049,13 +5049,13 @@ header #headerInner .hdr {
   float: left;
   font-size: 11pt;
 }
-.sponsorsArea .maxWidth .sponsorItem .sponsorImgWrap {
+.donorsArea .maxWidth .donorItem .donorImgWrap {
   float: left;
   width: 100%;
   margin: 18px 0 0 0;
   position: relative;
 }
-.sponsorsArea .maxWidth .sponsorItem .sponsorImgWrap .sponsorImg {
+.donorsArea .maxWidth .donorItem .donorImgWrap .donorImg {
   width: 128px;
   height: 128px;
   margin: 0 auto;
@@ -5072,7 +5072,7 @@ header #headerInner .hdr {
   -moz-box-shadow: inset 0px 2px 14px rgba(0, 0, 0, 0.2);
   box-shadow: inset 0px 2px 14px rgba(0, 0, 0, 0.2);
 }
-.sponsorsArea .maxWidth .sponsorItem .sponsorImgWrap img {
+.donorsArea .maxWidth .donorItem .donorImgWrap img {
   width: 100%;
   max-width: 120px;
   text-align: center;
@@ -5081,15 +5081,15 @@ header #headerInner .hdr {
   z-index: 3;
   left: 50px;
 }
-.sponsorsArea .maxWidth .sponsorItem .bgDesignOne,
-.sponsorsArea .maxWidth .sponsorItem .bgDesignTwo {
+.donorsArea .maxWidth .donorItem .bgDesignOne,
+.donorsArea .maxWidth .donorItem .bgDesignTwo {
   position: absolute;
   padding: 60px 0;
   float: left;
   width: 100%;
   width: 400px;
 }
-.sponsorsArea .maxWidth .sponsorItem .bgDesignOne {
+.donorsArea .maxWidth .donorItem .bgDesignOne {
   background: #6B1156;
   bottom: -52px;
   z-index: 0;
@@ -5099,7 +5099,7 @@ header #headerInner .hdr {
   -o-transform: skew(0deg, 6deg);
   transform: skew(0deg, 6deg);
 }
-.sponsorsArea .maxWidth .sponsorItem .bgDesignTwo {
+.donorsArea .maxWidth .donorItem .bgDesignTwo {
   background: #F36197;
   -webkit-opacity: 0.4;
   -moz-opacity: 0.4;
@@ -5113,26 +5113,26 @@ header #headerInner .hdr {
   transform: skew(0deg, -14deg);
 }
 @media screen and (min-width: 768px) {
-  .sponsorsArea .maxWidth .sponsorItem {
+  .donorsArea .maxWidth .donorItem {
     float: left;
     margin-right: 3.3%;
   }
-  .sponsorsArea .maxWidth .sponsorItem:nth-of-type(3n) {
+  .donorsArea .maxWidth .donorItem:nth-of-type(3n) {
     float: right;
     margin-right: 0;
   }
 }
 @media screen and (min-width: 970px) {
-  .sponsorsArea .maxWidth .sponsorItem {
+  .donorsArea .maxWidth .donorItem {
     margin-right: 7.7%;
     margin-bottom: 40px;
   }
 }
-.sponsorsArea .maxWidth .sponsorsBtm {
+.donorsArea .maxWidth .donorsBtm {
   width: 100%;
   float: left;
 }
-.sponsorsArea .maxWidth .sponsorsBtm h3 {
+.donorsArea .maxWidth .donorsBtm h3 {
   font-size: 13pt;
   width: 100%;
   float: left;
@@ -5141,13 +5141,13 @@ header #headerInner .hdr {
   margin: 0 0 30px ;
   text-align: center;
 }
-.sponsorsArea .maxWidth .sponsorsBtm ul {
+.donorsArea .maxWidth .donorsBtm ul {
   padding: 0;
   margin: 0;
   float: left;
   width: 100%;
 }
-.sponsorsArea .maxWidth .sponsorsBtm ul li {
+.donorsArea .maxWidth .donorsBtm ul li {
   width: 100%;
   padding: 0 0 20px;
   list-style: none;
@@ -5156,13 +5156,13 @@ header #headerInner .hdr {
   text-align: center;
 }
 @media screen and (min-width: 620px) {
-  .sponsorsArea .maxWidth .sponsorsBtm ul li {
+  .donorsArea .maxWidth .donorsBtm ul li {
     width: 50%;
     float: left;
   }
 }
 @media screen and (min-width: 768px) {
-  .sponsorsArea .maxWidth .sponsorsBtm ul li {
+  .donorsArea .maxWidth .donorsBtm ul li {
     width: 33.3%;
   }
 }
