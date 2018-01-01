@@ -2,7 +2,7 @@ class StaticPagesController < ApplicationController
 
   def home
   end
-  
+
   def about
   end
 
@@ -16,5 +16,8 @@ class StaticPagesController < ApplicationController
   end
 
   def privacy_policy
+  end
+
+  def fundraising
   end
 end

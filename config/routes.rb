@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get '/press' => "static_pages#press"
   get '/terms' => "static_pages#terms"
   get '/privacy_policy' => "static_pages#privacy_policy"
+  get '/fundraising' => "static_pages#fundraising"
 
   resources :events
   patch 'events/:id/rsvp' => 'events#rsvp'
