@@ -17,7 +17,7 @@ class ApplicationController < ActionController::Base
   end
 
   def convert_to_pence(n)
-    n.to_f * 100
+    (n.to_f * 100).to_i
   end
 
   def convert_to_pounds(n)
