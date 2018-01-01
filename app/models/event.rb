@@ -23,6 +23,10 @@ class Event < ApplicationRecord
     self.max_volunteers.present? && self.rsvps.where(volunteering: true).count >= self.max_volunteers
   end
 
+  def price
+    (self.price_in_pence.to_f/100).round(2)
+  end
+
   private
   def auto_refund
     AutoRefundJob.set(wait_until: self.date.to_datetime + 1.day).perform_later(self.id)
