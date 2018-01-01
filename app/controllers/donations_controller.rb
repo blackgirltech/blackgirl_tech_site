@@ -15,14 +15,17 @@ class DonationsController < ApplicationController
         CreateDonation.new.create_regular_donation(current_member, params[:stripe_source], @donation)
       end
     end
-    # redirect_to thank_you_page
-    redirect_to root_path
+    redirect_to thank_you_path
   end
 
   def cancel
     canellation = CancelRegularDonation.new
     canellation.cancel(params[:donation_id], current_member)
     redirect_to current_member
+  end
+
+  def thank_you
+
   end
 
   private

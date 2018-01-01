@@ -21,6 +21,7 @@ Rails.application.routes.draw do
       get 'cancel'
     # end
   end
+  get 'thank_you' => 'donations#thank_you'
   resources :members
   # resources :donations, only: [:new, :create]
 end
