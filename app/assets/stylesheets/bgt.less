@@ -923,38 +923,165 @@ header{
     .gradientTLBR (#36166F, #4BC2F2);
     float: left;
     width:100%;
-    .donateInnerAreas{
-        margin:40px 0;
-    }
-    #donateText{
-        .bRadius(6px);
-        padding:30px 40px;
-        background: rgba(0,0,0,0.2);
-        h2,
-        p{
-            color:#fff;
-            text-align:center;
-            margin:0;
-            padding:0;
+    .maxWidth{
+        .donateInnerAreas{
+            margin:40px 0;
         }
-        p{
-            font-weight: 200;
-            font-size: 9.5pt;
-            line-height: 1.6em;
-            .opacity(0.9);
+        #donateText{
+            .bRadius(6px);
+            padding:30px 40px;
+            background: rgba(0,0,0,0.2);
+            h2,
+            p{
+                color:#fff;
+                text-align:center;
+                margin:0;
+                padding:0;
+            }
+            p{
+                font-weight: 200;
+                font-size: 9.5pt;
+                line-height: 1.6em;
+                .opacity(0.9);
+            }
+            h2{
+                margin: 0 0 20px 0;
+            }
+            @media @768{
+                max-width:40%;
+                padding:30px 20px;
+                float:left;
+            }
         }
-        h2{
-            margin: 0 0 20px 0;
+        #donateForm{
+            @media @768{
+                float:right;
+                margin-bottom:40px;
+            }
+            max-width:307px;
+            margin: 0 auto;
+            .baseFormStyles{
+                .bRadius(6px);
+                background: #fff;
+                .bShadow( 0px 5px 11px 0px rgba(0,0,0,0.1) );
+                border:none;
+            }
+            #prices{
+                width:100%;
+                float:left;
+                .price{
+                    padding: 13px 0;
+                    text-align: center;
+                    width: 87px;
+                    font-size: 21pt;
+                    float: left;
+                    margin:0 23px 15px 0;
+                    font-weight: 700;
+                    letter-spacing: 0.05em;
+                    color:#3D4A97;
+                    cursor: pointer;
+                    .baseFormStyles;
+                    &:nth-of-type(3n){
+                        float:right;
+                        margin-right:0;
+                    }
+                }
+                .selected{
+                    .vGradient(#FAE961, #F7AE1C);
+                    color:#fff;
+                }
+            }
+            input[type=number]::-webkit-inner-spin-button,
+            input[type=number]::-webkit-outer-spin-button{
+
+                -webkit-appearance: none;
+                -moz-appearance: none;
+                -o-appearance: none;
+                appearance: none;
+            }
+            #other{
+                .baseFormStyles;
+                float:left;
+                width:92%;
+                padding:15px 4%;
+                font-size:10pt;
+                margin:0 0 15px 0;
+                font-family: 'Montserrat', sans-serif;
+                &:focus{
+                    outline:none;
+                }
+
+            }
+            #frequency{
+                width:100%;
+                float:left;
+                margin:0 0 35px 0;
+                #innerFrequency{
+                    margin:0 auto;
+                    width:220px;
+                    label{
+                        color:#fff;
+                        font-size:9.5pt;
+                        &:nth-of-type(2){
+                            float:right;
+                            margin-top:2px;
+                        }
+                    }
+                    #monthly{
+                        margin-right:10px;
+                        .baseFormStyles;
+                    }
+                    #oneOff{
+                        float:right;
+                        margin-right:10px;
+                        .baseFormStyles;
+                    }
+                }
+            }
+            fieldset{
+                border:none;
+                margin:0;
+                padding:0;
+                legend{
+                    font-size:10pt;
+                    color:#fff;
+                    margin-bottom:8px;
+                }
+                #name,
+                #email{
+                    width:100%;
+                    float:left;
+                    input{
+                        .baseFormStyles;
+                        font-family: 'Montserrat', sans-serif;
+                        width:92%;
+                        padding:15px 4%;
+                        font-size:10pt;
+                        margin:0 0 15px 0;
+                        &:focus{
+                            outline:none;
+                        }
+                    }
+                }
+                #card-element{
+                    .baseFormStyles;
+                    float:left;
+                    font-family: 'Montserrat', sans-serif;
+                    width:92%;
+                    padding:15px 4%;
+                    font-size:10pt;
+                    margin:0 0 15px 0;
+                    .CardBrandIcon-container{
+                        display:none;
+                    }
+                }
+            }
+            input[type=radio]:checked ~ .check::before{
+              background: #F8BB27;
+            }
         }
         @media @768{
-            max-width:40%;
-            padding:30px 20px;
-            float:left;
-        }
-    }
-    #donateForm{
-        @media @768{
-            float:right;
+            width:700px;
         }
     }
 }
@@ -2230,7 +2357,7 @@ header{
 }
 
 
-#donorHeader{
+#sponsorHeader{
     .vGradient (#367D96, #1C2169);
     padding: 90px 0 40px;
     font-size:12pt;
@@ -2253,7 +2380,7 @@ header{
 }
 
 
-.donorsArea{
+.sponsorsArea{
     padding:40px 0;
     .pagePanel;
     background:#fff;
@@ -2264,7 +2391,7 @@ header{
         @media @970{
             width:763px;
         }
-        .donorItem{
+        .sponsorItem{
             .bRadius(3px);
             overflow:hidden;
             width:215px;
@@ -2282,12 +2409,12 @@ header{
                 float: left;
                 font-size: 11pt;
             }
-            .donorImgWrap{
+            .sponsorImgWrap{
                 float: left;
                 width: 100%;
                 margin: 18px 0 0 0;
                 position:relative;
-                .donorImg{
+                .sponsorImg{
                     width:128px;
                     height:128px;
                     margin: 0 auto;
@@ -2341,7 +2468,7 @@ header{
                 margin-bottom:40px;
             }
         }
-        .donorsBtm{
+        .sponsorsBtm{
             width:100%;
             float:left;
             h3{
