@@ -2,7 +2,7 @@
 
     <div class="pagesHdr" id="donateHeader">
         <h1>Donate</h1>
-        <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium.</p>
+        <p>Fancy helping us out? Why not become a regular donor or you can give us a one-off donation.</p>
         <hr>
         <img class="one" src="images/donateHdrOval.png" alt="">
         <img class="two" src="images/donateHdrOval.png" alt="">
@@ -13,37 +13,33 @@
     <div class="donateArea">
         <div class="maxWidth">
             <div class="donateInnerAreas" id="donateText">
-                <h2>Why's it so important to donate to us</h2>
-                <p>
-                    Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, Nemo enim ipsam voluptatem
-                    quia voluptas sit aspernatur aut odit aut fugit
-                    <br>
-                    <br> totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta
-                    sunt explicabo.
-                </p>
+              <h2>Why donate to blackgirl.tech?</h2>
+              <p>
+                We're a very small team who want to do really big things. Apart from our monthly workshops, we want to do more to make technology accessible and fun.
+                <br>
+                <br>
+                This year we want to start a scholarship fund, which will include tuition & living expenses for one black woman to learn how to code at a bootcamp of their choice (from our approved list). But we need your help to raise the money! If 100 people gave £10 a month for a year, we'd be able to send someone on a bootcamp this time next year. If you can't give £10 or can only give monthly, that's fine too, every little helps!
+              </p>
             </div>
             <div class="donateInnerAreas">
-
-                <%= form_for @donation, url: {action: "create"}, html: { class: "donateForm" } do |f| %>
-                    <div id="prices">
-                        <div class="price">
-                            <span class="priceAmounts">£5</span>
-                            <input type="radio" hidden="true" name="amount" class="amount" value="5">
-                        </div>
-                        <div class="price">
-                            <span class="priceAmounts">£10</span>
-                            <input type="radio" hidden="true" name="amount" class="amount" value="10">
-                        </div>
-                        <div class="price">
-                            <span class="priceAmounts">£15</span>
-                            <input type="radio" hidden="true" name="amount" class="amount" value="15">
-                        </div>
+              <%= form_for @donation, html: { class: "donateForm" } do |f| %>
+                  <div id="prices">
+                    <div class="price">
+                      <%= f.label "amount", "£5", class: "priceAmounts"%>
+                      <%= f.radio_button "amount", "5" %>
                     </div>
+                    <div class="price">
+                      <%= f.label "amount", "£10", class: "priceAmounts" %>
+                      <%= f.radio_button "amount", "10" %>
+                    </div>
+                    <div class="price">
+                      <%= f.label "amount", "£15", class: "priceAmounts" %>
+                      <%= f.radio_button "amount", "15" %>
+                    </div>
+                    <%= f.number_field "amount", id: "other", placeholder: "Other Amount" %>
+                  </div>
 
-
-                    <input type="number" name="amount" id="other" placeholder="Other amount">
-
-                    <% if current_member && !active_donor %>
+                  <% if current_member && !active_donor %>
                     <div id="frequency">
                       <div id="innerFrequency">
                         <input type="radio" name="regular" value="monthly" class="monthly">
@@ -52,38 +48,65 @@
                         <label for="one_off">One off</label>
                       </div>
                     </div>
-                    <% elsif current_member.nil? || active_donor %>
-                      <%= hidden_field_tag(:one_off, true) %>
-                    <% end %>
+                  <% elsif current_member.nil? || active_donor %>
+                    <%= hidden_field_tag(:one_off, true) %>
+                  <% end %>
 
-                    <fieldset>
-                        <legend>Payment information:</legend>
+                  <fieldset>
+                      <legend>Payment information:</legend>
 
-                        <div id="name">
-                            <input type="name" name="name" class="name" placeholder="Name">
-                        </div>
+                      <div id="name">
+                          <input type="name" name="name" class="name" placeholder="Name">
+                      </div>
 
-                        <div id="email">
-                            <input type="email" name="email" class="email" placeholder="Email">
-                        </div>
+                      <div id="email">
+                          <input type="email" name="email" class="email" placeholder="Email">
+                      </div>
 
-                        <div id="card-element">
-                            <!-- a Stripe Element will be inserted here. -->
-                        </div>
-                        <div id="card-err" role="alert"></div>
-                        <% if current_member %>
-                          <%= hidden_field_tag(:member_id, "#{current_member.id}") %>
-                        <% end %>
-                      <%= f.submit "Donate", class: "cta"%>
-
-                    </fieldset>
-
-
+                      <div id="card-element">
+                          <!-- a Stripe Element will be inserted here. -->
+                      </div>
+                      <div id="card-err" role="alert"></div>
+                      <% if current_member %>
+                        <%= hidden_field_tag(:member_id, "#{current_member.id}") %>
+                      <% end %>
+                  </fieldset>
+                  <%= f.submit "Donate", class: "cta"%>
                 <% end %>
-
             </div>
         </div>
     </div>
+
+    <script>
+
+    const priceWrapper = document.getElementsByClassName('price');
+    const prices = Array.from(priceWrapper);
+
+    for (let i = 0; i < prices.length; i++) {
+
+      function selected() {
+
+          prices.map(
+              price => {
+                  if (price.classList.contains("selected")) {
+                      price.classList.remove("selected");
+                      prices[i].classList.add("selected")
+                  } else {
+                      prices[i].classList.add("selected")
+                  }
+              }
+          )
+
+          const regArray = prices[i].innerHTML.match(/[0-9]+/);
+          const amount = parseInt(regArray[0]);
+
+          // replace console log with a fn to pass the selected amount to stripe
+          console.log(amount);
+      }
+      prices[i].addEventListener('click', selected);
+    }
+    </script>
+
 
     <!--  Partial for attendees -->
 

@@ -2518,6 +2518,14 @@ header #headerInner .hdr {
 .cta:hover {
   color: #000;
 }
+.greyed {
+  background-color: #CDCDCD;
+  background-image: -webkit-gradient(linear, top top, bottom bottom, from(#CDCDCD), to(#989898));
+  background-image: -webkit-linear-gradient(top, #CDCDCD, #989898);
+  background-image: -moz-linear-gradient(top, #CDCDCD, #989898);
+  background-image: -ms-linear-gradient(top, #CDCDCD, #989898);
+  background-image: -o-linear-gradient(top, #CDCDCD, #989898);
+}
 .contentWrap {
   width: 85%;
   margin: 0 auto;
@@ -5474,6 +5482,300 @@ header #headerInner .hdr {
     padding-top: 40px;
   }
 }
+.editProfilePage {
+  float: left;
+  width: 100%;
+}
+@media screen and (min-width: 970px) {
+  .editProfilePage {
+    margin-top: -113px;
+  }
+}
+.editProfilePage .maxWidth .editSection {
+  float: left;
+  width: 100%;
+  margin-bottom: 40px;
+}
+@media screen and (min-width: 768px) {
+  .editProfilePage .maxWidth .editSection {
+    width: 600px;
+    display: block;
+  }
+}
+.editProfilePage .maxWidth .editSection h3 {
+  font-size: 11pt;
+  color: #8A8A8A;
+  margin: 20px 0 30px 0;
+  letter-spacing: 0.02em;
+}
+.editProfilePage .maxWidth .editSection p {
+  font-size: 9.5pt;
+  line-height: 1.6em;
+  font-weight: 300;
+}
+.editProfilePage .maxWidth .editSection form input {
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  outline: 0;
+  border: 0;
+  width: 90%;
+  padding: 12px 5%;
+  -webkit-opacity: 0.9;
+  -moz-opacity: 0.9;
+  opacity: 0.9;
+  letter-spacing: 0.02em;
+  font-family: 'Montserrat', sans-serif;
+  -webkit-box-shadow: 0px 2px 13px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0px 2px 13px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 2px 13px rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: 0px 2px 4px 1px rgba(0, 0, 0, 0.08);
+  -moz-box-shadow: 0px 2px 4px 1px rgba(0, 0, 0, 0.08);
+  box-shadow: 0px 2px 4px 1px rgba(0, 0, 0, 0.08);
+  margin: 0px 0 20px 0;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+}
+@media screen and (min-width: 620px) {
+  .editProfilePage .maxWidth .editSection form input {
+    width: 40%;
+    padding: 12px 4%;
+  }
+}
+@media screen and (min-width: 620px) {
+  .editProfilePage .maxWidth .editSection form input {
+    width: 40%;
+    padding: 12px 4%;
+    display: block;
+  }
+}
+@media screen and (min-width: 768px) {
+  .editProfilePage .maxWidth .editSection form input {
+    width: 44%;
+    padding: 12px 2%;
+  }
+  .editProfilePage .maxWidth .editSection form input:nth-of-type(2) {
+    margin: 0px 0 50px 0;
+  }
+}
+.editProfilePage .maxWidth .editSection form #card-element {
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  -webkit-box-shadow: 0px 2px 4px 1px rgba(0, 0, 0, 0.08);
+  -moz-box-shadow: 0px 2px 4px 1px rgba(0, 0, 0, 0.08);
+  box-shadow: 0px 2px 4px 1px rgba(0, 0, 0, 0.08);
+  border: none;
+  float: left;
+  font-family: 'Montserrat', sans-serif;
+  width: 92%;
+  padding: 15px 4%;
+  font-size: 9.5pt;
+  margin: 0 0 15px 0;
+}
+.editProfilePage .maxWidth .editSection form #card-element .CardBrandIcon-container {
+  display: none;
+}
+@media screen and (min-width: 620px) {
+  .editProfilePage .maxWidth .editSection form #card-element {
+    width: 40%;
+    padding: 12px 4%;
+  }
+}
+@media screen and (min-width: 768px) {
+  .editProfilePage .maxWidth .editSection form #card-element {
+    width: 44%;
+    padding: 12px 2%;
+  }
+}
+.editProfilePage .maxWidth .editSection .cta {
+  float: left;
+  margin: 10px 0 0 0;
+  clear: both;
+}
+.editProfilePage .maxWidth .editSection .donation {
+  width: 271px;
+  font-size: 10pt;
+}
+.editProfilePage .maxWidth .editSection .delete {
+  width: 160px;
+  font-size: 10pt;
+}
+.profilePage {
+  float: left;
+  width: 100%;
+}
+@media screen and (min-width: 970px) {
+  .profilePage {
+    margin-top: -113px;
+  }
+}
+.profilePage h2 {
+  font-size: 15pt;
+  font-weight: 600;
+  margin: 30px 0 25px 0;
+}
+.profilePage .resourceArea .maxWidth h2 {
+  font-size: 15pt;
+  text-align: center;
+}
+.profilePage .name {
+  float: left;
+  width: 100%;
+  font-size: 23pt;
+  text-align: center;
+  margin-bottom: 30px;
+}
+.profilePage .name a {
+  display: block;
+  color: #000;
+  margin: 3px 0 0 0;
+  font-size: 9pt;
+  font-weight: 300;
+}
+.profilePage .summaryBar {
+  float: left;
+  width: 100%;
+  background: #fbfbfb;
+}
+.profilePage .summaryBar p {
+  width: 33.3%;
+  float: left;
+  text-align: center;
+  color: #B516B0;
+  font-size: 12pt;
+  font-weight: 600;
+  line-height: 1em;
+}
+.profilePage .summaryBar p span {
+  font-size: 17pt;
+  display: block;
+  margin: 0 0 10px 0;
+}
+@media screen and (min-width: 620px) {
+  .profilePage .summaryBar p {
+    font-size: 14pt;
+    font-weight: 600;
+  }
+  .profilePage .summaryBar p span {
+    font-size: 14pt;
+    display: inline;
+  }
+}
+.profilePage .deleteAccount,
+.profilePage .donateArea {
+  background: #F8F8F8;
+}
+.profilePage .deleteAccount p,
+.profilePage .donateArea p {
+  text-align: center;
+  width: 100%;
+  padding: 8px 0;
+  margin: 0 0 20px 0;
+  font-size: 11pt;
+}
+@media screen and (min-width: 768px) {
+  .profilePage .deleteAccount .maxWidth,
+  .profilePage .donateArea .maxWidth {
+    width: 900px;
+  }
+}
+.profilePage .deleteAccount {
+  padding-bottom: 100px;
+  margin-bottom: -80px;
+}
+.profilePage .donateArea {
+  padding-bottom: 30px;
+}
+.profilePage .cta {
+  width: 180px;
+  display: block;
+}
+.profilePage .previousDonations {
+  width: 90%;
+  margin: 20px auto;
+  padding: 0 5%;
+  float: left;
+}
+.profilePage .previousDonations .donationCard {
+  width: 200px;
+  margin: 0 auto 20px;
+  background: #fff;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  -webkit-box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.2);
+}
+.profilePage .previousDonations .donationCard p {
+  margin: 0;
+  padding: 0;
+  font-size: 8pt;
+}
+.profilePage .previousDonations .donationCard .date {
+  padding: 12px 0 0;
+}
+.profilePage .previousDonations .donationCard .price {
+  font-size: 23pt;
+  font-weight: 600;
+  color: #1A1A6A;
+  padding: 2px 0 12px;
+}
+.profilePage .previousDonations .donationCard .cardBtm {
+  -webkit-box-shadow: inset 0px 1px 1px 0px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: inset 0px 1px 1px 0px rgba(0, 0, 0, 0.1);
+  box-shadow: inset 0px 1px 1px 0px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  padding: 7px 0;
+  background: #eaeaea;
+  -webkit-border-radius: 0 0 4px 4px;
+  -moz-border-radius: 0 0 4px 4px;
+  border-radius: 0 0 4px 4px;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+}
+@media screen and (min-width: 620px) {
+  .profilePage .previousDonations .donationCard {
+    float: left;
+  }
+  .profilePage .previousDonations .donationCard:nth-of-type(2n) {
+    float: right;
+    margin-right: 0;
+  }
+}
+@media screen and (min-width: 768px) {
+  .profilePage .previousDonations .donationCard {
+    margin-right: 13%;
+  }
+  .profilePage .previousDonations .donationCard:nth-of-type(2n) {
+    float: left;
+  }
+  .profilePage .previousDonations .donationCard:nth-of-type(3n) {
+    float: right;
+    margin-right: 0;
+  }
+}
+@media screen and (min-width: 620px) {
+  .profilePage .previousDonations {
+    width: 90%;
+  }
+}
+.profilePage .ctaWrap {
+  float: left;
+  width: 100%;
+}
 footer {
   width: 100%;
   float: left;
@@ -5502,6 +5804,7 @@ footer #footerWrap #footerInner {
 footer #footerWrap #footerInner img {
   margin: 0 auto;
   display: block;
+  max-width: 10%;
   -webkit-transform: skew(0deg, 2deg);
   -moz-transform: skew(0deg, 2deg);
   -ms-transform: skew(0deg, 2deg);

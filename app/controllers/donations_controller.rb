@@ -5,9 +5,10 @@ class DonationsController < ApplicationController
   end
 
   def create
+    binding.pry
     @donation = Donation.create(donation_params)
     if params[:one_off]
-      amount = params[:amount] ? params[:amount] : params[:other_amount]
+      amount = params[:donation][:amount] ? params[:donation][:amount] : params[:donation][:other_amount]
       CreateDonation.new.create_one_off_donation(params[:stripe_source], convert_to_pence(amount))
     elsif params[:regular]
       # pass plan to below

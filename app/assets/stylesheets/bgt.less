@@ -235,6 +235,10 @@ header{
     }
 }
 
+.greyed{
+    .vGradient(#CDCDCD, #989898);
+}
+
 .contentWrap{
     width:85%;
     margin:0 auto;
@@ -1858,11 +1862,6 @@ header{
     @media @768{
         padding: 130px 0 110px;
     }
-    // img{
-    //     position: absolute;
-    //     z-index: -1;
-    //     opacity:0.3;
-    // }
 }
 
 .eventsArea{
@@ -2611,6 +2610,238 @@ header{
     }
 }
 
+.editProfilePage {
+    float:left;
+    width:100%;
+    @media @970{
+        margin-top: -113px;
+    }
+    .maxWidth {
+        .editSection {
+            float:left;
+            width:100%;
+            margin-bottom: 40px;
+            @media @768{
+                width: 600px;
+                display:block;
+            }
+            h3{
+                font-size:11pt;
+                color:#8A8A8A;
+                margin:20px 0 30px 0;
+                letter-spacing:0.02em;
+            }
+            p{
+                font-size:9.5pt;
+                line-height:1.6em;
+                font-weight:300;
+            }
+            form{
+                input{
+                    .formInputs;
+                    .drop-shadow(0px, 2px, 4px, 1px, 0.08);
+                    margin: 0px 0 20px 0;
+                    .bRadius(3px);
+                    @media @620{
+                        width: 40%;
+                        padding: 12px 4%;
+                        display:block;
+                    }
+                    @media @768{
+                        width: 44%;
+                        padding: 12px 2%;
+                        &:nth-of-type(2) {
+                            margin:0px 0 50px 0;
+                        }
+                    }
+                }
+                #card-element{
+                    .bRadius(6px);
+                    .drop-shadow(0px, 2px, 4px, 1px, 0.08);
+                    border:none;
+                    float:left;
+                    font-family: 'Montserrat', sans-serif;
+                    width:92%;
+                    padding:15px 4%;
+                    font-size:9.5pt;
+                    margin:0 0 15px 0;
+                    .CardBrandIcon-container{
+                        display:none;
+                    }
+                    @media @620{
+                        width: 40%;
+                        padding: 12px 4%;
+                    }
+                    @media @768{
+                        width: 44%;
+                        padding: 12px 2%;
+                    }
+                }
+            }
+            .cta{
+                float:left;
+                margin: 10px 0 0 0;
+                clear:both;
+            }
+            .donation{
+                width: 271px;
+                font-size: 10pt;
+            }
+            .delete{
+                width: 160px;
+                font-size: 10pt;
+            }
+        }
+    }
+}
+
+.profilePage{
+    float:left;
+    width:100%;
+    @media @970{
+        margin-top: -113px;
+    }
+    h2{
+        font-size:15pt;
+        font-weight:600;
+        margin:30px 0 25px 0;
+    }
+    .resourceArea{
+        .maxWidth{
+            h2{
+                font-size:15pt;
+                text-align:center;
+            }
+        }
+    }
+    .name{
+        float:left;
+        width:100%;
+        font-size:23pt;
+        text-align:center;
+        margin-bottom:30px;
+        a{
+            display:block;
+            color:#000;
+            margin: 3px 0 0 0;
+            font-size:9pt;
+            font-weight:300;
+        }
+    }
+    .summaryBar{
+        float:left;
+        width:100%;
+        background:#fbfbfb;
+        p{
+            width:33.3%;
+            float:left;
+            text-align:center;
+            color:#B516B0;
+            font-size:12pt;
+            font-weight:600;
+            line-height:1em;
+            span{
+                font-size:17pt;
+                display:block;
+                margin:0 0 10px 0;
+            }
+            @media @620{
+                font-size:14pt;
+                font-weight:600;
+                span {
+                    font-size:14pt;
+                    display:inline;
+                }
+            }
+        }
+    }
+    .deleteAccount,
+    .donateArea{
+        background: #F8F8F8;
+        p{
+            text-align:center;
+            width:100%;
+            padding:8px 0;
+            margin:0 0 20px 0;
+            font-size:11pt;
+        }
+        @media @768{
+            .maxWidth{
+                width:900px;
+            }
+        }
+    }
+    .deleteAccount{
+        padding-bottom:100px;
+        margin-bottom:-80px;
+    }
+    .donateArea{
+        padding-bottom: 30px;
+    }
+    .cta{
+        width:180px;
+        display:block;
+    }
+    .previousDonations{
+        width:90%;
+        margin:20px auto;
+        padding:0 5%;
+        float:left;
+        .donationCard{
+            width:200px;
+            margin:0 auto 20px;
+            background:#fff;
+            .bRadius(4px);
+            .bShadow( 0px 2px 2px 0px rgba(0,0,0,0.2) );
+            p{
+                margin:0;
+                padding:0;
+                font-size:8pt;
+            }
+            .date{
+                padding:12px 0 0;
+            }
+            .price{
+                font-size:23pt;
+                font-weight:600;
+                color:@purple;
+                padding:2px 0 12px;
+            }
+            .cardBtm{
+                .bShadow( inset 0px 1px 1px 0px rgba(0,0,0,0.1) );
+                width:100%;
+                padding:7px 0;
+                background:#eaeaea;
+                .bRadius(0 0 4px 4px);
+            }
+            @media @620 {
+                float:left;
+                &:nth-of-type(2n){
+                    float:right;
+                    margin-right:0;
+                }
+            }
+            @media @768 {
+                margin-right:13%;
+                &:nth-of-type(2n){
+                    float:left;
+                }
+                &:nth-of-type(3n){
+                    float:right;
+                    margin-right:0;
+                }
+            }
+        }
+        @media @620 {
+            width: 90%;
+        }
+    }
+    .ctaWrap{
+        float:left;
+        width:100%;
+    }
+}
+
 footer{
     width:100%;
     float:left;
@@ -2628,6 +2859,7 @@ footer{
                 margin:0 auto;
                 display:block;
                 .skew(0deg, 2deg);
+								max-width: 10%;
             }
             nav{
                 width:90%;
