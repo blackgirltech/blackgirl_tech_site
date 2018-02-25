@@ -25,32 +25,36 @@
               <%= form_for @donation, html: { class: "donateForm" } do |f| %>
                   <div id="prices">
                     <div class="price">
+                      <!-- TODO: FIX SO THAT SELECTED/INPUTED AMOUNT GETS SENT TO CONTROLLER INSTEAD OF LAST AMOUNT SUBMITTED IN FORM -->
                       <%= f.label "amount", "£5", class: "priceAmounts"%>
-                      <%= f.radio_button "amount", "5" %>
+                      <%= f.hidden_field "amount", value: "5" %>
                     </div>
                     <div class="price">
                       <%= f.label "amount", "£10", class: "priceAmounts" %>
-                      <%= f.radio_button "amount", "10" %>
+                      <%= f.hidden_field "amount", value: "10" %>
                     </div>
                     <div class="price">
                       <%= f.label "amount", "£15", class: "priceAmounts" %>
-                      <%= f.radio_button "amount", "15" %>
+                      <%= f.hidden_field "amount", value: "15" %>
                     </div>
                     <%= f.number_field "amount", id: "other", placeholder: "Other Amount" %>
                   </div>
 
-                  <% if current_member && !active_donor %>
+                  <%# if current_member && !active_donor %>
                     <div id="frequency">
                       <div id="innerFrequency">
-                        <input type="radio" name="regular" value="monthly" class="monthly">
-                        <label for="regular">Monthly</label>
-                        <input type="radio" name="one_off" class="oneOff" value="one off">
-                        <label for="one_off">One off</label>
+                        <!--  TODO: change the input so you can only select one or the other -->
+                        <%= f.label :regular, "Monthly" %>
+                        <%= f.radio_button :regular, true, class: "monthly"%>
+
+                        <%= f.label :one_off, "One off" %>
+                        <%= f.radio_button :one_off, true, class: "oneOff"%>
+
                       </div>
                     </div>
-                  <% elsif current_member.nil? || active_donor %>
-                    <%= hidden_field_tag(:one_off, true) %>
-                  <% end %>
+                  <%# elsif current_member.nil? || active_donor %>
+                    <%#= hidden_field_tag(:one_off, true) %>
+                  <%# end %>
 
                   <fieldset>
                       <legend>Payment information:</legend>

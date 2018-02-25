@@ -1,0 +1,21 @@
+<div class="eventItem">
+<div class="eventDetail">
+  <div class="eventLeft">
+    <p>
+      <%= event.date.strftime('%b') %>
+      <span>
+        <%= event.date.strftime('%d') %>
+      </span>
+    </p>
+  </div>
+  <div class="eventRight">
+    <p>
+      <%= link_to event.name, event_path(event) %>
+      <span>
+        <%= event.time.strftime('%H:%mpm') %>
+      </span>
+    </p>
+  </div>
+</div>
+<%= image_tag 'aboutImg1' %>
+</div>

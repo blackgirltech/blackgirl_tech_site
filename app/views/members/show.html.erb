@@ -1,28 +1,102 @@
-<div class="ph4">
+        <div class="profilePage">
 
-  <div class="">
-    <h2 class="fw1 f1">Hi <%= @member.first_name %> </h2>
-    <p> <span class="b">Email:</span> <%= @member.email %> <br> <%= link_to 'Edit your profile',  edit_member_registration_path, class: "dark-green hover-green fw5" %></p>
-  </div>
+            <div class="maxWidth">
+                <h1 class="name">
+                    Hi <%= @member.first_name %>
+                    <%= link_to edit_member_registration_path(@memeber) %>
+                </h1>
+            </div>
+
+            <div class="summaryBar">
+                <p>
+                    <span>XX</span> Events</p>
+                <p>
+                    <span>XX</span> Saved Resources</p>
+                <p>
+                    <span>XX</span> Donations</p>
+            </div>
+
+            <div class="eventsArea pagePanel">
+                <div class="maxWidth">
+                    <h2>
+                        Upcoming Events
+                    </h2>
+                    <% @events.each do |event| %>
+                      <%= render "partials/event" %>
+                    <% end %>
+                </div>
+            </div>
+
+            <div class="donateArea pagePanel">
+                <div class="maxWidth">
+                    <h2>
+                        Donations
+                    </h2>
+                    <div class="ifNoDonations">
+                        <p>
+                            Help us better support our Attendees
+                        </p>
+
+                        <a href="#" class="cta ">Make a Donation</a>
+                    </div>
+                    <%= link_to 'Cancel Regular Donation',  donation_cancel_path(@regular_donation.id), class: "btn white bg-red hover-red b--red hover-bg-light-gray" %>
+                    <!-- <div class="ifSomeDonations">
+                        <div class="previousDonations">
+                            <div class="donationCard">
+                                <p class="date">
+                                    xx/xx/xx
+                                </p>
+                                <p class="price">
+                                    &pound;20
+                                </p>
+                                <p class="cardBtm">
+                                    Card: xxxx &nbsp;&nbsp; - &nbsp;&nbsp;&nbsp;Expiry: xx/xx
+                                </p>
+                            </div>
+                            <div class="donationCard">
+                                <p class="date">
+                                    xx/xx/xx
+                                </p>
+                                <p class="price">
+                                    &pound;20
+                                </p>
+                                <p class="cardBtm">
+                                    Card: xxxx &nbsp;&nbsp; - &nbsp;&nbsp;&nbsp;Expiry: xx/xx
+                                </p>
+                            </div>
+                            <div class="donationCard">
+                                <p class="date">
+                                    xx/xx/xx
+                                </p>
+                                <p class="price">
+                                    &pound;20
+                                </p>
+                                <p class="cardBtm">
+                                    Card: xxxx &nbsp;&nbsp; - &nbsp;&nbsp;&nbsp;Expiry: xx/xx
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="ctaWrap">
+
+                            <a href="#" class="cta ">Make another Donation</a>
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+
+            <div class="deleteAccount pagePanel">
+                <div class="maxWidth">
+                    <h2>
+                        Delete Account
+                    </h2>
+                    <p>
+                        Please be advised that deleting your account is permanent and will be effective immediately
+                    </p>
+                    <a href="#" class="cta greyed">Delete Account</a>
+                </div>
+            </div>
+
+        </div>
 
     </div>
-
-    <p class="text-center f4"> We will be adding more features to this page as we go along, you can find out where we are on our <a href="" class="dark-green hover-green">trello board</a>, if there's something you think we're missing, don't hesitate to <a href="" class="dark-green hover-green">contact us</a>!</p>
-    <hr>
-    <div class="col-md-6 offset-md-3">
-      <%#= render "partials/resource_hub" %>
-    </div>
-    <div class=" col-md-6 pa3 center bg-light-gray mt5">
-      <h3 class="red b"> DANGER ZONE </h3>
-
-
-      <%= link_to 'Cancel Regular Donation',  donation_cancel_path(@regular_donation.id), class: "btn white bg-red hover-red b--red hover-bg-light-gray" %>
-      <hr>
-
-      <p class="b"> ONCE YOUR ACCOUNT IS DELETED, WE CAN NOT RESSURECT IT.</p>
-
-      <%= link_to 'Delete your profile',  member_registration_path, method: :delete, class: "btn white bg-red hover-red b--red hover-bg-light-gray" %>
-
-    </div>
-
-</div>

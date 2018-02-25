@@ -5,7 +5,6 @@ class DonationsController < ApplicationController
   end
 
   def create
-    binding.pry
     @donation = Donation.create(donation_params)
     if params[:one_off]
       amount = params[:donation][:amount] ? params[:donation][:amount] : params[:donation][:other_amount]

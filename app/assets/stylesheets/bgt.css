@@ -3495,7 +3495,6 @@ header #headerInner .hdr {
   font-size: 9.5pt;
 }
 .donateArea .maxWidth .donateForm #frequency #innerFrequency label:nth-of-type(2) {
-  float: right;
   margin-top: 2px;
 }
 .donateArea .maxWidth .donateForm #frequency #innerFrequency #monthly {
