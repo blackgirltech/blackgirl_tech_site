@@ -12,7 +12,7 @@
   <div class="row">
       <% @opportunities.each do |opportunity| %>
       <div class="card col-md-4 border-warning">
-        <%= image_tag 'aboutImg1', class: "card-img-top" %>
+        <%#= image_tag 'aboutImg1', class: "card-img-top" %>
         <div class="card-body">
           <h5 class="card-title"><%=opportunity.name %> </h5>
           <p class="card-text"><%= opportunity.description.truncate(280) %> </p>
