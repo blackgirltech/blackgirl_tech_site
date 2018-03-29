@@ -2,14 +2,36 @@
     <div class="pushy-content">
         <ul>
             <li class="pushy-link">
-                <a href="#">link 1</a>
+                <%= link_to "About", about_path%>
             </li>
             <li class="pushy-link">
-                <a href="#">link 2</a>
+                <a  href="https://www.eventbrite.com/o/blackgirltech-7827799702">Events</a>
             </li>
             <li class="pushy-link">
-                <a href="#">link 3</a>
+                <a  href="https://paypal.me/blackgirltech">Donate</a>
             </li>
+            <li class="pushy-link">
+                <a href="https://medium.com/blackgirl-tech-a-blog" > Blog</a>
+            </li>
+            <li class="pushy-link">
+                <%= link_to "Opportunites", opportunities_path %>
+            </li>
+            <% if member_signed_in? %>
+              <%#= link_to "Your Profile", member_path(:id) %>
+              <%# if admin? %>
+                <%#= link_to 'Admin', admin_root_path %>
+              <%# end %>
+              <li class="pushy-link">
+                  <%= link_to "Log Out", destroy_member_session_path, method: :delete %>
+              </li>
+            <% else %>
+              <li class="pushy-link">
+                  <%= link_to "Join Us", new_member_registration_path %>
+              </li>
+              <li class="pushy-link">
+                  <%= link_to "Log In", new_member_session_path %>
+              </li>
+            <% end %>
         </ul>
     </div>
 </nav>
