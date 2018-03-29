@@ -14,6 +14,7 @@ Rails.application.routes.draw do
 
   resources :events
   resources :opportunities
+  resources :applications
   patch 'events/:id/rsvp' => 'events#rsvp'
   get 'events/:id/unrsvp' => 'events#unrsvp'
   get 'events/:id/volunteer' => 'events#volunteering'
