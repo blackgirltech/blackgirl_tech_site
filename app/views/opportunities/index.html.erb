@@ -7,15 +7,15 @@
 </div>
 <div class="container">
   <div class="row">
-      <%# @opportunities.each do |opportunity| %>
+      <% @opportunities.each do |opportunity| %>
       <div class="card col-md-4 border-warning">
         <%= image_tag 'aboutImg1', class: "card-img-top" %>
         <div class="card-body">
-          <h5 class="card-title">blackgirl.tech x 8th Light Scholarship <%#= link_to opportunity.name, opportunity_path(opportunity) %> </h5>
+          <h5 class="card-title"><%=opportunity.name %> </h5>
           <p class="card-text">This is a scholarship to cover 3 months of living costs for one black woman or non-binary person to attend the 8th Light Apprentiship Program. This succeful applicant will get 3 months salary at London living wage while they study.<%#= opportunity.description %> </p>
-          <a href="#" class="cta">More</a>
+          <%= link_to "More", opportunity_path(opportunity), class: "cta" %>
         </div>
       </div>
-      <%# end %>
+      <% end %>
     </div>
 </div>

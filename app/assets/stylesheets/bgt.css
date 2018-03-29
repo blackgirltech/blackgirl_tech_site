@@ -2375,7 +2375,27 @@ header .fa {
     display: none;
   }
 }
-header #headerInner {
+
+.bg-img {
+  position: relative;
+  width: 100%;
+  height: 100%;
+
+  background-size: cover;
+
+  &:before {
+    content: '';
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background-image: linear-gradient(to bottom right,#002f4b,#dc4225);
+	opacity: .6;
+  }
+}
+
+ header #headerInner {
   position: absolute;
   width: 170%;
   left: -35%;
@@ -2388,11 +2408,23 @@ header #headerInner {
   background: #1A1A6A;
   overflow: hidden;
   background-color: #5C1D75;
+  background: url('hdrImg.jpg');
+  background-size: contain;
+
+}
+header #headerInner:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
   background: -webkit-gradient(linear, left bottom, left top, from(#5C1D75), to(#1A1A6A));
   background: -webkit-linear-gradient(left bottom, #5C1D75, #1A1A6A);
   background: -moz-linear-gradient(left bottom, #5C1D75, #1A1A6A);
   background: -ms-linear-gradient(left bottom, #5C1D75, #1A1A6A);
   background: -o-linear-gradient(left bottom, #5C1D75, #1A1A6A);
+  opacity: .6;
 }
 header #headerInner nav #navWrap {
   position: relative;
@@ -3140,6 +3172,7 @@ header #headerInner .hdr {
   padding: 0;
   width: 90%;
   color: #fff;
+  font-weight: bold;
 }
 .pagesHdr p {
   font-size: 9.5pt;
