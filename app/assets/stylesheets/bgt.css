@@ -2517,7 +2517,7 @@ header #headerInner .hdr {
   margin: 0 auto;
   display: block;
   width: 128px;
-  font-size: 1.3rem;
+  font-size: 0.9em;
   padding: 12px 5px;
   background-color: #FAE961;
   background-image: -webkit-gradient(linear, top top, bottom bottom, from(#FAE961), to(#F7AE1C));
@@ -2578,7 +2578,7 @@ header #headerInner .hdr {
   margin: 0 0 9px;
 }
 .homeContent p {
-  font-size: 1.3rem;
+  font-size: 1rem;
   font-weight: 300;
   margin: 0 0 24px;
 }
@@ -4374,7 +4374,7 @@ header #headerInner .hdr {
   background-clip: padding-box;
   outline: 0;
   border: 0;
-  width: 90%;
+  /* width: 90%; */
   padding: 12px 5%;
   -webkit-opacity: 0.9;
   -moz-opacity: 0.9;
@@ -4388,8 +4388,8 @@ header #headerInner .hdr {
 }
 @media screen and (min-width: 620px) {
   .joinUs .maxWidth .form .formTop input {
-    width: 40%;
-    padding: 12px 4%;
+    /* width: 40%;
+    padding: 12px 4%; */
   }
 }
 @media screen and (min-width: 620px) {
@@ -5891,6 +5891,10 @@ footer #footerWrap #footerInner address {
 }
 .nudgeFtr {
   margin: 20px 0 0 0;
+}
+
+.white {
+  color: #fff;
 }
 
 /*# sourceMappingURL=bgt.css.map */

@@ -3,14 +3,12 @@
     <div class="textBox">
       <h2>Join Us</h2>
       <p>
-        <strong>ipsum dolor sit amet, consectetur</strong>
-        ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-        enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+        <strong>Creating a safe space for black women to explore</strong>
+        By joining us, you can stay up to date with our events and workshops.
       </p>
       <p>
-        <strong>ipsum dolor sit amet, consectetur</strong>
-        ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-        enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+        <strong>Access to learning for black women</strong>
+        You'll also be able to access all our professional learning and career development opportunities.
       </p>
       <p class="ml3 mt2"> Already have an account? <%= link_to "Log in", new_member_session_path %></p>
     </div>
@@ -19,23 +17,27 @@
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
       <%= devise_error_messages! %>
 
-      <div class="formTop">
-        <%= f.label :first_name, class: "sr-only"%><br />
-        <%= f.text_field :first_name, autofocus: true, class: "form-control", placeholder: "First name" %>
-        <%= f.label :last_name, class: "sr-only"%><br />
+      <div class="formTop white">
+          <%= f.label :first_name, class:"sr-only"%>
+          <%= f.text_field :first_name, autofocus: true, class: "form-control", placeholder: "First name" %>
+
+        <%= f.label :last_name, class:"sr-only"%>
         <%= f.text_field :last_name, class: "form-control", placeholder: "Last name" %>
-        <%= f.label :email, class: "sr-only" %><br />
+
+        <%= f.label :email, class:"sr-only" %>
         <%= f.email_field :email, class: "form-control", placeholder: "Email" %>
-        <%= f.label :password, class: "sr-only" %>
+
+        <%= f.label :password, class:"sr-only" %>
         <% if @minimum_password_length %>
           <em class="sr-only">(<%= @minimum_password_length %> characters minimum)</em>
-        <% end %><br />
+        <% end %>
         <%= f.password_field :password, autocomplete: "off", class: "form-control", placeholder: "Password (6 characters min)" %>
-        <%= f.label :password_confirmation, class: "sr-only" %><br />
+
+        <%= f.label :password_confirmation, class:"sr-only" %>
         <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control", placeholder: "Password Confirmation" %>
       </div>
 
-      <div class="radioBtns">
+      <!-- <div class="radioBtns">
         <div class="smaller">
             <div class="radio">
                 <input type="radio" name="age" id="eighteen">
@@ -54,24 +56,14 @@
                 <label for="forty">40+</label>
             </div>
         </div>
+    </div> -->
+    <div class="question white">
+        <%= f.label :black_woman_nbp, "Are you a black woman/black non-binary person?"%>
+        <%= f.check_box :black_woman_nbp, class: "" %>
     </div>
-    <div class="question">
-        <p>
-            Are you a black woman/black girl/ <span>black non-binary person?</span>
-        </p>
-        <div class="smaller smallest">
-            <div class="yes options">
-                <input type="radio" id="yes" name="black_women_options">
-                <label for="yes">Yes</label>
-            </div>
-            <div class="no options">
-                <input type="radio" id="no" name="black_women_options">
-                <label for="no">No</label>
-            </div>
-        </div>
-    </div>
-    <div class="volunteer">
-        <%= f.check_box :volunteer, class: "form-check-input" %> Volunteer
+    <div class="white">
+        <%= f.label :voluenteer, "Would you like to register as a volunteer?" %><br />
+        <%= f.check_box :volunteer%>
     </div>
 
         <%= f.submit "Sign up", class: "cta" %>
