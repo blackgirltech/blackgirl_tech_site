@@ -1,5 +1,8 @@
 <div class="pagesHdr" id="aboutHeader">
     <h1>OPPORTUNITIES</h1>
+    <hr>
+    <%= image_tag "ovalOverlay.png", class: "one" %>
+    <%= image_tag "ovalOverlay.png", class: "two" %>
 </div>
 
 <div class="introText maxWidth aboutAreas">
@@ -12,8 +15,8 @@
         <%= image_tag 'aboutImg1', class: "card-img-top" %>
         <div class="card-body">
           <h5 class="card-title"><%=opportunity.name %> </h5>
-          <p class="card-text">This is a scholarship to cover 3 months of living costs for one black woman or non-binary person to attend the 8th Light Apprentiship Program. This succeful applicant will get 3 months salary at London living wage while they study.<%#= opportunity.description %> </p>
-          <%= link_to "More", opportunity_path(opportunity), class: "cta" %>
+          <p class="card-text"><%= opportunity.description.truncate(280) %> </p>
+          <%= link_to "Learn More", opportunity_path(opportunity), class: "cta" %>
         </div>
       </div>
       <% end %>

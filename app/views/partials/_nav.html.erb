@@ -11,16 +11,15 @@
                 <%= image_tag "white_logo" %>
                 <span id="right">
                     <a href="https://medium.com/blackgirl-tech-a-blog" > Blog</a>
-                    <%= link_to "Join Us", new_member_registration_path %>
                     <%= link_to "Opportunites", opportunities_path %>
-                    <% if current_member %>
+                    <% if member_signed_in? %>
                       <%#= link_to "Your Profile", member_path(:id) %>
                       <%# if admin? %>
                         <%#= link_to 'Admin', admin_root_path %>
                       <%# end %>
                       <%= link_to "Log Out", destroy_member_session_path, method: :delete %>
                     <% else %>
-                      <%#= link_to "Join Us", new_member_registration_path %>
+                      <%= link_to "Join Us", new_member_registration_path %>
                       <%= link_to "Log In", new_member_session_path %>
                     <% end %>
                 </span>

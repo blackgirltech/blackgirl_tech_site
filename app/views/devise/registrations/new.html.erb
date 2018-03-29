@@ -61,9 +61,15 @@
         <%= f.label :black_woman_nbp, "Are you a black woman/black non-binary person?"%>
         <%= f.check_box :black_woman_nbp, class: "" %>
     </div>
+
     <div class="white">
         <%= f.label :voluenteer, "Would you like to register as a volunteer?" %><br />
         <%= f.check_box :volunteer%>
+    </div>
+
+    <div class="question white">
+        <%= f.label :contact_permission, "I give you permission to store my details and contact me."%>
+        <%= f.check_box :contact_permission, class: "" %>
     </div>
 
         <%= f.submit "Sign up", class: "cta" %>
