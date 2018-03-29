@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   devise_for :members, :controllers => { :omniauth_callbacks => "omniauth_callbacks", :registrations => "registrations"}
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
@@ -12,6 +13,7 @@ Rails.application.routes.draw do
   get '/past_donors' => "static_pages#past_donors"
 
   resources :events
+  resources :opportunities
   patch 'events/:id/rsvp' => 'events#rsvp'
   get 'events/:id/unrsvp' => 'events#unrsvp'
   get 'events/:id/volunteer' => 'events#volunteering'

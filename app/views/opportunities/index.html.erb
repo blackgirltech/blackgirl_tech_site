@@ -1,0 +1,21 @@
+<div class="pagesHdr" id="aboutHeader">
+    <h1>OPPORTUNITIES</h1>
+</div>
+
+<div class="introText maxWidth aboutAreas">
+    <p>blackgirl.tech are working with a number of organisations who are committed to ensuring the industry is not only diverse but healthy. We want to be able to put black women and non-binary people into jobs and environments where they can learn and grow as technology profesionals. See below for a list of our current opportunities.</p>
+</div>
+<div class="container">
+  <div class="row">
+      <%# @opportunities.each do |opportunity| %>
+      <div class="card col-md-4 border-warning">
+        <%= image_tag 'aboutImg1', class: "card-img-top" %>
+        <div class="card-body">
+          <h5 class="card-title">blackgirl.tech x 8th Light Scholarship <%#= link_to opportunity.name, opportunity_path(opportunity) %> </h5>
+          <p class="card-text">This is a scholarship to cover 3 months of living costs for one black woman or non-binary person to attend the 8th Light Apprentiship Program. This succeful applicant will get 3 months salary at London living wage while they study.<%#= opportunity.description %> </p>
+          <a href="#" class="cta">More</a>
+        </div>
+      </div>
+      <%# end %>
+    </div>
+</div>

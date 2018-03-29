@@ -1,0 +1,11 @@
+<h1 class="text-center"><%= @opportunity.name %></h1>
+<p class="text-center"> <b> DEADLINE: <%= @opportunity.deadline.strftime("%d-%m-%Y") %> </b> </p>
+<div class="col-md-4 offset-md-4">
+  <h5> Company Bio </h5>
+  <p class=""> <%= @opportunity.company_bio %></p>
+</div>
+<div class="col-md-4 offset-md-4">
+  <h5> Opportunity Description </h5>
+  <p class=""> <%= @opportunity.description %> </p>
+</div>
+<a href="<%= @opportunity.url %>" class="cta"> Apply </a>

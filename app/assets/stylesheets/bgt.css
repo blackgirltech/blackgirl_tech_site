@@ -2485,7 +2485,7 @@ header #headerInner .hdr {
   margin: 0 auto;
   display: block;
   width: 128px;
-  font-size: 11pt;
+  font-size: 1.3rem;
   padding: 12px 5px;
   background-color: #FAE961;
   background-image: -webkit-gradient(linear, top top, bottom bottom, from(#FAE961), to(#F7AE1C));
@@ -2546,7 +2546,7 @@ header #headerInner .hdr {
   margin: 0 0 9px;
 }
 .homeContent p {
-  font-size: 11pt;
+  font-size: 1.3rem;
   font-weight: 300;
   margin: 0 0 24px;
 }
@@ -2745,7 +2745,7 @@ header #headerInner .hdr {
   margin: 0 auto 19px;
   display: block;
   text-align: left;
-  font-size: 11pt;
+  font-size: 1.3rem;
   float: none;
   padding: 0;
   letter-spacing: 0.05em;
@@ -2828,7 +2828,7 @@ header #headerInner .hdr {
   color: #fff;
   font-weight: 600;
   border-radius: 4px 4px 0 0;
-  font-size: 11pt;
+  font-size: 1.3rem;
   letter-spacing: 0.02em;
   text-transform: capitalize;
   padding: 17px 0;
@@ -2839,7 +2839,7 @@ header #headerInner .hdr {
   margin: 0 auto 19px;
   display: block;
   text-align: left;
-  font-size: 11pt;
+  font-size: 1.3rem;
   font-weight: 300;
   float: none;
   padding: 0;
@@ -2948,7 +2948,7 @@ header #headerInner .hdr {
 }
 .pushy .pushy-content ul li a {
   color: #fff;
-  font-size: 11pt;
+  font-size: 1.3rem;
   width: 100%;
   border-bottom: solid 1px rgba(255, 255, 255, 0.1);
 }
@@ -3024,7 +3024,7 @@ header #headerInner .hdr {
   color: #1A1A6A;
 }
 .teamWrap .teamArea .cardWrap .aboutCard .cardText h3 {
-  font-size: 11pt;
+  font-size: 1.3rem;
   margin-top: 12px;
 }
 .teamWrap .teamArea .cardWrap .aboutCard .cardText p {
@@ -3060,7 +3060,7 @@ header #headerInner .hdr {
 }
 #purplePanel p {
   text-align: center;
-  font-size: 10.5pt;
+  font-size: 1.3rem;
   color: #fff;
   line-height: 1.9em;
   font-weight: 300;
@@ -3114,7 +3114,7 @@ header #headerInner .hdr {
   }
 }
 .introText p {
-  font-size: 10pt;
+  font-size: 1.3rem;
   font-weight: 300;
   line-height: 1.9em;
   text-align: center;
@@ -3321,7 +3321,7 @@ header #headerInner .hdr {
 #thankyou #thankYouText h2 span,
 #thankyou #thankYouText p span {
   display: block;
-  font-size: 11pt;
+  font-size: 1.3rem;
 }
 #thankyou #thankYouText p {
   font-size: 10pt;
@@ -4049,7 +4049,7 @@ header #headerInner .hdr {
 @media screen and (min-width: 480px) {
   #fundraisingHeader .cta {
     width: 280px;
-    font-size: 11pt;
+    font-size: 1.3rem;
   }
 }
 @media screen and (min-width: 620px) {
@@ -4098,7 +4098,7 @@ header #headerInner .hdr {
 }
 @media screen and (min-width: 620px) {
   #fundraisingHeader #counterWrap .counter .small {
-    font-size: 11pt;
+    font-size: 1.3rem;
   }
 }
 #fundraisingHeader #counterWrap .counter:nth-of-type(3) {
@@ -4940,7 +4940,7 @@ header #headerInner .hdr {
 }
 .eventsArea .right .tags i {
   margin: 2px 15px 0 0;
-  font-size: 10.5pt;
+  font-size: 1.3rem;
 }
 .eventsArea .right .tags li {
   list-style: none;
@@ -5255,7 +5255,7 @@ header #headerInner .hdr {
   color: #CD5F99;
   margin: 23px 0 6px;
   float: left;
-  font-size: 11pt;
+  font-size: 1.3rem;
 }
 .sponsorsArea .maxWidth .sponsorItem .sponsorImgWrap {
   float: left;
@@ -5360,7 +5360,7 @@ header #headerInner .hdr {
   padding: 0 0 20px;
   list-style: none;
   font-weight: 300;
-  font-size: 11pt;
+  font-size: 1.3rem;
   text-align: center;
 }
 @media screen and (min-width: 620px) {
@@ -5392,7 +5392,7 @@ header #headerInner .hdr {
   text-align: center;
   margin: -20px 0 10px;
   padding: 32px 0 18px;
-  font-size: 11pt;
+  font-size: 1.3rem;
   color: #fff;
   background: #1A1A6A;
 }
@@ -5502,7 +5502,7 @@ header #headerInner .hdr {
   }
 }
 .editProfilePage .maxWidth .editSection h3 {
-  font-size: 11pt;
+  font-size: 1.3rem;
   color: #8A8A8A;
   margin: 20px 0 30px 0;
   letter-spacing: 0.02em;
@@ -5678,7 +5678,7 @@ header #headerInner .hdr {
   width: 100%;
   padding: 8px 0;
   margin: 0 0 20px 0;
-  font-size: 11pt;
+  font-size: 1.3rem;
 }
 @media screen and (min-width: 768px) {
   .profilePage .deleteAccount .maxWidth,

@@ -12,7 +12,7 @@
                 <span id="right">
                     <a href="https://medium.com/blackgirl-tech-a-blog" > Blog</a>
                     <%= link_to "Join Us", new_member_registration_path %>
-                    <a href="#">link</a>
+                    <%= link_to "Opportunites", opportunities_path %>
                     <% if current_member %>
                       <%#= link_to "Your Profile", member_path(:id) %>
                       <%# if admin? %>
@@ -26,6 +26,6 @@
                 </span>
             </div>
         </nav>
-        <%#= image_tag "hdrImg" %>
+        <%= image_tag "hdrImg" %>
     </div>
 </header>
