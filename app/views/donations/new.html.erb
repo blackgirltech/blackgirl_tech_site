@@ -23,21 +23,22 @@
             </div>
             <div class="donateInnerAreas">
               <%= form_for @donation, html: { class: "donateForm" } do |f| %>
+                <em style="color: white;"> PLEASE ENSURE THE CORRECT BOX IS CHECKED BEFORE YOU PAY. </em><br>
                   <div id="prices">
                     <div class="price">
                       <!-- TODO: FIX SO THAT SELECTED/INPUTED AMOUNT GETS SENT TO CONTROLLER INSTEAD OF LAST AMOUNT SUBMITTED IN FORM -->
-                      <%= f.label :amount, "£5", class: "priceAmounts"%>
-                      <%= f.hidden_field :amount, value: "5" %>
+                      <%= label :amount5, "£5", class: "priceAmounts", for: "amount5"%>
+                      <%= check_box_tag :amount5, 5 %>
                     </div>
                     <div class="price">
-                      <%= f.label :amount, "£10", class: "priceAmounts" %>
-                      <%= f.hidden_field :amount, value: "10" %>
+                      <%= label :amount10, "£10", for: "amount10", class: "priceAmounts" %>
+                      <%= check_box_tag :amount10, 10 %>
                     </div>
                     <div class="price">
-                      <%= f.label :amount, "£15", class: "priceAmounts" %>
-                      <%= f.hidden_field :amount, value: "15" %>
+                      <%= label :amount15, "£15", for: "amount15", class: "priceAmounts" %>
+                      <%= check_box_tag :amount15, 15 %>
                     </div>
-                    <%= f.number_field :amount, id: "other", placeholder: "Other Amount" %>
+                    <%= number_field_tag :other_amount, id: "other", placeholder: "Other Amount" %>
                   </div>
 
                   <% if current_member && !active_regular_donor %>
@@ -65,7 +66,7 @@
                       </div>
 
                       <div id="email">
-                          <%= f.text_field :email, placeholder: "Email" %>
+                          <%= f.text_field :email, value: current_member.email, placeholder: "Email" %>
                       </div>
 
                       <div id="card-element">

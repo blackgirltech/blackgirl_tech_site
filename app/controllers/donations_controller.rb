@@ -5,14 +5,17 @@ class DonationsController < ApplicationController
   end
 
   def create
-    @donation = Donation.create!(donation_params)
-    if params[:donation][:one_off]
-      amount = params[:donation][:amount] ? params[:donation][:amount] : params[:donation][:other_amount]
+    amount = calculate_amount(params)
+    one_off = params[:donation][:one_off]
+    regular = params[:donation][:regular]
+    @donation = Donation.new(donation_params)
+    @donation.amount = amount
+    @donation.save!
+    if  one_off || (one_off.nil? && regular.nil?)
       CreateDonation.new.create_one_off_donation(params[:stripe_source], convert_to_pence(amount))
-    elsif params[:donation][:regular]
-      # pass plan to below
+    elsif regular
       unless @donation.active_regular_donation
-        CreateDonation.new.create_regular_donation(current_member, params[:stripe_source], @donation, convert_to_pence(params[:donation][:amount]))
+        CreateDonation.new.create_regular_donation(current_member, params[:stripe_source], @donation, convert_to_pence(amount))
       end
     end
     redirect_to thank_you_path
@@ -29,6 +32,20 @@ class DonationsController < ApplicationController
   end
 
   private
+
+  def calculate_amount(params)
+    if params[:amount5]
+      amount = 5
+    elsif params[:amount10]
+      amount = 10
+    elsif params[:amount15]
+      amount = 15
+    else
+      amount = params[:other_amount].to_i
+    end
+    return amount
+  end
+
   def donation_params
     params.require(:donation).permit(:amount, :email, :one_off, :regular, :member_id, :stripe_subscription_id, :active_regular_donation)
   end
