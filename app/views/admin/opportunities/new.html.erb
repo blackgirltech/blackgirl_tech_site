@@ -1,28 +1,37 @@
 
+<div class="col-md-6 offset-md-3">
   <h1>Create Opportunity</h1>
   <%= form_for [:admin, @opportunity]  do |f| %>
+    <div class="form-group">
+      <%= f.label :name%>
+      <%= f.text_field :name, autofocus: true, placeholder: "Name of Opportunity", class: "form-control" %>
+    </div>
 
-    <%= f.label :name%>
-    <%= f.text_field :name, autofocus: true, placeholder: "Name of event" %>
+    <div class="form-group">
+      <%= f.label :company%>
+      <%= f.text_field :company, placeholder: "Company Name", class: "form-control"%>
+    </div>
 
-    <%= f.label :company%>
-    <%= f.text_field :company%>
+    <div class="form-group">
+      <%= f.label :description%><br />
+      <%= f.text_area :description, placeholder: "Description", rows: 10, cols: 50, id: "desc", class: "form-control" %>
+    </div>
 
-    <%= f.label :description%><br />
-    <%= f.text_area :description, placeholder: "Description", rows: 10, cols: 30, id: "desc", class: "textarea" %>
+    <div class="form-group">
+      <%= f.label :company_bio%><br />
+      <%= f.text_area :company_bio, placeholder: "Company Bio", rows: 10, cols: 30, id: "desc", class: "form-control" %>
+    </div>
 
-    <%= f.label :company_bio%><br />
-    <%= f.text_area :company_bio, placeholder: "Description", rows: 10, cols: 30, id: "desc", class: "textarea" %>
+    <div class="form-group">
+      <%= f.label :deadline%>
+      <%= f.datetime_field :deadline, class: "form-control" %>
+    </div>
 
-    <%= f.label :deadline%>
-    <%= f.datetime_field :deadline %>
+    <div class="form-group">
+      <%= f.label :url%>
+      <%= f.text_field :url, placeholder: "URL for application", class: "form-control" %>
+    </div>
 
-
-    <%= f.label :url%>
-    <%= f.text_field :url, placeholder: "URL for event", class: "input" %>
-
-</div>
-
-
-    <%= f.submit "Update", class: "cta"%>
+    <%= f.submit "Create", class: "cta"%>
   <% end %>
+</div>
