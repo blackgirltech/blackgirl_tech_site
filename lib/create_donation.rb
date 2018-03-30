@@ -15,7 +15,7 @@ class CreateDonation
     )
   end
 
-  def create_regular_donation(member, stripe_source, donation, *plan)
+  def create_regular_donation(member, stripe_source, donation, amount)
     @client = StripePayment.new
 
     if member.stripe_customer_id.nil? || member.stripe_source.nil?
@@ -24,7 +24,9 @@ class CreateDonation
       member.update(stripe_customer_id: customer.id)
       regular_donation = @client.subscribe(customer.id, *plan)
     else
-      regular_donation = @client.subscribe(member.stripe_customer_id, *plan)
+      product_name = donation.email + "_monthly"
+      plan = @client.create_plan(amount, product_name)
+      regular_donation = @client.subscribe(member.stripe_customer_id, plan)
     end
     donation.update(stripe_subscription_id: regular_donation.id, active_regular_donation: true)
   end

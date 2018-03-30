@@ -1,14 +1,14 @@
-
-
     <div class="pagesHdr" id="donateHeader">
         <h1>Donate</h1>
         <p>Fancy helping us out? Why not become a regular donor or you can give us a one-off donation.</p>
         <hr>
-        <img class="one" src="images/donateHdrOval.png" alt="">
-        <img class="two" src="images/donateHdrOval.png" alt="">
-        <img class="three" src="images/donateHdrOval.png" alt="">
-        <img class="four" src="images/donateHdrOval.png" alt="">
+        <%= image_tag "donateHdrOval.png", class: "one"%>
+        <%= image_tag "donateHdrOval.png", class: "two"%>
+        <%= image_tag "donateHdrOval.png", class: "three"%>
+        <%= image_tag "donateHdrOval.png", class: "four"%>
     </div>
+
+
 
     <div class="donateArea">
         <div class="maxWidth">
@@ -26,21 +26,21 @@
                   <div id="prices">
                     <div class="price">
                       <!-- TODO: FIX SO THAT SELECTED/INPUTED AMOUNT GETS SENT TO CONTROLLER INSTEAD OF LAST AMOUNT SUBMITTED IN FORM -->
-                      <%= f.label "amount", "£5", class: "priceAmounts"%>
-                      <%= f.hidden_field "amount", value: "5" %>
+                      <%= f.label :amount, "£5", class: "priceAmounts"%>
+                      <%= f.hidden_field :amount, value: "5" %>
                     </div>
                     <div class="price">
-                      <%= f.label "amount", "£10", class: "priceAmounts" %>
-                      <%= f.hidden_field "amount", value: "10" %>
+                      <%= f.label :amount, "£10", class: "priceAmounts" %>
+                      <%= f.hidden_field :amount, value: "10" %>
                     </div>
                     <div class="price">
-                      <%= f.label "amount", "£15", class: "priceAmounts" %>
-                      <%= f.hidden_field "amount", value: "15" %>
+                      <%= f.label :amount, "£15", class: "priceAmounts" %>
+                      <%= f.hidden_field :amount, value: "15" %>
                     </div>
-                    <%= f.number_field "amount", id: "other", placeholder: "Other Amount" %>
+                    <%= f.number_field :amount, id: "other", placeholder: "Other Amount" %>
                   </div>
 
-                  <%# if current_member && !active_donor %>
+                  <% if current_member && !active_regular_donor %>
                     <div id="frequency">
                       <div id="innerFrequency">
                         <!--  TODO: change the input so you can only select one or the other -->
@@ -52,19 +52,20 @@
 
                       </div>
                     </div>
-                  <%# elsif current_member.nil? || active_donor %>
-                    <%#= hidden_field_tag(:one_off, true) %>
-                  <%# end %>
+                  <% elsif current_member.nil? || active_donor %>
+                    <%= hidden_field_tag(:one_off, true) %>
+                  <% end %>
+
 
                   <fieldset>
                       <legend>Payment information:</legend>
 
                       <div id="name">
-                          <input type="name" name="name" class="name" placeholder="Name">
+                          <input type="name" name="name" <% if current_member %> value="<%=current_member.first_name + " " + current_member.last_name%>" <% end %> class="name" placeholder="Name">
                       </div>
 
                       <div id="email">
-                          <input type="email" name="email" class="email" placeholder="Email">
+                          <%= f.text_field :email, placeholder: "Email" %>
                       </div>
 
                       <div id="card-element">
@@ -75,6 +76,7 @@
                         <%= hidden_field_tag(:member_id, "#{current_member.id}") %>
                       <% end %>
                   </fieldset>
+
                   <%= f.submit "Donate", class: "cta"%>
                 <% end %>
             </div>

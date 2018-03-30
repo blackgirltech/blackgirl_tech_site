@@ -16,11 +16,22 @@ class StripePayment
     )
   end
 
-  def subscribe(customer_id, *plan)
+  def create_plan(amount, product_name)
+    Stripe::Plan.create({
+    product: {
+      name: product_name,
+    },
+      currency: 'gbp',
+      interval: 'month',
+      amount: amount,
+    })
+  end
+
+  def subscribe(customer_id, plan)
     Stripe::Subscription.create(
       :customer => customer_id,
       # pass plan to below
-      :plan => '5_a_month',
+      :plan => plan,
     )
   end
 end
