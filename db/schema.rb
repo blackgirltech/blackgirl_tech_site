@@ -18,14 +18,15 @@ ActiveRecord::Schema.define(version: 20180329204808) do
   create_table "applications", force: :cascade do |t|
     t.text     "cover_letter"
     t.string   "code_test_url"
-    t.boolean  "longlist"
-    t.boolean  "shortlist"
-    t.boolean  "finalist"
-    t.boolean  "awarded"
+    t.boolean  "longlist",       default: false
+    t.boolean  "shortlist",      default: false
+    t.boolean  "finalist",       default: false
+    t.boolean  "awarded",        default: false
+    t.boolean  "moderated",      default: false
     t.integer  "opportunity_id"
     t.integer  "member_id"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
   end
 
   create_table "delayed_jobs", force: :cascade do |t|

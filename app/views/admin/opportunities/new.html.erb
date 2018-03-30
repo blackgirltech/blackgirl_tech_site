@@ -1,0 +1,28 @@
+
+  <h1>Create Opportunity</h1>
+  <%= form_for [:admin, @opportunity]  do |f| %>
+
+    <%= f.label :name%>
+    <%= f.text_field :name, autofocus: true, placeholder: "Name of event" %>
+
+    <%= f.label :company%>
+    <%= f.text_field :company%>
+
+    <%= f.label :description%><br />
+    <%= f.text_area :description, placeholder: "Description", rows: 10, cols: 30, id: "desc", class: "textarea" %>
+
+    <%= f.label :company_bio%><br />
+    <%= f.text_area :company_bio, placeholder: "Description", rows: 10, cols: 30, id: "desc", class: "textarea" %>
+
+    <%= f.label :deadline%>
+    <%= f.datetime_field :deadline %>
+
+
+    <%= f.label :url%>
+    <%= f.text_field :url, placeholder: "URL for event", class: "input" %>
+
+</div>
+
+
+    <%= f.submit "Update", class: "cta"%>
+  <% end %>

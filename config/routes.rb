@@ -28,5 +28,8 @@ Rails.application.routes.draw do
   end
   get 'thank_you' => 'donations#thank_you'
   resources :members
+  namespace :admin do
+    resources :opportunities, except: [:index, :show]
+  end
   # resources :donations, only: [:new, :create]
 end
