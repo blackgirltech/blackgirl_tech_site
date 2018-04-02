@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180330172701) do
+ActiveRecord::Schema.define(version: 20180402162801) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -80,6 +80,11 @@ ActiveRecord::Schema.define(version: 20180330172701) do
     t.boolean  "refundable"
   end
 
+  create_table "member_skills", force: :cascade do |t|
+    t.integer "skill_id"
+    t.integer "member_id"
+  end
+
   create_table "members", force: :cascade do |t|
     t.string   "email",                  default: "",    null: false
     t.string   "encrypted_password",     default: "",    null: false
@@ -145,6 +150,10 @@ ActiveRecord::Schema.define(version: 20180330172701) do
     t.string   "stripe_token"
     t.string   "stripe_charge_token"
     t.boolean  "donate",              default: false
+  end
+
+  create_table "skills", force: :cascade do |t|
+    t.string "name"
   end
 
   create_table "venues", force: :cascade do |t|

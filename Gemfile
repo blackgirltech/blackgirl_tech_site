@@ -45,8 +45,6 @@ gem 'font-awesome-sass'
 # Jobs
 gem 'delayed_job_active_record'
 
-gem 'protokoll'
-
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'bdd-rails'

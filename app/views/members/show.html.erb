@@ -3,15 +3,17 @@
             <div class="maxWidth">
                 <h1 class="name">
                     Hi <%= @member.first_name %>
-                    <%= link_to edit_member_registration_path(@memeber) %>
+                    <%= link_to "Edit", edit_member_path(@member) %>
                 </h1>
             </div>
 
             <div class="summaryBar">
                 <p>
-                    <span>XX</span> Events</p>
-                <p>
-                    <span>XX</span> Saved Resources</p>
+                    <span><%= @attended_events_count %></span> Events</p>
+                <% if volunteer? %>
+                    <p>
+                        <span><%= current_member.skills.count %></span> Skills</p>
+              <% end %>
                 <p>
                     <span>XX</span> Donations</p>
             </div>
@@ -39,7 +41,9 @@
 
                         <a href="#" class="cta ">Make a Donation</a>
                     </div>
-                    <%= link_to 'Cancel Regular Donation',  donation_cancel_path(@regular_donation.id), class: "btn white bg-red hover-red b--red hover-bg-light-gray" %>
+                    <% if @regular_donation %>
+                      <%= link_to 'Cancel Regular Donation',  donation_cancel_path(@regular_donation.id), class: "btn white bg-red hover-red b--red hover-bg-light-gray" %>
+                    <% end %>
                     <!-- <div class="ifSomeDonations">
                         <div class="previousDonations">
                             <div class="donationCard">

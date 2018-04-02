@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   get 'events/:id/unrsvp' => 'events#unrsvp'
   get 'events/:id/volunteer' => 'events#volunteering'
   get 'events/:id/unvolunteer' => 'events#unvolunteering'
-  resources :members, only: [:show]
+  resources :members, only: [:show, :edit, :update]
   # authenticate :member do
     resources :donations do
       get 'complete', on: :member

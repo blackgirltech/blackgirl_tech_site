@@ -1,0 +1,41 @@
+<div class="editProfilePage">
+    <div class="maxWidth">
+
+        <h1>Edit Profile</h1>
+
+        <div class="editSection">
+            <h3>Personal Details</h3>
+            <%= form_for @member do |f| %>
+                <%= f.text_field :first_name, placeholder: "First Name" %>
+                <%= f.text_field :last_name, placeholder: "Last Name" %>
+                <%= f.text_field :email, placeholder: "Email" %>
+
+                <h3>Skills</h3>
+        				<%= f.collection_check_boxes :skill_ids, Skill.all, :id, :name do |c| %>
+                  <span class="float-md-left mr-2"><%= c.label %></span>
+                  <%= c.check_box %>
+                <% end %>
+                <%= f.submit "Update", class: "cta" %>
+            <% end %>
+        </div>
+
+        <% if active_regular_donor %>
+          <div class="editSection">
+              <h3>Reoccuring Donations</h3>
+              <p>By cancelling your recoccuring donation, your donation of <%= current_member.donations.where(active_regular_donation: true).last.amount %> will end immediately and you will
+                  no longer be charged.</p>
+
+              <a href="#" class="cta greyed donation">Cancel Reoccuring Donation</a>
+          </div>
+        <% end %>
+
+        <div class="editSection">
+            <h3>Delete Account</h3>
+            <p>Please be advised that deleting your account is permanent and will be effective immediately.</p>
+
+            <a href="#" class="cta greyed delete">Delete Account</a>
+        </div>
+
+    </div>
+</div>
+</div>
