@@ -15,7 +15,7 @@
                         <span><%= current_member.skills.count %></span> Skills</p>
               <% end %>
                 <p>
-                    <span>XX</span> Donations</p>
+                    <span><%= current_member.donations.count %></span> Donations</p>
             </div>
 
             <div class="eventsArea pagePanel">
@@ -23,9 +23,7 @@
                     <h2>
                         Upcoming Events
                     </h2>
-                    <% @events.each do |event| %>
                       <%= render "partials/event" %>
-                    <% end %>
                 </div>
             </div>
 

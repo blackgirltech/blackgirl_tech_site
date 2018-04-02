@@ -15,6 +15,12 @@
                   <span class="float-md-left mr-2"><%= c.label %></span>
                   <%= c.check_box %>
                 <% end %>
+
+                <div class="">
+                    <b><%= f.label :subscribed_to_email, "I give you permission to contact me by email"%></b>
+                    <%= f.check_box :subscribed_to_email, class: "" %>
+                </div>
+
                 <%= f.submit "Update", class: "cta" %>
             <% end %>
         </div>
