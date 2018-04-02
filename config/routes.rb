@@ -30,6 +30,7 @@ Rails.application.routes.draw do
   resources :members
   namespace :admin do
     resources :opportunities, except: [:index, :show]
+    resources :events, except: [:index, :show]
   end
   # resources :donations, only: [:new, :create]
 end
