@@ -29,9 +29,11 @@
             <div id="card-errors" role="alert"></div>
 
           <% if @event.refundable %>
-            <p> We collect a £5 deposit per event which is refunded back to you once your attendance has been confirmed. However, if you would like to donate this deposit to us, to ensure the running of future events, then check the donate box. </p>
+            <br>
+            <em> This deposit is refundable once your attendance is confirmed, but you can help us out by donating it back to us so that we can continue to bring you amazing workshops, events and opportunities. </em>
+
             <%= f.fields_for :rsvps do |rsvp| %>
-              <%= rsvp.label :donate, "Check here if you'd like to donate your deposit" %>
+              <b><%= rsvp.label :donate, "Check here to donate your deposit", class: "mt-2"%></b>
               <%= rsvp.check_box :donate %>
             <% end %>
           <% end %>
