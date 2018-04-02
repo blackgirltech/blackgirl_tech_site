@@ -5,28 +5,27 @@
       <p class="eventDetails">
         Location
         <span>
-        <%= @event.venue.first.address %>
+          <%= @event.venue.first.address %>
         </span>
       </p>
       <p class="eventDetails">
         Date &amp; Time
         <span>
-        <%= @event.date.strftime('%a %d %b %C') %> / <%= @event.time.strftime('%H:%mpm') %>
+          <%= @event.date.strftime('%a %d %b %C') %> / <%= @event.time.strftime('%H:%mpm') %>
         </span>
       </p>
       <div class="price">
-        <% if @rsvp.empty? %>
+      <% if @rsvp.empty? %>
         <%= form_for @event, url: {action: "rsvp"} do |f| %>
+          <label for="card-element">
+            Card number
+          </label>
+          <div id="card-element">
+            <!-- a Stripe Element will be inserted here. -->
+          </div>
 
-            <label for="card-element">
-              Card number
-            </label>
-            <div id="card-element">
-              <!-- a Stripe Element will be inserted here. -->
-            </div>
-
-            <!-- Used to display form errors -->
-            <div id="card-errors" role="alert"></div>
+          <!-- Used to display form errors -->
+          <div id="card-errors" role="alert"></div>
 
           <% if @event.refundable %>
             <br>
@@ -43,26 +42,23 @@
             </p>
             <%= f.submit "RSVP", class: "cta" %>
           </div>
-          <div class="priceRight">
+          <!-- <div class="priceRight">
             <p>
-              Please read our
+            Please read our
               <a href="#">Code of Conduct</a>
             </p>
+          </div> -->
           <!-- Display explanitory text & rsvp button with no form if customer_id exists -->
-
         <% end %>
 
         <p> Is this event not quite for you? Why don't you <%= link_to "volunteer", volunteer_path(@event), method: "patch" %> and help others? </p>
-
       <% else %>
-        <p> You are already attending this event </p>
+        <p style="float: none;"> You are already attending this event </p>
         <a href="/events/<%= @event.id %>/unrsvp" class="cta"> UNRSVP </a>
-    <% end %>
-
-
-        </div>
+      <% end %>
       </div>
     </div>
+
     <div class="left">
       <%= image_tag "aboutImg1" %>
       <h2>About <%=@event.name %></h2>
@@ -70,10 +66,6 @@
         <%= @event.details %>
       </p>
     </div>
-  </div>
-</div>
-
-
   </div>
 </div>
 
