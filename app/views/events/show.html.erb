@@ -50,7 +50,7 @@
 
         <% end %>
 
-        <p> Is this event not quite for you? Why don't you <a href="/events/<%= @event.id %>/volunteer"> volunteer </a> and help others? </p>
+        <p> Is this event not quite for you? Why don't you <%= link_to "volunteer", volunteer_path(@event), method: "patch" %> and help others? </p>
 
       <% else %>
         <p> You are already attending this event </p>

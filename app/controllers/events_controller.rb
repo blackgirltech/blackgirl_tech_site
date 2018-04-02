@@ -47,6 +47,7 @@ class EventsController < ApplicationController
     if rsvp.volunteering.nil? || !rsvp.volunteering
       rsvp.update(volunteering: true)
     end
+    flash[:notice] = "You have volunteered for "
     redirect_to "/events/#{@event.id}"
   end
 

@@ -1,4 +1,5 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: 'from@example.com'
+  default to: Proc.new { Member.where(subscribed_to_email: true).each.pluck(:email) },
+    from: 'info@blackgirl.tech'
   layout 'mailer'
 end
