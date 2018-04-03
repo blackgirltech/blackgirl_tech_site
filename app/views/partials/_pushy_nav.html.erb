@@ -5,31 +5,31 @@
                 <%= link_to "About", about_path%>
             </li>
             <li class="pushy-link">
-                <a  href="https://www.eventbrite.com/o/blackgirltech-7827799702">Events</a>
+                <%= link_to "Events", events_path %>
             </li>
             <li class="pushy-link">
-                <a  href="https://paypal.me/blackgirltech">Donate</a>
-            </li>
-            <li class="pushy-link">
-                <a href="https://medium.com/blackgirl-tech-a-blog" > Blog</a>
+                <%= link_to "Donate", new_donation_path %>
             </li>
             <li class="pushy-link">
                 <%= link_to "Opportunites", opportunities_path %>
             </li>
             <% if member_signed_in? %>
-              <%#= link_to "Your Profile", member_path(:id) %>
               <%# if admin? %>
                 <%#= link_to 'Admin', admin_root_path %>
               <%# end %>
               <li class="pushy-link">
-                  <%= link_to "Log Out", destroy_member_session_path, method: :delete %>
+                <%= link_to "My Profile", member_path(current_member) %>
+              </li>
+
+              <li class="pushy-link">
+                <%= link_to "Log Out", destroy_member_session_path, method: :delete %>
               </li>
             <% else %>
               <li class="pushy-link">
-                  <%= link_to "Join Us", new_member_registration_path %>
+                <%= link_to "Join Us", new_member_registration_path %>
               </li>
               <li class="pushy-link">
-                  <%= link_to "Log In", new_member_session_path %>
+                <%= link_to "Log In", new_member_session_path %>
               </li>
             <% end %>
         </ul>
