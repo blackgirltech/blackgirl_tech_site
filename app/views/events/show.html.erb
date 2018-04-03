@@ -15,46 +15,50 @@
         </span>
       </p>
       <div class="price">
-      <% if @rsvp.empty? %>
-        <%= form_for @event, url: {action: "rsvp"} do |f| %>
-          <label for="card-element">
-            Card number
-          </label>
-          <div id="card-element">
-            <!-- a Stripe Element will be inserted here. -->
-          </div>
+      <% unless admin? %>
+        <% if @rsvp.empty? %>
+          <%= form_for @event, url: {action: "rsvp"} do |f| %>
+            <label for="card-element">
+              Card number
+            </label>
+            <div id="card-element">
+              <!-- a Stripe Element will be inserted here. -->
+            </div>
 
-          <!-- Used to display form errors -->
-          <div id="card-errors" role="alert"></div>
+            <!-- Used to display form errors -->
+            <div id="card-errors" role="alert"></div>
 
-          <% if @event.refundable %>
-            <br>
-            <em> This deposit is refundable once your attendance is confirmed, but you can help us out by donating it back to us so that we can continue to bring you amazing workshops, events and opportunities. </em>
+            <% if @event.refundable %>
+              <br>
+              <em> This deposit is refundable once your attendance is confirmed, but you can help us out by donating it back to us so that we can continue to bring you amazing workshops, events and opportunities. </em>
 
-            <%= f.fields_for :rsvps do |rsvp| %>
-              <b><%= rsvp.label :donate, "Check here to donate your deposit", class: "mt-2"%></b>
-              <%= rsvp.check_box :donate %>
+              <%= f.fields_for :rsvps do |rsvp| %>
+                <b><%= rsvp.label :donate, "Check here to donate your deposit", class: "mt-2"%></b>
+                <%= rsvp.check_box :donate %>
+              <% end %>
             <% end %>
+            <div class="priceLeft">
+              <p>
+                &pound;<%= @event.price %>0
+              </p>
+              <%= f.submit "RSVP", class: "cta" %>
+            </div>
+            <!-- <div class="priceRight">
+              <p>
+              Please read our
+                <a href="#">Code of Conduct</a>
+              </p>
+            </div> -->
+            <!-- Display explanitory text & rsvp button with no form if customer_id exists -->
           <% end %>
-          <div class="priceLeft">
-            <p>
-              &pound;<%= @event.price %>0
-            </p>
-            <%= f.submit "RSVP", class: "cta" %>
-          </div>
-          <!-- <div class="priceRight">
-            <p>
-            Please read our
-              <a href="#">Code of Conduct</a>
-            </p>
-          </div> -->
-          <!-- Display explanitory text & rsvp button with no form if customer_id exists -->
-        <% end %>
 
-        <p> Is this event not quite for you? Why don't you <%= link_to "volunteer", volunteer_path(@event), method: "patch" %> and help others? </p>
+          <p> Is this event not quite for you? Why don't you <%= link_to "volunteer", volunteer_path(@event), method: "patch" %> and help others? </p>
+        <% else %>
+          <p style="float: none;"> You are already attending this event </p>
+          <a href="/events/<%= @event.id %>/unrsvp" class="cta"> UNRSVP </a>
+        <% end %>
       <% else %>
-        <p style="float: none;"> You are already attending this event </p>
-        <a href="/events/<%= @event.id %>/unrsvp" class="cta"> UNRSVP </a>
+        <%= link_to "Check In", admin_event_rsvps_path(@event), class: "cta" %>
       <% end %>
       </div>
     </div>

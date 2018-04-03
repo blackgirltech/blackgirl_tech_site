@@ -37,7 +37,7 @@
                             Help us better support our Attendees
                         </p>
 
-                        <a href="#" class="cta ">Make a Donation</a>
+                        <%= link_to "Make a donation", new_donation_path, class: "cta" %>
                     </div>
                     <% if @regular_donation %>
                       <%= link_to 'Cancel Regular Donation',  donation_cancel_path(@regular_donation.id), class: "btn white bg-red hover-red b--red hover-bg-light-gray" %>
