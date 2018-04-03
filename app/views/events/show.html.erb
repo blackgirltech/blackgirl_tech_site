@@ -58,6 +58,8 @@
           <a href="/events/<%= @event.id %>/unrsvp" class="cta"> UNRSVP </a>
         <% end %>
       <% else %>
+        <%= link_to "Edit", edit_admin_event_path(@event), class: "cta" %>
+        <br>
         <%= link_to "Check In", admin_event_rsvps_path(@event), class: "cta" %>
       <% end %>
       </div>

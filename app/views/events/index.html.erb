@@ -6,6 +6,10 @@
   <div id="eventsTop">
     <div class="maxWidth">
       <h2>Upcoming</h2>
+      <% if admin? %>
+        <%= link_to "Create New Event", new_admin_event_path, class: "cta" %>
+        <br>
+      <% end %>
 
         <%= render "partials/event" %>
 

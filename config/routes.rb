@@ -29,8 +29,13 @@ Rails.application.routes.draw do
   get 'thank_you' => 'donations#thank_you'
   resources :members
   namespace :admin do
+    get '/dashboard' => 'admin#dashboard'
     resources :opportunities, except: [:index, :show]
-    resources :events, except: [:index, :show]
+    resources :events, except: [:index, :show] do
+      resources :rsvps
+      post 'rsvps/:id/check_in' => 'rsvps#check_in', as: :check_in
+      post 'rsvps/:id/check_out' => 'rsvps#check_out', as: :check_out
+    end
   end
   # resources :donations, only: [:new, :create]
 end
