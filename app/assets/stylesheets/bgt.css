@@ -2458,6 +2458,7 @@ header #headerInner nav #navWrap .innerWrap a:hover {
     height: 330px;
     margin: 0 auto;
     width: 50%;
+    max-width: 970px;
   }
   header #headerInner nav #navWrap .innerWrap a {
     display: block;
