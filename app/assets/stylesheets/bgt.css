@@ -4,7 +4,7 @@
  */
 /* FONT PATH
  * -------------------------- */
-@font-face {
+ @font-face {
   font-family: 'FontAwesome';
   src: url('../fonts/fontawesome-webfont.eot?v=4.7.0');
   src: url('../fonts/fontawesome-webfont.eot?#iefix&v=4.7.0') format('embedded-opentype'), url('../fonts/fontawesome-webfont.woff2?v=4.7.0') format('woff2'), url('../fonts/fontawesome-webfont.woff?v=4.7.0') format('woff'), url('../fonts/fontawesome-webfont.ttf?v=4.7.0') format('truetype'), url('../fonts/fontawesome-webfont.svg?v=4.7.0#fontawesomeregular') format('svg');
@@ -3424,7 +3424,7 @@ header #headerInner .hdr {
 }
 @media screen and (min-width: 768px) {
   .donateArea .maxWidth #donateText {
-    max-width: 40%;
+    max-width: 50%;
     padding: 30px 20px;
     float: left;
   }
@@ -3457,7 +3457,6 @@ header #headerInner .hdr {
   float: left;
 }
 .donateArea .maxWidth .donateForm #prices .price {
-  padding: 13px 0;
   text-align: center;
   width: 87px;
   font-size: 21pt;
@@ -3478,6 +3477,18 @@ header #headerInner .hdr {
   -moz-box-shadow: 0px 5px 11px 0px rgba(0, 0, 0, 0.1);
   box-shadow: 0px 5px 11px 0px rgba(0, 0, 0, 0.1);
   border: none;
+}
+.donateArea .maxWidth .donateForm #prices .price label {
+  float: left;
+  padding: 14px 0;
+  width: 100%;
+  cursor: pointer;
+}
+.donateArea .maxWidth .donateForm #prices .prices .selected {
+  float: left;
+  padding: 14px 0;
+  width: 100%;
+  cursor: pointer;
 }
 .donateArea .maxWidth .donateForm #prices .price:nth-of-type(3n) {
   float: right;
@@ -3631,7 +3642,7 @@ header #headerInner .hdr {
 }
 @media screen and (min-width: 768px) {
   .donateArea .maxWidth {
-    width: 700px;
+    width: 800px;
   }
 }
 .pagePanel {

@@ -28,15 +28,15 @@
                     <div class="price">
                       <!-- TODO: FIX SO THAT SELECTED/INPUTED AMOUNT GETS SENT TO CONTROLLER INSTEAD OF LAST AMOUNT SUBMITTED IN FORM -->
                       <%= label :amount5, "£5", class: "priceAmounts", for: "amount5"%>
-                      <%= check_box_tag :amount5, 5 %>
+                      <%= radio_button_tag "amount", :amount5, "5" %>
                     </div>
                     <div class="price">
                       <%= label :amount10, "£10", for: "amount10", class: "priceAmounts" %>
-                      <%= check_box_tag :amount10, 10 %>
+                      <%= radio_button_tag "amount", :amount10, "10" %>
                     </div>
                     <div class="price">
                       <%= label :amount15, "£15", for: "amount15", class: "priceAmounts" %>
-                      <%= check_box_tag :amount15, 15 %>
+                      <%= radio_button_tag "amount", :amount15, "15" %>
                     </div>
                     <%= number_field_tag :other_amount, id: "other", placeholder: "Other Amount" %>
                   </div>
@@ -122,3 +122,4 @@
       initialiseStripe('<%=ENV['STRIPE_PUBLISHABLE_KEY']%>', 'new_donation')
     </script>
   <% end %>
+
