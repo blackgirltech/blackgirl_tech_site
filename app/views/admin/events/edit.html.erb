@@ -1,0 +1,68 @@
+
+<div class="col-md-6 offset-md-3">
+  <h1>Create Opportunity</h1>
+  <%= form_for [:admin, @event]  do |f| %>
+
+    <div class="form-group">
+      <%= f.label :image %>
+      <%= f.file_field :image %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :name%>
+      <%= f.text_field :name, autofocus: true, placeholder: "Name of Event", class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :price_in_pence%>
+      <%= f.number_field :price_in_pence, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :address%>
+      <%= f.text_field :address, placeholder: "Address", class: "form-control" %>
+      <%#= label_tag :venue_ids, "Venue" %>
+        <%#= f.select(:venue_ids,  options_for_select(Venue.all.collect{|v|[v.name, v.id]}), class: "select" ) %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :details%><br />
+      <%= f.text_area :details, placeholder: "Description", rows: 10, cols: 50, id: "desc", class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :date%>
+      <%= f.date_field :date, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :time%>
+      <%= f.time_field :time, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :max_attendees%>
+      <%= f.number_field :max_attendees, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :max_volunteers%>
+      <%= f.number_field :max_volunteers, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :refundable%>
+      <%= f.check_box :refundable, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :workshop%>
+      <%= f.check_box :workshop, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :masterclass%>
+      <%= f.check_box :masterclass, class: "form-control" %>
+    </div>
+
+    <%= f.submit "Create", class: "cta"%>
+  <% end %>
+</div>

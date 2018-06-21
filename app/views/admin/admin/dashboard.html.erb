@@ -1,0 +1,20 @@
+<!-- View All Members, Member donations, Member events, Member profiles, make members admin -->
+<!-- View All events, create events, view & check-in event attendees, view & check-in event volunteers -->
+<!--  View all opportunities, create/edit/delete opportunities -->
+<!--  View all donations -->
+
+
+<div class="profilePage">
+
+  <div class="summaryBar">
+      <p>
+          <span><%= @events.count%></span> Events</p>
+          <p>
+              <span><%= @members.where(volunteer: true).count %></span> Volunteers</p>
+              <p><span><%= @members.where(volunteer: false).count %></span> Members</p>
+      <p>
+          <span><%= @donations.count%></span> Donations</p>
+  </div>
+
+  <%= link_to "Check in Atendees", "#", class: "cta" %>
+</div>

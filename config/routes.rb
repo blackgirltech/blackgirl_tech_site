@@ -17,9 +17,9 @@ Rails.application.routes.draw do
   resources :applications
   patch 'events/:id/rsvp' => 'events#rsvp'
   get 'events/:id/unrsvp' => 'events#unrsvp'
-  get 'events/:id/volunteer' => 'events#volunteering'
-  get 'events/:id/unvolunteer' => 'events#unvolunteering'
-  resources :members, only: [:show]
+  patch 'events/:id/volunteer' => 'events#volunteering', as: :volunteer
+  get 'events/:id/unvolunteer' => 'events#unvolunteering', as: :unvolunteer
+  resources :members, only: [:show, :edit, :update]
   # authenticate :member do
     resources :donations do
       get 'complete', on: :member
@@ -29,7 +29,13 @@ Rails.application.routes.draw do
   get 'thank_you' => 'donations#thank_you'
   resources :members
   namespace :admin do
+    get '/dashboard' => 'admin#dashboard'
     resources :opportunities, except: [:index, :show]
+    resources :events, except: [:index, :show] do
+      resources :rsvps
+      post 'rsvps/:id/check_in' => 'rsvps#check_in', as: :check_in
+      post 'rsvps/:id/check_out' => 'rsvps#check_out', as: :check_out
+    end
   end
   # resources :donations, only: [:new, :create]
 end

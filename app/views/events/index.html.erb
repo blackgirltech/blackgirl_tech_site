@@ -1,15 +1,18 @@
 <div class="pagesHdr" id="eventsHeader">
     <h1>Events</h1>
-    <img src="" alt="">
 </div>
 
 <div class="eventsArea">
   <div id="eventsTop">
     <div class="maxWidth">
       <h2>Upcoming</h2>
-      <% @events.each do |event| %>
-        <%= render "partials/event", locals: {event: event} %>
+      <% if admin? %>
+        <%= link_to "Create New Event", new_admin_event_path, class: "cta" %>
+        <br>
       <% end %>
+
+        <%= render "partials/event" %>
+
       </div>
     </div>
   </div>

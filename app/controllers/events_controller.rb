@@ -28,7 +28,7 @@ class EventsController < ApplicationController
     # ^^ this method creates new rsvps for the same user if they unrsvp then rsvp again, at some point we should change this.
 
     payment = EventPayment.new
-    payment.pay(current_member, @event, rsvp)
+    payment.pay(current_member, @event, rsvp, params[:stripe_source])
     redirect_to events_path
   end
 
@@ -47,6 +47,7 @@ class EventsController < ApplicationController
     if rsvp.volunteering.nil? || !rsvp.volunteering
       rsvp.update(volunteering: true)
     end
+    flash[:notice] = "You have volunteered for "
     redirect_to "/events/#{@event.id}"
   end
 

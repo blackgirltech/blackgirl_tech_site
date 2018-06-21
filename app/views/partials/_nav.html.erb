@@ -3,25 +3,26 @@
     <div id="headerInner">
         <nav>
             <div id="navWrap">
-                <span id="left">
-                    <%= link_to "About", about_path%>
-                    <a  href="https://www.eventbrite.com/o/blackgirltech-7827799702">Events</a>
-                    <%= link_to "Donate", new_donation_path %>
-                </span>
-                <%= image_tag "white_logo" %>
-                <span id="right">
-                    <a href="https://medium.com/blackgirl-tech-a-blog" > Blog</a>
-                    <%= link_to "Opportunites", opportunities_path %>
-                    <% if member_signed_in? %>
-                      <%#= link_to "Your Profile", member_path(:id) %>
-                      <%# if admin? %>
-                        <%#= link_to 'Admin', admin_root_path %>
-                      <%# end %>
-                      <%= link_to "Log Out", destroy_member_session_path, method: :delete %>
-                    <% else %>
-                      <%= link_to "Join Us", new_member_registration_path %>
-                      <%= link_to "Log In", new_member_session_path %>
-                    <% end %>
+                <div class="innerWrap">
+                    <a href="/" class="logoLink">
+                        <%= image_tag "white_logo" %>
+                    </a>
+                    <div class="navAlign">
+                        <% if member_signed_in? %>
+                          <% if admin? %>
+                              <%= link_to 'Admin', admin_root_path %>
+                          <% end %>
+                          <%= link_to "My Profile", member_path(current_member), class: "desktopNavLink" %>
+                          <%= link_to "Log Out", destroy_member_session_path, method: :delete, class: "desktopNavLink" %>
+                        <% else %>
+                          <%= link_to "Join Us", new_member_registration_path, class: "desktopNavLink" %>
+                          <%= link_to "Log In", new_member_session_path, class: "desktopNavLink" %>
+                        <% end %>
+                        <%= link_to "Opportunites", opportunities_path, class: "desktopNavLink" %>
+                        <%= link_to "Donate", new_donation_path, class: "desktopNavLink" %>
+                        <%#= link_to "Events", events_path, class: "desktopNavLink" %>
+                        <%= link_to "About", about_path, class: "desktopNavLink"%>
+                    </div>
                 </span>
             </div>
         </nav>

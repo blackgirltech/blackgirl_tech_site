@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180330172701) do
+ActiveRecord::Schema.define(version: 20180402200318) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -68,16 +68,24 @@ ActiveRecord::Schema.define(version: 20180330172701) do
     t.time     "time"
     t.text     "address"
     t.text     "details"
-    t.string   "image"
     t.string   "url"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
     t.boolean  "workshop"
     t.boolean  "masterclass"
     t.integer  "max_attendees"
     t.integer  "max_volunteers"
     t.integer  "price_in_pence"
     t.boolean  "refundable"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+  end
+
+  create_table "member_skills", force: :cascade do |t|
+    t.integer "skill_id"
+    t.integer "member_id"
   end
 
   create_table "members", force: :cascade do |t|
@@ -112,6 +120,7 @@ ActiveRecord::Schema.define(version: 20180330172701) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string   "unconfirmed_email"
+    t.boolean  "subscribed_to_email",    default: true
     t.index ["email"], name: "index_members_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_members_on_reset_password_token", unique: true, using: :btree
   end
@@ -145,6 +154,10 @@ ActiveRecord::Schema.define(version: 20180330172701) do
     t.string   "stripe_token"
     t.string   "stripe_charge_token"
     t.boolean  "donate",              default: false
+  end
+
+  create_table "skills", force: :cascade do |t|
+    t.string "name"
   end
 
   create_table "venues", force: :cascade do |t|

@@ -18,6 +18,7 @@
 !/tmp/.keep
 
 public/assets/
+public/
 
 # Ignore Byebug command history file.
 .byebug_history

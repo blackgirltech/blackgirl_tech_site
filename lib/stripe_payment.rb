@@ -12,7 +12,7 @@ class StripePayment
       :customer => customer_id,
       :amount => event.price_in_pence,
       :currency => "gbp",
-      :description => "name: #{event.name}, refund: #{rsvp_donate}"
+      :description => "name: #{event.name}, donate: #{rsvp_donate}"
     )
   end
 

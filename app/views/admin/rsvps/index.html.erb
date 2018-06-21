@@ -1,0 +1,44 @@
+<h1> <%= @event.name %> RSVPs </h1>
+<p> <%= @event.date %> </p>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Role</th>
+      <th scope="col">Skills</th>
+      <th scope="col">Check In</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% n = 0 %>
+    <% @rsvps.each do |rsvp| %>
+    <tr>
+      <th scope="row"><%= n += 1 %></th>
+      <td><%= rsvp.member.first_name + " " + rsvp.member.last_name %></td>
+      <td>
+        <% if rsvp.volunteering %>
+          Volunteer
+        <% else %>
+          Attendee
+        <% end %>
+      </td>
+      <td>
+        <% if rsvp.member.volunteer %>
+          <% rsvp.member.skills.each do |skill| %>
+            <%= skill.name + ", " %>
+          <% end %>
+        <% end %>
+      </td>
+      <td>
+        <% unless rsvp.checked_in %>
+          <%= link_to "check in", admin_event_check_in_path(@event, rsvp), method: "post" %>
+        <% else %>
+          <%= link_to "check out", admin_event_check_out_path(@event, rsvp), method: "post" %>
+        <% end %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
