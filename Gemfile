@@ -31,6 +31,7 @@ gem 'jbuilder', '~> 2.5'
 # LOGIN INFO
 
 gem 'devise'
+gem 'devise_invitable', '~> 1.7.0'
 gem 'omniauth-oauth2', '1.3.1'
 gem 'omniauth-facebook'
 gem 'twitter'

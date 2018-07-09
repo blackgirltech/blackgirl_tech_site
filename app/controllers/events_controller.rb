@@ -13,11 +13,21 @@ class EventsController < ApplicationController
   end
 
   def rsvp
-    authenticate_member!
+    # authenticate_member!
     @event = Event.find_by_id(params[:id])
+    
+    unless current_member.present?
+      email = params[:event][:rsvps][:email]
+      Member.invite!(email: email)
+      member = Member.find_by_email(email)
+    else
+      member = current_member
+    end
+
+    binding.pry
     rsvp = Rsvp.find_or_create_by!(
       event_id: @event.id,
-      member: current_member,
+      member: member,
       donate: params[:event][:rsvps][:donate]
     )
 
