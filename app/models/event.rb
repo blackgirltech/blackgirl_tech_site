@@ -6,7 +6,7 @@ class Event < ApplicationRecord
   has_many :event_venues
   has_many :venue, through: :event_venues
 
-  after_create :auto_refund, :send_volunteer_email
+  after_create :auto_refund, :send_event_email
 
   # def address
   #   if self.venue.first
@@ -45,8 +45,8 @@ class Event < ApplicationRecord
     AutoRefundJob.set(wait_until: self.date.to_datetime + 1.day).perform_later(self.id)
   end
 
-  def send_volunteer_email
-    VolunteerEmailJob.set(wait_until: self.date.to_datetime - 10.day).perform_later(self)
+  def send_event_email
+    EventEmailJob.set(wait_until: self.date.to_datetime - 10.day).perform_later(self)
   end
 
 end

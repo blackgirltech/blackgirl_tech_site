@@ -83,7 +83,7 @@
                                 <table>
                                   <tr>
                                     <th>
-                                      <%= image_tag "emailLogo.jpg" %>
+                                      <%#= image_tag @event.image %>
                                     </th>
                                   </tr>
                                 </table>
@@ -119,7 +119,7 @@
                           <table>
                             <tr>
                               <th>
-                                <img src="http://placehold.it/580x300" alt="">
+                                <%= image_tag @event.image %>
                                 <table class="spacer">
                                   <tbody>
                                     <tr>
@@ -127,11 +127,9 @@
                                     </tr>
                                   </tbody>
                                 </table>
-                                <h2 class="mailTitle">Volunteer for <%= @event.name %>
+                                <h2 class="mailTitle"><%= @event.name %>
                                 </h2>
-                                <p class="bodyText">We're having <%= @event.name %> on <%= @event.date %>, <%= @event.time %> at <%= @event.address %> and need some volunteers to coach our students along the way. If you're available, click the button below.  </p>
-
-                                <p class="bodyText">Please allow two days for cancellations, no-shows will be banned from volunteering again for a year. </p>
+                                <p class="bodyText">We're having <%= @event.name %> on <%= @event.date %>, <%= @event.time %> at <%= @event.address %> and would love for you to join us. Find out more and rsvp below. </p>
 
                                 <table>
                                   <tr>
@@ -142,7 +140,7 @@
                                             <table>
                                               <tr>
                                                 <td>
-                                                  <%= link_to "Volunteer", volunteer_url(@event), method: "patch", class: "cta" %>
+                                                  <%= link_to "RSVP", rsvp_url(@event), method: "patch", class: "cta" %>
                                                 </td>
                                               </tr>
                                             </table>
@@ -152,6 +150,31 @@
                                     </td>
                                   </tr>
                                 </table>
+                                <% if @member.volunteer %>
+                                  <p> We need some volunteers  to coach our students along the way. If you're available, click the button below.  </p>
+
+                                  <p class="bodyText">Please allow two days for cancellations, no-shows will be banned from volunteering again for a year. </p>
+
+                                  <table>
+                                    <tr>
+                                      <td class="centerButton">
+                                        <table class="button large secondary">
+                                          <tr>
+                                            <td>
+                                              <table>
+                                                <tr>
+                                                  <td>
+                                                    <%= link_to "Volunteer", volunteer_url(@event), method: "patch", class: "cta" %>
+                                                  </td>
+                                                </tr>
+                                              </table>
+                                            </td>
+                                          </tr>
+                                        </table>
+                                      </td>
+                                    </tr>
+                                  </table>
+                                <% end %>
                               </th>
                             </tr>
                           </table>
