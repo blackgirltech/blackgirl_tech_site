@@ -6,7 +6,7 @@ class Event < ApplicationRecord
   has_many :event_venues
   has_many :venue, through: :event_venues
 
-  after_create :auto_refund, :send_event_email
+  # after_create :auto_refund, :send_event_email
 
   # def address
   #   if self.venue.first

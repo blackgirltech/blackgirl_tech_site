@@ -29,6 +29,16 @@ ActiveRecord::Schema.define(version: 20180706182408) do
     t.datetime "updated_at",                     null: false
   end
 
+  create_table "custom_auto_increments", force: :cascade do |t|
+    t.string   "counter_model_name"
+    t.integer  "counter",             default: 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "counter_model_scope"
+    t.index ["counter_model_name", "counter_model_scope"], name: "counter_model_name_scope", unique: true, using: :btree
+    t.index ["counter_model_name"], name: "index_custom_auto_increments_on_counter_model_name", using: :btree
+  end
+
   create_table "delayed_jobs", force: :cascade do |t|
     t.integer  "priority",   default: 0, null: false
     t.integer  "attempts",   default: 0, null: false
@@ -137,6 +147,22 @@ ActiveRecord::Schema.define(version: 20180706182408) do
     t.index ["reset_password_token"], name: "index_members_on_reset_password_token", unique: true, using: :btree
   end
 
+  create_table "memberships", force: :cascade do |t|
+    t.string   "membership_type"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.string   "redirect_url"
+    t.string   "response_id"
+    t.datetime "expiration_date"
+    t.integer  "member_id"
+    t.datetime "cancellation_date"
+    t.string   "gc_mandate_id"
+    t.string   "gc_customer_id"
+    t.string   "gc_payment_id"
+    t.string   "membership_number"
+    t.string   "stripe_subscription_id"
+  end
+
   create_table "opportunities", force: :cascade do |t|
     t.string   "name"
     t.string   "company"
@@ -166,6 +192,15 @@ ActiveRecord::Schema.define(version: 20180706182408) do
     t.string   "stripe_token"
     t.string   "stripe_charge_token"
     t.boolean  "donate",              default: false
+  end
+
+  create_table "sessions", force: :cascade do |t|
+    t.string   "session_id", null: false
+    t.text     "data"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["session_id"], name: "index_sessions_on_session_id", unique: true, using: :btree
+    t.index ["updated_at"], name: "index_sessions_on_updated_at", using: :btree
   end
 
   create_table "skills", force: :cascade do |t|
