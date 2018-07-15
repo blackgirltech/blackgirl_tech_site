@@ -38,7 +38,7 @@
                       <%= label :amount15, "£15", for: "amount15", class: "priceAmounts" %>
                       <%= check_box_tag :amount15, 15 %>
                     </div>
-                    <%= number_field_tag :other_amount, id: "other", placeholder: "Other Amount" %>
+                    <%= number_field_tag :other_amount, nil, id: "other", placeholder: "Other Amount", class: "priceAmounts"%>
                   </div>
 
                   <% if current_member && !active_regular_donor %>
