@@ -5,19 +5,11 @@ class CreateDonation
     @client = client || StripePayment.new
   end
 
-  def create_one_off_donation(token, amount)
-    # Charge the user's card:
-    donation = Stripe::Charge.create(
-      :amount => amount,
-      :currency => "gbp",
-      :description => "one_off_donation",
-      :source => token,
-    )
+  def create_one_off_donation(amount, token)
+    donation = @client.create_charge(amount, token)
   end
 
   def create_regular_donation(member, stripe_source, donation, amount)
-    @client = StripePayment.new
-
     if member.stripe_customer_id.nil? || member.stripe_source.nil?
       member.update(stripe_source: stripe_source)
       customer = @client.create_customer(member)

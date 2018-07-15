@@ -17,6 +17,7 @@
       <div class="price">
       <% unless admin? %>
         <% if @rsvp.empty? %>
+          <!-- TODO: Display explanitory text & rsvp button with no form if customer_id exists -->
           <%= form_for @event, url: {action: "rsvp"} do |f| %>
             <label for="card-element">
               Card number
@@ -28,11 +29,13 @@
             <!-- Used to display form errors -->
             <div id="card-errors" role="alert"></div>
 
-            <% if @event.refundable %>
-              <br>
-              <em> This deposit is refundable once your attendance is confirmed, but you can help us out by donating it back to us so that we can continue to bring you amazing workshops, events and opportunities. </em>
-
               <%= f.fields_for :rsvps do |rsvp| %>
+                <%= rsvp.label :email, class: "mt-2"%>
+                <%= rsvp.text_field :email, class: "mt-2"%>
+                <% if @event.refundable %>
+                <br>
+                <em> This deposit is refundable once your attendance is confirmed, but you can help us out by donating it back to us so that we can continue to bring you amazing workshops, events and opportunities. </em>
+
                 <b><%= rsvp.label :donate, "Check here to donate your deposit", class: "mt-2"%></b>
                 <%= rsvp.check_box :donate %>
               <% end %>
@@ -49,7 +52,6 @@
                 <a href="#">Code of Conduct</a>
               </p>
             </div> -->
-            <!-- Display explanitory text & rsvp button with no form if customer_id exists -->
           <% end %>
 
           <p> Is this event not quite for you? Why don't you <%= link_to "volunteer", volunteer_path(@event), method: "patch" %> and help others? </p>
