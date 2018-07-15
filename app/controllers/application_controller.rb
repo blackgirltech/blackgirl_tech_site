@@ -42,5 +42,6 @@ class ApplicationController < ActionController::Base
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name, :address_line_one, :address_line_two, :city, :postcode, :volunteer, :contact_permission, :black_woman_nbp, :skill_list, :interest_list])
     devise_parameter_sanitizer.permit(:account_update, keys: [:first_name, :last_name, :address_line_one, :address_line_two, :city, :postcode, :volunteer, :contact_permission, :black_woman_nbp, :skill_list, :interest_list])
+    devise_parameter_sanitizer.permit(:accept_invitation, keys: [:first_name, :last_name, :address_line_one, :address_line_two, :city, :postcode, :volunteer, :contact_permission, :black_woman_nbp, :skill_list, :interest_list])
   end
 end

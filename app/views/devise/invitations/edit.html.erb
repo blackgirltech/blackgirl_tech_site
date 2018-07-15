@@ -1,0 +1,41 @@
+<div class="editProfilePage">
+  <div class="maxWidth">
+
+    <h2>Finish Creating Your Account</h2>
+
+    <div class="editSection">
+      <%= form_for resource, :as => resource_name, :url => invitation_path(resource_name), :html => { :method => :put } do |f| %>
+        <%= devise_error_messages! %>
+        <%= f.hidden_field :invitation_token, readonly: true %>
+        <%= f.text_field :first_name, placeholder: "First Name" %>
+        <%= f.text_field :last_name, placeholder: "Last Name" %>
+
+        <% if f.object.class.require_password_on_accepting %>
+        <p><%= f.label :password %><br />
+        <%= f.password_field :password %></p>
+
+        <p><%= f.label :password_confirmation %><br />
+        <%= f.password_field :password_confirmation %></p>
+        <% end %>
+
+        <div class="question">
+            <%= f.label :black_woman_nbp, "Are you a black woman/black non-binary person?"%>
+            <%= f.check_box :black_woman_nbp, class: "" %>
+        </div>
+
+        <div class="">
+            <%= f.label :voluenteer, "Would you like to register as a volunteer?" %><br />
+            <%= f.check_box :volunteer%>
+        </div>
+
+        <div class="question">
+            <%= f.label :subscribed_to_email, "I give you permission to contact me by email"%>
+            <%= f.check_box :subscribed_to_email, class: "" %>
+        </div>
+
+
+        <p><%= f.submit "Create Account", class: "cta" %></p>
+      <% end %>
+    </div>
+  </div>
+</div>
