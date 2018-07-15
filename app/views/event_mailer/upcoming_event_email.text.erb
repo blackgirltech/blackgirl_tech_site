@@ -2,10 +2,12 @@
   Volunteer for <%= @event.name %>
   ===============================================
 
-  We're having <%= @event.name %> on <%= @event.date %>, <%= @event.time %> at <%= @event.address %> and would love for you to join us. Find out more and rsvp here: <%= link_to "RSVP", rsvp_url(@event), method: "patch" %>.
+  We're having <%= @event.name %> on <%= @event.date.strftime('%a %d %b %C') %>, <%= @event.time.strftime('%H:%mpm') %> at <%= @event.address %> and would love for you to join us. Find out more and rsvp here: <%= link_to "RSVP", rsvp_url(@event), method: "patch" %>.
 
   <% if @member.volunteer %>
   We need some volunteers to coach our students along the way. If you're available, visit here: <%= link_to "Volunteer", volunteer_url(@event), method: "patch" %>
 
   Please allow two days for cancellations, no-shows will be banned from volunteering again for a year.
   <% end %>
+
+  <%= link_to "Unsubscribe", member_show_unsubscribe_url(@member.id) %>

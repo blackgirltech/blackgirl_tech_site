@@ -17,6 +17,10 @@ class MembersController < ApplicationController
     @attended_events_count = Rsvp.where(attending: true, member_id: current_member).count && Rsvp.where(volunteering: true, member_id: current_member).count
   end
 
+  def show_unsubscribe
+    @member = Member.find(params[:member_id])
+  end
+
   def unsubscribe
     @member = Member.find(params[:member_id])
     @member.update(subscribed_to_email: false)

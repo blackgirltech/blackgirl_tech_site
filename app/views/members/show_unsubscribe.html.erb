@@ -1,0 +1,8 @@
+<div class="profilePage">
+  <div class="maxWidth">
+    <br>
+    <br>
+    <p>You want to unsubscribe <b> <%= @member.email %> </b> from recieving blackgirl.tech emails. This means you will not recieve email notifications when events and opportunities become available.
+    <%= link_to "Unsubscribe", member_show_unsubscribe_path(@member.id), method: :patch, class: "cta" %>
+  </div>
+</div>

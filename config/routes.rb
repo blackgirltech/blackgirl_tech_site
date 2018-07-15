@@ -29,6 +29,7 @@ Rails.application.routes.draw do
   get 'thank_you' => 'donations#thank_you'
   resources :members do
     patch 'unsubscribe' => 'members#unsubscribe', as: :unsubscribe
+    get 'unsubscribe' => 'members#show_unsubscribe', as: :show_unsubscribe
   end
   namespace :admin do
     get '/dashboard' => 'admin#dashboard'
