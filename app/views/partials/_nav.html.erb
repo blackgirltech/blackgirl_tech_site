@@ -10,7 +10,7 @@
                     <div class="navAlign">
                         <% if member_signed_in? %>
                           <% if admin? %>
-                              <%= link_to 'Admin', admin_root_path %>
+                              <%= link_to 'Admin', admin_dashboard_path %>
                           <% end %>
                           <%= link_to "My Profile", member_path(current_member), class: "desktopNavLink" %>
                           <%= link_to "Log Out", destroy_member_session_path, method: :delete, class: "desktopNavLink" %>

@@ -14,9 +14,9 @@
                 <%= link_to "Opportunites", opportunities_path %>
             </li>
             <% if member_signed_in? %>
-              <%# if admin? %>
-                <%#= link_to 'Admin', admin_root_path %>
-              <%# end %>
+              <% if admin? %>
+                <%= link_to 'Admin', admin_dashboard_path %>
+              <% end %>
               <li class="pushy-link">
                 <%= link_to "My Profile", member_path(current_member) %>
               </li>
