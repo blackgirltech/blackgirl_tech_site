@@ -31,6 +31,7 @@ gem 'jbuilder', '~> 2.5'
 # LOGIN INFO
 
 gem 'devise'
+gem 'devise_invitable', '~> 1.7.0'
 gem 'omniauth-oauth2', '1.3.1'
 gem 'omniauth-facebook'
 gem 'twitter'
@@ -45,6 +46,8 @@ gem "paperclip", "~> 6.0.0"
 
 # Jobs
 gem 'delayed_job_active_record'
+
+gem 'rest-client'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

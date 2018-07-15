@@ -7,7 +7,16 @@ class StripePayment
     )
   end
 
-  def create_charge(customer_id, event, *rsvp_donate)
+  def create_charge(price, stripe_source)
+    Stripe::Charge.create(
+      :amount => price,
+      :currency => "gbp",
+      :description => "unregistered_member_payment",
+      :source => stripe_source,
+    )
+  end
+
+  def create_customer_charge(customer_id, event, *rsvp_donate)
     charge = Stripe::Charge.create(
       :customer => customer_id,
       :amount => event.price_in_pence,
