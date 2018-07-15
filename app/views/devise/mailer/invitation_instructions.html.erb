@@ -1,11 +1,261 @@
-<p><%= t("devise.mailer.invitation_instructions.hello", email: @resource.email) %></p>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-<p><%= t("devise.mailer.invitation_instructions.someone_invited_you", url: root_url) %></p>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 
-<p><%= link_to t("devise.mailer.invitation_instructions.accept"), accept_member_invitation_url(@resource, :invitation_token => @token) %></p>
+<head>
+  <link rel="stylesheet" type="text/css" href="css/app.css">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>blackgirl.tech Upcoming Event Email</title>
+  <!-- <style> -->
+  <style>
+    .logo {
+      margin: 0 auto;
+    }
 
-<% if @resource.invitation_due_at %>
-  <p><%= t("devise.mailer.invitation_instructions.accept_until", due_date: l(@resource.invitation_due_at, format: :'devise.mailer.invitation_instructions.accept_until_format')) %></p>
-<% end %>
+    .mailTitle {
+      text-align: center;
+      color: #411C70;
+      font-weight: bold;
+    }
 
-<p><%= t("devise.mailer.invitation_instructions.ignore").html_safe %></p>
+    .bodyText,
+    .ftrText {
+      line-height: 1.7em;
+      font-weight: 300;
+      font-size: 11pt;
+    }
+
+    .ftrText {
+      font-size: 9pt;
+      text-align: center;
+    }
+
+    .ftrTitle {
+      font-size: 10pt;
+      text-align: center;
+      color: #411C70;
+      font-weight: 600;
+      line-height: 0;
+    }
+
+    .ftrLink {
+      font-size: 10pt;
+      text-decoration: underline;
+    }
+
+    .ftr {
+      border-top: solid 3px #F3F3F3;
+    }
+
+    .cta {
+      margin: 0 auto;
+    }
+
+    .centerButton {
+      margin: 0 auto;
+      display: block;
+      width: 128px;
+    }
+  </style>
+</head>
+
+<body>
+  <span class="preheader"></span>
+  <table class="body">
+    <tr>
+      <td class="center" align="center" valign="top">
+        <center data-parsed="">
+
+          <!-- header -->
+          <table align="center" class="wrapper header float-center">
+            <tr>
+              <td class="wrapper-inner">
+                <table align="center" class="container">
+                  <tbody>
+                    <tr>
+                      <td>
+                        <table class="row collapse">
+                          <tbody>
+                            <tr>
+                              <th class="small-12 large-12 columns first">
+                                <table>
+                                  <tr>
+                                    <th>
+                                      <%#= image_tag @event.image %>
+                                    </th>
+                                  </tr>
+                                </table>
+                              </th>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </td>
+            </tr>
+          </table>
+
+          <table align="center" class="container float-center">
+            <tbody>
+              <tr>
+                <td>
+
+                  <table class="spacer">
+                    <tbody>
+                      <tr>
+                        <td height="16px" style="font-size:16px;line-height:16px;">&#xA0;</td>
+                      </tr>
+                    </tbody>
+                  </table>
+
+                  <table class="row">
+                    <tbody>
+                      <tr>
+                        <th class="small-12 large-12 columns first last">
+                          <table>
+                            <tr>
+                              <th>
+
+                                <table class="spacer">
+                                  <tbody>
+                                    <tr>
+                                      <td height="16px" style="font-size:16px;line-height:16px;">&#xA0;</td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                                <h2 class="mailTitle">Join blackgirl.tech
+                                </h2>
+                                <p class="bodyText"><%= t("devise.mailer.invitation_instructions.hello", email: @resource.email) %></p>
+                                <p class="bodyText"><%= t("devise.mailer.invitation_instructions.someone_invited_you", url: root_url) %></p>
+                                <p class="bodyText"><%= link_to t("devise.mailer.invitation_instructions.accept"), accept_member_invitation_url(@resource, :invitation_token => @token) %></p>
+
+                                <!-- <table>
+                                  <tr>
+                                    <td class="centerButton">
+                                      <table class="button large secondary">
+                                        <tr>
+                                          <td>
+                                            <table>
+                                              <tr>
+                                                <td>
+                                                  <%= link_to "RSVP", event_url(@event)%>
+                                                </td>
+                                              </tr>
+                                            </table>
+                                          </td>
+                                        </tr>
+                                      </table>
+                                    </td>
+                                  </tr>
+                                </table> -->
+
+                                  <p class="bodyText"> <%= t("devise.mailer.invitation_instructions.ignore").html_safe %></p>
+
+                                  <!-- <table>
+                                    <tr>
+                                      <td class="centerButton">
+                                        <table class="button large secondary">
+                                          <tr>
+                                            <td>
+                                              <table>
+                                                <tr>
+                                                  <td>
+                                                    <%= link_to "Volunteer", event_url(@event), class: "cta" %>
+                                                  </td>
+                                                </tr>
+                                              </table>
+                                            </td>
+                                          </tr>
+                                        </table>
+                                      </td>
+                                    </tr>
+                                  </table> -->
+
+                              </th>
+                            </tr>
+                          </table>
+                        </th>
+                      </tr>
+                    </tbody>
+                  </table>
+
+                  <table class="spacer">
+                    <tbody>
+                      <tr>
+                        <td height="6px" style="font-size:6px;line-height:6px;">&#xA0;</td>
+                      </tr>
+                    </tbody>
+                  </table>
+
+                  <!-- footer text -->
+                  <table class="row ftr">
+                    <tbody>
+                      <tr>
+                        <th class="small-12 large-12 columns first last">
+                          <table>
+
+                            <table class="spacer">
+                              <tbody>
+                                <tr>
+                                  <td height="8px" style="font-size:8px;line-height:8px;">&#xA0;</td>
+                                </tr>
+                              </tbody>
+                            </table>
+                            <tr>
+                              <th>
+                                <p class="ftrTitle">blackgirl.tech Ltd</p>
+                              </th>
+                            </tr>
+                            <tr>
+                              <th>
+                                <p class="ftrText">Regsitered Office: The Bristol Office, 2nd Floor, 5 High Street, Westbury on Trym, Bristol,
+                                  United Kingdom, BS9 3BY. Company No. 10455508</p>
+                              </th>
+                            </tr>
+                          </table>
+                        </th>
+                      </tr>
+                    </tbody>
+                  </table>
+
+                  <center data-parsed="">
+                    <table align="center" class="menu float-center">
+                      <tr>
+                        <td>
+                          <table>
+                            <tr>
+                              <!-- <th class="menu-item float-center">
+                                <a href="#" class="ftrLink">Terms</a>
+                              </th> -->
+                              <th class="menu-item float-center">
+                                <a href="https://www.iubenda.com/privacy-policy/92940880/legal" class="ftrLink">Privacy</a>
+                              </th>
+                              <th class="menu-item float-center">
+                                <%= link_to "Unsubscribe", member_show_unsubscribe_url(@member.id), class: "ftrLink" %>
+                              </th>
+                            </tr>
+                          </table>
+                        </td>
+                      </tr>
+                    </table>
+                  </center>
+
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+        </center>
+      </td>
+    </tr>
+  </table>
+  <!-- prevent Gmail on iOS font size manipulation -->
+  <div style="display:none; white-space:nowrap; font:15px courier; line-height:0;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </div>
+</body>
+
+</html>
