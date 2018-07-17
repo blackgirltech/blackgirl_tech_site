@@ -115,6 +115,8 @@ GEM
     http-form_data (1.0.1)
     http_parser.rb (0.6.0)
     i18n (0.8.1)
+    invisible_captcha (0.10.0)
+      rails (>= 3.2.0)
     jbuilder (2.6.3)
       activesupport (>= 3.0.0, < 5.2)
       multi_json (~> 1.2)
@@ -339,6 +341,7 @@ DEPENDENCIES
   factory_girl
   ffaker
   font-awesome-sass
+  invisible_captcha
   jbuilder (~> 2.5)
   jquery-rails
   listen (~> 3.0.5)
