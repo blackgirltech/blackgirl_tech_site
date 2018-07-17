@@ -6,6 +6,7 @@
     <tr>
       <th scope="col">#</th>
       <th scope="col">Name</th>
+      <th scope="col">Email</th>
       <th scope="col">Role</th>
       <th scope="col">Skills</th>
       <th scope="col">Check In</th>
@@ -16,7 +17,12 @@
     <% @rsvps.each do |rsvp| %>
     <tr>
       <th scope="row"><%= n += 1 %></th>
-      <td><%= rsvp.member.first_name + " " + rsvp.member.last_name %></td>
+      <td>
+        <% if rsvp.member.first_name %>
+          <%= rsvp.member.first_name + " " + rsvp.member.last_name %>
+        <% end %>
+      </td>
+      <td><%= rsvp.member.email %></td>
       <td>
         <% if rsvp.volunteering %>
           Volunteer
