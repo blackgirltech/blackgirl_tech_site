@@ -1,4 +1,5 @@
 class RegistrationsController < Devise::RegistrationsController
+  invisible_captcha only: [:create, :update], on_spam: :spam_redirect
 
   def destroy
     donation = resource.donations.where(active_regular_donation: true).first
@@ -8,6 +9,12 @@ class RegistrationsController < Devise::RegistrationsController
     end
     resource.donations.delete_all
     super
+  end
+
+  private
+
+  def spam_redirect
+    redirect_to root_path
   end
 
   # protected
