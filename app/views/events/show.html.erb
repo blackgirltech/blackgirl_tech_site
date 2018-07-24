@@ -16,7 +16,7 @@
       </p>
       <div class="price">
       <% unless admin? %>
-        <% if @rsvp.empty? %>
+        <% if @rsvp.empty? || @volunteer.empty? %>
           <!-- TODO: Display explanitory text & rsvp button with no form if customer_id exists -->
           <%= form_for @event, url: {action: "rsvp"} do |f| %>
             <label for="card-element">
@@ -55,6 +55,9 @@
           <% end %>
 
           <p> Is this event not quite for you? Why don't you <%= link_to "volunteer", volunteer_path(@event), method: "patch" %> and help others? </p>
+        <% elsif @volunteer %>
+          <p style="float: none;"> You are already volunteering for this event </p>
+          <a href="/events/<%= @event.id %>/unvolunteer" class="cta"> UNVOLUNTEER </a>
         <% else %>
           <p style="float: none;"> You are already attending this event </p>
           <a href="/events/<%= @event.id %>/unrsvp" class="cta"> UNRSVP </a>
