@@ -8,11 +8,12 @@ class DonationsController < ApplicationController
     amount = calculate_amount(params)
     one_off = params[:donation][:one_off]
     regular = params[:donation][:regular]
+    email = params[:donation][:email]
     @donation = Donation.new(donation_params)
     @donation.amount = amount
     @donation.save!
     if  one_off || (one_off.nil? && regular.nil?)
-      CreateDonation.new.create_one_off_donation(convert_to_pence(amount), params[:stripe_source])
+      CreateDonation.new.create_one_off_donation(convert_to_pence(amount), params[:stripe_source], email)
     elsif regular
       unless @donation.active_regular_donation
         CreateDonation.new.create_regular_donation(current_member, params[:stripe_source], @donation, convert_to_pence(amount))

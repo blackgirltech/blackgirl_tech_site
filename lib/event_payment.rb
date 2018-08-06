@@ -5,9 +5,10 @@ class EventPayment
     @client = client || StripePayment.new
   end
 
-  def pay(member, event, rsvp, stripe_source)
+  def pay(member, event, rsvp, stripe_source, email)
     if member.nil?
-      charge = @client.create_charge(event.price_in_pence, stripe_source)
+      charge_source = event.name + "_logged_out_user"
+      charge = @client.create_charge(event.price_in_pence, stripe_source, charge_source, email)
     elsif member.stripe_customer_id.nil? || member.stripe_source.nil?
       member.update(stripe_source: stripe_source)
       customer = @client.create_customer(member)

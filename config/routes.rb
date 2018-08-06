@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   get 'events/:id/unrsvp' => 'events#unrsvp', as: :unrsvp
   patch 'events/:id/volunteer' => 'events#volunteering', as: :volunteer
   get 'events/:id/unvolunteer' => 'events#unvolunteering', as: :unvolunteer
+  get 'events/:id/thanks' => 'events#thank_you', as: :event_thanks
   resources :members, only: [:show, :edit, :update]
   # authenticate :member do
     resources :donations do
