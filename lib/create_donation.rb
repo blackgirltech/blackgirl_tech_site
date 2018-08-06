@@ -5,8 +5,8 @@ class CreateDonation
     @client = client || StripePayment.new
   end
 
-  def create_one_off_donation(amount, token)
-    donation = @client.create_charge(amount, token)
+  def create_one_off_donation(amount, token, email)
+    donation = @client.create_charge(amount, token, "donation", email)
   end
 
   def create_regular_donation(member, stripe_source, donation, amount)

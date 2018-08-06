@@ -7,11 +7,11 @@ class StripePayment
     )
   end
 
-  def create_charge(price, stripe_source)
+  def create_charge(price, stripe_source, charge_source, email)
     Stripe::Charge.create(
       :amount => price,
       :currency => "gbp",
-      :description => "unregistered_member_payment",
+      :description => "#{email}_#{charge_source}",
       :source => stripe_source,
     )
   end

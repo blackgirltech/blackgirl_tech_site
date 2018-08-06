@@ -18,7 +18,7 @@ class EventsController < ApplicationController
 
     unless current_member.present?
       # If the member is coming via email reminder the email field should be populate. If we have their card details, the form shouldn't be displayed.
-      email = params[:event][:rsvps][:email]
+      @email = params[:event][:rsvps][:email]
       Member.invite!(email: email) unless Member.find_by_email(email)
       member = Member.find_by_email(email)
     else
@@ -38,7 +38,7 @@ class EventsController < ApplicationController
     # ^^ this method creates new rsvps for the same user if they unrsvp then rsvp again, at some point we should change this.
 
     payment = EventPayment.new
-    payment.pay(current_member, @event, rsvp, params[:stripe_source])
+    payment.pay(current_member, @event, rsvp, params[:stripe_source], @email)
     redirect_to events_path
   end
 
