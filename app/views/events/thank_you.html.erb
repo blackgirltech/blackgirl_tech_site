@@ -1,0 +1,24 @@
+<div id="thankyou">
+    <div id="thankYouImageWrap">
+        <div id="shadow">
+        </div>
+        <%= image_tag "thankyouImg" %>
+    </div>
+    <div class="maxWidth">
+        <div id="thankYouText">
+            <h2>
+                Thank you
+                <span>
+                  <% if @rsvp.present? %>
+                    for your RSVP!
+                  <% elsif @volunteer.present? %>
+                    for volunteering!
+                  <% end %>
+                </span>
+            </h2>
+            <p>
+              We'll see you on <%= @event.date.strftime('%a %d %b %Y') %> / <%= @event.time.strftime('%H:%Mpm') %> at <%= @event.address %>.
+            </p>
+        </div>
+    </div>
+</div>

@@ -39,7 +39,7 @@ class EventsController < ApplicationController
 
     payment = EventPayment.new
     payment.pay(current_member, @event, rsvp, params[:stripe_source], @email)
-    redirect_to events_path
+    redirect_to event_thanks_path(@event.id)
   end
 
   def unrsvp
@@ -58,7 +58,7 @@ class EventsController < ApplicationController
       rsvp.update(volunteering: true)
     end
     flash[:notice] = "You have volunteered for "
-    redirect_to "/events/#{@event.id}"
+    redirect_to event_thanks_path(@event.id)
   end
 
   def unvolunteering
@@ -67,6 +67,12 @@ class EventsController < ApplicationController
     rsvp = @event.rsvps.where(member: current_member).where(volunteering: true)
     rsvp.update(volunteering: false)
     redirect_to "/events/#{@event.id}"
+  end
+
+  def thank_you
+    @event = Event.find_by_id(params[:id])
+    @rsvp = @event.rsvps.where(member: current_member).where(attending: true)
+    @volunteer = @event.rsvps.where(member: current_member).where(volunteering: true)
   end
 
 end
