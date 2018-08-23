@@ -3,7 +3,7 @@ ruby "2.4.1"
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.0.0', '>= 5.0.0.1'
+gem 'rails', '~> 5.2'
 gem 'pg'
 gem 'dotenv-rails', groups: [:development, :test]
 # Use Puma as the app server
@@ -42,7 +42,6 @@ gem "omniauth-google-oauth2"
 gem 'stripe'
 
 gem 'font-awesome-sass'
-gem "paperclip", "~> 6.0.0"
 
 # Jobs
 gem 'delayed_job_active_record'
