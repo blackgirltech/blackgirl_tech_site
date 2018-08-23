@@ -1,6 +1,6 @@
 class OpportunitiesController < ApplicationController
   def index
-    @opportunities = Opportunity.all
+    @opportunities = Opportunity.where("deadline =< ?", DateTime.now.to_date )
   end
 
   def edit
