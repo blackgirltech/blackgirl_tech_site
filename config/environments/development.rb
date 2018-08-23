@@ -50,13 +50,15 @@ Rails.application.configure do
 
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-  :authentication => :plain,
-  :address => "smtp.mailgun.org",
-  :port => 587,
-  :domain => ENV["MAILGUN_DOMAIN"],
-  :user_name => ENV["MAILGUN_USERNAME"],
-  :password => ENV["MAILGUN_PW"]
-}
+    :authentication => :plain,
+    :address => "smtp.mailgun.org",
+    :port => 587,
+    :domain => ENV["MAILGUN_DOMAIN"],
+    :user_name => ENV["MAILGUN_USERNAME"],
+    :password => ENV["MAILGUN_PW"]
+  }
+
+  config.active_storage.service = :local
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
