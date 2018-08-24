@@ -2,7 +2,7 @@ class Admin::RsvpsController < ApplicationController
   before_action :authenticate_admin!
   def index
     @event = Event.find(params[:event_id])
-    @rsvps = Rsvp.where(event_id: @event.id, attending: true) && Rsvp.where(event_id: @event.id, volunteering: true)
+    @rsvps = Rsvp.where(event_id: @event.id)
   end
 
   def check_in
