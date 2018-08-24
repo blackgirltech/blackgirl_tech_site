@@ -1,9 +1,9 @@
 class StripePayment
 
-  def create_customer(member)
+  def create_customer(email, stripe_source)
     Stripe::Customer.create(
-      email: member.email,
-      source: member.stripe_source
+      email: email,
+      source: stripe_source
     )
   end
 
