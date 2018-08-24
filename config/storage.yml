@@ -11,7 +11,7 @@ amazon:
   service: S3
   access_key_id: ENV['AWS_ID']
   secret_access_key: ENV['AWS_KEY']
-  region: "EU (London)"
+  region: eu-west-2
   bucket: "bgt-uploads"
 
 # Use rails credentials:edit to set the AWS secrets (as aws:access_key_id|secret_access_key)
