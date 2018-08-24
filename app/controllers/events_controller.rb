@@ -24,6 +24,8 @@ class EventsController < ApplicationController
     unless current_member.present?
       # If the member is coming via email reminder the email field should be populate. If we have their card details, the form shouldn't be displayed.
       Member.invite!(email: rsvp_params[:email]) unless Member.find_by_email(rsvp_params[:email])
+
+      # If the member is created by the invite action then the member is incomplete until the member creates a password.
       member = Member.find_by_email(rsvp_params[:email])
     else
       member = current_member
