@@ -1,4 +1,5 @@
 class Event < ApplicationRecord
+  has_one_attached :image
   has_many :rsvps
   has_many :members, through: :rsvps
   has_many :event_venues

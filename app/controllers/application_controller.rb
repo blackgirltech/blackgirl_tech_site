@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery prepend: true, with: :exception
   before_action :configure_permitted_parameters, if: :devise_controller?
-  before_filter :store_current_location, unless: :devise_controller?
+  before_action :store_current_location, unless: :devise_controller?
 
 
   def admin?
