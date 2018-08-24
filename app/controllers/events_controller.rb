@@ -61,7 +61,6 @@ class EventsController < ApplicationController
     if rsvp.volunteering.nil? || !rsvp.volunteering
       rsvp.update(volunteering: true)
     end
-    flash[:notice] = "You have volunteered for "
     redirect_to event_thanks_path(@event.id)
   end
 
@@ -73,10 +72,8 @@ class EventsController < ApplicationController
     redirect_to "/events/#{@event.id}"
   end
 
-  def thank_you
+  def thanks
     @event = Event.find_by_id(params[:id])
-    @rsvp = @event.rsvps.where(member: current_member).where(attending: true)
-    @volunteer = @event.rsvps.where(member: current_member).where(volunteering: true)
   end
 
 end
