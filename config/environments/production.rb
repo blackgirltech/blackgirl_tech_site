@@ -94,4 +94,6 @@ Rails.application.configure do
     :user_name => ENV["MAILGUN_USERNAME"],
     :password => ENV["MAILGUN_PW"]
   }
+
+  config.active_storage.service = :amazon
 end

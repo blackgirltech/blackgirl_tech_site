@@ -10,6 +10,7 @@ require "action_mailer/railtie"
 require "action_view/railtie"
 require "action_cable/engine"
 require "sprockets/railtie"
+require "active_storage/engine"
 # require "rails/test_unit/railtie"
 
 # Require the gems listed in Gemfile, including any gems
@@ -27,7 +28,7 @@ module BlackgirlTechSite
     config.active_job.queue_adapter = :delayed_job
     config.serve_static_assets = true
 
-    config.middleware.insert_before 0, 'Rack::Cors' do
+    config.middleware.insert_before 0, Rack::Cors do
       allow do
         resource '*', headers: :any, methods: :any
       end
