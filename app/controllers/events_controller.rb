@@ -3,7 +3,7 @@ class EventsController < ApplicationController
   def index
     @workshops = Event.where(workshop: true).order(date: :asc)
     @masterclasses = Event.where(masterclass: true).order(date: :asc)
-    @events = Event.where("date > ?", Date.today).order(date: :asc)
+    @events = Event.where("date > ?", Date.tomorrow).order(date: :asc)
   end
 
   def show
