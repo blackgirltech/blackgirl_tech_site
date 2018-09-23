@@ -1,4 +1,5 @@
 class ApplicationsController < ApplicationController
+  before_action :authenticate_member!
 
   def new
     @opportunity = Opportunity.find(params[:opportunity_id])
@@ -9,11 +10,9 @@ class ApplicationsController < ApplicationController
     @application = Application.create(application_params)
     if params[:commit] == "Submit"
       @application.update(submitted: true)
-      redirect_to opportunities_path
-      # redirect_to application_path(@application)
-    else
-      redirect_to opportunities_path
+      # display notices dependent on if it's saved or submitted
     end
+    redirect_to application_path(@application)
   end
 
   def edit
@@ -23,7 +22,8 @@ class ApplicationsController < ApplicationController
   end
 
   def show
-    @application = Application.find(params[:id])
+    @application = Application.find_by(id: params[:id], member_id: current_member.id)
+    @member = Member.find(@application.member_id)
   end
 
   private
