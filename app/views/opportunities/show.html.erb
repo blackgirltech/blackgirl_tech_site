@@ -1,4 +1,7 @@
 <h1 class="text-center"><%= @opportunity.name %></h1>
+<% if admin? %>
+  <%= link_to "Edit", edit_opportunity_path(@opportunity) %>
+<% end %>
 <p class="text-center"> <b> DEADLINE: <%= @opportunity.deadline.strftime("%d-%m-%Y") %> </b> </p>
 <div class="col-md-4 offset-md-4">
   <h5> Company Bio </h5>
