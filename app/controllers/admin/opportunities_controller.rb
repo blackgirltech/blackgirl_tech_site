@@ -20,7 +20,10 @@ module Admin
       redirect_to opportunity_path(@opportunity)
     end
 
-    def delete
+    def destroy
+      @opportunity = Opportunity.find(params[:id]
+      @opportunity.destroy
+      redirect_to opportunities_path
     end
 
     private

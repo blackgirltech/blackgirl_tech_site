@@ -21,3 +21,7 @@
 <% else %>
   <%= link_to "Log in to Apply", new_member_session_path, class: "cta" %>
 <% end %>
+
+<% if admin? %>
+  <%= link_to 'Delete',  @opportunity,  class: "cta greyed", method: :delete, data: { confirm: 'Are you sure?' } %>
+<% end %>
