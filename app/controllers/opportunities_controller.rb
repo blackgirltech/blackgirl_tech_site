@@ -4,8 +4,7 @@ class OpportunitiesController < ApplicationController
   end
 
   def show
-    authenticate_member!
     @opportunity = Opportunity.find(params[:id])
   end
-  
+
 end

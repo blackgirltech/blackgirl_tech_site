@@ -9,8 +9,12 @@
   <p class=""> <%= @opportunity.description %> </p>
 </div>
 
-<% if @opportunity.external %>
-  <%= link_to "Apply", @opportunity.url, class: "cta" %>
+<% if member_signed_in? %>
+  <% if @opportunity.external %>
+    <%= link_to "Apply", @opportunity.url, class: "cta" %>
+  <% else %>
+    <%= link_to "Apply", new_opportunity_application_path(@opportunity), class: "cta" %>
+  <% end %>
 <% else %>
-  <%= link_to "Apply", new_opportunity_application_path(@opportunity), class: "cta" %>
+  <%= link_to "Log in to Apply", new_member_session_path, class: "cta" %>
 <% end %>
