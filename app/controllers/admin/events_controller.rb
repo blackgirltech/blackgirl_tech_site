@@ -16,7 +16,6 @@ module Admin
 
     def update
       @event = Event.find(params[:id])
-      @event.image.attach(params[:event][:image])
       @event.update(event_params)
       redirect_to events_path
     end
