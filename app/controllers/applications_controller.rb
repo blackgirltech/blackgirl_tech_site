@@ -16,9 +16,22 @@ class ApplicationsController < ApplicationController
   end
 
   def edit
+    if @application = Application.find_by(id: params[:id], submitted: false, member_id: current_member.id)
+      @opportunity = @application.opportunity_id
+    else
+      @application = Application.find_by(id: params[:id], member_id: current_member.id)
+      redirect_to application_path(@application)
+    end
   end
 
   def update
+    @application = Application.find_by(id: params[:id], submitted: false, member_id: current_member.id)
+    @application.update(application_params)
+    if params[:commit] == "Submit"
+      @application.update(submitted: true)
+      # display notices dependent on if it's saved or submitted
+    end
+    redirect_to application_path(@application)
   end
 
   def show
