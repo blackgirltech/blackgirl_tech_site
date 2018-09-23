@@ -9,16 +9,20 @@
     <p>blackgirl.tech are working with a number of organisations who are committed to ensuring the industry is not only diverse but healthy. We want to be able to put black women and non-binary people into jobs and environments where they can learn and grow as technology profesionals. See below for a list of our current opportunities.</p>
 </div>
 <div class="container">
+  <% if admin? %>
+    <%= link_to "Create New Opportunity", new_admin_opportunity_path, class: "cta" %>
+    <br>
+  <% end %>
 
-      <% @opportunities.each do |opportunity| %>
-      <div class="card col-md-4 col-sm-12 border-warning">
-        <%#= image_tag 'aboutImg1', class: "card-img-top" %>
-        <div class="card-body">
-          <h5 class="card-title"><%=opportunity.name %> </h5>
-          <p class="card-text"><%= opportunity.description.truncate(280) %> </p>
-          <%= link_to "Learn More", opportunity_path(opportunity), class: "cta" %>
-        </div>
-      </div>
-      <% end %>
+  <% @opportunities.each do |opportunity| %>
+  <div class="card col-md-4 col-sm-12 border-warning">
+    <%#= image_tag 'aboutImg1', class: "card-img-top" %>
+    <div class="card-body">
+      <h5 class="card-title"><%=opportunity.name %> </h5>
+      <p class="card-text"><%= opportunity.description.truncate(280) %> </p>
+      <%= link_to "Learn More", opportunity_path(opportunity), class: "cta" %>
+    </div>
+  </div>
+  <% end %>
 
 </div>
