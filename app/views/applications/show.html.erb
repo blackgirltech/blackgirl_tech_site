@@ -23,6 +23,17 @@
       <% unless @application.submitted %>
         <%= link_to "Edit", edit_application_path(@application), class: "cta" %>
       <% end %>
+
+      <div class="deleteAccount pagePanel">
+        <div class="maxWidth">
+          <h2>
+              Delete Application
+          </h2>
+          <p>
+              Please be advised that deleting your application is permanent and will be effective immediately
+          </p>
+          <%= link_to 'Delete',  @application,  class: "cta greyed", method: :delete, data: { confirm: 'Are you sure?' } %>
+        </div>
   </div>
 
 </div>

@@ -39,6 +39,12 @@ class ApplicationsController < ApplicationController
     @member = Member.find(@application.member_id)
   end
 
+  def destroy
+    @application = Application.find_by(id: params[:id], member_id: current_member.id)
+    @application.destroy
+    redirect_to root_path
+  end
+
   private
   def application_params
     params.require(:application).permit(:opportunity_id, :member_id, :cv, :longlist, :shortlist, :finalist, :awarded, :cover_letter)
