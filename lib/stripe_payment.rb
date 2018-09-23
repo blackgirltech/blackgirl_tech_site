@@ -13,6 +13,7 @@ class StripePayment
       :currency => "gbp",
       :description => "#{email}_#{charge_source}",
       :source => stripe_source,
+      :receipt_email => email
     )
   end
 
