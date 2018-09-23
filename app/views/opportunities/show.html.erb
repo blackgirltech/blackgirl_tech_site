@@ -8,4 +8,9 @@
   <h5> Opportunity Description </h5>
   <p class=""> <%= @opportunity.description %> </p>
 </div>
-<a href="<%= @opportunity.url %>" class="cta"> Apply </a>
+
+<% if @opportunity.external %>
+  <%= link_to "Apply", @opportunity.url, class: "cta" %>
+<% else %>
+  <%= link_to "Apply", new_opportunity_application_path(@opportunity), class: "cta" %>
+<% end %>

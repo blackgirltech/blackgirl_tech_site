@@ -28,6 +28,12 @@
     </div>
 
     <div class="form-group">
+      <%= f.label :external%>
+      <%= f.check_box :external, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <p> Please ensure this is filled with the link to the application if this is an external opportunity </p>
       <%= f.label :url%>
       <%= f.text_field :url, placeholder: "URL for application", class: "form-control" %>
     </div>
