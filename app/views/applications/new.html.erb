@@ -14,6 +14,7 @@
 
     <%= f.hidden_field :opportunity_id, value: @opportunity.id %>
     <%= f.hidden_field :member_id, value: current_member.id %>
+    <%= f.submit "Save", class: "cta"%>
     <%= f.submit "Submit", class: "cta"%>
   <% end %>
 </div>

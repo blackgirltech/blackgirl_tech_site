@@ -7,7 +7,13 @@ class ApplicationsController < ApplicationController
 
   def create
     @application = Application.create(application_params)
-    redirect_to opportunities_path
+    if params[:commit] == "Submit"
+      @application.update(submitted: true)
+      redirect_to opportunities_path
+      # redirect_to application_path(@application)
+    else
+      redirect_to opportunities_path
+    end
   end
 
   def edit
@@ -22,6 +28,6 @@ class ApplicationsController < ApplicationController
 
   private
   def application_params
-    params.require(:application).permit(:opportunity_id, :member_id, :cv, :longlist, :shortlist, :finalist, :awarded)
+    params.require(:application).permit(:opportunity_id, :member_id, :cv, :longlist, :shortlist, :finalist, :awarded, :cover_letter)
   end
 end
