@@ -1,0 +1,24 @@
+<div class="profilePage">
+
+  <div class="maxWidth">
+      <h1 class="name">
+        <%= @member.first_name + "'s'" %> Application for <%= @application.opportunity.name %>
+      </h1>
+
+      <% unless @application.submitted %>
+        <p>
+          This application has not been submitted, why not <%= link_to "edit", edit_application_path(@application) %> it and submit when you've finished.
+        </p>
+      <% end %>
+
+      <article>
+        <h3> Cover Letter </h3>
+        <%= simple_format(@application.cover_letter) %>
+
+        <p> View your <%= link_to "CV", @application.cv %> </p>
+      </article>
+
+      <%= link_to "Edit", edit_application_path(@application), class: "cta" %>
+  </div>
+
+</div>
