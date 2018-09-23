@@ -9,6 +9,8 @@
         <p>
           This application has not been submitted, why not <%= link_to "edit", edit_application_path(@application) %> it and submit when you've finished.
         </p>
+      <% else %>
+        <p> This application has been submitted </p>
       <% end %>
 
       <article>
@@ -18,7 +20,9 @@
         <p> View your <%= link_to "CV", @application.cv %> </p>
       </article>
 
-      <%= link_to "Edit", edit_application_path(@application), class: "cta" %>
+      <% unless @application.submitted %>
+        <%= link_to "Edit", edit_application_path(@application), class: "cta" %>
+      <% end %>
   </div>
 
 </div>
