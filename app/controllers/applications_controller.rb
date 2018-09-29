@@ -16,11 +16,11 @@ class ApplicationsController < ApplicationController
   end
 
   def edit
-    if @application = Application.find_by(id: params[:id], submitted: false, member_id: current_member.id)
-      @opportunity = @application.opportunity_id
-    else
-      @application = Application.find_by(id: params[:id], member_id: current_member.id)
+    @application = Application.find_by(id: params[:id], member_id: current_member.id)
+    if @application.submitted
       redirect_to application_path(@application)
+    else
+      @opportunity_id = @application.opportunity_id
     end
   end
 
