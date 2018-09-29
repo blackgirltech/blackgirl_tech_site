@@ -9,20 +9,20 @@ class StripePayment
 
   def create_charge(price, stripe_source, charge_source, email)
     Stripe::Charge.create(
-      :amount => price,
-      :currency => "gbp",
-      :description => "#{email}_#{charge_source}",
-      :source => stripe_source,
-      :receipt_email => email
+      amount: price,
+      currency: "gbp",
+      description: "#{email}_#{charge_source}",
+      source: stripe_source,
+      receipt_email: email
     )
   end
 
   def create_customer_charge(customer_id, event, *rsvp_donate)
-    charge = Stripe::Charge.create(
-      :customer => customer_id,
-      :amount => event.price_in_pence,
-      :currency => "gbp",
-      :description => "name: #{event.name}, donate: #{rsvp_donate}"
+    Stripe::Charge.create(
+      customer: customer_id,
+      amount: event.price_in_pence,
+      currency: "gbp",
+      description: "name: #{event.name}, donate: #{rsvp_donate}"
     )
   end
 
@@ -39,9 +39,9 @@ class StripePayment
 
   def subscribe(customer_id, plan)
     Stripe::Subscription.create(
-      :customer => customer_id,
+      customer: customer_id,
       # pass plan to below
-      :plan => plan,
+      plan: plan,
     )
   end
 end

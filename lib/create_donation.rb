@@ -6,13 +6,13 @@ class CreateDonation
   end
 
   def create_one_off_donation(amount, token, email)
-    donation = @client.create_charge(amount, token, "donation", email)
+    @client.create_charge(amount, token, "donation", email)
   end
 
   def create_regular_donation(member, stripe_source, donation, amount)
     if member.stripe_customer_id.nil? || member.stripe_source.nil?
       member.update(stripe_source: stripe_source)
-      customer = @client.create_customer(member)
+      customer = @client.create_customer(member.email, stripe_source)
       member.update(stripe_customer_id: customer.id)
       regular_donation = @client.subscribe(customer.id, *plan)
     else

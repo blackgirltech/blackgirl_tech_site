@@ -1,5 +1,4 @@
 class RefundPayment
-
   def refund(rsvp)
     Stripe::Refund.create(
       :charge => rsvp.stripe_charge_token,
