@@ -1,0 +1,5 @@
+<% @applications.each do |application| %>
+  <% if application.member.present? %>
+    <h2> <%= application.member.first_name %> </h2>
+  <% end %>
+<% end %>
