@@ -47,6 +47,6 @@ class ApplicationsController < ApplicationController
 
   private
   def application_params
-    params.require(:application).permit(:opportunity_id, :member_id, :cv, :longlist, :shortlist, :finalist, :awarded, :cover_letter)
+    params.require(:application).permit(:opportunity_id, :member_id, :cv, :longlist, :shortlist, :finalist, :awarded, :cover_letter, :notes)
   end
 end
