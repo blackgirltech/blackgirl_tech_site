@@ -3,7 +3,8 @@ module Admin
     before_action :authenticate_admin!
 
     def index # GET
-      @applications = Application.all
+      @opportunity = Opportunity.find(params[:opportunity_id])
+      @applications = @opportunity.applications
     end
 
     def edit # GET

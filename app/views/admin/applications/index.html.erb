@@ -1,3 +1,5 @@
+<h1><%= @opportunity.name %></h1>
+
 <% @applications.each do |application| %>
   <% if application.member.present? %>
     <h2> <%= application.member.first_name %> </h2>
