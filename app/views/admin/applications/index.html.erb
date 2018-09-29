@@ -3,5 +3,14 @@
 <% @applications.each do |application| %>
   <% if application.member.present? %>
     <h2> <%= application.member.first_name %> </h2>
+    <ul>
+      <li> Longlisted: <%= application.longlist %> </li>
+      <li> Shortlisted: <%= application.shortlist %> </li>
+      <li> Finalisted: <%= application.finalist %> </li>
+      <li> Awarded: <%= application.awarded %> </li>
+    </ul>
+    <%# if application.notes %>
+      <p> <%= link_to "View the notes for this application.", application_path(application) %> </p>
+    <%# end %>
   <% end %>
 <% end %>

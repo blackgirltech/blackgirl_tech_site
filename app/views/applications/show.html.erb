@@ -1,29 +1,43 @@
 <div class="profilePage">
 
   <div class="maxWidth">
-      <h1 class="name">
-        <%= @member.first_name + "'s'" %> Application for <%= @application.opportunity.name %>
-      </h1>
+    <h1 class="name">
+      <%= @member.first_name + "'s'" %> Application for <%= @application.opportunity.name %>
+    </h1>
 
-      <% unless @application.submitted %>
-        <p>
-          This application has not been submitted, why not <%= link_to "edit", edit_application_path(@application) %> it and submit when you've finished.
-        </p>
-      <% else %>
-        <p> This application has been submitted and can not be editted. </p>
+    <% unless @application.submitted %>
+      <p>
+        This application has not been submitted, why not <%= link_to "edit", edit_application_path(@application) %> it and submit when you've finished.
+      </p>
+    <% else %>
+      <p> This application has been submitted and can not be editted. </p>
+    <% end %>
+
+    <article>
+      <h3> Cover Letter </h3>
+      <%= simple_format(@application.cover_letter) %>
+
+      <p> View your <%#= link_to "CV", @application.cv.service_url %> </p>
+    </article>
+
+    <% if admin? %>
+    <ul>
+      <li> Longlisted: <%= @application.longlist %> </li>
+      <li> Shortlisted: <%= @application.shortlist %> </li>
+      <li> Finalisted: <%= @application.finalist %> </li>
+      <li> Awarded: <%= @application.awarded %> </li>
+    </ul>
+
+      <% if @application.notes %>
+        <p> <%= @application.notes %> </p>
       <% end %>
+    <% end %>
 
-      <article>
-        <h3> Cover Letter </h3>
-        <%= simple_format(@application.cover_letter) %>
+    <% unless @application.submitted %>
+      <%= link_to "Edit", edit_application_path(@application), class: "cta" %>
+    <% end %>
 
-        <p> View your <%= link_to "CV", @application.cv %> </p>
-      </article>
-
-      <% unless @application.submitted %>
-        <%= link_to "Edit", edit_application_path(@application), class: "cta" %>
-      <% end %>
-
+    <% unless admin? %>
       <div class="deleteAccount pagePanel">
         <div class="maxWidth">
           <h2>
@@ -34,6 +48,7 @@
           </p>
           <%= link_to 'Delete',  @application,  class: "cta greyed", method: :delete, data: { confirm: 'Are you sure?' } %>
         </div>
+      </div>
+    <% end %>
   </div>
-
 </div>
