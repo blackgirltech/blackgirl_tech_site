@@ -42,7 +42,7 @@ Rails.application.routes.draw do
       post 'rsvps/:id/check_out' => 'rsvps#check_out', as: :check_out
     end
     resources :opportunities do
-      resources :applications, except: [:new, :create]
+      resources :applications, except: [:new, :create], shallow: true
     end
   end
   # resources :donations, only: [:new, :create]
