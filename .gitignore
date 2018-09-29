@@ -18,6 +18,7 @@
 !/tmp/.keep
 support/
 storage/
+.idea/
 
 public/assets/
 public/
