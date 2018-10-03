@@ -7,7 +7,7 @@ class ApplicationsController < ApplicationController
   end
 
   def create
-    @application = Application.create(application_params)
+    @application = Application.create!(application_params)
     if params[:commit] == "Submit"
       @application.update(submitted: true)
       # display notices dependent on if it's saved or submitted

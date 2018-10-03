@@ -17,7 +17,7 @@
       <h3> Cover Letter </h3>
       <%= simple_format(@application.cover_letter) %>
 
-      <p> View your <%#= link_to "CV", @application.cv.service_url %> </p>
+      <p> View your <%= link_to "CV", @application.cv %> </p>
     </article>
 
     <% if admin? %>
