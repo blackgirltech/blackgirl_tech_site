@@ -13,20 +13,29 @@
       <p> This application has been submitted and can not be editted. </p>
     <% end %>
 
+    <%= longlisted? %>
+    <%= shortlisted? %>
+    <%= finalisted? %>
+    <%= awarded? %>
+
     <article>
       <h3> Cover Letter </h3>
       <%= simple_format(@application.cover_letter) %>
 
-      <p> View your <%= link_to "CV", @application.cv %> </p>
+      <% if @application.cv.nil? %>
+        <p> Your CV is missing, attach it <%= link_to "here", edit_application_path(@application)%> </p>
+      <% else %>
+        <p> View your <%= link_to "CV", @application.cv %> </p>
+      <% end %>
     </article>
 
     <% if admin? %>
-    <ul>
-      <li> Longlisted: <%= @application.longlist %> </li>
-      <li> Shortlisted: <%= @application.shortlist %> </li>
-      <li> Finalisted: <%= @application.finalist %> </li>
-      <li> Awarded: <%= @application.awarded %> </li>
-    </ul>
+      <ul>
+        <li> Longlisted: <%= @application.longlist %> </li>
+        <li> Shortlisted: <%= @application.shortlist %> </li>
+        <li> Finalisted: <%= @application.finalist %> </li>
+        <li> Awarded: <%= @application.awarded %> </li>
+      </ul>
 
       <% if @application.notes %>
         <p> <%= @application.notes %> </p>
