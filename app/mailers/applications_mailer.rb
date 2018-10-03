@@ -3,6 +3,11 @@ class ApplicationsMailer < ApplicationMailer
 
   def awarded_application(member)
     @member = member
-    mail(to: @member.email, subject: "Congratulations!")
+    if @member.first_name.present?
+      @first_name = @member.first_name
+    else
+      @first_name = "Member"
+    end
+    mail(to: @member.email, subject: "Congratulations #{@first_name}!")
   end
 end

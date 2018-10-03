@@ -18,7 +18,7 @@ module Admin
         member = application.member
         AwardedEmailJob.perform_later(member)
         application.update(awarded_email_sent: true)
-        redirect_to application_path(application)
+        redirect_to admin_application_path(application)
       end
     end
   end
