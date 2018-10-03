@@ -38,7 +38,7 @@
       </ul>
 
       <% if @application.notes %>
-        <p> <%= @application.notes %> </p>
+        <p> <%= simple_format(@application.notes) %> </p>
       <% end %>
     <% end %>
 
