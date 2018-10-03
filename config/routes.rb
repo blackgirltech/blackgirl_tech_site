@@ -42,8 +42,9 @@ Rails.application.routes.draw do
       post 'rsvps/:id/check_out' => 'rsvps#check_out', as: :check_out
     end
     resources :opportunities do
-      resources :applications, only: [:index], shallow: true
+      resources :applications, only: [:index, :show], shallow: true
     end
+    post 'applications/:id/send_awarded_email' => 'applications#awarded_email', as: :send_awarded_email
   end
   # resources :donations, only: [:new, :create]
 end

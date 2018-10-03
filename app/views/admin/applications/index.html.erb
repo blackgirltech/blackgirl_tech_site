@@ -10,7 +10,7 @@
       <li> Awarded: <%= application.awarded %> </li>
     </ul>
     <%# if application.notes %>
-      <p> <%= link_to "View the notes for this application.", application_path(application) %> </p>
+      <p> <%= link_to "View the notes for this application.", admin_application_path(application) %> </p>
     <%# end %>
   <% end %>
 <% end %>
