@@ -34,7 +34,7 @@
 
     <% if admin? %>
       <div class="col-md-6 offset-md-3">
-        <%= link_to 'Delete',  @opportunity,  class: "cta greyed", method: :delete, data: { confirm: 'Are you sure?' } %>
+        <%= link_to 'Delete',  admin_opportunity_path(@opportunity),  class: "cta greyed", method: :delete, data: { confirm: 'Are you sure?' } %>
       </div>
     <% end %>
   </article>
