@@ -4,7 +4,7 @@
   <%= simple_format(@application.cover_letter) %>
   <p> View <%= link_to "CV", @application.cv %> </p>
 
-  <%= form_for(@application)  do |f| %>
+  <%= form_for(@application, url: admin_application_path(@application))  do |f| %>
     <div class="form-group">
       <%= f.label :notes %>
       <%= f.text_area :notes %>
