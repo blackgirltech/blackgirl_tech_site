@@ -33,5 +33,7 @@
   </article>
 
   <br>
-  <%= link_to "Send Awarded Email", admin_send_awarded_email_path(@application), class: "cta", method: "POST" %>
+  <% unless @application.awarded_email_sent %>
+    <%= link_to "Send Awarded Email", admin_send_awarded_email_path(@application), class: "cta", method: "POST" %>
+  <% end %>
 </div>

@@ -2,6 +2,7 @@
   <h1><%= @opportunity.name %></h1>
   <% if admin? %>
     <p class="font-weight-bold"><%= link_to "Edit", edit_admin_opportunity_path(@opportunity) %></p>
+    <p class=""><%= link_to "Applicants", admin_opportunity_applications_path(@opportunity) %></p>
   <% end %>
   <p class="font-weight-bold"> DEADLINE: <%= @opportunity.deadline.strftime("%d-%m-%Y") %> </p>
 
