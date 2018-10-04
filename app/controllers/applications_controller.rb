@@ -17,11 +17,8 @@ class ApplicationsController < ApplicationController
 
   def edit
     @application = Application.find_by(id: params[:id], member_id: current_member.id)
-    if @application.submitted
-      redirect_to application_path(@application)
-    else
-      @opportunity_id = @application.opportunity_id
-    end
+    return unless @application.submitted
+    redirect_to application_path(@application)
   end
 
   def update
