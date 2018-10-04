@@ -1,104 +1,116 @@
-        <div class="profilePage">
+<div class="profilePage">
 
-            <div class="maxWidth">
-                <h1 class="name">
-                    Hi <%= @member.first_name %>
-                    <%= link_to "Edit", edit_member_path(@member) %>
-                </h1>
-            </div>
+  <div class="maxWidth">
+    <h1 class="name">
+      Hi <%= @member.first_name %>
+      <%= link_to "Edit", edit_member_path(@member) %>
+    </h1>
+  </div>
 
-            <div class="summaryBar">
-                <p>
-                    <span><%= @attended_events_count %></span> Events</p>
-                <% if volunteer? %>
-                    <p>
-                        <span><%= current_member.skills.count %></span> Skills</p>
-              <% end %>
-                <p>
-                    <span><%= current_member.donations.count %></span> Donations</p>
-            </div>
+  <div class="summaryBar">
+    <p>
+      <span><%= @attended_events_count %></span> Events
+    </p>
+    <% if volunteer? %>
+      <p>
+        <span><%= current_member.skills.count %></span> Skills
+      </p>
+    <% end %>
+      <p>
+        <span><%= current_member.donations.count %></span> Donations
+      </p>
+  </div>
 
-            <div class="eventsArea pagePanel">
-                <div class="maxWidth">
-                    <h2>
-                        Upcoming Events
-                    </h2>
-                      <%= render "partials/event" %>
-                </div>
-            </div>
-
-            <div class="donateArea pagePanel">
-                <div class="maxWidth">
-                    <h2>
-                        Donations
-                    </h2>
-                    <div class="ifNoDonations">
-                        <p>
-                            Help us better support our Attendees
-                        </p>
-
-                        <%= link_to "Make a donation", new_donation_path, class: "cta" %>
-                    </div>
-                    <% if @regular_donation %>
-                      <%= link_to 'Cancel Regular Donation',  donation_cancel_path(@regular_donation.id), class: "btn white bg-red hover-red b--red hover-bg-light-gray" %>
-                    <% end %>
-                    <!-- <div class="ifSomeDonations">
-                        <div class="previousDonations">
-                            <div class="donationCard">
-                                <p class="date">
-                                    xx/xx/xx
-                                </p>
-                                <p class="price">
-                                    &pound;20
-                                </p>
-                                <p class="cardBtm">
-                                    Card: xxxx &nbsp;&nbsp; - &nbsp;&nbsp;&nbsp;Expiry: xx/xx
-                                </p>
-                            </div>
-                            <div class="donationCard">
-                                <p class="date">
-                                    xx/xx/xx
-                                </p>
-                                <p class="price">
-                                    &pound;20
-                                </p>
-                                <p class="cardBtm">
-                                    Card: xxxx &nbsp;&nbsp; - &nbsp;&nbsp;&nbsp;Expiry: xx/xx
-                                </p>
-                            </div>
-                            <div class="donationCard">
-                                <p class="date">
-                                    xx/xx/xx
-                                </p>
-                                <p class="price">
-                                    &pound;20
-                                </p>
-                                <p class="cardBtm">
-                                    Card: xxxx &nbsp;&nbsp; - &nbsp;&nbsp;&nbsp;Expiry: xx/xx
-                                </p>
-                            </div>
-                        </div>
-
-                        <div class="ctaWrap">
-
-                            <a href="#" class="cta ">Make another Donation</a>
-                        </div>
-                    </div> -->
-                </div>
-            </div>
-
-            <div class="deleteAccount pagePanel">
-                <div class="maxWidth">
-                    <h2>
-                        Delete Account
-                    </h2>
-                    <p>
-                        Please be advised that deleting your account is permanent and will be effective immediately
-                    </p>
-                    <a href="#" class="cta greyed">Delete Account</a>
-                </div>
-            </div>
-
-        </div>
-
+  <% if @member.applications %>
+  <div class="eventsArea pagePanel">
+    <div class="container">
+      <h2>
+        Applications
+      </h2>
+        <%= render "partials/application" %>
     </div>
+  </div>
+  <% end %>
+  <div class="eventsArea pagePanel">
+    <div class="maxWidth">
+      <h2>
+        Upcoming Events
+      </h2>
+        <%= render "partials/event" %>
+    </div>
+  </div>
+
+  <div class="donateArea pagePanel">
+    <div class="maxWidth">
+      <h2>
+        Donations
+      </h2>
+      <div class="ifNoDonations">
+        <p>
+            Help us better support our Attendees
+        </p>
+
+        <%= link_to "Make a donation", new_donation_path, class: "cta" %>
+      </div>
+        <% if @regular_donation %>
+          <%= link_to 'Cancel Regular Donation',  donation_cancel_path(@regular_donation.id), class: "btn white bg-red hover-red b--red hover-bg-light-gray" %>
+        <% end %>
+        <!-- <div class="ifSomeDonations">
+            <div class="previousDonations">
+                <div class="donationCard">
+                    <p class="date">
+                        xx/xx/xx
+                    </p>
+                    <p class="price">
+                        &pound;20
+                    </p>
+                    <p class="cardBtm">
+                        Card: xxxx &nbsp;&nbsp; - &nbsp;&nbsp;&nbsp;Expiry: xx/xx
+                    </p>
+                </div>
+                <div class="donationCard">
+                    <p class="date">
+                        xx/xx/xx
+                    </p>
+                    <p class="price">
+                        &pound;20
+                    </p>
+                    <p class="cardBtm">
+                        Card: xxxx &nbsp;&nbsp; - &nbsp;&nbsp;&nbsp;Expiry: xx/xx
+                    </p>
+                </div>
+                <div class="donationCard">
+                    <p class="date">
+                        xx/xx/xx
+                    </p>
+                    <p class="price">
+                        &pound;20
+                    </p>
+                    <p class="cardBtm">
+                        Card: xxxx &nbsp;&nbsp; - &nbsp;&nbsp;&nbsp;Expiry: xx/xx
+                    </p>
+                </div>
+            </div>
+
+            <div class="ctaWrap">
+
+                <a href="#" class="cta ">Make another Donation</a>
+            </div>
+        </div> -->
+    </div>
+  </div>
+    <div class="deleteAccount pagePanel">
+      <div class="maxWidth">
+        <h2>
+            Delete Account
+        </h2>
+        <p>
+            Please be advised that deleting your account is permanent and will be effective immediately
+        </p>
+        <a href="#" class="cta greyed">Delete Account</a>
+      </div>
+    </div>
+
+  </div>
+
+</div>

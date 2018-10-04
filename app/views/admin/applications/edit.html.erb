@@ -1,0 +1,48 @@
+<div class="col-md-6 offset-md-3">
+  <h1>Add Notes and Awards for <%=@application.member.first_name%>'s <%=@application.opportunity.name%> Application</h1>
+  <br>
+  <article>
+    <h3>CV</h3>
+    <% if @application.cv.nil? %>
+      <p> This CV is missing. </p>
+    <% else %>
+      <p> <%= link_to "View CV", @application.cv %> </p>
+    <% end %>
+
+    <h3> Cover Letter </h3>
+    <%= simple_format(@application.cover_letter) %>
+  </article>
+
+  <%= form_for(@application, url: admin_application_path(@application))  do |f| %>
+    <h3>Add Notes</h3>
+    <div class="form-group">
+      <%= f.label :notes %>
+      <%= f.text_area :notes, rows: 15, class: "form-control" %>
+    </div>
+
+    <h3>Award</h3>
+    <div class="form-group">
+      <%= f.label :longlist%>
+      <%= f.check_box :longlist, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :shortlist%>
+      <%= f.check_box :shortlist, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :finalist%>
+      <%= f.check_box :finalist, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :awarded%>
+      <%= f.check_box :awarded, class: "form-control" %>
+    </div>
+
+    <%= f.hidden_field :opportunity_id, value: @application.opportunity.id %>
+    <%= f.hidden_field :member_id, value: @application.member_id %>
+    <%= f.submit "Save", class: "cta"%>
+  <% end %>
+</div>

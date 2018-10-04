@@ -13,8 +13,9 @@ Rails.application.routes.draw do
   get '/past_donors' => "static_pages#past_donors"
 
   resources :events
-  resources :opportunities
-  resources :applications
+  resources :opportunities do
+    resources :applications, shallow: true
+  end
   patch 'events/:id/rsvp' => 'events#rsvp', as: :rsvp
   get 'events/:id/unrsvp' => 'events#unrsvp', as: :unrsvp
   patch 'events/:id/volunteer' => 'events#volunteering', as: :volunteer
@@ -40,6 +41,10 @@ Rails.application.routes.draw do
       post 'rsvps/:id/check_in' => 'rsvps#check_in', as: :check_in
       post 'rsvps/:id/check_out' => 'rsvps#check_out', as: :check_out
     end
+    resources :opportunities do
+      resources :applications, only: [:index, :show, :edit, :update], shallow: true
+    end
+    post 'applications/:id/send_awarded_email' => 'applications#awarded_email', as: :send_awarded_email
   end
   # resources :donations, only: [:new, :create]
 end

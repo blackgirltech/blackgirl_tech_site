@@ -1,6 +1,5 @@
-
 <div class="col-md-6 offset-md-3">
-  <h1>Edit Opportunity</h1>
+  <h1>Edit <%= @opportunity.name %></h1>
   <%= form_for [:admin, @opportunity]  do |f| %>
     <div class="form-group">
       <%= f.label :name%>
@@ -25,6 +24,11 @@
     <div class="form-group">
       <%= f.label :deadline%>
       <%= f.datetime_field :deadline, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :external%>
+      <%= f.check_box :external, class: "form-control" %>
     </div>
 
     <div class="form-group">

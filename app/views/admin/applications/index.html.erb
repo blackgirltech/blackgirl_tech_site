@@ -1,0 +1,20 @@
+<div class="col-md-6 offset-md-3">
+  <h1><%= @opportunity.name %> Applications</h1>
+  <br>
+  <% @applications.each do |application| %>
+    <% if application.member.present? %>
+      <h2> <%= application.member.first_name %> </h2>
+      <article>
+        <ul class="list-inline">
+          <li class="list-inline-item"> <span class="font-weight-bold">Longlisted:</span> <%= application.longlist %> </li>
+          <li class="list-inline-item"> <span class="font-weight-bold">Shortlisted:</span> <%= application.shortlist %> </li>
+          <li class="list-inline-item"> <span class="font-weight-bold"> Finalisted:</span> <%= application.finalist %> </li>
+          <li class="list-inline-item"> <span class="font-weight-bold">Awarded:</span> <%= application.awarded %> </li>
+        </ul>
+      </article>
+      <%# if application.notes %>
+        <p> <%= link_to "View the notes for this application.", admin_application_path(application) %> </p>
+      <%# end %>
+    <% end %>
+  <% end %>
+</div>
