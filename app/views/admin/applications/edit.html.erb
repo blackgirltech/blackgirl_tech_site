@@ -1,15 +1,26 @@
 <div class="col-md-6 offset-md-3">
-  <h1>Edit Your Application</h1>
+  <h1>Add Notes and Awards for <%=@application.member.first_name%>'s <%=@application.opportunity.name%> Application</h1>
+  <br>
+  <article>
+    <h3>CV</h3>
+    <% if @application.cv.nil? %>
+      <p> This CV is missing. </p>
+    <% else %>
+      <p> <%= link_to "View CV", @application.cv %> </p>
+    <% end %>
 
-  <%= simple_format(@application.cover_letter) %>
-  <p> View <%= link_to "CV", @application.cv %> </p>
+    <h3> Cover Letter </h3>
+    <%= simple_format(@application.cover_letter) %>
+  </article>
 
   <%= form_for(@application, url: admin_application_path(@application))  do |f| %>
+    <h3>Add Notes</h3>
     <div class="form-group">
       <%= f.label :notes %>
-      <%= f.text_area :notes %>
+      <%= f.text_area :notes, rows: 15, class: "form-control" %>
     </div>
 
+    <h3>Award</h3>
     <div class="form-group">
       <%= f.label :longlist%>
       <%= f.check_box :longlist, class: "form-control" %>

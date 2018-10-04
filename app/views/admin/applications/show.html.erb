@@ -1,40 +1,37 @@
-<div class="profilePage">
+<div class="col-md-6 offset-md-3">
+  <h1 class="name">
+    <%= @member.first_name + "'s'" %> Application for <%= @application.opportunity.name %>
+  </h1>
 
-  <div class="maxWidth">
-    <h1 class="name">
-      <%= @member.first_name + "'s'" %> Application for <%= @application.opportunity.name %>
-    </h1>
+  <article>
+    <h3>CV</h3>
+    <% if @application.cv.nil? %>
+      <p> This CV is missing. </p>
+    <% else %>
+      <p> <%= link_to "View CV", @application.cv %> </p>
+    <% end %>
 
-    <article>
-      <h3>CV</h3>
-      <% if @application.cv.nil? %>
-        <p> This CV is missing. </p>
-      <% else %>
-        <p> <%= link_to "View CV", @application.cv %> </p>
-      <% end %>
+    <h3> Cover Letter </h3>
+    <%= simple_format(@application.cover_letter) %>
+  </article>
 
-      <h3> Cover Letter </h3>
-      <%= simple_format(@application.cover_letter) %>
-    </article>
+  <article>
+    <h3>Notes</h3>
+    <% if @application.notes %>
+      <p> <%= simple_format(@application.notes) %> </p>
+    <% end %>
 
-    <article>
-      <h3>Notes</h3>
-      <% if @application.notes %>
-        <p> <%= simple_format(@application.notes) %> </p>
-      <% end %>
+    <h3>Awards</h3>
+    <ul class="list-inline">
+      <li class="list-inline-item"> <span class="font-weight-bold">Longlisted:</span> <%= @application.longlist %> </li>
+      <li class="list-inline-item"> <span class="font-weight-bold">Shortlisted:</span> <%= @application.shortlist %> </li>
+      <li class="list-inline-item"> <span class="font-weight-bold"> Finalisted:</span> <%= @application.finalist %> </li>
+      <li class="list-inline-item"> <span class="font-weight-bold">Awarded:</span> <%= @application.awarded %> </li>
+    </ul>
 
-      <h3>Awards</h3>
-      <ul class="list-inline">
-        <li class="list-inline-item"> <span class="font-weight-bold">Longlisted:</span> <%= @application.longlist %> </li>
-        <li class="list-inline-item"> <span class="font-weight-bold">Shortlisted:</span> <%= @application.shortlist %> </li>
-        <li class="list-inline-item"> <span class="font-weight-bold"> Finalisted:</span> <%= @application.finalist %> </li>
-        <li class="list-inline-item"> <span class="font-weight-bold">Awarded:</span> <%= @application.awarded %> </li>
-      </ul>
+    <%= link_to "Add notes", edit_admin_application_path(@application), class: "cta" %>
+  </article>
 
-      <%= link_to "Add notes", edit_admin_application_path(@application), class: "cta" %>
-    </article>
-
-    <br>
-    <%= link_to "Send Awarded Email", admin_send_awarded_email_path(@application), class: "cta", method: "POST" %>
-  </div>
+  <br>
+  <%= link_to "Send Awarded Email", admin_send_awarded_email_path(@application), class: "cta", method: "POST" %>
 </div>
