@@ -30,7 +30,7 @@
       <%= link_to "Send Awarded Email", admin_send_awarded_email_path(@application), class: "cta", method: "POST" %>
 
     <% if @application.submitted %>
-      <%= link_to "Edit", edit_application_path(@application), class: "cta" %>
+      <%= link_to "Add notes", edit_application_path(@application), class: "cta" %>
     <% end %>
 
   </div>
