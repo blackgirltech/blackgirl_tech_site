@@ -1,34 +1,32 @@
-<div class="profilePage">
-
-  <div class="maxWidth">
-    <h1 class="name">
-      <%= @member.first_name + "'s'" %> Application for <%= @application.opportunity.name %>
+<div class="col-md-6 offset-md-3">
+  <h1 class="name">
+      Your Application for <%= @application.opportunity.name %>
     </h1>
 
     <% unless @application.submitted %>
       <p>
-        This application has not been submitted, why not <%= link_to "edit", edit_application_path(@application) %> it and submit when you've finished.
+        This application has not been submitted, why not <%= link_to "edit", edit_application_path(@application), class: "font-weight-bold" %> it and submit when you've finished.
       </p>
     <% else %>
       <p> This application has been submitted and can not be editted. </p>
     <% end %>
 
-    <%= longlisted? %>
-    <%= shortlisted? %>
-    <%= finalisted? %>
-    <%= awarded? %>
+    <span class="font-weight-bold"><%= longlisted? %></span>
+    <span class="font-weight-bold"><%= shortlisted? %></span>
+    <span class="font-weight-bold"><%= finalisted? %></span>
+    <span class="font-weight-bold"><%= awarded? %></span>
 
     <article>
-      <h3> Cover Letter </h3>
-      <%= simple_format(@application.cover_letter) %>
-
+      <h3>CV</h3>
       <% if @application.cv.nil? %>
         <p> Your CV is missing, attach it <%= link_to "here", edit_application_path(@application)%> </p>
       <% else %>
-        <p> View your <%= link_to "CV", @application.cv %> </p>
+        <p> <%= link_to "View your CV", @application.cv %> </p>
       <% end %>
+      <h3>Cover Letter</h3>
+      <%= simple_format(@application.cover_letter) %>
     </article>
-
+    <br>
     <% unless @application.submitted %>
       <%= link_to "Edit", edit_application_path(@application), class: "cta" %>
     <% end %>
