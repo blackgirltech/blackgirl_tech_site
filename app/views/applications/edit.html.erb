@@ -1,21 +1,27 @@
-
 <div class="col-md-6 offset-md-3">
   <h1>Edit Your Application</h1>
   <p> Make sure your CV and cover letter are correct. Let us know why this opportunity is right for you, what you want to gain and what you can give. </p>
   <%= form_for(@application)  do |f| %>
     <div class="form-group">
       <%= f.label :cover_letter%>
-      <%= f.text_area :cover_letter, class: "form-control" %>
+      <%= f.text_area :cover_letter, rows: 15, class: "form-control" %>
     </div>
-
+    <br>
     <div class="form-group">
       <%= f.label :cv, "CV" %>
       <%= f.file_field :cv, direct_upload: true %>
     </div>
-
+    <br>
     <%= f.hidden_field :opportunity_id, value: @application.opportunity.id %>
     <%= f.hidden_field :member_id, value: current_member.id %>
-    <%= f.submit "Save", class: "cta"%>
-    <%= f.submit "Submit", class: "cta"%>
+
+    <div class="row">
+      <div class="col-md-6">
+        <%= f.submit "Save", class: "cta"%>
+      </div>
+      <div class="col-md-6">
+        <%= f.submit "Submit", class: "cta"%>
+      </div>
+    </div>
   <% end %>
 </div>
