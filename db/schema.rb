@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_08_204514) do
+ActiveRecord::Schema.define(version: 2018_10_08_214927) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -194,6 +194,7 @@ ActiveRecord::Schema.define(version: 2018_10_08_204514) do
     t.string "url"
     t.boolean "external", default: false
     t.boolean "live", default: false
+    t.boolean "sent_email", default: false
   end
 
   create_table "resources", id: :serial, force: :cascade do |t|

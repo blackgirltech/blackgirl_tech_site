@@ -7,6 +7,7 @@ module Admin
 
     def create
       @opportunity = Opportunity.create!(opportunity_params)
+      @opportunity.dispatch_live_email
       redirect_to opportunity_path(@opportunity)
     end
 
@@ -16,7 +17,8 @@ module Admin
 
     def update
       @opportunity = Opportunity.find(params[:id])
-      @opportunity.update(opportunity_params)
+      @opportunity.update!(opportunity_params)
+      @opportunity.dispatch_live_email
       redirect_to opportunity_path(@opportunity)
     end
 
