@@ -28,7 +28,8 @@ module Admin
       return unless application.awarded
 
       member = application.member
-      AwardedEmailJob.perform_later(member)
+      opportunity_name = application.opportunity.name
+      AwardedEmailJob.perform_later(member, opportunity_name)
       application.update(awarded_email_sent: true)
       redirect_to admin_application_path(application)
     end
