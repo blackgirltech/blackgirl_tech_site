@@ -28,7 +28,10 @@ module Admin
 
     private
     def opportunity_params
-      params.require(:opportunity).permit(:name, :description, :deadline, :company, :company_bio, :external)
+      params.require(:opportunity).permit(
+        :name, :description, :deadline, :company,
+        :company_bio, :external, :live
+      )
     end
   end
 end

@@ -32,6 +32,11 @@
     </div>
 
     <div class="form-group">
+      <%= f.label :live, "Make live" %>
+      <%= f.check_box :live, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
       <%= f.label :url%>
       <%= f.text_field :url, placeholder: "URL for application", class: "form-control" %>
     </div>
