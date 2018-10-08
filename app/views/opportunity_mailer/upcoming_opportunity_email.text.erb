@@ -1,0 +1,8 @@
+
+  blackgirl.tech Presents <%= @opportunity.name %>
+  ===============================================
+
+  <%= @opportunity.company %> has partnered with us to bring <%= @opportunity.name %> and applications are open now!
+  Find out more and <%= link_to "apply", opportunity_url(@opportunity), class: "cta"%> now!
+
+  <%= link_to "Unsubscribe", member_show_unsubscribe_url(@member.id) %>
