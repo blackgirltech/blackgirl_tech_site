@@ -25,12 +25,7 @@ module Admin
 
     def awarded_email
       application = Application.find_by(id: params[:id])
-      return unless application.awarded
-
-      member = application.member
-      opportunity_name = application.opportunity.name
-      AwardedEmailJob.perform_later(member, opportunity_name)
-      application.update(awarded_email_sent: true)
+      application.dispatch_awarded_email
       redirect_to admin_application_path(application)
     end
     private
