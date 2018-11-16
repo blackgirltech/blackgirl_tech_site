@@ -1,11 +1,42 @@
-<h1 class="text-center"><%= @opportunity.name %></h1>
-<p class="text-center"> <b> DEADLINE: <%= @opportunity.deadline.strftime("%d-%m-%Y") %> </b> </p>
-<div class="col-md-4 offset-md-4">
-  <h5> Company Bio </h5>
-  <p class=""> <%= @opportunity.company_bio %></p>
+<div class="col-md-6 offset-md-3">
+  <h1><%= @opportunity.name %></h1>
+  <% if admin? %>
+    <p class="font-weight-bold"><%= link_to "Edit", edit_admin_opportunity_path(@opportunity) %></p>
+    <p class=""><%= link_to "Applicants", admin_opportunity_applications_path(@opportunity) %></p>
+  <% end %>
+  <p class="font-weight-bold"> DEADLINE: <%= @opportunity.deadline.strftime("%d-%m-%Y") %> </p>
+
+  <article>
+    <h3> Company Bio </h3>
+    <p class=""> <%= simple_format(@opportunity.company_bio) %></p>
+
+    <h3> Opportunity Description </h3>
+    <p class=""> <%= simple_format(@opportunity.description) %> </p>
+  </article>
+
+  <article class="row">
+    <% unless admin? %>
+      <% if member_signed_in? %>
+        <% if @opportunity.external %>
+          <div class="col-md-6  offset-md-3">
+            <%= link_to "Apply", @opportunity.url, class: "cta" %>
+          </div>
+        <% else %>
+          <div class="col-md-6  offset-md-3">
+            <%= link_to "Apply", new_opportunity_application_path(@opportunity), class: "cta" %>
+          </div>
+        <% end %>
+      <% else %>
+        <div class="col-md-6  offset-md-3">
+          <%= link_to "Log in to Apply", new_member_session_path, class: "cta" %>
+        </div>
+      <% end %>
+    <% end %>
+
+    <% if admin? %>
+      <div class="col-md-6 offset-md-3">
+        <%= link_to 'Delete',  admin_opportunity_path(@opportunity),  class: "cta greyed", method: :delete, data: { confirm: 'Are you sure?' } %>
+      </div>
+    <% end %>
+  </article>
 </div>
-<div class="col-md-4 offset-md-4">
-  <h5> Opportunity Description </h5>
-  <p class=""> <%= @opportunity.description %> </p>
-</div>
-<a href="<%= @opportunity.url %>" class="cta"> Apply </a>

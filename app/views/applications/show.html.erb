@@ -1,0 +1,48 @@
+<div class="col-md-6 offset-md-3">
+  <h1 class="name">
+      Your Application for <%= @application.opportunity.name %>
+    </h1>
+
+    <% unless @application.submitted %>
+      <p>
+        This application has not been submitted, why not <%= link_to "edit", edit_application_path(@application), class: "font-weight-bold" %> it and submit when you've finished.
+      </p>
+    <% else %>
+      <p> This application has been submitted and can not be editted. </p>
+    <% end %>
+
+    <span class="font-weight-bold"><%= longlisted? %></span>
+    <span class="font-weight-bold"><%= shortlisted? %></span>
+    <span class="font-weight-bold"><%= finalisted? %></span>
+    <span class="font-weight-bold"><%= awarded? %></span>
+
+    <article>
+      <h3>CV</h3>
+      <% if @application.cv.nil? %>
+        <p> Your CV is missing, attach it <%= link_to "here", edit_application_path(@application)%> </p>
+      <% else %>
+        <p> <%= link_to "View your CV", @application.cv %> </p>
+      <% end %>
+      <h3>Cover Letter</h3>
+      <%= simple_format(@application.cover_letter) %>
+    </article>
+    <br>
+    <% unless @application.submitted %>
+      <%= link_to "Edit", edit_application_path(@application), class: "cta" %>
+    <% end %>
+
+
+    <div class="deleteAccount pagePanel">
+      <div class="maxWidth">
+        <h2>
+            Delete Application
+        </h2>
+        <p>
+            Please be advised that deleting your application is permanent and will be effective immediately
+        </p>
+        <%= link_to 'Delete',  @application,  class: "cta greyed", method: :delete, data: { confirm: 'Are you sure?' } %>
+      </div>
+    </div>
+
+  </div>
+</div>
