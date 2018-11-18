@@ -2,19 +2,9 @@ class Event < ApplicationRecord
   has_one_attached :image
   has_many :rsvps
   has_many :members, through: :rsvps
-  has_many :event_venues
-  has_many :venue, through: :event_venues
 
   # TODO: Will need to change which email is sent dependent on the kind of event but fine for now, since only one type of event
   after_create :auto_refund, :send_event_email
-
-  # def address
-  #   if self.venue.first
-  #     self.venue.first.address
-  #   else
-  #     address
-  #   end
-  # end
 
   def finished
     self.date.present? && (self.date < Date.today)

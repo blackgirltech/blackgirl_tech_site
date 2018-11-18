@@ -25,7 +25,7 @@ module Admin
 
     private
     def event_params
-      params.require(:event).permit(:name, :details, :date, :time, :address, :url, :workshop, :masterclass, :max_attendees, :max_volunteers, :price_in_pence, :refundable, :image, venue_ids: [])
+      params.require(:event).permit(:name, :details, :date, :time, :address, :url, :workshop, :masterclass, :max_attendees, :max_volunteers, :price_in_pence, :refundable, :image)
     end
   end
 end

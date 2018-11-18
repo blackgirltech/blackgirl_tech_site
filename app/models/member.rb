@@ -9,8 +9,6 @@ class Member < ApplicationRecord
   has_many :events, through: :rsvps
   has_many :donations
   has_many :applications
-  has_many :member_skills
-  has_many :skills, through: :member_skills
 
   validates_presence_of :first_name, :last_name
 

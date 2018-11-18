@@ -10,12 +10,6 @@
                 <%= f.text_field :last_name, placeholder: "Last Name" %>
                 <%= f.text_field :email, placeholder: "Email" %>
 
-                <h3>Skills</h3>
-        				<%= f.collection_check_boxes :skill_ids, Skill.all, :id, :name do |c| %>
-                  <span class="float-md-left mr-2"><%= c.label %></span>
-                  <%= c.check_box %>
-                <% end %>
-
                 <div class="">
                     <b><%= f.label :subscribed_to_email, "I give you permission to contact me by email"%></b>
                     <%= f.check_box :subscribed_to_email, class: "" %>

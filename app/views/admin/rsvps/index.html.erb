@@ -8,7 +8,6 @@
       <th scope="col">Name</th>
       <th scope="col">Email</th>
       <th scope="col">Role</th>
-      <th scope="col">Skills</th>
       <th scope="col">Check In</th>
     </tr>
   </thead>
@@ -28,13 +27,6 @@
           Volunteer
         <% else %>
           Attendee
-        <% end %>
-      </td>
-      <td>
-        <% if rsvp.member.volunteer %>
-          <% rsvp.member.skills.each do |skill| %>
-            <%= skill.name + ", " %>
-          <% end %>
         <% end %>
       </td>
       <td>
