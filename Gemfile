@@ -42,6 +42,7 @@ gem "omniauth-google-oauth2"
 gem 'stripe'
 
 gem 'font-awesome-sass'
+gem 'paperclip'
 
 # Jobs
 gem 'delayed_job_active_record'
