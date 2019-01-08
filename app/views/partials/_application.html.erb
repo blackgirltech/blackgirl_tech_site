@@ -1,27 +1,36 @@
-<div class="row">
-  <% @applications.each do |application| %>
-    <div class="card col-md-4 col-sm-12">
-      <div class="card-body">
-        <div class="card-title">
-          <p>
-            <b> <%= link_to application.opportunity.name, application_path(application) %> </b>
-          </p>
-        </div>
-        <div class="card-text">
-          <p>
-            Deadline: <%= application.opportunity.deadline.strftime('%b') %> <%= application.opportunity.deadline.strftime('%d') %>
-          </p>
-          <p>
-            Status:
-            <% if application.submitted %>
-              Submitted
-            <% else %>
-              Draft
-            <% end %>
-          </p>
-        </div>
+<% if @member.applications %>
+  <div class="eventsArea pagePanel">
+    <div class="container">
+      <h2>
+        Applications
+      </h2>
+      <div class="row">
+        <% @applications.each do |application| %>
+          <div class="card col-md-4 col-sm-12">
+            <div class="card-body">
+              <div class="card-title">
+                <p>
+                  <b> <%= link_to application.opportunity.name, application_path(application) %> </b>
+                </p>
+              </div>
+              <div class="card-text">
+                <p>
+                  Deadline: <%= application.opportunity.deadline.strftime('%b') %> <%= application.opportunity.deadline.strftime('%d') %>
+                </p>
+                <p>
+                  Status:
+                  <% if application.submitted %>
+                    Submitted
+                  <% else %>
+                    Draft
+                  <% end %>
+                </p>
+              </div>
+            </div>
+          </div>
+
+        <% end %>
       </div>
     </div>
-
-  <% end %>
-</div>
+  </div>
+<% end %>
