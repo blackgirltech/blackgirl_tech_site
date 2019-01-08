@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_08_165247) do
+ActiveRecord::Schema.define(version: 2019_01_08_170249) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -77,13 +77,6 @@ ActiveRecord::Schema.define(version: 2019_01_08_165247) do
     t.string "stripe_subscription_id"
     t.boolean "active_regular_donation", default: false
     t.string "name"
-  end
-
-  create_table "event_venues", id: :serial, force: :cascade do |t|
-    t.integer "event_id"
-    t.integer "venue_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "events", id: :serial, force: :cascade do |t|
@@ -157,15 +150,6 @@ ActiveRecord::Schema.define(version: 2019_01_08_165247) do
     t.string "stripe_token"
     t.string "stripe_charge_token"
     t.boolean "donate", default: false
-  end
-
-  create_table "venues", id: :serial, force: :cascade do |t|
-    t.string "name"
-    t.string "address"
-    t.string "contact_name"
-    t.string "contact_email"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
 end
