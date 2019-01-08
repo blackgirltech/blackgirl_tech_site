@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_03_212121) do
+ActiveRecord::Schema.define(version: 2019_01_08_161223) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -89,13 +89,6 @@ ActiveRecord::Schema.define(version: 2018_10_03_212121) do
     t.string "name"
   end
 
-  create_table "event_venues", id: :serial, force: :cascade do |t|
-    t.integer "event_id"
-    t.integer "venue_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "events", id: :serial, force: :cascade do |t|
     t.string "name"
     t.date "date"
@@ -111,11 +104,6 @@ ActiveRecord::Schema.define(version: 2018_10_03_212121) do
     t.integer "max_volunteers"
     t.integer "price_in_pence"
     t.boolean "refundable"
-  end
-
-  create_table "member_skills", id: :serial, force: :cascade do |t|
-    t.integer "skill_id"
-    t.integer "member_id"
   end
 
   create_table "members", id: :serial, force: :cascade do |t|
@@ -137,11 +125,6 @@ ActiveRecord::Schema.define(version: 2018_10_03_212121) do
     t.string "uid"
     t.string "first_name"
     t.string "last_name"
-    t.string "address_line_one"
-    t.string "address_line_two"
-    t.string "city"
-    t.string "postcode"
-    t.boolean "tutor"
     t.string "stripe_source"
     t.string "stripe_customer_id"
     t.boolean "black_woman_nbp", default: false
@@ -150,20 +133,7 @@ ActiveRecord::Schema.define(version: 2018_10_03_212121) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string "unconfirmed_email"
-    t.boolean "subscribed_to_email", default: true
-    t.string "invitation_token"
-    t.datetime "invitation_created_at"
-    t.datetime "invitation_sent_at"
-    t.datetime "invitation_accepted_at"
-    t.integer "invitation_limit"
-    t.string "invited_by_type"
-    t.integer "invited_by_id"
-    t.integer "invitations_count", default: 0
     t.index ["email"], name: "index_members_on_email", unique: true
-    t.index ["invitation_token"], name: "index_members_on_invitation_token", unique: true
-    t.index ["invitations_count"], name: "index_members_on_invitations_count"
-    t.index ["invited_by_id"], name: "index_members_on_invited_by_id"
-    t.index ["invited_by_type", "invited_by_id"], name: "index_members_on_invited_by_type_and_invited_by_id"
     t.index ["reset_password_token"], name: "index_members_on_reset_password_token", unique: true
   end
 
@@ -213,28 +183,6 @@ ActiveRecord::Schema.define(version: 2018_10_03_212121) do
     t.string "stripe_token"
     t.string "stripe_charge_token"
     t.boolean "donate", default: false
-  end
-
-  create_table "sessions", id: :serial, force: :cascade do |t|
-    t.string "session_id", null: false
-    t.text "data"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.index ["session_id"], name: "index_sessions_on_session_id", unique: true
-    t.index ["updated_at"], name: "index_sessions_on_updated_at"
-  end
-
-  create_table "skills", id: :serial, force: :cascade do |t|
-    t.string "name"
-  end
-
-  create_table "venues", id: :serial, force: :cascade do |t|
-    t.string "name"
-    t.string "address"
-    t.string "contact_name"
-    t.string "contact_email"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
 end
