@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_08_161223) do
+ActiveRecord::Schema.define(version: 2019_01_08_165247) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,16 +53,6 @@ ActiveRecord::Schema.define(version: 2019_01_08_161223) do
     t.boolean "awarded_email_sent", default: false
   end
 
-  create_table "custom_auto_increments", id: :serial, force: :cascade do |t|
-    t.string "counter_model_name"
-    t.integer "counter", default: 0
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string "counter_model_scope"
-    t.index ["counter_model_name", "counter_model_scope"], name: "counter_model_name_scope", unique: true
-    t.index ["counter_model_name"], name: "index_custom_auto_increments_on_counter_model_name"
-  end
-
   create_table "delayed_jobs", id: :serial, force: :cascade do |t|
     t.integer "priority", default: 0, null: false
     t.integer "attempts", default: 0, null: false
@@ -87,6 +77,13 @@ ActiveRecord::Schema.define(version: 2019_01_08_161223) do
     t.string "stripe_subscription_id"
     t.boolean "active_regular_donation", default: false
     t.string "name"
+  end
+
+  create_table "event_venues", id: :serial, force: :cascade do |t|
+    t.integer "event_id"
+    t.integer "venue_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "events", id: :serial, force: :cascade do |t|
@@ -137,22 +134,6 @@ ActiveRecord::Schema.define(version: 2019_01_08_161223) do
     t.index ["reset_password_token"], name: "index_members_on_reset_password_token", unique: true
   end
 
-  create_table "memberships", id: :serial, force: :cascade do |t|
-    t.string "membership_type"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "redirect_url"
-    t.string "response_id"
-    t.datetime "expiration_date"
-    t.integer "member_id"
-    t.datetime "cancellation_date"
-    t.string "gc_mandate_id"
-    t.string "gc_customer_id"
-    t.string "gc_payment_id"
-    t.string "membership_number"
-    t.string "stripe_subscription_id"
-  end
-
   create_table "opportunities", id: :serial, force: :cascade do |t|
     t.string "name"
     t.string "company"
@@ -163,13 +144,6 @@ ActiveRecord::Schema.define(version: 2019_01_08_161223) do
     t.datetime "updated_at", null: false
     t.string "url"
     t.boolean "external", default: false
-  end
-
-  create_table "resources", id: :serial, force: :cascade do |t|
-    t.string "title"
-    t.text "preview_description"
-    t.text "description"
-    t.string "external_url"
   end
 
   create_table "rsvps", id: :serial, force: :cascade do |t|
@@ -183,6 +157,15 @@ ActiveRecord::Schema.define(version: 2019_01_08_161223) do
     t.string "stripe_token"
     t.string "stripe_charge_token"
     t.boolean "donate", default: false
+  end
+
+  create_table "venues", id: :serial, force: :cascade do |t|
+    t.string "name"
+    t.string "address"
+    t.string "contact_name"
+    t.string "contact_email"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end
