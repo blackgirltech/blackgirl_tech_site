@@ -12,6 +12,7 @@ class MembersController < ApplicationController
 
   def show
     @member = current_member
+  #   TODO: Add notice for if user has unconfirmed email
   end
 
   def show_unsubscribe
