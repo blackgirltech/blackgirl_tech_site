@@ -19,68 +19,41 @@
     </div>
 
     <div class="form">
-    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-      <%= devise_error_messages! %>
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <%= devise_error_messages! %>
 
-      <div class="formTop white">
-          <%= f.label :first_name, class:"sr-only"%>
-          <%= f.text_field :first_name, autofocus: true, class: "form-control", placeholder: "First name" %>
+        <div class="formTop white">
+            <%= f.label :first_name, class:"sr-only"%>
+            <%= f.text_field :first_name, autofocus: true, class: "form-control", placeholder: "First name" %>
 
-        <%= f.label :last_name, class:"sr-only"%>
-        <%= f.text_field :last_name, class: "form-control", placeholder: "Last name" %>
+          <%= f.label :last_name, class:"sr-only"%>
+          <%= f.text_field :last_name, class: "form-control", placeholder: "Last name" %>
 
-        <%= invisible_captcha %>
+          <%= invisible_captcha %>
 
-        <%= f.label :email, class:"sr-only" %>
-        <%= f.email_field :email, class: "form-control", placeholder: "Email" %>
+          <%= f.label :email, class:"sr-only" %>
+          <%= f.email_field :email, class: "form-control", placeholder: "Email" %>
 
-        <%= f.label :password, class:"sr-only" %>
-        <% if @minimum_password_length %>
-          <em class="sr-only">(<%= @minimum_password_length %> characters minimum)</em>
-        <% end %>
-        <%= f.password_field :password, autocomplete: "off", class: "form-control", placeholder: "Password (6 characters min)" %>
+          <%= f.label :password, class:"sr-only" %>
+          <% if @minimum_password_length %>
+            <em class="sr-only">(<%= @minimum_password_length %> characters minimum)</em>
+          <% end %>
+          <%= f.password_field :password, autocomplete: "off", class: "form-control", placeholder: "Password (6 characters min)" %>
 
-        <%= f.label :password_confirmation, class:"sr-only" %>
-        <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control", placeholder: "Password Confirmation" %>
+          <%= f.label :password_confirmation, class:"sr-only" %>
+          <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control", placeholder: "Password Confirmation" %>
+        </div>
+      <div class="question white">
+          <%= f.label :black_woman_nbp, "Are you a black woman/black non-binary person?"%>
+          <%= f.check_box :black_woman_nbp, class: "" %>
       </div>
 
-      <!-- <div class="radioBtns">
-        <div class="smaller">
-            <div class="radio">
-                <input type="radio" name="age" id="eighteen">
-                <label for="eighteen">under 18</label>
-            </div>
-            <div class="radio">
-                <input type="radio" name="age" id="twentytwo">
-                <label for="twentytwo">22-29</label>
-            </div>
-            <div class="radio">
-                <input type="radio" name="age" id="thirty">
-                <label for="thirty">30-39</label>
-            </div>
-            <div class="radio">
-                <input type="radio" name="age" id="forty">
-                <label for="forty">40+</label>
-            </div>
-        </div>
-    </div> -->
-    <div class="question white">
-        <%= f.label :black_woman_nbp, "Are you a black woman/black non-binary person?"%>
-        <%= f.check_box :black_woman_nbp, class: "" %>
+      <div class="question white">
+          <%= f.label :contact_permission, "I give you permission to contact me by email"%>
+          <%= f.check_box :contact_permission, class: "" %>
+      </div>
+      <%= f.submit "Sign up", class: "cta" %>
+    <% end %>
     </div>
-
-    <div class="white">
-        <%= f.label :voluenteer, "Would you like to register as a volunteer?" %><br />
-        <%= f.check_box :volunteer%>
-    </div>
-
-    <div class="question white">
-        <%= f.label :subscribed_to_email, "I give you permission to contact me by email"%>
-        <%= f.check_box :subscribed_to_email, class: "" %>
-    </div>
-
-        <%= f.submit "Sign up", class: "cta" %>
-
-  <% end %>
-</div>
+  </div>
 </div>
